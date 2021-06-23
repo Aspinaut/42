@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/15 16:23:42 by vmasse            #+#    #+#             */
-/*   Updated: 2021/06/23 16:45:09 by vmasse           ###   ########.fr       */
+/*   Created: 2021/06/23 14:30:07 by vmasse            #+#    #+#             */
+/*   Updated: 2021/06/23 14:52:44 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+#include <string.h>
 
-void	ft_bzero(void *s, size_t n)
+typedef struct  s_list
 {
-	size_t	i;
-	char	*buffer;
+  void *content;
+  struct s_list *next;
+}               t_list;
 
-	buffer = (char *)s;
-	i = 0;
-	while (i < n)
-	{
-		buffer[i] = '\0';
-		i++;
-	}
-	s = (void *)buffer;
+
+void ft_lstadd_front(t_list **lst, t_list *new) {
+
+}
+
+int main() {
+  int i;
+  t_list **list;
+
+  i = 0;
+  while (i < 3) {
+    printf("%s", list[i]);
+    i++;
+  }
 }

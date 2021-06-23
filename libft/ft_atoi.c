@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 11:23:27 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/10 14:34:34 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/06/23 16:44:33 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_atoi(char *str)
 {
-	int result;
+	int		result;
 
 	result = 0;
 	while (*str >= 0 && *str <= 32)
