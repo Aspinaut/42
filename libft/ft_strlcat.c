@@ -14,11 +14,11 @@
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	size_t	copied_len;
-	unsigned int	i;
-	int				j;
-	int				dest_size;
-	size_t n;
+	size_t		copied_len;
+	size_t		n;
+	 int		j;
+	 int		dest_size;
+	 unsigned int		i;
 
 	j = 0;
 	i = -1;

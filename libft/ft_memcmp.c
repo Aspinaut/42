@@ -14,9 +14,9 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t 	i;
 	unsigned char		*s1_buffer;
 	unsigned char		*s2_buffer;
+	size_t				i;
 
 	i = 0;
 	s1_buffer = (unsigned char *)s1;
