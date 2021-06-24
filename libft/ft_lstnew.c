@@ -6,13 +6,13 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 13:27:48 by vmasse            #+#    #+#             */
-/*   Updated: 2021/06/23 14:20:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/06/24 13:01:44 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void const *content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list	*link;
 
