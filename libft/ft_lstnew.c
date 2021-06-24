@@ -10,30 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
-typedef struct  s_list
+t_list	*ft_lstnew(void const *content)
 {
-  void *content;
-  struct s_list *next;
-}               t_list;
+	t_list	*link;
 
-
-t_list * ft_lstnew(void const *content) {
-  t_list * link;
-
-  if (!(link = (t_list *)malloc(sizeof(link)))) {
-    return NULL;
-  }
-  link->content = content;
-  link->next = NULL;
-  return link;
-}
-
-int main(){
-  t_list Obj;
-  Obj = ft_lstnew("Salut");
-  printf("%s", Obj.content);
+	link = (t_list *)malloc(sizeof(link));
+	if (!(link))
+	{
+		return (NULL);
+	}
+	link->content = content;
+	link->next = NULL;
+	return (link);
 }

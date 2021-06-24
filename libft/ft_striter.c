@@ -11,22 +11,21 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-void add_one_to_char(char *c)
+void	add_one_to_char(char *c)
 {
-    if (*c == 'o')
-      write(1, "h", 1);
-    else
-      write(1, c, 1);
+	if (*c == 'o')
+		write(1, "h", 1);
+	else
+		write(1, c, 1);
 }
 
-void  ft_striter(char *s, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
-  if (!s)
-    return ;
-  while (*s)
-  {
-    (*f)(s++);
-  }
+	if (!s)
+		return ;
+	while (*s)
+	{
+		(*f)(s++);
+	}
 }
