@@ -6,13 +6,13 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 18:15:19 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/10 14:35:52 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/06/29 14:41:44 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int	count;
 

@@ -6,30 +6,28 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 08:57:35 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/18 18:31:43 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/06/29 15:42:29 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+size_t  ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t		copied_len;
-	size_t		n;
-	 int		j;
-	 int		dest_size;
-	 unsigned int		i;
+	size_t len_src;
+	size_t len_dst;
+	size_t j;
+	size_t i;
 
+	len_src = ft_strlen(src);
+	i = 0;
 	j = 0;
-	i = -1;
-	n = size - ft_strlen(dest) - 1;
-	dest_size = ft_strlen(dest);
-	while (++i < n && src[j] != '\0')
-	{
-		dest[dest_size + j] = src[j];
-		j++;
-	}
-	dest[dest_size + j] = '\0';
-	copied_len = ft_strlen((char *)src) + n;
-	return (copied_len);
+	while (dst[i] && i < size)
+		i++;
+	len_dst = i;
+	while (src[j] && i + 1 < size)
+		dst[i++] = src[j++];
+	if (len_dst < size)
+		dst[len_dst + len_src] = '\0';
+	return (len_dst + len_src);
 }
