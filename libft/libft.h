@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 18:01:20 by vmasse            #+#    #+#             */
-/*   Updated: 2021/06/29 16:15:57 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/06/29 16:25:58 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
-// char  **ft_strsplit(char const *s, char c);
 
 int		ft_atoi(char *str);
 void	ft_bzero(void *s, size_t n);
@@ -53,6 +51,7 @@ void	ft_putnbr(int n);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr(char const *s);
 void	ft_putstr_fd(char const *s, int fd);
+char	**ft_split(char const *s, char c);
 char	*ft_strcat(char *dest, char *src);
 char	*ft_strchr(const char *s, int c);
 int		ft_strcmp(char *s1, char *s2);

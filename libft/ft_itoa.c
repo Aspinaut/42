@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 09:05:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/06/24 11:21:56 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/06/30 19:41:42 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ static	int	find_total_digit(long n)
 {
 	int	total_digit;
 
+	total_digit = 0;
 	if (n == 0)
 		total_digit = 1;
-	else
-		total_digit = 0;
 	if (n < 0)
 		total_digit++;
 	while (n != 0)
@@ -51,8 +50,7 @@ char	*ft_itoa(int n)
 	}
 	while (temp_n != 0)
 	{
-		result[total_digit - 1] = (temp_n % 10) + '0';
-		total_digit--;
+		result[--total_digit] = (temp_n % 10) + '0';
 		temp_n /= 10;
 	}
 	return (result);

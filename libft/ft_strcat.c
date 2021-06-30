@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 08:48:53 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/10 14:35:22 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/06/30 20:08:02 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 char	*ft_strcat(char *dest, char *src)
 {
 	int	i;
-	int	nb;
+	int	len;
 
 	i = -1;
-	nb = ft_strlen(dest);
+	len = ft_strlen(dest);
 	while (src[++i] != '\0')
 	{
-		dest[nb + i] = src[i];
+		dest[len + i] = src[i];
 	}
-	dest[nb + i] = '\0';
+	dest[len + i] = '\0';
 	return (dest);
 }
