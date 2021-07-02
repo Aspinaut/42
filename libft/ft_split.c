@@ -6,59 +6,128 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:21:30 by vmasse            #+#    #+#             */
-/*   Updated: 2021/06/30 18:50:06 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/02 16:36:54 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
+static int count_elem_len(char const *s, char c, int i)
+{
+	int len;
+
+	len = 0;
+	while (s[i] && s[i] != c)
+	{
+		len++;
+		i++;
+	}
+	return (len);
+}
+//
+// static char *fill_current_arr(char const *s, char *arr, int nb_elems, int i)
+// {
+// 	int j;
+//
+// 	j = 0;
+// 	while (j < nb_elems)
+// 	{
+// 		arr[j] = s[i];
+// 		i++;
+// 		j++;
+// 	}
+// 	arr[j] = '\0';
+// 	return (arr);
+// }
+
+static char **fill_arr(char const *s, char **arr, char c)
+{
+	int i;
+	int j;
+	int k;
+	int elem_len;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (s[i] != c)
+		{
+			k = 0;
+			elem_len = count_elem_len(s, c, i);
+			arr[j] = (char *)malloc(elem_len * sizeof(char) + 1);
+			if (!arr[j])
+		    return (NULL);
+			while (s[i] != c)
+			{
+				arr[j][k] = s[i];
+				k++;
+				i++;
+			}
+			arr[j][k] = '\0';
+			j++;
+		}
+		i++;
+	}
+		// printf("%s\n", arr[j]);
+	return(arr);
+}
+
 char **ft_split(char const *s, char c)
 {
   char **arr;
-  int pos_c;
-  int len_s;
-  int i;
+  int nb_elems;
+	int i;
 
-  pos_c = 0;
-  len_s = 0;
-  i = 0;
-  arr = malloc(2 * sizeof(char *));
-  while (s[len_s])
-  {
-    if (s[len_s] == c && pos_c == 0)
-      pos_c = len_s;
-    len_s++;
-  }
-  arr[0] = (char *)malloc(pos_c * sizeof(char) + 1);
-  arr[1] = (char *)malloc((i - pos_c) * sizeof(char) + 1);
-  while (i < pos_c)
-  {
-    arr[0][i] = s[i];
-    i++;
-  }
-  arr[0][i] = '\0';
-  i = 0;
-  while (pos_c < len_s)
-  {
-    arr[1][i] = s[pos_c];
-    i++;
-    pos_c++;
-  }
-  arr[1][i] = '\0';
+	// compte mots
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			nb_elems++;
+		i++;
+	}
+
+  arr = (char **)malloc(nb_elems * sizeof(char *) + 1);
+  if (!arr)
+    return (NULL);
+	arr[nb_elems] = 0;
+
+	arr = fill_arr(s, arr, c);
+	// i = 0;
+	// j = 0;
+	// while (s[i])
+	// {
+	// 	if (s[i] != c)
+	// 	{
+	// 		elem_len = count_elem_len(s, c, i);
+	// 		arr[j] = (char *)malloc(elem_len * sizeof(char) + 1);
+	// 		if (!*arr)
+	// 	    return (NULL);
+	// 		arr[j] = fill_current_arr(s, *arr, elem_len, i);
+	// 		printf("%s\n", arr[j]);
+	// 		j++;
+	// 		i += (elem_len - 1);
+	// 	}
+	// 	i++;
+	// }
   return (arr);
 }
 
 // int main()
 // {
-//   char const *s = "bonjour";
+//   char const *s =  "      split       this for   me  !       ";
 //   char **arr;
 //   int i = 0;
 //
-//   arr = ft_split(s, 'o');
-//   while (i < 2)
-//   {
-//     printf("%s\n", arr[i]);
-//     i++;
-//   }
+//   arr = ft_split(s, ' ');
+// 	while (i < 5)
+// 	{
+// 		printf("%s\n", arr[i]);
+// 		i++;
+// 	}
+//
 // }
