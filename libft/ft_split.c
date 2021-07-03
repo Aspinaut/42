@@ -6,11 +6,12 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:21:30 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/03 11:24:50 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/03 14:46:34 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static	int	count_elems(char const *s, char c)
 {
@@ -41,6 +42,17 @@ static	int	count_elem_len(char const *s, char c, int i)
 	return (len);
 }
 
+static char **free_arr(char **arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+	return (NULL);
+}
+
 static	char	**fill_arr(char const *s, char **arr, char c)
 {
 	int	i;
@@ -58,8 +70,8 @@ static	char	**fill_arr(char const *s, char **arr, char c)
 			elem_len = count_elem_len(s, c, i);
 			arr[j] = (char *)malloc(elem_len * sizeof(char) + 1);
 			if (!arr[j])
-				return (NULL);
-			while (s[i] != c)
+				return (free_arr(arr));
+			while (s[i] != c && s[i])
 				arr[j][k++] = s[i++];
 			arr[j][k] = '\0';
 			j++;
@@ -73,7 +85,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		nb_elems;
-	
+
 	if (!s)
 		return (NULL);
 	nb_elems = count_elems(s, c);
@@ -84,3 +96,19 @@ char	**ft_split(char const *s, char c)
 	arr = fill_arr(s, arr, c);
 	return (arr);
 }
+//
+// int main()
+// {
+//   char const *s =  " split";
+//   char **arr;
+//   int i = 0;
+//
+//   arr = ft_split(s, ' ');
+// 		printf("%s\n", arr[i]);
+//
+// 	// while (i < 5)
+// 	// {
+// 	// 	i++;
+// 	// }
+//
+// }
