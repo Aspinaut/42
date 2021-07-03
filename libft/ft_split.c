@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:21:30 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/03 11:13:26 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/03 11:24:50 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static	int	count_elems(char const *s, char c)
 	int	nb_elems;
 
 	nb_elems = 0;
-	if (!s)
-		return (NULL);
 	i = 0;
 	while (s[i])
 	{
@@ -75,7 +73,9 @@ char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		nb_elems;
-
+	
+	if (!s)
+		return (NULL);
 	nb_elems = count_elems(s, c);
 	arr = (char **)malloc(nb_elems * sizeof(char *) + 1);
 	if (!arr)
