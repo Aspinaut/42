@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 18:01:20 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/03 17:49:10 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/04 17:08:06 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	ft_lstadd_front(t_list **alst, t_list *new);
 int	ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **alst, t_list *new);
-// void	ft_lstdelone(t_list *lst, void (*del)(void*));
-// void ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+void ft_lstclear(t_list **lst, void (*del)(void*));
 // void ft_lstiter(t_list *lst, void (*f)(void *));
 // t_list *ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *));
 void	*ft_memalloc(size_t size);
