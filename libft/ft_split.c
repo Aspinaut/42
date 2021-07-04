@@ -42,9 +42,9 @@ static	int	count_elem_len(char const *s, char c, int i)
 	return (len);
 }
 
-static char **free_arr(char **arr)
+static	char	**free_arr(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])
