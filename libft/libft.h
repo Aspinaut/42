@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 18:01:20 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/04 17:08:06 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/04 17:16:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **alst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void ft_lstclear(t_list **lst, void (*del)(void*));
-// void ft_lstiter(t_list *lst, void (*f)(void *));
+void ft_lstiter(t_list *lst, void (*f)(void *));
 // t_list *ft_lstmap(t_list *lst, void *(*f)(void *),void (*del)(void *));
 void	*ft_memalloc(size_t size);
 // size_t à la plce de unsigned pour memset / memcpy et memccpy !
