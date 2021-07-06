@@ -1,12 +1,14 @@
 #!/bin/bash
+# code à insérer dans crontab -e en étant root :
+# /*10 * * * * /scripts/monitoring.sh
 
 mem_used=$(free -t | grep Mem: | awk '{print $3}').0
 mem_total=$(free -t | grep Mem: | awk '{print $2}').0
 percentage_mem_used=$(($mem_used / $mem_total * 100))
 
-disk_used=
-disk_total=
-percentage_disk_used=
+#disk_used=
+#disk_total=
+#percentage_disk_used=
 
 reboot_date=$(last reboot | head -1 | awk '{print $5,$6,$7,$8}')
 
@@ -21,15 +23,17 @@ function check_lvm_usage {
   fi
 }
 
-echo "#Architecture : $(uname -a)"
-echo "#CPU physical : $(grep "physical id" /proc/cpuinfo | sort | uniq | wc -l)"
-echo "#vCPU : $(grep "^processor" /proc/cpuinfo | wc -l)"
+# ! trouver la bonne syntaxe pour faire fonctionner le wall
+wall $(
+echo "#Architecture : $(uname -a)\n"
+echo "#CPU physical : $(grep "physical id" /proc/cpuinfo | sort | uniq | wc -l)\n"
+echo "#vCPU : $(grep "^processor" /proc/cpuinfo | wc -l)\n"
 
 # !! mem_used affiche aussi les unités
 echo "#Memory Usage : $(free -h --giga | grep Mem: | awk '{print $3}')/$(free -h --giga | grep Mem: | awk '{print $2}') ($(echo $percentage_mem_used | awk '{printf("%.2f",$1)}')%)"
 
 # sur quelle partition ??
-echo "#Disk Usage : $()"
+echo "#Disk Usage :"
 
 # !! faut-il faire l'addition des cpus ou juste le 1er affiché ??
 echo "#CPU load : $(top -bn1 | grep '%Cpu(s):' | awk '{print $2}')%"
@@ -43,3 +47,4 @@ echo "#User log : $(who | wc -l)"
 # !! bien vérifier l'adresse MAC (pq 2 adresses hors VM ??)
 echo "#Network : IP $(hostname -I)($(ip link show | grep link/ether | awk '{print $2}'))"
 echo "#Sudo : $(history | grep sudo | wc -l) cmd"
+)
