@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 08:20:59 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/17 18:51:23 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/08 11:45:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
 	size_t	i;
 
+	if (!s1 || !s2)
+		return (0);
 	i = 0;
 	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
 		i++;
