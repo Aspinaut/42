@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 17:07:49 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/04 17:15:25 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/08 11:11:53 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,14 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*p;
 	t_list	*temp;
 
 	if (!lst || !del)
 		return ;
-	p = (*lst);
-	while (p->next)
+	while ((*lst))
 	{
-		temp = p;
-		del(p);
-		free(p);
-		p = temp;
+		temp = (*lst)->next;
+		ft_lstdelone((*lst), del);
+		(*lst) = temp;
 	}
-	del(lst);
-	free(lst);
 }
