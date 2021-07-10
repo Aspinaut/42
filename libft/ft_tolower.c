@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 12:04:43 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/14 18:38:29 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/10 14:49:26 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	ft_tolower(int c)
 {
-	if (c < -1)
-		return ((unsigned char)c);
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);
 	return (c);

@@ -6,12 +6,11 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:21:30 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/03 14:46:34 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/10 15:05:36 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static	int	count_elems(char const *s, char c)
 {
@@ -71,10 +70,11 @@ static	char	**fill_arr(char const *s, char **arr, char c)
 			arr[j] = (char *)malloc(elem_len * sizeof(char) + 1);
 			if (!arr[j])
 				return (free_arr(arr));
-			while (s[i] != c && s[i])
+			while (s[i] && s[i] != c)
 				arr[j][k++] = s[i++];
-			arr[j][k] = '\0';
-			j++;
+			arr[j++][k] = '\0';
+			if (!s[i])
+				return (arr);
 		}
 		i++;
 	}
@@ -96,19 +96,3 @@ char	**ft_split(char const *s, char c)
 	arr = fill_arr(s, arr, c);
 	return (arr);
 }
-//
-// int main()
-// {
-//   char const *s =  " split";
-//   char **arr;
-//   int i = 0;
-//
-//   arr = ft_split(s, ' ');
-// 		printf("%s\n", arr[i]);
-//
-// 	// while (i < 5)
-// 	// {
-// 	// 	i++;
-// 	// }
-//
-// }
