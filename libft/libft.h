@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 18:01:20 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/04 17:18:02 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/14 12:12:22 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,16 @@ int		ft_isascii(int c);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
 char	*ft_itoa(int n);
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **alst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **alst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
+void	ft_lstadd_front(t_list **alst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list	*ft_lstnew(void *content);
+int		ft_lstsize(t_list *lst);
 void	*ft_memalloc(size_t size);
-// size_t à la plce de unsigned pour memset / memcpy et memccpy !
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -54,7 +53,6 @@ void	*ft_memset(void *s, int c, size_t n);
 void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl(char const *s);
-// putendl et str fd sans const char ??
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr(int n);
 void	ft_putnbr_fd(int n, int fd);
