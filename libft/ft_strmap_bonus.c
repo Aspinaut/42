@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 18:15:41 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/14 08:44:07 by vmasse           ###   ########.fr       */
+/*   Created: 2020/11/10 08:20:09 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:25:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	if (!s)
-		return ;
-	while (*s)
+	char		*s2;
+	size_t		i;
+
+	i = 0;
+	if (!f || !s)
+		return (NULL);
+	s2 = ft_strnew(ft_strlen((char *)s));
+	if (!(s2))
+		return (NULL);
+	while (s[i])
 	{
-		write(1, s, 1);
-		s++;
+		s2[i] = (*f)(s[i]);
+		i++;
 	}
+	s2[i] = '\0';
+	return (s2);
 }

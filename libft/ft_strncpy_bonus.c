@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strncpy_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 08:18:00 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/14 09:48:40 by vmasse           ###   ########.fr       */
+/*   Created: 2020/09/14 20:51:52 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:25:11 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	void	*allocated_area;
+	unsigned int	i;
 
-	allocated_area = malloc(size);
-	if (!allocated_area)
-		return (NULL);
-	ft_bzero(allocated_area, size);
-	return (allocated_area);
+	i = -1;
+	while (++i < n && src[i])
+		dest[i] = src[i];
+	while (i < n)
+		dest[i++] = '\0';
+	return (dest);
 }

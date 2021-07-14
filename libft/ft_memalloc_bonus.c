@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_memalloc_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/16 19:23:20 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/10 14:36:14 by vmasse           ###   ########.fr       */
+/*   Created: 2021/07/14 16:24:06 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:24:10 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(char *str, char *to_find)
+void	*ft_memalloc(size_t size)
 {
-	int	i;
+	void	*allocated_area;
 
-	if (!*to_find)
-		return (str);
-	while (*str)
-	{
-		if (*str == *to_find)
-		{
-			i = 0;
-			while (str[i] == to_find[i] && to_find[i])
-				i++;
-			if (!to_find[i])
-				return (str);
-		}
-		str++;
-	}
-	return (0);
+	allocated_area = malloc(size);
+	if (!allocated_area)
+		return (NULL);
+	ft_bzero(allocated_area, size);
+	return (allocated_area);
 }

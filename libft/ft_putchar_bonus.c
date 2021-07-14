@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 08:20:44 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/08 11:44:52 by vmasse           ###   ########.fr       */
+/*   Created: 2020/09/09 13:43:10 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:24:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strequ(char const *s1, char const *s2)
+void	ft_putchar(char c)
 {
-	if (!s1 || !s2)
-		return (0);
-	while (*s1 && *s2 && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-	}
-	if (*s1 == *s2)
-		return (1);
-	return (0);
+	write(1, &c, 1);
 }

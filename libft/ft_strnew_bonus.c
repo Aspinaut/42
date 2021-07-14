@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 08:18:40 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/11 11:17:04 by vmasse           ###   ########.fr       */
+/*   Created: 2020/11/10 08:18:45 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:25:15 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+char	*ft_strnew(size_t size)
 {
-	if (!ap || !*ap)
-		return ;
-	free(*ap);
-	*ap = 0;
+	return ((char *)ft_memalloc((size + 1) * (sizeof(char))));
 }

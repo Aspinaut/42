@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_strstr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 08:24:03 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/14 08:42:07 by vmasse           ###   ########.fr       */
+/*   Created: 2020/09/16 19:23:20 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:25:20 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl(char const *s)
+char	*ft_strstr(char *str, char *to_find)
 {
-	ft_putstr(s);
-	ft_putchar('\n');
+	int	i;
+
+	if (!*to_find)
+		return (str);
+	while (*str)
+	{
+		if (*str == *to_find)
+		{
+			i = 0;
+			while (str[i] == to_find[i] && to_find[i])
+				i++;
+			if (!to_find[i])
+				return (str);
+		}
+		str++;
+	}
+	return (0);
 }

@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/16 16:43:55 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/10 14:35:57 by vmasse           ###   ########.fr       */
+/*   Created: 2020/09/17 18:15:41 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:24:43 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+void	ft_putstr(char const *s)
 {
-	unsigned int	i;
-	int				j;
-	int				dest_size;
-
-	j = 0;
-	i = -1;
-	dest_size = ft_strlen(dest);
-	while (++i < nb && src[j] != '\0')
+	if (!s)
+		return ;
+	while (*s)
 	{
-		dest[dest_size + j] = src[j];
-		j++;
+		write(1, s, 1);
+		s++;
 	}
-	dest[dest_size + j] = '\0';
-	return (dest);
 }

@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/09 13:43:10 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/12 11:07:31 by vmasse           ###   ########.fr       */
+/*   Created: 2020/09/14 11:45:09 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:24:53 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+char	*ft_strcpy(char *dest, char *src)
 {
-	write(1, &c, 1);
+	int	i;
+
+	i = -1;
+	while (src[++i] != '\0')
+	{
+		dest[i] = src[i];
+	}
+	dest[i] = '\0';
+	return (dest);
 }

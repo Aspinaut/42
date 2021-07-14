@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_strdel_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 08:20:09 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/17 17:16:56 by vmasse           ###   ########.fr       */
+/*   Created: 2020/11/10 08:19:07 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:24:55 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+void	ft_strdel(char **as)
 {
-	char		*s2;
-	size_t		i;
-
-	i = 0;
-	if (!f || !s)
-		return (NULL);
-	s2 = ft_strnew(ft_strlen((char *)s));
-	if (!(s2))
-		return (NULL);
-	while (s[i])
-	{
-		s2[i] = (*f)(s[i]);
-		i++;
-	}
-	s2[i] = '\0';
-	return (s2);
+	if (!as || !*as)
+		return ;
+	free(*as);
+	*as = 0;
 }

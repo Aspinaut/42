@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strclr.c                                        :+:      :+:    :+:   */
+/*   ft_strnequ_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 08:19:20 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/14 10:03:11 by vmasse           ###   ########.fr       */
+/*   Created: 2020/11/10 08:20:59 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:25:13 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strclr(char *s)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	size_t	len;
+	size_t	i;
 
-	if (!s)
-		return ;
-	len = ft_strlen(s);
-	ft_bzero(s, len);
+	if (!s1 || !s2)
+		return (0);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
+		i++;
+	if (s1[i] == s2[i])
+		return (1);
+	return (0);
 }

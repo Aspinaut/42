@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strcat_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 08:18:45 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/12 09:17:14 by vmasse           ###   ########.fr       */
+/*   Created: 2020/09/15 08:48:53 by vmasse            #+#    #+#             */
+/*   Updated: 2021/07/14 16:24:47 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strcat(char *dest, char *src)
 {
-	return ((char *)ft_memalloc((size + 1) * (sizeof(char))));
+	int	i;
+	int	len;
+
+	i = -1;
+	len = ft_strlen(dest);
+	while (src[++i] != '\0')
+	{
+		dest[len + i] = src[i];
+	}
+	dest[len + i] = '\0';
+	return (dest);
 }
