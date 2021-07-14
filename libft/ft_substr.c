@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 17:03:49 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/14 17:14:41 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/14 12:48:58 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (!s)
 		return (NULL);
-	if (ft_strlen((char *)s) < (int)start)
+	if (ft_strlen(s) < (int)start)
 		return (ft_strdup(""));
 	sample = ft_strnew(len);
 	if (!(sample))
