@@ -6,13 +6,13 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 08:23:18 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/15 12:10:33 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/15 13:10:08 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*ft_memalloc_join(size_t size)
+static void	*ft_memalloc_trim(size_t size)
 {
 	void	*allocated_area;
 
@@ -23,9 +23,9 @@ static void	*ft_memalloc_join(size_t size)
 	return (allocated_area);
 }
 
-static char	*ft_strnew_join(size_t size)
+static char	*ft_strnew_trim(size_t size)
 {
-	return ((char *)ft_memalloc_join((size + 1) * (sizeof(char))));
+	return ((char *)ft_memalloc_trim((size + 1) * (sizeof(char))));
 }
 
 static int	is_inset(char const *set, char c)
@@ -58,11 +58,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	j = ft_strlen(s1) - 1;
 	while (j > i && is_inset(set, s1[j]))
 		j--;
-	s2 = ft_strnew_join((j - i) + 1);
-	if (!(s2))
-		return (NULL);
 	if (ft_strlen(s1) == i)
 		return (ft_strdup(""));
+	s2 = ft_strnew_trim((j - i) + 1);
+	if (!(s2))
+		return (NULL);
 	while (i <= j)
 		s2[k++] = s1[i++];
 	return (s2);
