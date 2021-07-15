@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:21:30 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/10 15:05:36 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/15 11:51:54 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static	char	**fill_arr(char const *s, char **arr, char c)
 		{
 			k = 0;
 			elem_len = count_elem_len(s, c, i);
-			arr[j] = (char *)malloc(elem_len * sizeof(char) + 1);
+			arr[j] = (char *)malloc((elem_len + 1) * sizeof(char));
 			if (!arr[j])
 				return (free_arr(arr));
 			while (s[i] && s[i] != c)
@@ -89,7 +89,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	nb_elems = count_elems(s, c);
-	arr = (char **)malloc(nb_elems * sizeof(char *) + 1);
+	arr = (char **)malloc((nb_elems + 1 ) * sizeof(char *));
 	if (!arr)
 		return (NULL);
 	arr[nb_elems] = 0;
