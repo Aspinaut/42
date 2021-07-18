@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 11:23:27 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/14 13:57:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/18 20:27:20 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_atoi(const char *str)
 		result = result * 10 + *str - '0';
 		str++;
 	}
-	if (result >= MAX_LONG)
+	if ((result == MAX_LONG && !(*str) )|| result > MAX_LONG)
 		return (check_max_long(result, sign));
 	return ((int)result * sign);
 }

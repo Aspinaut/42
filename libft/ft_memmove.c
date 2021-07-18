@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:36:50 by vmasse            #+#    #+#             */
-/*   Updated: 2020/11/15 08:33:07 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/18 20:28:54 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	char		*dest_buffer;
 	char		*src_buffer;
 
+	if (dest == src)
+		return (dest);
 	i = -1;
 	dest_buffer = (char *)dest;
 	src_buffer = (char *)src;
