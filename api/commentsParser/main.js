@@ -55,12 +55,27 @@ async function getTeamsProjectUrls(token, projectId)
   } catch (e) {
     console.log(e)
   }
-  teamsProjectRaw.data.map(teamProject => {
-    teamProject.teams.map(team => {
+  teamsProjectRaw.data.map(teams => {
+    teams.teams.map(team => {
       teamsProjectUrls.push(team.url)
     })
   })
   return teamsProjectUrls
+}
+
+async function mapComments(teamGroupsRaw, teamComments)
+{
+  await teamGroupsRaw.map(group => {
+    group.scale_teams.map(eval => {
+      console.log(eval)
+      teamComments.push({
+        id: eval.id,
+        comment: eval.comment,
+        feedback: eval.feedback,
+      })
+    })
+  })
+  return teamComments
 }
 
 async function getTeamComments(token, teamsProjectUrls)
@@ -74,16 +89,13 @@ async function getTeamComments(token, teamsProjectUrls)
       data: { access_token: token, page: 1 },
     }
     try {
-      teamGroupsRaw = await axios(options)
+      teamGroupsRaw = axios(options)
+      .then(
+        mapComments(teamGroupsRaw, teamComments)
+      )
     } catch (e) {
       console.log(e)
     }
-  })
-  teamGroupsRaw.map(roup => {
-    group.scale_teams.map()
-    teamComments.push({
-      group.
-    })
   })
   return teamComments
 }
@@ -93,7 +105,6 @@ async function main()
   let token = await generateToken()
   let teamsProjectUrls = await getTeamsProjectUrls(token, 2)
   let teamComments = await getTeamComments(token, teamsProjectUrls)
-  console.log(teamComments)
 }
 
 main()
