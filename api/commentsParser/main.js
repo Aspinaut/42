@@ -5,16 +5,6 @@ const readline = require('readline').createInterface({
   output: process.stdout
 })
 
-let teamProjects = [
-  { 
-    teamId: 0,
-    comments: [
-      "Super bien explique !",
-      "Nice !",
-    ], 
-  },
-]
-
 const baseUrl = 'https://api.intra.42.fr'
 
 async function generateToken()
@@ -60,20 +50,22 @@ async function getTeamsProjectUrls(token, projectId)
       teamsProjectUrls.push(team.url)
     })
   })
+
   return teamsProjectUrls
 }
 
-async function mapComments(teamGroupsRaw, teamComments)
+function mapComments(teamGroupsRaw, teamComments)
 {
-  await teamGroupsRaw.map(group => {
-    group.scale_teams.map(eval => {
-      console.log(eval)
-      teamComments.push({
-        id: eval.id,
-        comment: eval.comment,
-        feedback: eval.feedback,
+  teamGroupsRaw.forEach(group => { 
+    if (group.hasOwnProperty('scale_teams') && group.scale_teams.length >= 1) {
+      group.scale_teams.forEach(eval => {
+        teamComments.push({
+          id: eval.id,
+          comment: eval.comment,
+          feedback: eval.feedback,
+        })
       })
-    })
+    }
   })
   return teamComments
 }
@@ -81,23 +73,39 @@ async function mapComments(teamGroupsRaw, teamComments)
 async function getTeamComments(token, teamsProjectUrls)
 {
   let teamGroupsRaw
+  let teamCommentsTemp = []
   let teamComments = []
-  teamsProjectUrls.map(teamProject => {  
+  await Promise.all(teamsProjectUrls.map(async teamProject => {  
     let options = {
       url: teamProject,
       method: 'GET',
       data: { access_token: token, page: 1 },
     }
     try {
-      teamGroupsRaw = axios(options)
-      .then(
-        mapComments(teamGroupsRaw, teamComments)
-      )
+      teamGroupsRaw = await axios(options)
+      teamCommentsTemp.push(teamGroupsRaw.data)
     } catch (e) {
       console.log(e)
     }
-  })
+  }))
+  mapComments(teamCommentsTemp, teamComments)
   return teamComments
+}
+
+function sortComments(teamComments)
+{
+  let comments = []
+  let words = [
+    'error', 'erreur', 'segv', 'segfault', 'bus', 'compile', 'leak', 'fuite', 'crash', 'buff', 'EOL', 'reference'
+  ]
+  teamComments.map( comment => {
+    words.forEach(word => {
+      if (!(comment.comment.toLowerCase().includes(word))) {
+        delete comment
+      }
+    })
+  })
+  return comments
 }
 
 async function main()
@@ -105,6 +113,8 @@ async function main()
   let token = await generateToken()
   let teamsProjectUrls = await getTeamsProjectUrls(token, 2)
   let teamComments = await getTeamComments(token, teamsProjectUrls)
+  let commentsSorted = sortComments(teamComments)
+  console.log(commentsSorted)
 }
 
 main()
