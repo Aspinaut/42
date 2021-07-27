@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:44 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/26 18:19:19 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/07/27 10:51:53 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,37 @@
 
 char *get_next_line(int fd)
 {
-    char *result;
-    // pourquoi buffer size + 1 ?
     char buffer[BUFFER_SIZE];
-    // se renseigner sur la meilleure taille
-    static char *before_line[4096];
-    int i;
-    // pourquoi avec un buffer size de 1 il insere random chars a la fin ??
-    // while(read(fd, buffer, BUFFER_SIZE))
-    // {
-    //     write(1, &buffer[i], 1);
-    //     printf("Printf : %c\n", buffer[i]);
-    //     i++;
-    // }
-    // printf("LAST : %s\n", buffer);
+    static char **before_new_line;
 
-    i = 0;
+    *before_new_line = (char **)malloc(sizeof(char) * (4096 + 1));
     while(read(fd, buffer, BUFFER_SIZE))
     {
-        if(ft_strrchr(*buffer, '\n'))
+        if(ft_strrchr(buffer, '\n'))
         {
-            printf("%c", *buffer);
+            // printf("BUFFER IF char: %c\n", *buffer);
+            // printf("BUFFER IF str: %s\n", buffer);
+            
+            // si on trouve des chars apres le \n dans buffer, on les met dans static
+            
+            // ensuite on print buffer - tout ce qui se trouve apres le \n
+            printf("%s\n", ft_substr(buffer, 0, 3));
+            // write(1, ft_substr(buffer, 0, ), 1);
+            // et on avance au prochain tableau dans la static
+            before_new_line++;
         }
         else
         {
+            // printf("BUFFER ELSE char: %c\n", *buffer);
+            // printf("BUFFER ELSE str: %s\n", buffer);
+            
             // on met buffer dans la static
-            *before_line = *buffer;
-            *before_line += BUFFER_SIZE;
-            buffer += BUFFER_SIZE;
+            *before_new_line = buffer;
+            printf("STATIC : %s\n", before_new_line);
         }
         
     }
-    return (result);
+    return (before_new_line);
 }
 
 int main()
@@ -55,11 +54,5 @@ int main()
 
     fd = open("file.txt", O_RDONLY);
     get_next_line(fd);
-    // line = "a";
-    // while(line)
-    // {
-    //     line = get_next_line(fd);
-    //     printf("%d\n", fd);
-    // }
     return 0;
 }
