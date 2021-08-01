@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:46 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/27 13:30:58 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/01 16:23:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ char    *ft_strrchr(const char *s, int c);
 int     ft_strlen(const char *str);
 char    *ft_substr(char const *s, unsigned int start, size_t len);
 char    *ft_strjoin(char const *s1, char const *s2);
+
+int	ft_strchrpos(const char *s, char c);
 
 #endif

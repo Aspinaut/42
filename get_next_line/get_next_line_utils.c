@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:18:43 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/27 15:54:57 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/01 16:23:27 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s3[len + i] = s2[i];
 	s3[len + i] = '\0';
 	return (s3);
+}
+
+int	ft_strchrpos(const char *s, char c)
+{
+	int i;
+
+	i = 0;
+	while (s[i] != c)
+		if (!s[i++])
+			return (0);
+	return (i);
 }
