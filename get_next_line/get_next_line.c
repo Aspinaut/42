@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:44 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/01 16:48:10 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/01 21:17:24 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,45 @@
 char *get_next_line(int fd)
 {
     char buffer[BUFFER_SIZE];
-    static char *before_new_line;
-    char *temp;
+    static char *s;
+    char *line;
 
-    if (!before_new_line)
+    if (!s)
     {
-      before_new_line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-      if (!before_new_line)
+      s = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+      if (!s)
         return (NULL);
     }
-    temp = NULL;
+    line = NULL;
     while(read(fd, buffer, BUFFER_SIZE))
     {
+      // printf("BUFFER : %s\n", buffer);
       if(ft_strrchr(buffer, '\n'))
       {
         if (buffer[ft_strlen(buffer) - 1] == '\n')
         {
-          temp = ft_strjoin(before_new_line, buffer);
-          free(before_new_line);
-          return (temp);
+          line = ft_strjoin(s, buffer);
+          free(s);
+          return (line);
         }
         else
         {
-          temp = ft_strjoin(before_new_line, ft_substr(buffer, 0, ft_strchrpos(buffer, '\n') + 1));
-          free(before_new_line);
-          // printf("TEMP : %s\n", temp);
-          before_new_line = ft_substr(buffer, ft_strchrpos(buffer, '\n') + 1, BUFFER_SIZE - 1);
-          // printf("SUBSTR STATIC: %s\n", before_new_line);
-          return (temp);
+          line = ft_strjoin(s, ft_substr(buffer, 0, ft_strchrpos(buffer, '\n') + 1));
+          free(s);
+          // printf("line : %s\n", line);
+          s = ft_substr(buffer, ft_strchrpos(buffer, '\n') + 1, BUFFER_SIZE - 1);
+          // printf("SUBSTR STATIC: %s\n", s);
+          return (line);
         }
       }
       else
       {
-        before_new_line = ft_strjoin(before_new_line, buffer);
-        // printf("ELSE : %s\n", before_new_line);
+        s = ft_strjoin(s, buffer);
+        // printf("ELSE : %s\n", s);
         return (get_next_line(fd));
       }
     }
-    return (before_new_line);
+    return (s);
 }
 
 int main()
@@ -63,7 +64,7 @@ int main()
 
     fd = open("file.txt", O_RDONLY);
     i = 0;
-    while (i < 3)
+    while (i < 4)
     {
       printf("GNL (%d) : %s\n", i, get_next_line(fd));
       i++;
