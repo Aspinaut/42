@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:18:43 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/01 16:23:27 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/02 14:30:31 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,7 @@ int	ft_strchrpos(const char *s, char c)
 	int i;
 
 	i = 0;
-	while (s[i] != c)
-		if (!s[i++])
-			return (0);
+	while (s[i] && s[i] != c)
+		i++;
 	return (i);
 }
