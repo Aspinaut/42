@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:18:43 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/03 18:25:22 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/04 15:41:28 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,44 +107,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s3[len + i] = s2[i];
 	s3[len + i] = '\0';
 	return (s3);
-}
-
-// char	*ft_strndup(char *src, size_t n)
-// {
-// 	char	*string;
-// 	size_t		i;
-
-// 	i = 0;
-// 	string = malloc(sizeof(char) * (n + 1));
-// 	if (!(string))
-// 		return (NULL);
-// 	while (i < n)
-// 	{
-// 		string[i] = src[i];
-// 		i++;
-// 	}
-// 	string[n] = '\0';
-// 	return (string);
-// }
-
-char	*ft_strndup(char *src, size_t n)
-{
-	char	*s;
-	size_t		i;
-	int len_src;
-
-	i = 0;
-	len_src = ft_strlen(src);
-	s = malloc(sizeof(char) * (n + 1));
-	if (!s)
-		return (NULL);
-	while (src && i < n)
-	{
-		*s = *src;
-		s++;
-		src++;
-		i++;
-	}
-	*s = '\0';
-	return (s - len_src);
 }
