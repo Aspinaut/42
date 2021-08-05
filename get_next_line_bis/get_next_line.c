@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:44 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/05 19:15:12 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/05 19:49:09 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ static char *read_buffer(char **s, int fd, char *buffer, char *line)
   temp = NULL;
   if (!s[fd])
     s[fd] = ft_strdup(buffer);
-  else if (!s[fd] && !buffer[0])
-    s[fd] = ft_strdup("");
+  // else if (!s[fd] && !buffer[0])
+  //   s[fd] = ft_strdup("");
   else
   {
     temp = ft_strdup(s[fd]);
@@ -73,6 +73,8 @@ static char *read_buffer(char **s, int fd, char *buffer, char *line)
     ft_free(temp);
   }
   line = check_static_eol(s, fd);
+  if (line)
+    ft_free(buffer);
   return (line);
 }
 
@@ -98,13 +100,10 @@ char *get_next_line(int fd)
   input = read(fd, buffer, BUFFER_SIZE);
   while(input > 0)
   {
-    buffer[BUFFER_SIZE] = '\0';
+    buffer[input] = '\0';
     line = read_buffer(s, fd, buffer, line);
     if (line)
-    {
-      ft_free(buffer);
       return (line);
-    }
     input = read(fd, buffer, BUFFER_SIZE);
   }
   if (!input && s[fd] && s[fd][0])
@@ -130,6 +129,6 @@ char *get_next_line(int fd)
 //   printf("|%s", s);
 //   ft_free(s);
 //   close(fd);
-//   // system("leaks gnl");
+//   system("leaks gnl");
 //   return (0);
 // }
