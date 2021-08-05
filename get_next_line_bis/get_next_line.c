@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:44 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/04 20:45:12 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/05 10:41:08 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ static void ft_free(char *s)
   s = NULL;
 }
 
-// static char *return_eol(char **s, int fd)
-// {
-//   char *temp;
-  
-//   temp = ft_strdup(s[fd]);
-//   // ft_free(s[fd]);
-//   return (temp);
-// }
+static char *return_eol(char **s, int fd)
+{
+  char *temp;
+
+  temp = ft_strdup(s[fd]);
+  ft_free(s[fd]);
+ return (temp);
+}
 
 static char *check_static_eol(char **s, int fd)
 {
   char *line;
   char *temp;
-  
+
   line = NULL;
   temp = NULL;
   if (s[fd] && ft_strchr_pos(s[fd], '\n') >= 0)
@@ -52,9 +52,9 @@ static char *read_buffer(char **s, int fd, char *buffer, char *line)
 
   temp = NULL;
   if (!s[fd])
-  {
-    s[fd] = ft_strdup(buffer);
-  }
+      s[fd] = ft_strdup(buffer);
+  else if (!s[fd] && !buffer[0])
+      s[fd] = ft_strdup("");
   else
   {
     temp = ft_strdup(s[fd]);
@@ -63,39 +63,50 @@ static char *read_buffer(char **s, int fd, char *buffer, char *line)
     ft_free(temp);
   }
   line = check_static_eol(s, fd);
-  if (line)
-    return (line);
-  return (NULL);
+  return (line);
 }
 
 char *get_next_line(int fd)
 {
-  char *buffer; 
-  static char *s[OPEN_MAX];
+  char *buffer;
+  static char *s[FOPEN_MAX];
   char *line;
+  int input;
 
+  // s[fd] = NULL;
   line = NULL;
-  if (BUFFER_SIZE <= 0 || fd < 0 || fd > OPEN_MAX)
+  if (BUFFER_SIZE <= 0 || fd < 0 || fd > FOPEN_MAX)
     return (NULL);
-  line = check_static_eol(s, fd);
-  if (line)
-    return (line);
+
   buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
   if (!buffer)
     return (NULL);
-  while(read(fd, buffer, BUFFER_SIZE))
+  line = check_static_eol(s, fd);
+  if (line)
+  {
+    ft_free(buffer);
+    return (line);
+  }
+  input = read(fd, buffer, BUFFER_SIZE);
+  while(input > 0)
   {
     buffer[BUFFER_SIZE] = '\0';
     line = read_buffer(s, fd, buffer, line);
     if (line)
+    {
+      ft_free(buffer);
       return (line);
+    }
+    input = read(fd, buffer, BUFFER_SIZE);
     // if (read(fd, buffer, BUFFER_SIZE) == 0)
     //   break ;
   }
   ft_free(buffer);
-  if (read(fd, buffer, BUFFER_SIZE) == 0 && !s[fd])
+  if (input < 0)
+    return (NULL);
+  if (!input && !s[fd])
     return (ft_strdup(""));
-  return (ft_strdup(s[fd]));
+  return (return_eol(s, fd));
   // return (NULL);
 }
 
@@ -103,10 +114,10 @@ char *get_next_line(int fd)
 // {
 //     char *s;
 //     int fd;
-
+//
 //     fd = open(ag[1], O_RDONLY);
 //     s = get_next_line(fd);
-//     while (s)
+//     while (s && s[0])
 //     {
 //       printf("|%s", s);
 //       ft_free(s);
