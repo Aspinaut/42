@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:18:43 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/06 12:50:59 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/06 14:19:34 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strndup(char *src, size_t n)
 	int len_src;
 
 	i = 0;
-	// if (!src || !n)
+	// if (!src[0] || !n)
 	// 	return (NULL);
 	len_src = ft_strlen(src);
 	s = (char *)malloc(sizeof(char) * (n + 1));
