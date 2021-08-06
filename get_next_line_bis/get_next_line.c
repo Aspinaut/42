@@ -6,35 +6,32 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:44 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/05 19:49:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/06 13:11:47 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void ft_free(char *s)
+static void ft_free(char *s, char **sta, int fd)
 {
+  if (sta && fd)
+  {
+    free(sta[fd]);
+    sta[fd] = NULL;
+    return ;
+  }
   if (s)
     free(s);
   s = NULL;
-}
-
-static void free_static(char **s, int fd)
-{
-  if (s)
-  {
-    free(s[fd]);
-    s[fd] = NULL;
-  }
 }
 
 static char *return_eof(char **s, int fd, char *buffer)
 {
   char *temp;
 
-  temp = ft_strdup(s[fd]);
-  ft_free(buffer);
-  free_static(s, fd);
+  temp = ft_strndup(s[fd], ft_strlen(s[fd]));
+  ft_free(buffer, s, 0);
+  ft_free(*s, s, fd);
   return (temp);
 }
 
@@ -47,11 +44,13 @@ static char *check_static_eol(char **s, int fd)
   temp = NULL;
   if (s[fd] && ft_strchr_pos(s[fd], '\n') >= 0)
   {
+    // line = ft_strndup(s[fd], ft_strchr_pos(s[fd], '\n') + 1);
+    // temp = ft_strndup(s[fd] + (ft_strchr_pos(s[fd], '\n') + 1), ft_strlen(s[fd]) - (ft_strchr_pos(s[fd], '\n') + 1));
     line = ft_substr(s[fd], 0, ft_strchr_pos(s[fd], '\n') + 1);
     temp = ft_substr(s[fd], ft_strchr_pos(s[fd], '\n') + 1, ft_strlen(s[fd]) + 1);
-    free_static(s, fd);
-    s[fd] = ft_strdup(temp);
-    ft_free(temp);
+    ft_free(*s, s, fd);
+    s[fd] = ft_strndup(temp, ft_strlen(temp));
+    ft_free(temp, s, 0);
   }
   return (line);
 }
@@ -62,31 +61,29 @@ static char *read_buffer(char **s, int fd, char *buffer, char *line)
 
   temp = NULL;
   if (!s[fd])
-    s[fd] = ft_strdup(buffer);
-  // else if (!s[fd] && !buffer[0])
-  //   s[fd] = ft_strdup("");
+    s[fd] = ft_strndup(buffer, ft_strlen(buffer));
   else
   {
-    temp = ft_strdup(s[fd]);
-    free_static(s, fd);
+    temp = ft_strndup(s[fd], ft_strlen(s[fd]));
+    ft_free(*s, s, fd);
     s[fd] = ft_strjoin(temp, buffer);
-    ft_free(temp);
+    ft_free(temp, s, 0);
   }
   line = check_static_eol(s, fd);
   if (line)
-    ft_free(buffer);
+    ft_free(buffer, s, 0);
   return (line);
 }
 
 char *get_next_line(int fd)
 {
   char *buffer;
-  static char *s[FOPEN_MAX];
+  static char *s[OPEN_MAX];
   char *line;
   int input;
 
   line = NULL;
-  if (BUFFER_SIZE <= 0 || fd < 0 || fd > FOPEN_MAX)
+  if (BUFFER_SIZE <= 0 || fd < 0 || fd > OPEN_MAX)
     return (NULL);
   buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
   if (!buffer)
@@ -94,7 +91,7 @@ char *get_next_line(int fd)
   line = check_static_eol(s, fd);
   if (line)
   {
-    ft_free(buffer);
+    ft_free(buffer, s, 0);
     return (line);
   }
   input = read(fd, buffer, BUFFER_SIZE);
@@ -108,27 +105,7 @@ char *get_next_line(int fd)
   }
   if (!input && s[fd] && s[fd][0])
     return (return_eof(s, fd, buffer));
-  ft_free(buffer);
-  free_static(s, fd);
+  ft_free(buffer, s, 0);
+  ft_free(*s, s, fd);
   return (NULL);
 }
-
-// int main(int ac, char **ag)
-// {
-//   char *s;
-//   int fd;
-
-//   fd = open(ag[1], O_RDONLY);
-//   s = get_next_line(fd);
-//   while (s && s[0])
-//   {
-//     printf("|%s", s);
-//     ft_free(s);
-//     s = get_next_line(fd);
-//   }
-//   printf("|%s", s);
-//   ft_free(s);
-//   close(fd);
-//   system("leaks gnl");
-//   return (0);
-// }

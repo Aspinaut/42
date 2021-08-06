@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:18:43 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/04 17:39:58 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/06 12:50:59 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,38 +24,56 @@ int	ft_strlen(const char *str)
 	return (count);
 }
 
-char	*ft_strdup(char *src)
+// char	*ft_strdup(char *src)
+// {
+// 	char	*string;
+// 	int		src_size;
+// 	int		i;
+
+// 	i = 0;
+// 	src_size = ft_strlen(src);
+// 	string = malloc(sizeof(char) * (src_size + 1));
+// 	if (!string)
+// 		return (NULL);
+// 	while (i < src_size)
+// 	{
+// 		string[i] = src[i];
+// 		i++;
+// 	}
+// 	string[src_size] = '\0';
+// 	return (string);
+// }
+
+char	*ft_strndup(char *src, size_t n)
 {
-	char	*string;
-	int		src_size;
-	int		i;
+	char	*s;
+	size_t		i;
+	int len_src;
 
 	i = 0;
-	src_size = ft_strlen(src);
-	string = malloc(sizeof(char) * (src_size + 1));
-	if (!string)
+	// if (!src || !n)
+	// 	return (NULL);
+	len_src = ft_strlen(src);
+	s = (char *)malloc(sizeof(char) * (n + 1));
+	if (!s)
 		return (NULL);
-	while (i < src_size)
+	while (src && i < n)
 	{
-		string[i] = src[i];
+		*s = *src;
+		s++;
+		src++;
 		i++;
 	}
-	string[src_size] = '\0';
-	return (string);
-}
-
-int	ft_strchr_pos(const char *s, char c)
-{
-	int pos;
-
-	pos = 0;
-	while (s && s[pos])
-	{
-		if (s[pos] == c)
-			return (pos);
-		pos++;
-	}
-	return (-1);
+	*s = '\0';
+	// printf("NDUP : %s\n", s - len_src);
+	return (s - len_src);
+	// while (src && i < n)
+	// {
+	// 	s[i] = src[i];
+	// 	i++;
+	// }
+	// s[i] = '\0';
+	// return (s);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -83,6 +101,20 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	sample[i] = '\0';
 	return (sample);
+}
+
+int	ft_strchr_pos(const char *s, char c)
+{
+	int pos;
+
+	pos = 0;
+	while (s && s[pos])
+	{
+		if (s[pos] == c)
+			return (pos);
+		pos++;
+	}
+	return (-1);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
