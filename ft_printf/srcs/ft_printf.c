@@ -6,44 +6,83 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:05:13 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/16 17:07:42 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/17 13:21:43 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-/*
-  - checker si on trouve des %
-    si oui :
-      - compter le nb de % et comparer avec les va_args
-      - put_str de tout ce qui précède
-      -
-    sinon :
-      - putstr
+static t_var *ft_init_vartab(t_var *vartab)
+{
+  vartab->args = 0;
+  vartab->len_to_print = 0;
+  return (vartab);
+}
 
-    while s != '%'
-      if (*(s + 1) == '%')
-        putchar %
+static int ft_process_specifier(t_var *vartab, const char *f, int pos)
+{
 
-*/
+}
+static int ft_eval_format(t_var *vartab, const char *f, int pos)
+{
+  // format specifier : cspdiuxX%
+  // precision / padding : -0.
+  // flags : # +
 
-int ft_printf(const char *s, ...)
+  /*
+    - tant qu'on a autre chose qu'un format specifier ( == tant qu'on peut impacter celui ci)
+      - on gere chaque cas de flags / precision
+    - si on quitte cette boucle, on sait qu'on est arrive au specifier et on peut print
+  */
+
+  while (f[pos] != 'c' || f[pos] != 's' || f[pos] != 'p' ||\ 
+        f[pos] != 'd' || f[pos] != 'i' || f[pos] != 'u' ||\
+        f[pos] != 'x' || f[pos] != 'X' || f[pos] != '%')
+  {
+    
+    pos++;
+  }
+  pos = ft_process_specifier(vartab, f, pos);
+  return (pos);
+}
+
+int ft_printf(const char *format, ...)
 {
   va_list args;
-  va_start(args, s);
+  t_var *vartab;
+  int len_to_print;
+  int pos;
 
-  ft_putstr(s);
+  vartab = (t_var *)malloc(sizeof(t_var));
+  if (!vartab)
+    return (-1);
+  vartab = ft_init_vartab(vartab);
+  va_start(args, format);
+  len_to_print = 0;
+  pos = -1;
+  while (format[++pos])
+  {
+    if (format[pos] == '%')
+      pos = ft_eval_format(vartab, format, pos + 1);
 
+    // gerer l'erreur si % est a la fin de format ? 
+
+    else
+      len_to_print += write(0, &format[pos], 1);
+  }
   va_end(args);
-  return (0);
+  len_to_print += vartab->len_to_print;
+  free(vartab);
+  return (len_to_print);
 }
 
 int main()
 {
-  char *s = "salut";
-  int i = 0;
-  ft_printf("FT_PRINTF : \n", s, i);
+  // char *s = "salut";
+  // int i = 0;
+  
   // ft_printf("FT_PRINTF : salut %%\n");
-  printf("%d", printf("PRINTF : salut %d\n"));
+  printf("PRINTF : %\n", "salut");
+  printf("PRINTF : %c\n", 'a');
   return (0);
 }
