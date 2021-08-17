@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:05:13 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/17 13:21:43 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/17 13:53:09 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,27 @@ static t_var *ft_init_vartab(t_var *vartab)
   return (vartab);
 }
 
-static int ft_process_specifier(t_var *vartab, const char *f, int pos)
+static int ft_process_specifier(t_var *vartab, const char *format, int pos)
 {
-
+  if (format[pos] == 'c')
+    ft_print_char(vartab);
+  // if (format[pos] == 's')
+  //   ft_print_char(vartab);
+  // if (format[pos] == 'p')
+  //   ft_print_char(vartab);
+  // if (format[pos] == 'd')
+  //   ft_print_char(vartab);
+  // if (format[pos] == 'i')
+  //   ft_print_char(vartab);
+  // if (format[pos] == 'u')
+  //   ft_print_char(vartab);
+  // if (format[pos] == 'x')
+  //   ft_print_char(vartab);
+  // if (format[pos] == 'X')
+  //   ft_print_char(vartab);
+  // if (format[pos] == '%')
+  //   ft_print_char(vartab);    
+  return (++pos);
 }
 static int ft_eval_format(t_var *vartab, const char *f, int pos)
 {
@@ -49,9 +67,9 @@ static int ft_eval_format(t_var *vartab, const char *f, int pos)
 int ft_printf(const char *format, ...)
 {
   va_list args;
-  t_var *vartab;
-  int len_to_print;
-  int pos;
+  t_var   *vartab;
+  int     len_to_print;
+  int     pos;
 
   vartab = (t_var *)malloc(sizeof(t_var));
   if (!vartab)
@@ -64,9 +82,6 @@ int ft_printf(const char *format, ...)
   {
     if (format[pos] == '%')
       pos = ft_eval_format(vartab, format, pos + 1);
-
-    // gerer l'erreur si % est a la fin de format ? 
-
     else
       len_to_print += write(0, &format[pos], 1);
   }

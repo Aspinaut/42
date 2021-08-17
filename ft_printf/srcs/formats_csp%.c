@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   formats_csp%.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 15:03:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/17 13:59:02 by vmasse           ###   ########.fr       */
+/*   Created: 2021/08/17 13:38:12 by vmasse            #+#    #+#             */
+/*   Updated: 2021/08/17 13:58:35 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#include "../includes/ft_printf.h"
 
-# include <stdio.h>
-# include <stdarg.h>
-# include "../libft/libft.h"
-
-typedef struct  s_var
+void ft_print_char(t_var *vartab)
 {
-    va_list *args;
-    int     len_to_print;
-}               t_var;
+    char c;
 
-int     ft_printf(const char *s, ...);
-
-void    ft_print_char(t_var *vartab);
-
-void    ft_print_int(t_var *vartab);
-
-#endif
+    c = va_arg(vartab->args, int);
+    vartab->len_to_print += write(1, &vartab->args, 1);
+}
