@@ -6,27 +6,25 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:05:13 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/17 13:53:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/17 16:04:09 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static t_var *ft_init_vartab(t_var *vartab)
+static void ft_init_vartab(t_var *vartab)
 {
-  vartab->args = 0;
   vartab->len_to_print = 0;
-  return (vartab);
 }
 
-static int ft_process_specifier(t_var *vartab, const char *format, int pos)
+static void ft_process_specifier(t_var *vartab, const char *format, int pos)
 {
   if (format[pos] == 'c')
     ft_print_char(vartab);
-  // if (format[pos] == 's')
-  //   ft_print_char(vartab);
-  // if (format[pos] == 'p')
-  //   ft_print_char(vartab);
+  if (format[pos] == 's')
+    ft_print_str(vartab);
+  if (format[pos] == 'p')
+    ft_print_address(vartab);
   // if (format[pos] == 'd')
   //   ft_print_char(vartab);
   // if (format[pos] == 'i')
@@ -38,8 +36,8 @@ static int ft_process_specifier(t_var *vartab, const char *format, int pos)
   // if (format[pos] == 'X')
   //   ft_print_char(vartab);
   // if (format[pos] == '%')
-  //   ft_print_char(vartab);    
-  return (++pos);
+  //   ft_print_char(vartab);
+  // printf("SPE : %d\n", ++pos);
 }
 static int ft_eval_format(t_var *vartab, const char *f, int pos)
 {
@@ -53,20 +51,19 @@ static int ft_eval_format(t_var *vartab, const char *f, int pos)
     - si on quitte cette boucle, on sait qu'on est arrive au specifier et on peut print
   */
 
-  while (f[pos] != 'c' || f[pos] != 's' || f[pos] != 'p' ||\ 
-        f[pos] != 'd' || f[pos] != 'i' || f[pos] != 'u' ||\
-        f[pos] != 'x' || f[pos] != 'X' || f[pos] != '%')
+  while (f[pos] && (f[pos] != 'c' && f[pos] != 's' && f[pos] != 'p' && \
+        f[pos] != 'd' && f[pos] != 'i' && f[pos] != 'u' && \
+        f[pos] != 'x' && f[pos] != 'X' && f[pos] != '%'))
   {
-    
+    // printf("CHAR : %c\n", f[pos]);
     pos++;
   }
-  pos = ft_process_specifier(vartab, f, pos);
+  ft_process_specifier(vartab, f, pos);
   return (pos);
 }
 
 int ft_printf(const char *format, ...)
 {
-  va_list args;
   t_var   *vartab;
   int     len_to_print;
   int     pos;
@@ -74,8 +71,8 @@ int ft_printf(const char *format, ...)
   vartab = (t_var *)malloc(sizeof(t_var));
   if (!vartab)
     return (-1);
-  vartab = ft_init_vartab(vartab);
-  va_start(args, format);
+  ft_init_vartab(vartab);
+  va_start(vartab->args, format);
   len_to_print = 0;
   pos = -1;
   while (format[++pos])
@@ -83,9 +80,9 @@ int ft_printf(const char *format, ...)
     if (format[pos] == '%')
       pos = ft_eval_format(vartab, format, pos + 1);
     else
-      len_to_print += write(0, &format[pos], 1);
+      len_to_print += write(1, &format[pos], 1);
   }
-  va_end(args);
+  va_end(vartab->args);
   len_to_print += vartab->len_to_print;
   free(vartab);
   return (len_to_print);
@@ -93,11 +90,21 @@ int ft_printf(const char *format, ...)
 
 int main()
 {
-  // char *s = "salut";
-  // int i = 0;
+  char *s = "salut";
+  int i = 0;
+  char c = 'a';
+  void *p = &s;
   
-  // ft_printf("FT_PRINTF : salut %%\n");
-  printf("PRINTF : %\n", "salut");
-  printf("PRINTF : %c\n", 'a');
+  printf("----------------------\n");
+  printf("-------FT_PRINTF------\n");
+  printf("----------------------\n");
+  ft_printf("| %p coucou\n", p);
+  // printf("%d\n", ft_printf("| %s coucou\n", s));
+  printf("----------------------\n");
+  printf("-------PRINTF---------\n");
+  printf("----------------------\n");
+  printf("| %p coucou\n", p);
+  // printf("%d\n", printf("| %s coucou\n", s));
+
   return (0);
 }
