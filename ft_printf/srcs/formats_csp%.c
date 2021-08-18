@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 13:38:12 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/17 16:12:15 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/18 12:18:04 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ void ft_print_address(t_var *vartab)
 
     p = va_arg(vartab->args, char *);
     // p = &s;
-    printf("ADD : %p\n", p);
-    vartab->len_to_print += write(1, p, ft_strlen(p));
+    // printf("ADD : %p\n", p);
+  vartab->len_to_print += write(1, p, ft_strlen(p));
+}
+
+void ft_print_per(t_var *vartab)
+{
+    ft_putchar('%');
+    vartab->len_to_print++;
 }

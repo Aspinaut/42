@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:05:13 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/17 16:04:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/18 12:52:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ static void ft_process_specifier(t_var *vartab, const char *format, int pos)
     ft_print_str(vartab);
   if (format[pos] == 'p')
     ft_print_address(vartab);
-  // if (format[pos] == 'd')
-  //   ft_print_char(vartab);
-  // if (format[pos] == 'i')
+  if (format[pos] == '%')
+    ft_print_per(vartab);
+  if (format[pos] == 'd' || format[pos] == 'i')
+    ft_print_int(vartab);
+  // if ()
   //   ft_print_char(vartab);
   // if (format[pos] == 'u')
   //   ft_print_char(vartab);
   // if (format[pos] == 'x')
   //   ft_print_char(vartab);
   // if (format[pos] == 'X')
-  //   ft_print_char(vartab);
-  // if (format[pos] == '%')
   //   ft_print_char(vartab);
   // printf("SPE : %d\n", ++pos);
 }
@@ -91,19 +91,20 @@ int ft_printf(const char *format, ...)
 int main()
 {
   char *s = "salut";
-  int i = 0;
+  int i = 8749981;
   char c = 'a';
   void *p = &s;
-  
+
   printf("----------------------\n");
   printf("-------FT_PRINTF------\n");
   printf("----------------------\n");
-  ft_printf("| %p coucou\n", p);
+  // ft_printf("| %% %p coucou\n", p);
+  printf("%d", ft_printf("| %i coucou\n", i));
   // printf("%d\n", ft_printf("| %s coucou\n", s));
   printf("----------------------\n");
   printf("-------PRINTF---------\n");
   printf("----------------------\n");
-  printf("| %p coucou\n", p);
+  printf("%d", printf("| %i coucou\n", i));
   // printf("%d\n", printf("| %s coucou\n", s));
 
   return (0);
