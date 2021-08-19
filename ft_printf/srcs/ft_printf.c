@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:05:13 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/18 12:52:18 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/19 18:16:41 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ static void ft_process_specifier(t_var *vartab, const char *format, int pos)
     ft_print_per(vartab);
   if (format[pos] == 'd' || format[pos] == 'i')
     ft_print_int(vartab);
-  // if ()
-  //   ft_print_char(vartab);
-  // if (format[pos] == 'u')
-  //   ft_print_char(vartab);
+  if (format[pos] == 'u')
+    ft_print_unsigned_int(vartab);
   // if (format[pos] == 'x')
   //   ft_print_char(vartab);
   // if (format[pos] == 'X')
@@ -92,6 +90,7 @@ int main()
 {
   char *s = "salut";
   int i = 8749981;
+  unsigned int u = 65810;
   char c = 'a';
   void *p = &s;
 
@@ -99,12 +98,12 @@ int main()
   printf("-------FT_PRINTF------\n");
   printf("----------------------\n");
   // ft_printf("| %% %p coucou\n", p);
-  printf("%d", ft_printf("| %i coucou\n", i));
+  printf("%d", ft_printf("| %u coucou\n", -154984984));
   // printf("%d\n", ft_printf("| %s coucou\n", s));
   printf("----------------------\n");
   printf("-------PRINTF---------\n");
   printf("----------------------\n");
-  printf("%d", printf("| %i coucou\n", i));
+  printf("%d", printf("| %u coucou\n", -154984984));
   // printf("%d\n", printf("| %s coucou\n", s));
 
   return (0);
