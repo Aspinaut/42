@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 18:01:20 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/19 18:19:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/21 19:15:00 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <stddef.h>
 
 # define	MAX_LONG	9223372036854775807
 
@@ -50,12 +52,10 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	ft_memdel(void **ap);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
-void	ft_putchar(char c);
+int	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl(char const *s);
 void	ft_putendl_fd(char const *s, int fd);
-int	ft_putnbr(int n);
-int	ft_putnbr_unsigned(unsigned int n);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr(char const *s);
 void	ft_putstr_fd(char const *s, int fd);

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 09:05:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/19 18:14:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/21 11:17:39 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_itoa(unsigned int n)
 	temp_n = n;
 	total_digit = find_total_digit(temp_n);
 	result = (char *)malloc(sizeof(char) * (total_digit + 1));
-	if (!(result))
+	if (!result)
 		return (NULL);
 	result[total_digit] = '\0';
 	if (temp_n == 0)

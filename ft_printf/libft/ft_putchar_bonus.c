@@ -6,13 +6,13 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 13:43:10 by vmasse            #+#    #+#             */
-/*   Updated: 2021/07/14 16:24:23 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/21 19:14:50 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	return (write(1, &c, 1));
 }

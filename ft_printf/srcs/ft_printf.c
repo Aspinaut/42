@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:05:13 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/19 18:16:41 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/08/21 18:56:54 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static void ft_process_specifier(t_var *vartab, const char *format, int pos)
 {
   if (format[pos] == 'c')
     ft_print_char(vartab);
-  if (format[pos] == 's')
+  else if (format[pos] == 's')
     ft_print_str(vartab);
-  if (format[pos] == 'p')
+  else if (format[pos] == 'p')
     ft_print_address(vartab);
-  if (format[pos] == '%')
+  else if (format[pos] == '%')
     ft_print_per(vartab);
-  if (format[pos] == 'd' || format[pos] == 'i')
+  else if (format[pos] == 'd' || format[pos] == 'i')
     ft_print_int(vartab);
   if (format[pos] == 'u')
     ft_print_unsigned_int(vartab);
@@ -37,6 +37,7 @@ static void ft_process_specifier(t_var *vartab, const char *format, int pos)
   //   ft_print_char(vartab);
   // printf("SPE : %d\n", ++pos);
 }
+
 static int ft_eval_format(t_var *vartab, const char *f, int pos)
 {
   // format specifier : cspdiuxX%
@@ -86,6 +87,8 @@ int ft_printf(const char *format, ...)
   return (len_to_print);
 }
 
+#include "limits.h"
+
 int main()
 {
   char *s = "salut";
@@ -98,12 +101,12 @@ int main()
   printf("-------FT_PRINTF------\n");
   printf("----------------------\n");
   // ft_printf("| %% %p coucou\n", p);
-  printf("%d", ft_printf("| %u coucou\n", -154984984));
+  printf("%d", ft_printf("| %i %i coucou\n", INT_MIN));
   // printf("%d\n", ft_printf("| %s coucou\n", s));
   printf("----------------------\n");
   printf("-------PRINTF---------\n");
   printf("----------------------\n");
-  printf("%d", printf("| %u coucou\n", -154984984));
+  printf("%d", printf("| %i %i coucou\n", INT_MIN));
   // printf("%d\n", printf("| %s coucou\n", s));
 
   return (0);

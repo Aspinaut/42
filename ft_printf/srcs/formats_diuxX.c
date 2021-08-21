@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/17 13:38:12 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/19 18:22:48 by vmasse           ###   ########.fr       */
+/*   Created: 2021/08/21 18:35:37 by vmasse            #+#    #+#             */
+/*   Updated: 2021/08/21 19:07:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void ft_print_int(t_var *vartab)
     int nb;
 
     nb = va_arg(vartab->args, int);
-    vartab->len_to_print += ft_putnbr(nb);
+    ft_putnbr(vartab, nb);
 }
 
 void ft_print_unsigned_int(t_var *vartab)
@@ -25,15 +25,15 @@ void ft_print_unsigned_int(t_var *vartab)
     unsigned int nb;
 
     nb = va_arg(vartab->args, unsigned int);
-    vartab->len_to_print += ft_putnbr_unsigned(nb);
+    ft_putnbr_unsigned(vartab, nb);
 }
 
 void ft_print_hex_min(t_var *vartab)
 {
-    
+    return ;
 }
 
 void ft_print_hex_maj(t_var *vartab)
 {
-    
+    return ;
 }
