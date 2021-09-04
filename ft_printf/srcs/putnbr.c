@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 19:08:34 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/03 16:18:29 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/04 09:15:58 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	ft_putnbr_unsigned(t_var *vartab, unsigned int n)
 	unsigned long	nbr;
 
 	nbr = n;
-	if (nbr >= 0 && nbr < 10)
-		vartab->len_to_print += ft_putchar(nbr + '0');
+	if (nbr < 10)
+		vartab->len += ft_putchar(nbr + '0');
 	else
 	{
 		ft_putnbr_unsigned(vartab, nbr / 10);
-		vartab->len_to_print += ft_putchar(nbr % 10 + '0');
+		vartab->len += ft_putchar(nbr % 10 + '0');
 	}
 }
 
@@ -34,41 +34,41 @@ void	ft_putnbr(t_var *vartab, int n)
 	if (nbr < 0)
 	{
 		nbr = nbr * -1;
-		vartab->len_to_print += ft_putchar('-');
+		vartab->len += ft_putchar('-');
 	}
 	if (nbr >= 0 && nbr < 10)
-		vartab->len_to_print += ft_putchar(nbr + '0');
+		vartab->len += ft_putchar(nbr + '0');
 	else
 	{
 		ft_putnbr(vartab, nbr / 10);
-		vartab->len_to_print += ft_putchar(nbr % 10 + '0');
+		vartab->len += ft_putchar(nbr % 10 + '0');
 	}
 }
 
-static char convert_int_to_hex(int nb)
+void ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter)
 {
-	char
-}
+	unsigned int	remainder;
+	unsigned int	nb_cpy;
 
-void	ft_putnbr_hex(int nb)
-{
-	int quotient;
-	int remainder;
-	int nb_cpy;
-
-	nb_cpy = nb;
-	quotient = 0;
 	remainder = 0;
-	while (nb > 16)
+	nb_cpy = nb;
+	if (nb > 15)
 	{
-		quotient = nb / 16;
-		remainder = nb - (quotient * 16);
-		ft_putchar(nb + '0');
+		nb = nb / 16;
+		remainder = nb_cpy - (nb * 16);
+		if (remainder < 10)
+		{
+			ft_putnbr_hex(vartab, nb, converter);
+			vartab->len += ft_putchar(remainder + '0');
+		}
+		else
+		{
+			ft_putnbr_hex(vartab, nb, converter);
+			vartab->len += ft_putchar(remainder + ((converter - 23) - 10));
+		}
 	}
-}
-
-int main()
-{
-	// ft_putnbr_hex();
-	printf("%x\n", 689321);
+	else if (nb > 9 && nb < 16)
+		vartab->len += ft_putchar(nb + ('a' - 10));
+	else
+		vartab->len += ft_putchar(nb + '0');
 }

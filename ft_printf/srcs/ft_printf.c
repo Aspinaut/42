@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:05:13 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/21 18:56:54 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/04 09:23:10 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void ft_init_vartab(t_var *vartab)
 {
-  vartab->len_to_print = 0;
+  vartab->len = 0;
 }
 
 static void ft_process_specifier(t_var *vartab, const char *format, int pos)
@@ -29,32 +29,20 @@ static void ft_process_specifier(t_var *vartab, const char *format, int pos)
     ft_print_per(vartab);
   else if (format[pos] == 'd' || format[pos] == 'i')
     ft_print_int(vartab);
-  if (format[pos] == 'u')
+  else if (format[pos] == 'u')
     ft_print_unsigned_int(vartab);
-  // if (format[pos] == 'x')
-  //   ft_print_char(vartab);
-  // if (format[pos] == 'X')
-  //   ft_print_char(vartab);
-  // printf("SPE : %d\n", ++pos);
+  else if (format[pos] == 'x')
+    ft_print_hex_min(vartab);
+  else if (format[pos] == 'X')
+    ft_print_hex_maj(vartab);
 }
 
 static int ft_eval_format(t_var *vartab, const char *f, int pos)
 {
-  // format specifier : cspdiuxX%
-  // precision / padding : -0.
-  // flags : # +
-
-  /*
-    - tant qu'on a autre chose qu'un format specifier ( == tant qu'on peut impacter celui ci)
-      - on gere chaque cas de flags / precision
-    - si on quitte cette boucle, on sait qu'on est arrive au specifier et on peut print
-  */
-
   while (f[pos] && (f[pos] != 'c' && f[pos] != 's' && f[pos] != 'p' && \
         f[pos] != 'd' && f[pos] != 'i' && f[pos] != 'u' && \
         f[pos] != 'x' && f[pos] != 'X' && f[pos] != '%'))
   {
-    // printf("CHAR : %c\n", f[pos]);
     pos++;
   }
   ft_process_specifier(vartab, f, pos);
@@ -82,7 +70,7 @@ int ft_printf(const char *format, ...)
       len_to_print += write(1, &format[pos], 1);
   }
   va_end(vartab->args);
-  len_to_print += vartab->len_to_print;
+  len_to_print += vartab->len;
   free(vartab);
   return (len_to_print);
 }
@@ -101,12 +89,12 @@ int main()
   printf("-------FT_PRINTF------\n");
   printf("----------------------\n");
   // ft_printf("| %% %p coucou\n", p);
-  printf("%d", ft_printf("| %i %i coucou\n", INT_MIN));
+  printf("%d", ft_printf("| %x %X coucou\n", INT_MIN - 1, INT_MAX - 1));
   // printf("%d\n", ft_printf("| %s coucou\n", s));
   printf("----------------------\n");
   printf("-------PRINTF---------\n");
   printf("----------------------\n");
-  printf("%d", printf("| %i %i coucou\n", INT_MIN));
+  printf("%d", printf("| %x %X coucou\n", INT_MIN - 1, INT_MAX - 1));
   // printf("%d\n", printf("| %s coucou\n", s));
 
   return (0);

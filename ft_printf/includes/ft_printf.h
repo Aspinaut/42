@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:03:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/21 19:09:31 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/04 09:10:19 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef struct  s_var
 {
     va_list args;
-    int     len_to_print;
+    int     len;
 }               t_var;
 
 int     ft_printf(const char *s, ...);
@@ -39,5 +39,6 @@ void    ft_print_hex_maj(t_var *vartab);
 
 void	ft_putnbr_unsigned(t_var *vartab, unsigned int n);
 void	ft_putnbr(t_var *vartab, int n);
+void ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter);
 
 #endif
