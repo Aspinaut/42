@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:05:13 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/04 09:23:10 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/05 12:44:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,27 +75,27 @@ int ft_printf(const char *format, ...)
   return (len_to_print);
 }
 
-#include "limits.h"
-
-int main()
-{
-  char *s = "salut";
-  int i = 8749981;
-  unsigned int u = 65810;
-  char c = 'a';
-  void *p = &s;
-
-  printf("----------------------\n");
-  printf("-------FT_PRINTF------\n");
-  printf("----------------------\n");
-  // ft_printf("| %% %p coucou\n", p);
-  printf("%d", ft_printf("| %x %X coucou\n", INT_MIN - 1, INT_MAX - 1));
-  // printf("%d\n", ft_printf("| %s coucou\n", s));
-  printf("----------------------\n");
-  printf("-------PRINTF---------\n");
-  printf("----------------------\n");
-  printf("%d", printf("| %x %X coucou\n", INT_MIN - 1, INT_MAX - 1));
-  // printf("%d\n", printf("| %s coucou\n", s));
-
-  return (0);
-}
+// #include "limits.h"
+//
+// int main()
+// {
+//   char *s = "salut";
+//   int i = 8749981;
+//   unsigned int u = 65810;
+//   char c = 'a';
+//   void *p = &s;
+//
+//   printf("----------------------\n");
+//   printf("-------FT_PRINTF------\n");
+//   printf("----------------------\n");
+//   // ft_printf("| %% %p coucou\n", p);
+//   printf("%d", ft_printf("| %x %X coucou\n", INT_MIN - 1, INT_MAX - 1));
+//   // printf("%d\n", ft_printf("| %s coucou\n", s));
+//   printf("----------------------\n");
+//   printf("-------PRINTF---------\n");
+//   printf("----------------------\n");
+//   printf("%d", printf("| %x %X coucou\n", INT_MIN - 1, INT_MAX - 1));
+//   // printf("%d\n", printf("| %s coucou\n", s));
+//
+//   return (0);
+// }
