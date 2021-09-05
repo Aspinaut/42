@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:05:13 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/05 12:44:07 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/05 14:02:20 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int ft_printf(const char *format, ...)
   free(vartab);
   return (len_to_print);
 }
-
+// 
 // #include "limits.h"
 //
 // int main()
@@ -89,12 +89,12 @@ int ft_printf(const char *format, ...)
 //   printf("-------FT_PRINTF------\n");
 //   printf("----------------------\n");
 //   // ft_printf("| %% %p coucou\n", p);
-//   printf("%d", ft_printf("| %x %X coucou\n", INT_MIN - 1, INT_MAX - 1));
+//   printf("%d", ft_printf(" %X ", -4));
 //   // printf("%d\n", ft_printf("| %s coucou\n", s));
 //   printf("----------------------\n");
 //   printf("-------PRINTF---------\n");
 //   printf("----------------------\n");
-//   printf("%d", printf("| %x %X coucou\n", INT_MIN - 1, INT_MAX - 1));
+//   printf("%d", printf(" %X ", -4));
 //   // printf("%d\n", printf("| %s coucou\n", s));
 //
 //   return (0);

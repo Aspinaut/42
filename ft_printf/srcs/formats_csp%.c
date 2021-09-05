@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 13:38:12 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/04 09:09:42 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/05 13:52:11 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void ft_print_str(t_var *vartab)
     char *s;
 
     s = va_arg(vartab->args, char *);
+    if (!s)
+      s  = "(null)";
     vartab->len += write(1, s, ft_strlen(s));
 }
 

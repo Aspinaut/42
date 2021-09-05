@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/05 12:41:04 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/05 12:43:35 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/05 13:30:32 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_strlen(const char *str)
 	int	count;
 
 	count = 0;
+  if (!str)
+    return (0);
 	while (str[count] != '\0')
-	{
 		count++;
-	}
 	return (count);
 }

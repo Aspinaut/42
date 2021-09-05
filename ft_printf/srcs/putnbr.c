@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 19:08:34 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/04 09:15:58 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/05 14:01:45 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter)
 		}
 	}
 	else if (nb > 9 && nb < 16)
-		vartab->len += ft_putchar(nb + ('a' - 10));
+		vartab->len += ft_putchar(nb + ((converter - 23) - 10));
 	else
 		vartab->len += ft_putchar(nb + '0');
 }
