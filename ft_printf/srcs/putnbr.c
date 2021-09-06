@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 19:08:34 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/05 14:01:45 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/06 17:14:32 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,34 @@ void ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter)
 		else
 		{
 			ft_putnbr_hex(vartab, nb, converter);
+			vartab->len += ft_putchar(remainder + ((converter - 23) - 10));
+		}
+	}
+	else if (nb > 9 && nb < 16)
+		vartab->len += ft_putchar(nb + ((converter - 23) - 10));
+	else
+		vartab->len += ft_putchar(nb + '0');
+}
+
+void ft_putnbr_hex_long(t_var *vartab, unsigned long nb, unsigned int converter)
+{
+	unsigned long	remainder;
+	unsigned long	nb_cpy;
+
+	remainder = 0;
+	nb_cpy = nb;
+	if (nb > 15)
+	{
+		nb = nb / 16;
+		remainder = nb_cpy - (nb * 16);
+		if (remainder < 10)
+		{
+			ft_putnbr_hex_long(vartab, nb, converter);
+			vartab->len += ft_putchar(remainder + '0');
+		}
+		else
+		{
+			ft_putnbr_hex_long(vartab, nb, converter);
 			vartab->len += ft_putchar(remainder + ((converter - 23) - 10));
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 15:03:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/05 12:45:22 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/06 17:15:20 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void    ft_print_hex_maj(t_var *vartab);
 void	ft_putnbr_unsigned(t_var *vartab, unsigned int n);
 void	ft_putnbr(t_var *vartab, int n);
 void ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter);
+
+void ft_putnbr_hex_long(t_var *vartab, unsigned long nb, unsigned int converter);
 
 int	ft_strlen(const char *str);
 int	ft_putchar(char c);
