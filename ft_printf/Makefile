@@ -8,7 +8,7 @@ SRCS =	srcs/formats_csp%.c	\
 
 OBJS = $(SRCS:.c=.o)
 
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 RM = rm -f
 
