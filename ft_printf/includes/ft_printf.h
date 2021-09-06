@@ -10,40 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <stdio.h>
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct  s_var
+typedef struct s_var
 {
-    va_list args;
-    int     len;
-}               t_var;
+	va_list	args;
+	int		len;
+}		t_var;
 
-int     ft_printf(const char *s, ...);
-
-void    ft_print_char(t_var *vartab);
-void    ft_print_str(t_var *vartab);
-void    ft_print_address(t_var *vartab);
-void   ft_print_per(t_var *vartab);
-
-void    ft_print_int(t_var *vartab);
-void    ft_print_unsigned_int(t_var *vartab);
-void    ft_print_hex_min(t_var *vartab);
-void    ft_print_hex_maj(t_var *vartab);
-
+int		ft_printf(const char *s, ...);
+int		ft_strlen(const char *str);
+int		ft_putchar(char c);
+void	ft_print_str(t_var *vartab);
+void	ft_print_char(t_var *vartab);
+void	ft_print_address(t_var *vartab);
+void	ft_print_per(t_var *vartab);
+void	ft_print_int(t_var *vartab);
+void	ft_print_unsigned_int(t_var *vartab);
+void	ft_print_hex_min(t_var *vartab);
+void	ft_print_hex_maj(t_var *vartab);
 void	ft_putnbr_unsigned(t_var *vartab, unsigned int n);
 void	ft_putnbr(t_var *vartab, int n);
-void ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter);
-
-void ft_putnbr_hex_long(t_var *vartab, unsigned long nb, unsigned int converter);
-
-int	ft_strlen(const char *str);
-int	ft_putchar(char c);
-
+void	ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter);
+void	ft_putnbr_hex_long(t_var *vartab, unsigned long nb, unsigned int conv);
 
 #endif

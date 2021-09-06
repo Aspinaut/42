@@ -12,34 +12,34 @@
 
 #include "../includes/ft_printf.h"
 
-void ft_print_int(t_var *vartab)
+void	ft_print_int(t_var *vartab)
 {
-    int nb;
+	int	nb;
 
-    nb = va_arg(vartab->args, int);
-    ft_putnbr(vartab, nb);
+	nb = va_arg(vartab->args, int);
+	ft_putnbr(vartab, nb);
 }
 
-void ft_print_unsigned_int(t_var *vartab)
+void	ft_print_unsigned_int(t_var *vartab)
 {
-    unsigned int nb;
+	unsigned int	nb;
 
-    nb = va_arg(vartab->args, unsigned int);
-    ft_putnbr_unsigned(vartab, nb);
+	nb = va_arg(vartab->args, unsigned int);
+	ft_putnbr_unsigned(vartab, nb);
 }
 
-void ft_print_hex_min(t_var *vartab)
+void	ft_print_hex_min(t_var *vartab)
 {
-  unsigned int nb;
+	unsigned int	nb;
 
-  nb = va_arg(vartab->args, unsigned int);
-  ft_putnbr_hex(vartab, nb, 'x');
+	nb = va_arg(vartab->args, unsigned int);
+	ft_putnbr_hex(vartab, nb, 'x');
 }
 
-void ft_print_hex_maj(t_var *vartab)
+void	ft_print_hex_maj(t_var *vartab)
 {
-  unsigned int nb;
+	unsigned int	nb;
 
-  nb = va_arg(vartab->args, unsigned int);
-  ft_putnbr_hex(vartab, nb, 'X');
+	nb = va_arg(vartab->args, unsigned int);
+	ft_putnbr_hex(vartab, nb, 'X');
 }

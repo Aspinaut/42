@@ -45,7 +45,7 @@ void	ft_putnbr(t_var *vartab, int n)
 	}
 }
 
-void ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter)
+void	ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter)
 {
 	unsigned int	remainder;
 	unsigned int	nb_cpy;
@@ -73,7 +73,7 @@ void ft_putnbr_hex(t_var *vartab, unsigned int nb, unsigned int converter)
 		vartab->len += ft_putchar(nb + '0');
 }
 
-void ft_putnbr_hex_long(t_var *vartab, unsigned long nb, unsigned int converter)
+void	ft_putnbr_hex_long(t_var *vartab, unsigned long nb, unsigned int conv)
 {
 	unsigned long	remainder;
 	unsigned long	nb_cpy;
@@ -86,17 +86,17 @@ void ft_putnbr_hex_long(t_var *vartab, unsigned long nb, unsigned int converter)
 		remainder = nb_cpy - (nb * 16);
 		if (remainder < 10)
 		{
-			ft_putnbr_hex_long(vartab, nb, converter);
+			ft_putnbr_hex_long(vartab, nb, conv);
 			vartab->len += ft_putchar(remainder + '0');
 		}
 		else
 		{
-			ft_putnbr_hex_long(vartab, nb, converter);
-			vartab->len += ft_putchar(remainder + ((converter - 23) - 10));
+			ft_putnbr_hex_long(vartab, nb, conv);
+			vartab->len += ft_putchar(remainder + ((conv - 23) - 10));
 		}
 	}
 	else if (nb > 9 && nb < 16)
-		vartab->len += ft_putchar(nb + ((converter - 23) - 10));
+		vartab->len += ft_putchar(nb + ((conv - 23) - 10));
 	else
 		vartab->len += ft_putchar(nb + '0');
 }
