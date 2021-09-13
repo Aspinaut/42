@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:06:25 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 16:57:41 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/13 18:40:17 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void pipex(int fd1, int fd2, char **envp, char **argv)
   // quid d'un malloc non initialisé on top ?
   // protection env paths ??
   // free env paths dans la structure ??
-  init_child(&child1, pfd, fd1, envp);
+  init_child(&child1, pfd, fd1);
   child1.pid = fork();
   if (child1.pid < 0)
     return (perror("Fork child one: "));
@@ -43,7 +43,7 @@ void pipex(int fd1, int fd2, char **envp, char **argv)
   {
     child_process(&child1, envp, argv);
   }
-  init_child(&child2, pfd, fd2, envp);
+  init_child(&child2, pfd, fd2);
   child2.pid = fork();
   if (child2.pid < 0)
     return (perror("Fork child two: "));

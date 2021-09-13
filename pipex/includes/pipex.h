@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:18:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 16:29:25 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/13 18:39:21 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 # include <string.h>
 # include <fcntl.h>
 
+# include <errno.h>
+
 typedef struct  s_child
 {
   int id;
-  int file_pos;
   int cmd_pos;
   pid_t pid;
   int fd;
@@ -46,6 +47,6 @@ char *find_env_paths(char **envp);
 void process_child_command(t_child child, char **envp, char **argv);
 void free_child(t_child *child);
 int child_process(t_child *child, char **envp, char **argv);
-void init_child(t_child *child, int pfd[2], int fd, char **envp);
+void init_child(t_child *child, int pfd[2], int fd);
 
 #endif
