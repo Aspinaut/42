@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:49:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 18:39:11 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/13 21:09:05 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void free_child(t_child *child)
 {
   free(child->cmd_args);
   free(child->cmd_path);
+  free(child->env_paths);
 }
 
-void init_child(t_child *child, int pfd[2], int fd)
+void init_child(t_child *child, int pfd[2], int fd, char **env_paths)
 {
   if (fd == 3)
   {
@@ -37,23 +38,20 @@ void init_child(t_child *child, int pfd[2], int fd)
   child->cmd_args = NULL;
   child->cmd_path = NULL;
   child->file = NULL;
+  child->env_paths = env_paths;
 }
 
-void process_child_command(t_child child, char **envp, char **argv)
+void process_child_cmd(t_child child, char **envp, char **argv)
 {
-  char *env_paths_line;
-  char **env_paths;
   int i;
 
-  env_paths_line = find_env_paths(envp);
-  env_paths = ft_split(env_paths_line, ':');
   // protection
   // !!! bien checker si argv[2] est vide
   child.cmd_args = ft_split(argv[child.cmd_pos], ' ');
   i = -1;
-  while (env_paths[++i])
+  while (child.env_paths[++i])
   {
-    child.cmd_path = ft_strjoin(env_paths[i], "/");
+    child.cmd_path = ft_strjoin(child.env_paths[i], "/");
     child.cmd_path = ft_strjoin(child.cmd_path, child.cmd_args[0]);
     if (access(child.cmd_path, F_OK | X_OK) != -1)
     {
@@ -64,8 +62,6 @@ void process_child_command(t_child child, char **envp, char **argv)
   write(2, "bash: ", 6);
   write(2, child.cmd_args[0], ft_strlen(child.cmd_args[0]));
   write(2, " : command not found\n", 21);
-  free(env_paths_line);
-  free(env_paths);
   free_child(&child);
   exit(EXIT_FAILURE);
 }
@@ -86,7 +82,7 @@ int child_process(t_child *child, char **envp, char **argv)
     close(child->pfd[1]);
     close(child->fd);
   }
-  process_child_command(*child, envp, argv);
+  process_child_cmd(*child, envp, argv);
   // exit
   return (0);
 }

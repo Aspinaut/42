@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:18:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 18:39:21 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/13 21:08:24 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # include <string.h>
 # include <fcntl.h>
 
-# include <errno.h>
-
 typedef struct  s_child
 {
   int id;
@@ -34,6 +32,7 @@ typedef struct  s_child
   char **cmd_args;
   char *cmd_path;
   char *file;
+  char **env_paths;
 } t_child;
 
 void pipex(int fd1, int fd2, char **envp, char **argv);
@@ -44,9 +43,9 @@ int	ft_strlen(const char *str);
 void	ft_bzero(void *s, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char *find_env_paths(char **envp);
-void process_child_command(t_child child, char **envp, char **argv);
+char **get_env_paths(char **envp);
+void process_child_cmd(t_child child, char **envp, char **argv);
 void free_child(t_child *child);
 int child_process(t_child *child, char **envp, char **argv);
-void init_child(t_child *child, int pfd[2], int fd);
-
+void init_child(t_child *child, int pfd[2], int fd, char **env_paths);
 #endif

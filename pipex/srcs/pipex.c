@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:06:25 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 18:40:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/13 21:02:02 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,24 @@ void pipex(int fd1, int fd2, char **envp, char **argv)
   int pfd[2];
   t_child child1;
   t_child child2;
+  char **env_paths;
 
   pipe(pfd);
-  // quid d'un malloc non initialisé on top ?
-  // protection env paths ??
-  // free env paths dans la structure ??
-  init_child(&child1, pfd, fd1);
+  env_paths = get_env_paths(envp);
+  if (!env_paths)
+    exit(EXIT_FAILURE);
+  init_child(&child1, pfd, fd1, env_paths);
   child1.pid = fork();
   if (child1.pid < 0)
-    return (perror("Fork child one: "));
+    exit(EXIT_FAILURE);
   else if (child1.pid == 0)
-  {
     child_process(&child1, envp, argv);
-  }
-  init_child(&child2, pfd, fd2);
+  init_child(&child2, pfd, fd2, env_paths);
   child2.pid = fork();
   if (child2.pid < 0)
-    return (perror("Fork child two: "));
+    exit(EXIT_FAILURE);
   else if (child2.pid == 0)
-  {
     child_process(&child2, envp, argv);
-  }
   parent_process(pfd);
+  // free env paths + autre ?
 }
