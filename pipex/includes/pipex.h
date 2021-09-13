@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:18:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 21:08:24 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/13 21:35:35 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,6 @@ void process_child_cmd(t_child child, char **envp, char **argv);
 void free_child(t_child *child);
 int child_process(t_child *child, char **envp, char **argv);
 void init_child(t_child *child, int pfd[2], int fd, char **env_paths);
+void ft_free(char **s);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:06:25 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 21:02:02 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/13 21:37:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void pipex(int fd1, int fd2, char **envp, char **argv)
   else if (child1.pid == 0)
     child_process(&child1, envp, argv);
   init_child(&child2, pfd, fd2, env_paths);
+  ft_free(env_paths);
   child2.pid = fork();
   if (child2.pid < 0)
     exit(EXIT_FAILURE);
