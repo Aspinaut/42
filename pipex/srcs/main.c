@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 09:27:39 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 16:40:18 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/13 14:59:22 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/13 14:59:48 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-char *find_env_paths(char **envp)
+int main(int argc, char **argv, char **envp)
 {
-  char *env_paths;
+  int fd1;
+  int fd2;
 
-  if (!envp)
-    return (NULL);
-  while (*envp)
-  {
-    if (!ft_strncmp(*envp, "PATH=", 5))
-    {
-      env_paths = ft_substr(*envp, 5, ft_strlen(*envp) - 5);
-      if (!env_paths)
-        return (NULL);
-      break ;
-    }
-    envp++;
-  }
-  return (env_paths);
+  if (argc != 5)
+    return (-1);
+  fd1 = open(argv[1], O_RDONLY);
+  fd2 = open(argv[4], O_RDWR | O_CREAT);
+  if (fd1 < 0 || fd2 < 0)
+    return (-1);
+  pipex(fd1, fd2, envp, argv);
+  close(fd1);
+  close(fd2);
+  return (0);
 }

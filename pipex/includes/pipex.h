@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:18:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 13:27:37 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/13 16:29:25 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,28 @@
 
 typedef struct  s_child
 {
-  pid_t id;
-  char *env_paths;
-  int pfd[2];
+  int id;
+  int file_pos;
+  int cmd_pos;
+  pid_t pid;
   int fd;
-  char *cmd;
+  int pfd[2];
+  char **cmd_args;
+  char *cmd_path;
   char *file;
 } t_child;
 
+void pipex(int fd1, int fd2, char **envp, char **argv);
 char	**ft_split(char const *s, char c);
 int	ft_strncmp(const char *s1, const char *s2, unsigned int n);
 char	*ft_strjoin(char const *s1, char const *s2);
 int	ft_strlen(const char *str);
 void	ft_bzero(void *s, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-void pipex(int fd1, int fd2, char **envp, char **argv);
 char *find_env_paths(char **envp);
-void init_t_child(t_child *child, int pfd[2]);
-// void ft_free(char *s);
+void process_child_command(t_child child, char **envp, char **argv);
+void free_child(t_child *child);
+int child_process(t_child *child, char **envp, char **argv);
+void init_child(t_child *child, int pfd[2], int fd, char **envp);
 
 #endif
