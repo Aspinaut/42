@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:49:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 08:32:31 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/14 09:06:03 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void init_child(t_child *child, int pfd[2], int fd, char **env_paths)
   child->pfd[1] = pfd[1];
   child->cmd_args = NULL;
   child->cmd_path = NULL;
+  // check size !!
   child->env_paths = malloc(sizeof(char *) * 100);
   i = -1;
   while (env_paths[++i])
