@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:18:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 10:40:00 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/14 19:00:22 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <unistd.h>
 # include <sys/wait.h>
-
-// check la bonne pour error - strerror
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -48,8 +46,9 @@ char	*find_env_paths(char **envp);
 char	**get_env_paths(char **envp);
 void	process_child_cmd(t_child child, char **envp, char **argv);
 void	free_child(t_child *child);
-int		child_process(t_child *child, char **envp, char **argv);
+void		child_process(t_child *child, char **envp, char **argv);
 void	init_child(t_child *child, int pfd[2], int fd, char **env_paths);
 void	ft_free(char **s);
+int	arr_len(char **s);
 
 #endif

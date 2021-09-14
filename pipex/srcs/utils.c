@@ -6,11 +6,26 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 09:27:39 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 08:56:28 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/14 18:59:21 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+
+int	arr_len(char **s)
+{
+	int len;
+
+	len = 0;
+	if (!s)
+		return (len);
+	while (s && *s)
+	{
+		s++;
+		len++;
+	}
+	return (len);
+}
 
 void	ft_free(char **s)
 {

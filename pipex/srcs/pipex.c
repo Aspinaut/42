@@ -6,25 +6,22 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:06:25 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 08:36:27 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/14 18:56:09 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-static int	parent_process(t_child *child1, t_child *child2, int *pfd)
+static void	parent_process(t_child *child1, t_child *child2, int *pfd)
 {
 	int	status;
 
-	// protection
 	status = 0;
-	waitpid(-1, &status, 0);
+  waitpid(-1, &status, 0);
 	close(pfd[0]);
 	close(pfd[1]);
 	free_child(child1);
 	free_child(child2);
-	// exit
-	return (0);
 }
 
 void	pipex(int fd1, int fd2, char **envp, char **argv)
@@ -52,5 +49,4 @@ void	pipex(int fd1, int fd2, char **envp, char **argv)
 		child_process(&child2, envp, argv);
 	parent_process(&child1, &child2, pfd);
 	ft_free(env_paths);
-	// free env paths + autre ?
 }

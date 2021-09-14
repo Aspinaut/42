@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:59:22 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 10:42:57 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/14 18:32:09 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv, char **envp)
 	if (fd1 < 0 || fd2 < 0)
 		return (ft_putstr_fd(strerror(errno), 2));
 	pipex(fd1, fd2, envp, argv);
-	close(fd1);
-	close(fd2);
+	if (close(fd1) < 0 || close(fd2) < 0)
+    return (ft_putstr_fd(strerror(errno), 2));
 	return (0);
 }
