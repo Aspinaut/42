@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:18:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 08:56:30 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/14 10:40:00 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
+# include <errno.h>
 
 typedef struct  s_child
 {
@@ -42,6 +43,7 @@ int	ft_strlen(const char *str);
 void	ft_bzero(void *s, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(char *src);
+int	ft_putstr_fd(char const *s, int fd);
 char *find_env_paths(char **envp);
 char **get_env_paths(char **envp);
 void process_child_cmd(t_child child, char **envp, char **argv);
