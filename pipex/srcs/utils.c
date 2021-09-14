@@ -6,11 +6,18 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 09:27:39 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 18:59:21 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 00:48:16 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+
+void print_cmd_not_found(char *cmd_args)
+{
+	write(2, "bash: ", 6);
+	write(2, cmd_args, ft_strlen(cmd_args));
+	write(2, " : command not found\n", 21);
+}
 
 int	arr_len(char **s)
 {
@@ -72,4 +79,40 @@ char	**get_env_paths(char **envp)
 	if (!env_paths)
 		return (NULL);
 	return (env_paths);
+}
+
+int check_cmd(char *arg, char **envp)
+{
+	int i;
+	char **env_paths;
+	char *tmp;
+	char *cmd_path;
+
+	if (!arg[0])
+	{
+		print_cmd_not_found(arg);
+		exit(EXIT_FAILURE);
+	}
+	i = -1;
+	env_paths = get_env_paths(envp);
+	while (env_paths[++i])
+	{
+		tmp = ft_strjoin(env_paths[i], "/");
+		if (!tmp)
+			return (0);
+		cmd_path = ft_strjoin(tmp, arg);
+		if (!cmd_path)
+			return (0);
+		free(tmp);
+		if (access(cmd_path, F_OK | X_OK) != -1)
+		{
+			free(cmd_path);
+			ft_free(env_paths);
+			return (1);
+		}
+		free(cmd_path);
+	}
+	print_cmd_not_found(arg);
+	ft_free(env_paths);
+	return (0);
 }
