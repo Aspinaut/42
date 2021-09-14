@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 09:27:39 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 21:41:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/14 08:43:16 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void ft_free(char **s)
 {
-  while (s && *s)
-  {
-    free(*s);
-    s++;
-  }
+  int i;
+
+  i = -1;
+  while (s && s[++i])
+    free(s[i]);
   if (s)
     free(s);
   s = NULL;

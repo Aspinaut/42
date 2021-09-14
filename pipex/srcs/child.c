@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:49:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 21:47:04 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/14 08:32:31 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void free_child(t_child *child)
 {
-  free(child->cmd_args);
   free(child->cmd_path);
+  ft_free(child->cmd_args);
   ft_free(child->env_paths);
 }
 
@@ -39,10 +39,11 @@ void init_child(t_child *child, int pfd[2], int fd, char **env_paths)
   child->pfd[1] = pfd[1];
   child->cmd_args = NULL;
   child->cmd_path = NULL;
-  child->file = NULL;
+  child->env_paths = malloc(sizeof(char *) * 100);
   i = -1;
   while (env_paths[++i])
     child->env_paths[i] = ft_strdup(env_paths[i]);
+  child->env_paths[i] = 0;
 }
 
 void process_child_cmd(t_child child, char **envp, char **argv)

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:18:58 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 21:35:35 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/14 08:31:56 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct  s_child
   int pfd[2];
   char **cmd_args;
   char *cmd_path;
-  char *file;
   char **env_paths;
 } t_child;
 
@@ -42,6 +41,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int	ft_strlen(const char *str);
 void	ft_bzero(void *s, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(char *src);
 char *find_env_paths(char **envp);
 char **get_env_paths(char **envp);
 void process_child_cmd(t_child child, char **envp, char **argv);
