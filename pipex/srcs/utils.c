@@ -14,7 +14,7 @@
 
 int	arr_len(char **s)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (!s)

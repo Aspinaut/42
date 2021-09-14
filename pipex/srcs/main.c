@@ -25,6 +25,6 @@ int	main(int argc, char **argv, char **envp)
 		return (ft_putstr_fd(strerror(errno), 2));
 	pipex(fd1, fd2, envp, argv);
 	if (close(fd1) < 0 || close(fd2) < 0)
-    return (ft_putstr_fd(strerror(errno), 2));
+		return (ft_putstr_fd(strerror(errno), 2));
 	return (0);
 }
