@@ -12,45 +12,45 @@
 
 #include "../includes/pipex.h"
 
-static int parent_process(t_child *child1, t_child *child2, int *pfd)
+static int	parent_process(t_child *child1, t_child *child2, int *pfd)
 {
-  int status;
+	int	status;
 
-  // protection
-  status = 0;
-  waitpid(-1, &status, 0);
-  close(pfd[0]);
-  close(pfd[1]);
-  free_child(child1);
-  free_child(child2);
-  // exit
-  return (0);
+	// protection
+	status = 0;
+	waitpid(-1, &status, 0);
+	close(pfd[0]);
+	close(pfd[1]);
+	free_child(child1);
+	free_child(child2);
+	// exit
+	return (0);
 }
 
-void pipex(int fd1, int fd2, char **envp, char **argv)
+void	pipex(int fd1, int fd2, char **envp, char **argv)
 {
-  int pfd[2];
-  t_child child1;
-  t_child child2;
-  char **env_paths;
+	t_child	child1;
+	t_child	child2;
+	char	**env_paths;
+	int		pfd[2];
 
-  pipe(pfd);
-  env_paths = get_env_paths(envp);
-  if (!env_paths)
-    exit(EXIT_FAILURE);
-  init_child(&child1, pfd, fd1, env_paths);
-  child1.pid = fork();
-  if (child1.pid < 0)
-    exit(EXIT_FAILURE);
-  else if (child1.pid == 0)
-    child_process(&child1, envp, argv);
-  init_child(&child2, pfd, fd2, env_paths);
-  child2.pid = fork();
-  if (child2.pid < 0)
-    exit(EXIT_FAILURE);
-  else if (child2.pid == 0)
-    child_process(&child2, envp, argv);
-  parent_process(&child1, &child2, pfd);
-  ft_free(env_paths);
-  // free env paths + autre ?
+	pipe(pfd);
+	env_paths = get_env_paths(envp);
+	if (!env_paths)
+		exit(EXIT_FAILURE);
+	init_child(&child1, pfd, fd1, env_paths);
+	child1.pid = fork();
+	if (child1.pid < 0)
+		exit(EXIT_FAILURE);
+	else if (child1.pid == 0)
+		child_process(&child1, envp, argv);
+	init_child(&child2, pfd, fd2, env_paths);
+	child2.pid = fork();
+	if (child2.pid < 0)
+		exit(EXIT_FAILURE);
+	else if (child2.pid == 0)
+		child_process(&child2, envp, argv);
+	parent_process(&child1, &child2, pfd);
+	ft_free(env_paths);
+	// free env paths + autre ?
 }

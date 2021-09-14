@@ -14,9 +14,9 @@
 
 int	ft_putstr_fd(char const *s, int fd)
 {
-  int len;
+	int	len;
 
-  len = 0;
+	len = 0;
 	if (!s)
 		return (len);
 	while (*s)
@@ -24,5 +24,5 @@ int	ft_putstr_fd(char const *s, int fd)
 		len += write(fd, s, 1);
 		s++;
 	}
-  return (len);
+	return (len);
 }

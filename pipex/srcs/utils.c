@@ -12,49 +12,49 @@
 
 #include "../includes/pipex.h"
 
-void ft_free(char **s)
+void	ft_free(char **s)
 {
-  int i;
+	int	i;
 
-  i = -1;
-  while (s && s[++i])
-    free(s[i]);
-  if (s)
-    free(s);
-  s = NULL;
+	i = -1;
+	while (s && s[++i])
+		free(s[i]);
+	if (s)
+		free(s);
+	s = NULL;
 }
 
-char *find_env_paths(char **envp)
+char	*find_env_paths(char **envp)
 {
-  char *env_paths_line;
+	char	*env_paths_line;
 
-  if (!envp)
-    return (NULL);
-  while (envp && *envp)
-  {
-    if (!ft_strncmp(*envp, "PATH=", 5))
-    {
-      env_paths_line = ft_substr(*envp, 5, ft_strlen(*envp) - 5);
-      if (!env_paths_line)
-        return (NULL);
-      return (env_paths_line);
-    }
-    envp++;
-  }
-  return (NULL);
+	if (!envp)
+		return (NULL);
+	while (envp && *envp)
+	{
+		if (!ft_strncmp(*envp, "PATH=", 5))
+		{
+			env_paths_line = ft_substr(*envp, 5, ft_strlen(*envp) - 5);
+			if (!env_paths_line)
+				return (NULL);
+			return (env_paths_line);
+		}
+		envp++;
+	}
+	return (NULL);
 }
 
-char **get_env_paths(char **envp)
+char	**get_env_paths(char **envp)
 {
-  char **env_paths;
-  char *env_paths_line;
+	char	**env_paths;
+	char	*env_paths_line;
 
-  env_paths_line = find_env_paths(envp);
-  if (!env_paths_line)
-    return (NULL);
-  env_paths = ft_split(env_paths_line, ':');
-  free(env_paths_line);
-  if (!env_paths)
-    return (NULL);
-  return (env_paths);
+	env_paths_line = find_env_paths(envp);
+	if (!env_paths_line)
+		return (NULL);
+	env_paths = ft_split(env_paths_line, ':');
+	free(env_paths_line);
+	if (!env_paths)
+		return (NULL);
+	return (env_paths);
 }
