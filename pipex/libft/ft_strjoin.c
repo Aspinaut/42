@@ -6,11 +6,11 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 09:28:59 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 10:04:16 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:27:02 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "../includes/libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

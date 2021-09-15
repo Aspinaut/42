@@ -6,11 +6,11 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 10:25:30 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 10:39:46 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:26:55 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "../includes/libft.h"
 
 int	ft_putstr_fd(char const *s, int fd)
 {

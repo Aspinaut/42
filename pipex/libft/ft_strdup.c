@@ -6,11 +6,11 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 19:58:30 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 08:08:41 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:26:59 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "../includes/libft.h"
 
 char	*ft_strdup(char *src)
 {

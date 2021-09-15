@@ -6,11 +6,12 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:06:25 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 19:45:25 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:50:33 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+#include "../includes/libft.h"
 
 static void	parent_process(t_child *child1, t_child *child2, int *pfd, char **e)
 {

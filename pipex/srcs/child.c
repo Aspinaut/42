@@ -6,11 +6,12 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:49:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/15 10:29:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:50:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+#include "../includes/libft.h"
 
 void	free_child(t_child *child)
 {

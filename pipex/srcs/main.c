@@ -6,11 +6,12 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:59:22 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/15 11:19:22 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:50:21 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+#include "../includes/libft.h"
 
 static int	empty_cmd(char *arg)
 {
