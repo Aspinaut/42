@@ -4,6 +4,7 @@ SRCS =	stack_addnew.c	\
 		stack_addback.c	\
 		ft_atoi.c	\
 		ft_putstr_fd.c	\
+		ft_isdigit.c	\
 		# ft_lstadd_front.c	\
 		# ft_lstclear.c	\
 		# ft_lstdelone.c	\
