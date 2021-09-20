@@ -6,11 +6,19 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 09:27:39 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 18:59:21 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:50:26 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+#include "../includes/libft.h"
+
+void	print_cmd_not_found(char *cmd_args)
+{
+	write(2, "bash: ", 6);
+	write(2, cmd_args, ft_strlen(cmd_args));
+	write(2, " : command not found\n", 21);
+}
 
 int	arr_len(char **s)
 {

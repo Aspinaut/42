@@ -6,11 +6,11 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 16:23:42 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/13 09:31:34 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:26:50 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "../includes/libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

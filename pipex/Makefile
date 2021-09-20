@@ -4,14 +4,8 @@ SRCS =	srcs/child.c	\
 		srcs/main.c	\
 		srcs/pipex.c	\
 		srcs/utils.c	\
-		libft/ft_bzero.c	\
-		libft/ft_split.c	\
-		libft/ft_strlen.c	\
-		libft/ft_strjoin.c	\
-		libft/ft_strncmp.c	\
-		libft/ft_substr.c	\
-		libft/ft_strdup.c	\
-		libft/ft_putstr_fd.c	\
+
+LIBFT = libft/libft.a
 
 NAME = pipex
 
@@ -21,14 +15,20 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+$(LIBFT): 
+	cd ./libft/ && make && cd ..
 
-all: $(NAME)
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+
+all: $(LIBFT) $(NAME)
 
 clean:
 	$(RM) $(NAME)
 
-re: clean all
+fclean: clean
+	cd ./libft/ && make fclean && cd ..
 
-.PHONY: clean re all
+re: fclean all
+
+.PHONY: clean fclean re all

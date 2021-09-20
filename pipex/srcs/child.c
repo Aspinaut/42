@@ -6,11 +6,12 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:49:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/14 19:33:57 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:50:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+#include "../includes/libft.h"
 
 void	free_child(t_child *child)
 {
@@ -66,9 +67,7 @@ void	process_child_cmd(t_child child, char **envp, char **argv, char **e)
 			execve(child.cmd_path, child.cmd_args, envp);
 		free(child.cmd_path);
 	}
-	write(2, "bash: ", 6);
-	write(2, child.cmd_args[0], ft_strlen(child.cmd_args[0]));
-	write(2, " : command not found\n", 21);
+	print_cmd_not_found(child.cmd_args[0]);
 	free_child(&child);
 	ft_free(e);
 	exit(EXIT_FAILURE);
