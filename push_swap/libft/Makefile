@@ -1,14 +1,16 @@
 #!/bin/bash
 
-SRCS =	ft_lstnew.c	\
-		ft_lstadd_front.c	\
-		ft_lstadd_back.c	\
-		ft_lstclear.c	\
-		ft_lstdelone.c	\
-		ft_lstiter.c	\
-		ft_lstlast.c	\
-		ft_lstmap.c	\
-		ft_lstsize.c	\
+SRCS =	stack_addnew.c	\
+		stack_addback.c	\
+		ft_atoi.c	\
+		ft_putstr_fd.c	\
+		# ft_lstadd_front.c	\
+		# ft_lstclear.c	\
+		# ft_lstdelone.c	\
+		# ft_lstiter.c	\
+		# ft_lstlast.c	\
+		# ft_lstmap.c	\
+		# ft_lstsize.c	\
 
 OBJS = $(SRCS:.c=.o)
 

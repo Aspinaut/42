@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   stack_addback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 15:32:40 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/20 15:53:29 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/20 15:53:35 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../includes/libft.h"
 
-// to clean
-# include "stdio.h"
+void	stack_addback(t_stack **alst, t_stack *new)
+{
+	t_stack	*p;
 
-# include "./libft.h"
-
-
-
-#endif
+	if (!alst || !new)
+		return ;
+	if (!*alst)
+		*alst = new;
+	else
+	{
+		p = (*alst);
+		while (p->next)
+			p = p->next;
+		p->next = new;
+	}
+}

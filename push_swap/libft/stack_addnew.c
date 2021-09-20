@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   stack_addnew.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/03 13:15:40 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 09:48:43 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/20 15:53:45 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/20 15:53:49 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	ft_lstadd_back(t_list **alst, t_list *new)
+t_stack	*stack_addnew(int nb)
 {
-	t_list	*p;
+	t_stack	*link;
 
-	if (!alst || !new)
-		return ;
-	if (!*alst)
-		*alst = new;
-	else
-	{
-		p = (*alst);
-		while (p->next)
-			p = p->next;
-		p->next = new;
-	}
+	link = (t_stack *)malloc(sizeof(t_stack));
+	if (!link)
+		return (NULL);
+	link->nb = nb;
+	link->next = NULL;
+	return (link);
 }

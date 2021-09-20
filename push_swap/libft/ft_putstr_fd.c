@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/23 13:27:48 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 09:48:58 by vmasse           ###   ########.fr       */
+/*   Created: 2020/11/12 11:18:53 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/20 10:21:14 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_putstr_fd(char const *s, int fd)
 {
-	t_list	*link;
-
-	link = (t_list *)malloc(sizeof(t_list));
-	if (!(link))
+	if (!s)
+		return (-1);
+	while (*s)
 	{
-		return (NULL);
+		write(fd, s, 1);
+		s++;
 	}
-	link->content = content;
-	link->next = NULL;
-	return (link);
+	return (-1);
 }
