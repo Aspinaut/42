@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   stack_delone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/04 17:16:10 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 09:48:52 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/21 13:34:27 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/21 13:43:25 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	stack_delone(t_stack *stack, void (*del)(int))
 {
-	if (!lst || !f)
+	if (!stack || !del)
 		return ;
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	del(stack->nb);
+	free(stack);
 }

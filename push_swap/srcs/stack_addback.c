@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   stack_addback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/03 12:41:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 09:48:41 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/20 15:53:29 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/21 13:41:13 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	stack_addback(t_stack **astack, t_stack *new)
 {
-	if (!lst || !new)
+	t_stack	*p;
+
+	if (!astack || !new)
 		return ;
-	new->next = (*lst);
-	(*lst) = new;
+	if (!*astack)
+		*astack = new;
+	else
+	{
+		p = (*astack);
+		while (p->next)
+			p = p->next;
+		p->next = new;
+	}
 }

@@ -2,6 +2,12 @@
 
 SRCS =	srcs/main.c	\
 		srcs/args_checker.c	\
+		srcs/stack_addback.c	\
+		srcs/stack_addfront.c	\
+		srcs/stack_addnew.c	\
+		srcs/stack_clear.c	\
+		srcs/stack_delone.c	\
+		srcs/stack_size.c	\
 
 LIBFT = libft/libft.a
 

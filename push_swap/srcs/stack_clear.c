@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   stack_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/04 16:34:02 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 09:48:50 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/21 13:39:09 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/21 13:43:17 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	stack_clear(t_stack **stack, void (*del)(int))
 {
-	if (!lst || !del)
+	t_stack	*temp;
+
+	if (!stack || !del)
 		return ;
-	del(lst->content);
-	free(lst);
+	while ((*stack))
+	{
+		temp = (*stack)->next;
+		stack_delone((*stack), del);
+		(*stack) = temp;
+	}
 }

@@ -1,18 +1,9 @@
 #!/bin/bash
 
-SRCS =	stack_addnew.c	\
-		stack_addback.c	\
-		ft_atoi.c	\
+SRCS =	ft_atoi.c	\
 		ft_atol.c	\
-		ft_putstr_fd.c	\
 		ft_isdigit.c	\
-		# ft_lstadd_front.c	\
-		# ft_lstclear.c	\
-		# ft_lstdelone.c	\
-		# ft_lstiter.c	\
-		# ft_lstlast.c	\
-		# ft_lstmap.c	\
-		# ft_lstsize.c	\
+		ft_putstr_fd.c	\
 
 OBJS = $(SRCS:.c=.o)
 

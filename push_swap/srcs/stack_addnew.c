@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   stack_addnew.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/04 17:17:52 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 09:48:56 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/20 15:53:45 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/21 13:41:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void*))
+t_stack	*stack_addnew(int nb)
 {
-	t_list	*new_elem;
-	t_list	*new_list;
+	t_stack	*link;
 
-	if (!lst || !f || !del)
+	link = (t_stack *)malloc(sizeof(t_stack));
+	if (!link)
 		return (NULL);
-	new_list = NULL;
-	while (lst)
-	{
-		new_elem = ft_lstnew(f(lst->content));
-		if (!new_elem)
-		{
-			ft_lstclear(&new_list, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_list, new_elem);
-		lst = lst->next;
-	}
-	return (new_list);
+	link->nb = nb;
+	link->next = NULL;
+	return (link);
 }

@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   stack_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/04 17:07:49 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 09:48:48 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/21 13:39:51 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/21 13:41:16 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+int	stack_size(t_stack *stack)
 {
-	t_list	*temp;
+	int	size;
 
-	if (!lst || !del)
-		return ;
-	while ((*lst))
+	if (!stack)
+		return (0);
+	size = 0;
+	while (stack)
 	{
-		temp = (*lst)->next;
-		ft_lstdelone((*lst), del);
-		(*lst) = temp;
+		size++;
+		stack = stack->next;
 	}
+	return (size);
 }
