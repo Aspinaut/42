@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SRCS =	srcs/main.c	\
+		srcs/args_checker.c	\
 
 LIBFT = libft/libft.a
 

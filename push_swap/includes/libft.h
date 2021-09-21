@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 18:13:18 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/21 11:39:27 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	stack_addback(t_stack **alst, t_stack *new);
 // int			ft_lstsize(t_list *lst);
 
 int	ft_putstr_fd(char const *s, int fd);
-long	ft_atoi(const char *str);
+long	ft_atol(const char *str);
+int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
 
 #endif

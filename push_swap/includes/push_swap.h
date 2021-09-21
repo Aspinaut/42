@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/20 17:23:21 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/21 13:14:46 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 // to clean
 # include "stdio.h"
 
-# include "./libft.h"
 # include <limits.h>
+# include "./libft.h"
 
-int	check_args(char **argv);
+int	validate_args(int argc, char **argv);
 
 #endif

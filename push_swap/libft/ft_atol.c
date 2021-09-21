@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 11:23:27 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/21 11:39:10 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/21 11:06:56 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/21 11:41:20 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static	int	check_max_long(unsigned long long int result, int sign)
 	return (-1);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
 	unsigned long long int		result;
 	int							sign;
@@ -44,5 +44,5 @@ int	ft_atoi(const char *str)
 	}
 	if ((result == MAX_LONG && !(*str)) || result > MAX_LONG)
 		return (check_max_long(result, sign));
-	return ((int)result * sign);
+	return (result * sign);
 }
