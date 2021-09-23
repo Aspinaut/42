@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/21 14:21:29 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/23 08:51:32 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 {
 	int	nb;
 	struct s_stack	*next;
+	struct s_stack	*prev;
 }				t_stack;
 
 t_stack	*stack_addnew(int nb);
@@ -33,5 +34,6 @@ void	stack_clear(t_stack **stack);
 int	stack_size(t_stack *stack);
 
 int	validate_args(int argc, char **argv);
+void swap(t_stack **stack, char c);
 
 #endif

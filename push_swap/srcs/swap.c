@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_addnew.c                                     :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 15:53:45 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/23 08:51:50 by vmasse           ###   ########.fr       */
+/*   Created: 2021/09/22 14:21:29 by vmasse            #+#    #+#             */
+/*   Updated: 2021/09/23 10:08:33 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack	*stack_addnew(int nb)
+void swap(t_stack **stack, char c)
 {
-	t_stack	*link;
+    t_stack *p;
+    int n_temp;
 
-	link = (t_stack *)malloc(sizeof(t_stack));
-	if (!link)
-		return (NULL);
-	link->nb = nb;
-	link->next = NULL;
-	link->prev = NULL;
-	return (link);
+    p = (*stack);
+    n_temp = p->next->nb;
+    p->next->nb = p->nb;
+    p->nb = n_temp;
+    write(1, "s", 1);
+    write(1, &c, 1);
+    write(1, "\n", 1);
 }

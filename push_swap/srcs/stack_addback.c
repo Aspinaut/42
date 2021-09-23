@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:53:29 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/21 13:41:13 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/23 10:07:25 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	stack_addback(t_stack **astack, t_stack *new)
 		while (p->next)
 			p = p->next;
 		p->next = new;
+		new->prev = p;
 	}
 }
