@@ -6,16 +6,17 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:34:27 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/21 13:43:25 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/23 15:39:24 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	stack_delone(t_stack *stack, void (*del)(int))
+void	stack_delone(t_stack **stack)
 {
-	if (!stack || !del)
+	if (!(*stack))
 		return ;
-	del(stack->nb);
-	free(stack);
+	(*stack) = (*stack)->next;
+	(*stack)->prev = NULL;
+	free((*stack));
 }
