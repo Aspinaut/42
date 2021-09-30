@@ -8,6 +8,8 @@ SRCS =	srcs/main.c	\
 		srcs/stack_clear.c	\
 		srcs/stack_delone.c	\
 		srcs/stack_size.c	\
+		srcs/push.c	\
+		srcs/swap.c	\
 
 LIBFT = libft/libft.a
 

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:16 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/23 16:55:26 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/09/30 15:41:21 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ int	main(int argc, char **argv)
 
 	push(&stack_a, &stack_b, 'b');
 
-	printf("A : %d\n", stack_a->nb);	
+	// printf("A : %d\n", stack_a->nb);
+	// printf("B : %d\n", stack_b->nb);
+
+	// push(&stack_b, &stack_a, 'a');
+
+	printf("A : %d\n", stack_a->nb);
 	printf("B : %d\n", stack_b->nb);
 
-	push(&stack_b, &stack_a, 'a');
-
-	printf("A : %d\n", stack_a->nb);	
-	printf("B : %d\n", stack_b->nb);
-
-	// testing functions 
+	// testing functions
 
 	// printf("BEFORE : \n");
 	// while (stack_a)
