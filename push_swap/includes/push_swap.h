@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/02 12:19:40 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/02 13:46:59 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@ void swap(t_stack **stack, char c);
 void swap_both(t_stack **stack_a, t_stack **stack_b);
 void push(t_stack **s, int nb, char c);
 void rotate(t_stack **stack, char c);
+void rotate_both(t_stack **stack_a, t_stack **stack_b);
+void reverse_rotate(t_stack **stack, char c);
+void reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
 
 #endif
