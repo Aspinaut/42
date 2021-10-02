@@ -8,8 +8,10 @@ SRCS =	srcs/main.c	\
 		srcs/stack_clear.c	\
 		srcs/stack_delone.c	\
 		srcs/stack_size.c	\
+		srcs/stack_last.c	\
 		srcs/push.c	\
 		srcs/swap.c	\
+		srcs/rotate.c	\
 
 LIBFT = libft/libft.a
 
@@ -19,7 +21,8 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 
 $(LIBFT):
 	cd ./libft/ && make && cd ..
