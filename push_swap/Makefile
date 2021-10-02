@@ -13,6 +13,7 @@ SRCS =	srcs/main.c	\
 		srcs/swap.c	\
 		srcs/rotate.c	\
 		srcs/reverse_rotate.c	\
+		srcs/small_sort.c	\
 
 LIBFT = libft/libft.a
 
