@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/02 17:39:34 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/05 10:25:48 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
 
 void small_sort(t_stack **stack_a, t_stack **stack_b, int size);
 
-int find_min(t_stack **stack_a);
-int find_max(t_stack **stack_a);
+int find_min(t_stack **stack);
+int find_max(t_stack **stack);
+int sorted(t_stack **stack);
 
 #endif

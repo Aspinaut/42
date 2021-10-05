@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 10:57:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/02 13:28:24 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/05 12:00:46 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void push(t_stack **stack, int nb, char c)
     write(1, "p", 1);
     write(1, &c, 1);
     write(1, "\n", 1);
-	if (c == 'b')
-		free(temp);
+	// if (c == 'b')
+	// 	free(temp);
 }

@@ -6,45 +6,66 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 16:48:56 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/02 17:39:19 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/05 11:44:50 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int find_max(t_stack **stack_a)
-{
-	int max;
-
-	max = (*stack_a)->nb;
-	while (*stack_a)
-	{
-		if ((*stack_a)->nb > max)
-			max = (*stack_a)->nb;
-		*stack_a = (*stack_a)->next;
-	}
-	return (max);
-}
-
-int find_min(t_stack **stack_a)
+static void put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b)
 {
 	int min;
+	int i;
 
-	min = (*stack_a)->nb;
-	while (*stack_a)
+	min = find_min(stack_a);
+	i = 0;
+	while ((*stack_a) && (*stack_a)->nb != min)
 	{
-		if ((*stack_a)->nb < min)
-			min = (*stack_a)->nb;
-		*stack_a = (*stack_a)->next;
+		(*stack_a) = (*stack_a)->next;
+		i++;
 	}
-	return (min);
+	if (i == 0)
+	{
+		push(stack_b, (*stack_a)->nb, 'b');
+	}
+	else if (i == 1)
+	{
+		swap(stack_a, 'a');
+		push(stack_b, (*stack_a)->nb, 'b');
+	}
+	else if (i == 2)
+	{
+		rotate(stack_a, 'a');
+		swap(stack_a, 'a');
+		push(stack_b, (*stack_a)->nb, 'b');
+	}
+	else if (i == 3)
+	{
+		reverse_rotate(stack_a, 'a');
+		reverse_rotate(stack_a, 'a');
+		push(stack_b, (*stack_a)->nb, 'b');
+	}
+	else if (i == 4)
+	{
+		reverse_rotate(stack_a, 'a');
+		push(stack_b, (*stack_a)->nb, 'b');
+	}
 }
 
 void small_sort(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	int min;
+	int stop;
 
-	min = find_min(stack_a);
+	stop = -1;
+	while (!sorted(stack_a) && ++stop < 2)
+		put_two_shortest_in_b(stack_a, stack_b);
 	if (stack_b)
+	{
+		while ((*stack_b))
+		{
+			push(stack_a, (*stack_b)->nb, 'a');
+			(*stack_b) = (*stack_b)->next;
+		}
 		stack_clear(stack_b);
+	}
 }

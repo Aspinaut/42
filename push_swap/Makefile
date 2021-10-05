@@ -14,6 +14,7 @@ SRCS =	srcs/main.c	\
 		srcs/rotate.c	\
 		srcs/reverse_rotate.c	\
 		srcs/small_sort.c	\
+		srcs/push_swap_utils.c	\
 
 LIBFT = libft/libft.a
 
@@ -30,7 +31,7 @@ $(LIBFT):
 	cd ./libft/ && make && cd ..
 
 $(NAME): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -g -o $(NAME)
 
 all: $(LIBFT) $(NAME)
 
