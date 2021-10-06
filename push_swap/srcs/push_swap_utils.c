@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 10:24:12 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/05 10:25:39 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/05 12:32:09 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,27 @@ int find_max(t_stack **stack)
 	return (max);
 }
 
-int find_min(t_stack **stack)
+int find_min(t_stack *stack)
 {
 	int min;
 
-	min = (*stack)->nb;
-	while (*stack)
+	min = stack->nb;
+	while (stack)
 	{
-		if ((*stack)->nb < min)
-			min = (*stack)->nb;
-		*stack = (*stack)->next;
+		if (stack->nb < min)
+			min = stack->nb;
+		stack = stack->next;
 	}
 	return (min);
 }
 
-int sorted(t_stack **stack)
+int sorted(t_stack *stack)
 {
-	while ((*stack))
+	while (stack)
 	{
-		if ((*stack)->next && (*stack)->nb > (*stack)->next->nb)
+		if (stack->next && stack->nb > stack->next->nb)
 			return (0);
-		(*stack) = (*stack)->next;
+		stack = stack->next;
 	}
 	return (1);
 }

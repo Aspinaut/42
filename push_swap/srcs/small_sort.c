@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 16:48:56 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/05 11:44:50 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/06 10:43:38 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b)
 	int min;
 	int i;
 
-	min = find_min(stack_a);
+	min = find_min(*stack_a);
 	i = 0;
-	while ((*stack_a) && (*stack_a)->nb != min)
+	while (*stack_a && (*stack_a)->nb != min)
 	{
-		(*stack_a) = (*stack_a)->next;
+		*stack_a = (*stack_a)->next;
 		i++;
 	}
 	if (i == 0)
@@ -57,13 +57,15 @@ void small_sort(t_stack **stack_a, t_stack **stack_b, int size)
 	int stop;
 
 	stop = -1;
-	while (!sorted(stack_a) && ++stop < 2)
+	while (!sorted(*stack_a) && ++stop < 2)
 		put_two_shortest_in_b(stack_a, stack_b);
 	if (stack_b)
 	{
 		while ((*stack_b))
 		{
 			push(stack_a, (*stack_b)->nb, 'a');
+			if (!(*stack_b)->next)
+				break ;
 			(*stack_b) = (*stack_b)->next;
 		}
 		stack_clear(stack_b);
