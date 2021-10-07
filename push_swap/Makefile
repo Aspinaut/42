@@ -9,6 +9,7 @@ SRCS =	srcs/main.c	\
 		srcs/stack_delone.c	\
 		srcs/stack_size.c	\
 		srcs/stack_last.c	\
+		srcs/stack_cpy.c	\
 		srcs/push.c	\
 		srcs/swap.c	\
 		srcs/rotate.c	\

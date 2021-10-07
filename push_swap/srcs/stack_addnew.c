@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:53:45 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/23 08:51:50 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/07 08:55:49 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_stack	*stack_addnew(int nb)
 	link = (t_stack *)malloc(sizeof(t_stack));
 	if (!link)
 		return (NULL);
+	link->pos = 0;
 	link->nb = nb;
 	link->next = NULL;
 	link->prev = NULL;

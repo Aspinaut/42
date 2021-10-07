@@ -6,22 +6,22 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 10:24:12 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/05 12:32:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/07 08:53:57 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int find_max(t_stack **stack)
+int find_max(t_stack *stack)
 {
 	int max;
 
-	max = (*stack)->nb;
-	while (*stack)
+	max = stack->nb;
+	while (stack)
 	{
-		if ((*stack)->nb > max)
-			max = (*stack)->nb;
-		*stack = (*stack)->next;
+		if (stack->nb > max)
+			max = stack->nb;
+		stack = stack->next;
 	}
 	return (max);
 }
@@ -49,4 +49,9 @@ int sorted(t_stack *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+void quicksort(t_stack **stack_a)
+{
+	
 }
