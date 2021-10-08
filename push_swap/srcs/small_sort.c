@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 16:48:56 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/06 10:43:38 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/08 11:31:45 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ static void put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b)
 	}
 	else if (i == 1)
 	{
-		swap(stack_a, 'a');
+		swap(*stack_a, 'a');
 		push(stack_b, (*stack_a)->nb, 'b');
 	}
 	else if (i == 2)
 	{
 		rotate(stack_a, 'a');
-		swap(stack_a, 'a');
+		swap(*stack_a, 'a');
 		push(stack_b, (*stack_a)->nb, 'b');
 	}
 	else if (i == 3)

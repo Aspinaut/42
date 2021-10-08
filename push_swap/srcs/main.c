@@ -6,11 +6,26 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:16 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/07 10:01:14 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/08 11:35:32 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	ft_swap(t_stack *s, char c)
+{
+	int	tmp;
+
+	tmp = s->next->nb;
+	s->next->nb = s->nb;
+	s->nb = tmp;
+	if (c != ' ')
+	{
+		write(1, "s", 1);
+		write(1, &c, 1);
+		write(1, "\n", 1);
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -32,14 +47,16 @@ int	main(int argc, char **argv)
 
 	// small_sort(&stack_a, &stack_b, stack_size(stack_a));
 	// big_sort(&stack_a, &stack_b);
-	// quicksort(stack_a);
+
+	quicksort(stack_a, stack_a);
+
 
 	while (stack_a)
 	{
 		printf("%d %d\n", stack_a->nb, stack_a->pos);
 		stack_a = stack_a->next;
 	}
-	
+
 	stack_clear(&stack_a);
 	return (0);
 }

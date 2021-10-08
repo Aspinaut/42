@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/07 09:33:06 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/08 11:32:58 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	stack_size(t_stack *stack);
 t_stack *stack_cpy(t_stack *stack);
 
 int	validate_args(int argc, char **argv);
-void swap(t_stack **stack, char c);
-void swap_both(t_stack **stack_a, t_stack **stack_b);
+void swap(t_stack *stack, char c);
+void swap_both(t_stack *stack_a, t_stack *stack_b);
 void push(t_stack **s, int nb, char c);
 void rotate(t_stack **stack, char c);
 void rotate_both(t_stack **stack_a, t_stack **stack_b);
@@ -51,6 +51,6 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b);
 int find_min(t_stack *stack);
 int find_max(t_stack *stack);
 int sorted(t_stack *stack);
-void quicksort(t_stack **stack_a);
+void quicksort(t_stack *stack_a, t_stack *head);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 10:24:12 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/07 08:53:57 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/08 11:36:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,18 @@ int sorted(t_stack *stack)
 	return (1);
 }
 
-void quicksort(t_stack **stack_a)
+void quicksort(t_stack *stack_a, t_stack *head)
 {
-	
+	while (stack_a)
+	{
+		if (stack_a->next && stack_a->nb > stack_a->next->nb)
+		{
+			swap(stack_a, ' ');
+			stack_a = head;
+		}
+		else if (!stack_a->next)
+			return ;
+		else
+			stack_a = stack_a->next;
+	}
 }

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   stack_cpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 14:21:29 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/08 11:32:17 by vmasse           ###   ########.fr       */
+/*   Created: 2021/10/07 09:32:07 by vmasse            #+#    #+#             */
+/*   Updated: 2021/10/07 09:47:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void swap(t_stack *stack, char c)
+t_stack *stack_cpy(t_stack *stack)
 {
-	int	nb_temp;
+	t_stack *new_stack;
 
-	nb_temp = stack->next->nb;
-	stack->next->nb = stack->nb;
-	stack->nb = nb_temp;
-	if (c != ' ')
+	if (!stack)
+		return (NULL);
+	new_stack = stack_addnew(stack->nb);
+	if (!new_stack)
+		return (NULL);
+	stack = stack->next;
+	while (stack)
 	{
-		write(1, "s", 1);
-		write(1, &c, 1);
-		write(1, "\n", 1);
+		stack_addback(&new_stack, stack_addnew(stack->nb));
+		stack = stack->next;
 	}
-}
-
-void swap_both(t_stack *stack_a, t_stack *stack_b)
-{
-    swap(stack_a, ' ');
-    swap(stack_b, ' ');
-    write(1, "ss\n", 3);
+	return (new_stack);
 }
