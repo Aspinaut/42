@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:05:10 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/08 12:47:23 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/08 15:39:01 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,19 @@ void	big_sort(t_stack **a, t_stack **b)
 	while (a && *a && !sorted(*a))
 	{
 		size = stack_size(*a);
-		while (a && *a && size--)
+		while (size--)
 		{
 			if ((((*a)->pos >> i) & 1))
 				rotate(a, 'a');
 			else
 			{
-				push(b, (*a)->nb, 'b');
+				push(b, (*a)->pos, 'b');
 				stack_delone(a);
 			}
 		}
 		while (*b)
 		{
-			push(a, (*b)->nb, 'a');
+			push(a, (*b)->pos, 'a');
 			stack_delone(b);
 		}
 		i++;

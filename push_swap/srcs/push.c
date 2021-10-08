@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 10:57:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/05 12:00:46 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/08 15:14:15 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void push(t_stack **stack, int nb, char c)
 	if (!*stack)
 	{
 		*stack = temp;
-		(*stack)->nb = nb;
+		(*stack)->pos = nb;
 		(*stack)->prev = NULL;
 		(*stack)->next = NULL;
 	}
@@ -30,7 +30,7 @@ void push(t_stack **stack, int nb, char c)
 	{
 		temp->prev = NULL;
 		temp->next = *stack;
-		temp->nb = nb;
+		temp->pos = nb;
 		(*stack)->prev = temp;
 		*stack = temp;
 	}
