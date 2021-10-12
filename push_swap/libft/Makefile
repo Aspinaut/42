@@ -4,6 +4,7 @@ SRCS =	ft_atoi.c	\
 		ft_atol.c	\
 		ft_isdigit.c	\
 		ft_putstr_fd.c	\
+		ft_split.c	\
 
 OBJS = $(SRCS:.c=.o)
 

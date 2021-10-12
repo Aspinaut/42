@@ -22,5 +22,6 @@ int		ft_putstr_fd(char const *s, int fd);
 long	ft_atol(const char *str);
 int		ft_atoi(const char *str);
 int		ft_isdigit(int c);
+char	**ft_split(char const *s, char c);
 
 #endif

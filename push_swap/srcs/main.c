@@ -20,6 +20,13 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
+	argv = ft_split(argv[1], '"');
+	i = 0;
+	while (argv[i])
+	{
+		printf("%s\n", argv[i]);
+		i++;
+	}
 	if (!validate_args(argc, argv))
 		return (ft_putstr_fd("Error\n", 2));
 	stack_a = stack_addnew(ft_atoi(argv[1]));
@@ -31,7 +38,7 @@ int	main(int argc, char **argv)
 		stack_addback(&stack_a->next, stack_addnew(ft_atoi(argv[i])));
 
 	// small_sort(&stack_a, &stack_b, stack_size(stack_a));
-	big_sort(&stack_a, &stack_b);
+	// big_sort(&stack_a, &stack_b);
 
 	// while (stack_a)
 	// {
