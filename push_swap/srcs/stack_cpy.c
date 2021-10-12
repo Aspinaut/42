@@ -12,9 +12,9 @@
 
 #include "../includes/push_swap.h"
 
-t_stack *stack_cpy(t_stack *stack)
+t_stack	*stack_cpy(t_stack *stack)
 {
-	t_stack *new_stack;
+	t_stack	*new_stack;
 
 	if (!stack)
 		return (NULL);

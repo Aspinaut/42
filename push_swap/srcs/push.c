@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void push(t_stack **stack, int nb, char c)
+void	push(t_stack **stack, int nb, char c)
 {
 	t_stack	*temp;
 
@@ -34,9 +34,7 @@ void push(t_stack **stack, int nb, char c)
 		(*stack)->prev = temp;
 		*stack = temp;
 	}
-    write(1, "p", 1);
-    write(1, &c, 1);
-    write(1, "\n", 1);
-	// if (c == 'b')
-	// 	free(temp);
+	write(1, "p", 1);
+	write(1, &c, 1);
+	write(1, "\n", 1);
 }

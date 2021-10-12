@@ -12,10 +12,10 @@
 
 #include "../includes/push_swap.h"
 
-static void put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b)
+static void	put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b)
 {
-	int min;
-	int i;
+	int	min;
+	int	i;
 
 	min = find_min(*stack_a);
 	i = 0;
@@ -52,9 +52,9 @@ static void put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void small_sort(t_stack **stack_a, t_stack **stack_b, int size)
+void	small_sort(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	int stop;
+	int	stop;
 
 	stop = -1;
 	while (!sorted(*stack_a) && ++stop < 2)

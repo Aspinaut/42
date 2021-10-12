@@ -12,10 +12,10 @@
 
 #include "../includes/push_swap.h"
 
-void reverse_rotate(t_stack **stack, char c)
+void	reverse_rotate(t_stack **stack, char c)
 {
-	t_stack *last;
-	t_stack *first;
+	t_stack	*last;
+	t_stack	*first;
 
 	if (!*stack)
 		return ;
@@ -28,12 +28,12 @@ void reverse_rotate(t_stack **stack, char c)
 	if (c != ' ')
 	{
 		write(1, "rr", 2);
-	    write(1, &c, 1);
-	    write(1, "\n", 1);
+		write(1, &c, 1);
+		write(1, "\n", 1);
 	}
 }
 
-void reverse_rotate_both(t_stack **stack_a, t_stack **stack_b)
+void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b)
 {
 	reverse_rotate(stack_a, ' ');
 	reverse_rotate(stack_b, ' ');

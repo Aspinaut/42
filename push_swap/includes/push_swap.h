@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/08 15:11:27 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/12 18:32:13 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 
 typedef struct s_stack
 {
-	int	nb;
-	int	pos;
-	struct s_stack	*next;
-	struct s_stack	*prev;
+	int					nb;
+	int					pos;
+	struct s_stack		*prev;
+	struct s_stack		*next;
 }				t_stack;
 
 t_stack	*stack_addnew(int nb);
@@ -33,24 +33,24 @@ void	stack_addback(t_stack **stack, t_stack *new);
 void	stack_addfront(t_stack **stack, t_stack *new);
 void	stack_delone(t_stack **stack);
 void	stack_clear(t_stack **stack);
-int	stack_size(t_stack *stack);
-t_stack *stack_cpy(t_stack *stack);
+int		stack_size(t_stack *stack);
+t_stack	*stack_cpy(t_stack *stack);
 
-int	validate_args(int argc, char **argv);
-void swap(t_stack *stack, char c);
-void swap_both(t_stack *stack_a, t_stack *stack_b);
-void push(t_stack **s, int nb, char c);
-void rotate(t_stack **stack, char c);
-void rotate_both(t_stack **stack_a, t_stack **stack_b);
-void reverse_rotate(t_stack **stack, char c);
-void reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
+int		validate_args(int argc, char **argv);
+void	swap(t_stack *stack, char c);
+void	swap_both(t_stack *stack_a, t_stack *stack_b);
+void	push(t_stack **s, int nb, char c);
+void	rotate(t_stack **stack, char c);
+void	rotate_both(t_stack **stack_a, t_stack **stack_b);
+void	reverse_rotate(t_stack **stack, char c);
+void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
 
-void small_sort(t_stack **stack_a, t_stack **stack_b, int size);
+void	small_sort(t_stack **stack_a, t_stack **stack_b, int size);
 void	big_sort(t_stack **stack_a, t_stack **stack_b);
 
-int find_min(t_stack *stack);
-int find_max(t_stack *stack);
-int sorted(t_stack *stack);
-void quicksort(t_stack *stack_a, t_stack *head);
+int		find_min(t_stack *stack);
+int		find_max(t_stack *stack);
+int		sorted(t_stack *stack);
+void	quicksort(t_stack *stack_a, t_stack *head);
 
 #endif
