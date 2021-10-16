@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:05:10 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/16 18:14:40 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/16 18:46:10 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,14 @@ static void set_positions(t_stack *stack_a)
 			}
 			a_head = a_head->next;
 		}
+		if (!st_cpy->next)
+			break ;
 		st_cpy = st_cpy->next;
+	}
+	while (st_cpy)
+	{
+		printf("here\n" );
+		st_cpy = st_cpy->prev;
 	}
 	stack_clear(&st_cpy);
 }
@@ -52,7 +59,7 @@ void	big_sort(t_stack **a, t_stack **b)
 		size = stack_size(*a);
 		while (size)
 		{
-			printf("size %d\n", (*a)->pos);
+			// printf("size %d\n", (*a)->pos);
 			if ((((*a)->pos >> i) & 1))
 				rotate(a, 'a');
 			else
@@ -64,10 +71,11 @@ void	big_sort(t_stack **a, t_stack **b)
 		}
 		while (*b)
 		{
-			printf("b %d\n", (*b)->pos);
+			// printf("b %d\n", (*b)->pos);
 			push(a, (*b)->pos, 'a');
 			stack_delone(b);
 		}
+		// printf("STACK : %d\n", (*a)->);
 		// stack_clear(b);
 		i++;
 	}

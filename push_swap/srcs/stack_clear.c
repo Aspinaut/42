@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:39:09 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/21 14:27:03 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/16 18:40:24 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	stack_clear(t_stack **stack)
 
 	if (!stack)
 		return ;
-	while ((*stack))
+	while (*stack)
 	{
 		temp = (*stack)->next;
-		free((*stack));
-		(*stack) = temp;
+		free(*stack);
+		*stack = temp;
 	}
 }

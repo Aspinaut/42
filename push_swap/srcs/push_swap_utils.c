@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 10:24:12 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/16 18:18:52 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/16 18:34:31 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int sorted(t_stack *stack)
 {
 	while (stack)
 	{
-		if (stack->next && stack->nb > stack->next->nb)
+		if (stack->next && stack->pos > stack->next->pos)
 			return (0);
 		stack = stack->next;
 	}
