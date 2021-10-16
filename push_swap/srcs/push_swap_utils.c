@@ -6,15 +6,15 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 10:24:12 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/08 11:36:07 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/16 18:18:52 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	find_max(t_stack *stack)
+int find_max(t_stack *stack)
 {
-	int	max;
+	int max;
 
 	max = stack->nb;
 	while (stack)
@@ -26,9 +26,9 @@ int	find_max(t_stack *stack)
 	return (max);
 }
 
-int	find_min(t_stack *stack)
+int find_min(t_stack *stack)
 {
-	int	min;
+	int min;
 
 	min = stack->nb;
 	while (stack)
@@ -40,7 +40,7 @@ int	find_min(t_stack *stack)
 	return (min);
 }
 
-int	sorted(t_stack *stack)
+int sorted(t_stack *stack)
 {
 	while (stack)
 	{
@@ -51,7 +51,7 @@ int	sorted(t_stack *stack)
 	return (1);
 }
 
-void	quicksort(t_stack *stack_a, t_stack *head)
+void quicksort(t_stack *stack_a, t_stack *head)
 {
 	while (stack_a)
 	{

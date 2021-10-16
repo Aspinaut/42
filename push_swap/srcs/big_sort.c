@@ -6,17 +6,17 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:05:10 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/12 18:00:52 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/16 18:14:40 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	set_positions(t_stack *stack_a)
+static void set_positions(t_stack *stack_a)
 {
-	t_stack	*st_cpy;
-	t_stack	*a_head;
-	int		i;
+	t_stack *st_cpy;
+	t_stack *a_head;
+	int i;
 
 	i = 0;
 	st_cpy = stack_cpy(stack_a);
@@ -50,8 +50,9 @@ void	big_sort(t_stack **a, t_stack **b)
 	while (a && *a && !sorted(*a))
 	{
 		size = stack_size(*a);
-		while (size--)
+		while (size)
 		{
+			printf("size %d\n", (*a)->pos);
 			if ((((*a)->pos >> i) & 1))
 				rotate(a, 'a');
 			else
@@ -59,12 +60,15 @@ void	big_sort(t_stack **a, t_stack **b)
 				push(b, (*a)->pos, 'b');
 				stack_delone(a);
 			}
+			size--;
 		}
 		while (*b)
 		{
+			printf("b %d\n", (*b)->pos);
 			push(a, (*b)->pos, 'a');
 			stack_delone(b);
 		}
+		// stack_clear(b);
 		i++;
 	}
 }
