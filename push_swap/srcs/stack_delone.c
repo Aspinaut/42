@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:34:27 by vmasse            #+#    #+#             */
-/*   Updated: 2021/09/30 15:35:26 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/17 11:28:01 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	stack_delone(t_stack **stack)
 		return ;
 	to_del = *stack;
 	head = *stack;
-	while (to_del && to_del->nb != (*stack)->nb)
+	while (to_del && to_del->pos != (*stack)->pos)
 		to_del = to_del->next;
 	if (to_del->next)
 		to_del->next->prev = to_del->prev;
