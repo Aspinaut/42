@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:16 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/17 11:34:05 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/18 15:46:50 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,16 @@ int	main(int argc, char **argv)
 	while (++i < argc)
 		stack_addback(&stack_a->next, stack_addnew(ft_atoi(argv[i])));
 
-	// small_sort(&stack_a, &stack_b, stack_size(stack_a));
-	big_sort(&stack_a, &stack_b);
+	if (stack_size(stack_a) < 6)
+		small_sort(&stack_a, &stack_b, stack_size(stack_a));
+	else
+		big_sort(&stack_a, &stack_b);
 
-	// while (stack_a)
-	// {
-	// 	printf("%d %d\n", stack_a->nb, stack_a->pos);
-	// 	stack_a = stack_a->next;
-	// }
-
+	while (stack_a)
+	{
+		printf("%d %d\n", stack_a->nb, stack_a->pos);
+		stack_a = stack_a->next;
+	}
 
 	stack_clear(&stack_a);
 	return (0);

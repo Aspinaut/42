@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/12 18:32:13 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/18 11:21:27 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		validate_args(int argc, char **argv);
 void	swap(t_stack *stack, char c);
 void	swap_both(t_stack *stack_a, t_stack *stack_b);
 void	push(t_stack **s, int nb, char c);
+void	push_small(t_stack **stack, int nb, char c);
 void	rotate(t_stack **stack, char c);
 void	rotate_both(t_stack **stack_a, t_stack **stack_b);
 void	reverse_rotate(t_stack **stack, char c);
@@ -50,7 +51,7 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b);
 
 int		find_min(t_stack *stack);
 int		find_max(t_stack *stack);
-int		sorted(t_stack *stack);
+int		sorted(t_stack *stack, int big_sort);
 void	quicksort(t_stack *stack_a, t_stack *head);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:05:10 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/17 11:57:55 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/18 11:03:06 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	big_sort(t_stack **a, t_stack **b)
 
 	i = 0;
 	normalize_stack(*a);
-	while (a && *a && !sorted(*a))
+	while (a && *a && !sorted(*a, 1))
 	{
 		size = stack_size(*a);
 		while (size--)
