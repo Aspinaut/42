@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/18 11:21:27 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/19 15:15:17 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ typedef struct s_stack
 
 t_stack	*stack_addnew(int nb);
 t_stack	*stack_last(t_stack *stack);
-void	stack_addback(t_stack **stack, t_stack *new);
+void	stack_addback(t_stack **stack, t_stack *new, t_stack *head);
 void	stack_addfront(t_stack **stack, t_stack *new);
-void	stack_delone(t_stack **stack);
+void	stack_delone(t_stack **stack, int big_sort);
 void	stack_clear(t_stack **stack);
 int		stack_size(t_stack *stack);
 t_stack	*stack_cpy(t_stack *stack);
@@ -53,5 +53,7 @@ int		find_min(t_stack *stack);
 int		find_max(t_stack *stack);
 int		sorted(t_stack *stack, int big_sort);
 void	quicksort(t_stack *stack_a, t_stack *head);
+
+void	new_stack(t_stack **a, int value);
 
 #endif

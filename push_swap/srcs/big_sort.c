@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 15:05:10 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/18 11:03:06 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/19 11:59:19 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ void	big_sort(t_stack **a, t_stack **b)
 			else
 			{
 				push(b, (*a)->pos, 'b');
-				stack_delone(a);
+				stack_delone(a, 1);
 			}
 		}
 		while (*b)
 		{
 			push(a, (*b)->pos, 'a');
-			stack_delone(b);
+			stack_delone(b, 1);
 		}
 		i++;
 	}

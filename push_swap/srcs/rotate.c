@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:48:16 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/02 13:46:49 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/19 16:23:17 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	rotate(t_stack **stack, char c)
 	first = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
-	stack_addback(stack, first);
+	// stack_addback(stack, first, *stack);
+	new_stack(stack, first->nb);
 	last->next->prev = last;
 	last->next->next = NULL;
 	if (c != ' ')
