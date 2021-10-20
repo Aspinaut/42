@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 16:48:56 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/19 18:07:25 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/20 11:35:00 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,19 @@ static void	put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b, int size
 
 	min = find_min(*stack_a);
 	i = 0;
-	// while (stack_a)
-	// {
-	// 	printf("%d\n", stack_a->nb);
-	// 	if (stack_a->prev)
-	// 		printf("prev\n");
-	// 	if (!stack_a->next)
-	// 		break ;
-	// 	stack_a = stack_a->next;
-	// }
-	// while (stack_a && stack_a->prev)
-	// {
-	// 	stack_a = stack_a->prev;
-	// }
-
+	// printf("FIRST \n");
+	// printf("-----------------------------------------------------\n");
 	// while (*stack_a)
 	// {
 	// 	printf("%d\n", (*stack_a)->nb);
+	// 	if (!(*stack_a)->next)
+	// 		break ;
 	// 	*stack_a = (*stack_a)->next;
 	// }
+	// while (*stack_a && (*stack_a)->prev)
+	// 	*stack_a = (*stack_a)->prev;
+	// printf("-----------------------------------------------------\n");
+
 	while (*stack_a && (*stack_a)->nb != min)
 	{
 		*stack_a = (*stack_a)->next;
@@ -51,6 +45,21 @@ static void	put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b, int size
 	}
 	else if (i == 1)
 	{
+
+		// printf("SECOND \n");
+		// printf("-----------------------------------------------------\n");
+		// while (*stack_a)
+		// {
+		// 	printf("%d\n", (*stack_a)->nb);
+		// 	if (!(*stack_a)->next)
+		// 	break ;
+		// 	*stack_a = (*stack_a)->next;
+		// }
+		// while (*stack_a && (*stack_a)->prev)
+		// *stack_a = (*stack_a)->prev;
+		// printf("-----------------------------------------------------\n");
+		// if ((*stack_a)->prev)
+		// 	*stack_a = (*stack_a)->prev;
 		swap(*stack_a, 'a');
 		push_small(stack_b, (*stack_a)->nb, 'b');
 	}
@@ -62,6 +71,7 @@ static void	put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b, int size
 	}
 	else if ((i == 3 && size == 5) || (i == 2 && size == 4))
 	{
+
 		reverse_rotate(stack_a, 'a');
 		reverse_rotate(stack_a, 'a');
 		push_small(stack_b, (*stack_a)->nb, 'b');
@@ -71,18 +81,19 @@ static void	put_two_shortest_in_b(t_stack **stack_a, t_stack **stack_b, int size
 		reverse_rotate(stack_a, 'a');
 		push_small(stack_b, (*stack_a)->nb, 'b');
 	}
-	stack_delone(stack_a, 0);
-	// if (size == 5)
+	// while (*stack_a)
 	// {
-	// 	printf("AFTER PUT 2 SHORTEST \n");
-	// 	printf("-----------------------------------------------------\n");
-	// 	while (*stack_a)
-	// 	{
-	// 		printf("%d\n", (*stack_a)->nb);
-	// 		*stack_a = (*stack_a)->next;
-	// 	}
-	// 	printf("-----------------------------------------------------\n");
+	// 	if (!(*stack_a)->next)
+	// 		break ;
+	// 	*stack_a = (*stack_a)->next;
 	// }
+	// while (*stack_a && (*stack_a)->prev)
+	// 	*stack_a = (*stack_a)->prev;
+
+	// *stack_a = (*stack_a)->next;
+	stack_delone(stack_a, 0);
+
+
 }
 
 static void sort_three(t_stack **a)
@@ -116,6 +127,18 @@ static void sort_five(t_stack **stack_a, t_stack **stack_b)
 	stop = -1;
 	while (!sorted(*stack_a, 0) && ++stop < 2 && stack_size(*stack_a) > 3)
 	{
+		// printf("FIRST \n");
+		// printf("-----------------------------------------------------\n");
+		// while (*stack_a)
+		// {
+		// 		printf("%d\n", (*stack_a)->nb);
+		// 		if (!(*stack_a)->next)
+		// 		break ;
+		// 		*stack_a = (*stack_a)->next;
+		// 	}
+		// 	while (*stack_a && (*stack_a)->prev)
+		// 	*stack_a = (*stack_a)->prev;
+		// 	printf("-----------------------------------------------------\n");
 		put_two_shortest_in_b(stack_a, stack_b, stack_size(*stack_a));
 	}
 

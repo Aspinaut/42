@@ -28,7 +28,7 @@ CC = gcc
 
 # CFLAGS = -Wall -Wextra -Werror
 CFLAGS = -Wall -Wextra
-#CFLAGS += -fsanitize=address
+# CFLAGS += -fsanitize=address
 
 $(LIBFT):
 	cd ./libft/ && make && cd ..
