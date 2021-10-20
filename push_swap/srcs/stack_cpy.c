@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 09:32:07 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/19 15:29:16 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/20 13:01:48 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,9 @@ t_stack	*stack_cpy(t_stack *stack)
 
 	if (!stack)
 		return (NULL);
-	// new = stack_addnew(stack->nb);
-	// if (!new)
-	// 	return (NULL);
 	new = NULL;
-	// stack = stack->next;
 	while (stack)
 	{
-		// stack_addback(&new, stack_addnew(stack->nb), new);
 		new_stack(&new, stack->nb);
 		stack = stack->next;
 	}

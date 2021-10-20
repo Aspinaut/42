@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/19 15:15:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/20 12:54:58 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	small_sort(t_stack **stack_a, t_stack **stack_b, int size);
 void	big_sort(t_stack **stack_a, t_stack **stack_b);
 
 int		find_min(t_stack *stack);
-int		find_max(t_stack *stack);
 int		sorted(t_stack *stack, int big_sort);
 void	quicksort(t_stack *stack_a, t_stack *head);
 

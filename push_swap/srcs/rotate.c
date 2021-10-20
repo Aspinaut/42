@@ -6,27 +6,32 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:48:16 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/19 16:23:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/20 12:54:49 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rotate(t_stack **stack, char c)
+void	rotate(t_stack **s, char c)
 {
-	t_stack	*last;
 	t_stack	*first;
+	t_stack	*last;
 
-	if (!*stack)
+	if (!*s)
 		return ;
-	last = stack_last(*stack);
-	first = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	// stack_addback(stack, first, *stack);
-	new_stack(stack, first->nb);
-	last->next->prev = last;
-	last->next->next = NULL;
+	while (*s && (*s)->prev)
+		*s = (*s)->prev;
+	last = *s;
+	if (!(*s)->next)
+		return ;
+	first = (*s)->next;
+	*s = first;
+	first->prev = 0;
+	while (first && first->next)
+		first = first->next;
+	first->next = last;
+	last->next = 0;
+	last->prev = first;
 	if (c != ' ')
 	{
 		write(1, "r", 1);
