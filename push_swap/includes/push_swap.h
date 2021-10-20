@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/20 16:14:37 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/20 19:59:28 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <limits.h>
-# include "./libft.h"
+# include "libft.h"
 
 typedef struct s_stack
 {

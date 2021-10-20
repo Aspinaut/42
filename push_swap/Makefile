@@ -28,20 +28,21 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
+$(NAME): $(SRCS) $(LIBFT)
+	$(CC) $(CFLAGS) $(SRCS) -L./libft -lft -o $(NAME)
+
+all: $(NAME)
+
 $(LIBFT):
-	cd ./libft/ && make && cd ..
-
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -g -o $(NAME)
-
-all: $(LIBFT) $(NAME)
+	$(MAKE) -C ./libft
 
 clean:
-	$(RM) $(NAME)
+	cd ./libft/ && make clean && cd ..
 
-fclean: clean
+fclean:
 	cd ./libft/ && make fclean && cd ..
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean re all
+.PHONY: all clean fclean re
