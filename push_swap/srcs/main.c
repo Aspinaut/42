@@ -6,31 +6,11 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:16 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/20 12:56:48 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/20 16:08:45 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-int	find_spaces(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (argv[i])
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (argv[i][j] == ' ')
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {
@@ -47,7 +27,7 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 		new_stack(&stack_a, ft_atoi(argv[i]));
-	if (stack_size(stack_a) < 6)
+	if (stack_size(stack_a) < 6 && stack_size(stack_a) > 1)
 		small_sort(&stack_a, &stack_b, stack_size(stack_a));
 	else
 		big_sort(&stack_a, &stack_b);

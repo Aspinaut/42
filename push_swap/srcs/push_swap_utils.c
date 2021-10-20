@@ -6,11 +6,31 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 10:24:12 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/20 12:25:43 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/20 15:27:22 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	find_spaces(char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] == ' ')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
 
 int	find_min(t_stack *stack)
 {

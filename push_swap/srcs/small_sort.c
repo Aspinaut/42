@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 16:48:56 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/20 13:00:40 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/20 15:44:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	check_positions(t_stack **a, t_stack **b, int size, int i)
 		reverse_rotate(a, 'a');
 		push_small(b, (*a)->nb, 'b');
 	}
+	stack_delone(a, 0);
 }
 
 static void	put_two_shortest_in_b(t_stack **a, t_stack **b, int size)
@@ -55,7 +56,6 @@ static void	put_two_shortest_in_b(t_stack **a, t_stack **b, int size)
 	while (*a && (*a)->prev)
 		*a = (*a)->prev;
 	check_positions(a, b, size, i);
-	stack_delone(a, 0);
 }
 
 static void	sort_three(t_stack **a)

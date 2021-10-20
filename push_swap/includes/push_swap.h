@@ -6,15 +6,12 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 18:21:41 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/20 12:54:58 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/20 16:14:37 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-// to clean
-# include "stdio.h"
 
 # include <limits.h>
 # include "./libft.h"
@@ -27,7 +24,7 @@ typedef struct s_stack
 	struct s_stack		*next;
 }				t_stack;
 
-t_stack	*stack_addnew(int nb);
+void	new_stack(t_stack **a, int value);
 t_stack	*stack_last(t_stack *stack);
 void	stack_addback(t_stack **stack, t_stack *new, t_stack *head);
 void	stack_addfront(t_stack **stack, t_stack *new);
@@ -52,7 +49,6 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b);
 int		find_min(t_stack *stack);
 int		sorted(t_stack *stack, int big_sort);
 void	quicksort(t_stack *stack_a, t_stack *head);
-
-void	new_stack(t_stack **a, int value);
+int		find_spaces(char **argv);
 
 #endif
