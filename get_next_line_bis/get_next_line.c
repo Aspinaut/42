@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:44 by vmasse            #+#    #+#             */
-/*   Updated: 2021/08/06 15:03:50 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/21 13:35:53 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,26 @@ static	char	*return_eof_or_eol(char **s, int fd, char *buffer, int eol)
 	line = NULL;
 	temp = NULL;
 	if (eol)
-	{
 		if (s[fd] && ft_strchr_pos(s[fd], '\n') >= 0)
 		{
 			line = ft_substr(s[fd], 0, ft_strchr_pos(s[fd], '\n') + 1);
+			if (!line)
+				return (NULL);
 			temp = ft_substr(s[fd], ft_strchr_pos(s[fd], '\n') + 1, \
-				   	ft_strlen(s[fd]) + 1);
+			ft_strlen(s[fd]) + 1);
+			if (!temp)
+				return (NULL);
 			ft_free(*s, s, fd);
 			s[fd] = ft_strndup(temp, ft_strlen(temp));
+			if (!s[fd])
+				return (NULL);
 			ft_free(temp, s, 0);
 		}
-	}
 	else
 	{
 		temp = ft_strndup(s[fd], ft_strlen(s[fd]));
+		if (!temp)
+			return (NULL);
 		ft_free(buffer, s, 0);
 		ft_free(*s, s, fd);
 		return (temp);
@@ -60,12 +66,20 @@ static	char	*read_buffer(char **s, int fd, char *buffer, char *line)
 
 	temp = NULL;
 	if (!s[fd])
+	{
 		s[fd] = ft_strndup(buffer, ft_strlen(buffer));
+		if (!s[fd])
+			return (NULL);
+	}
 	else
 	{
 		temp = ft_strndup(s[fd], ft_strlen(s[fd]));
+		if (!temp)
+			return (NULL);
 		ft_free(*s, s, fd);
 		s[fd] = ft_strjoin(temp, buffer);
+		if (!s[fd])
+			return (NULL);
 		ft_free(temp, s, 0);
 	}
 	line = return_eof_or_eol(s, fd, buffer, 1);
