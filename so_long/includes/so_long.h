@@ -6,13 +6,15 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/22 17:16:19 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/22 17:46:11 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+#include "../mlx/mlx.h"
+#include "../mlx/mlx_new_window.h"
 
 
 
