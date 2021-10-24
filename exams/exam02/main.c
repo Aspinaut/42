@@ -3,7 +3,7 @@
 
 int main()
 {
-	printf("%d\n", printf("Bonjour %s %s %d %x\n", "...vincent...", 42, 42));
-	printf("%d\n", ft_printf("Bonjour %s %s %d %x\n", "...vincent...", 42, 42));
+	printf("%d\n", printf("Bonjour %s %s %d %x\n", NULL, "...vincent...", 42, 42));
+	printf("%d\n", ft_printf("Bonjour %s %s %d %x\n", NULL, "...vincent...", 42, 42));
 	return (0);
 }
