@@ -2,7 +2,6 @@
 
 SRCS =	srcs/main.c	\
 
-
 LIBFT = libft/libft.a
 
 MLX = mlx/libmlx.a
@@ -15,19 +14,18 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): $(SRCS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(SRCS) -framework OpenGL -framework AppKit -L./libft -lft -o $(NAME)
-
 #linux : -lmlx -lXext -lX11
 # Mac : -framework OpenGL -framework AppKit
 
-#$(MLX_OBJS)
-#	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+MLXFLAG = -lmlx -lXext -lX11
+
+$(NAME): $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(SRCS) $(MLXFLAG) -L./mlx -L./libft -lft -o $(NAME)
 
 all: $(NAME)
 
-$(MLX): $(MLX_OBJS)
-	$(CC) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(MLX)
+$(MLX):
+	$(MAKE) -C ./mlx
 
 $(LIBFT):
 	$(MAKE) -C ./libft
