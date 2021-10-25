@@ -41,33 +41,31 @@ void ft_putnbr(int nb, t_arg *arg)
 	}
 }
 
-void ft_putnbr_hex(unsigned int nb, t_arg *arg, int converter, int positive)
+void ft_putnbr_hex(t_arg *arg, unsigned int nb, unsigned int converter)
 {
-	int remainder = 0;
-	int nb_cpy = nb;
+	unsigned int remainder = 0;
+	unsigned int nb_cpy;
 
-	if (!positive)
-		arg->len += ft_putchar('f');
+	nb_cpy = nb;
 	if (nb > 15)
 	{
 		nb = nb / 16;
 		remainder = nb_cpy - (nb * 16);
 		if (remainder < 10)
 		{
-			ft_putnbr_hex(nb, arg, converter, 1);
+			ft_putnbr_hex(arg, nb, converter);
 			arg->len += ft_putchar(remainder + '0');
 		}
 		else
 		{
-			ft_putnbr_hex(nb, arg, converter, 1);
+			ft_putnbr_hex(arg, nb, converter);
 			arg->len += ft_putchar(remainder + (converter - 23) - 10);
 		}
 	}
 	else if (nb > 9 && nb < 16)
-		arg->len += ft_putchar(remainder + (converter - 23) - 10);
+		arg->len += ft_putchar(nb + (converter - 23) - 10);
 	else
 		arg->len += ft_putchar(nb + '0');
-
 }
 
 int ft_printf(char const *format, ...)
@@ -98,11 +96,8 @@ int ft_printf(char const *format, ...)
 		}
 		else if (format[pos] == '%' && format[pos + 1] == 'x')
 		{
-			nb = va_arg(args, unsigned int);
-			if (nb < 0)
-				ft_putnbr_hex(nb, &arg, 'x', 0);
-			else
-				ft_putnbr_hex(nb, &arg, 'x', 1);
+			nb = va_arg(args, unsigned);
+			ft_putnbr_hex(&arg, nb, 'x');
 			pos++;
 		}
 		else
