@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/27 12:41:08 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/27 13:05:36 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int process_key_hook(int kc, t_game *game)
 {
 	// printf("%d\n", kc);
 	if (kc == ESCAPE)
-		return (mlx_loop_end(game->mlx_ptr));
+		exit(mlx_loop_end(game->mlx_ptr));
 	else if (kc == UP || kc == DOWN || kc == LEFT || kc == RIGHT)
 		move_player(kc, game);
 	return (1);
@@ -41,11 +41,11 @@ int main(void)
 	t_img			img;
 
 	game.mlx_ptr = mlx_init();
-    if (game.mlx_ptr == NULL)
-		return (EXIT_FAILURE);
-	game.win_ptr = mlx_new_window(game.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Hello world");
+    if (!game.mlx_ptr)
+		exit(EXIT_FAILURE);
+	game.win_ptr = mlx_new_window(game.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "So long");
     if (!game.win_ptr)
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 
 	// img.img_ptr = mlx_new_image(game.mlx_ptr, 40, 40);
 	// img.addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.size_line, &img.endian);
@@ -68,9 +68,8 @@ int main(void)
 	// 	img.x++;
 	// }
 
-	mlx_key_hook(game.win_ptr, process_key_hook, &game);
-	// int	mlx_expose_hook (void *win_ptr, int (*funct_ptr)(), void *param);
-	// int	mlx_loop_hook (void *mlx_ptr, int (*funct_ptr)(), void *param);
+	// mlx_key_hook(game.win_ptr, process_key_hook, &game);
+	mlx_hook(game.win_ptr, 2, 1L<<0, process_key_hook, &game);
 
 	mlx_loop(game.mlx_ptr);
     return (EXIT_SUCCESS);
