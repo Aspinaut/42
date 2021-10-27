@@ -1,6 +1,10 @@
 #!/bin/bash
 
-SRCS =	srcs/main.c	\
+SRCS =	srcs/main.c		\
+		srcs/player.c	\
+		srcs/map.c		\
+		srcs/hooks.c		\
+		srcs/sprites.c		\
 
 LIBFT = libft/libft.a
 

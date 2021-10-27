@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/27 12:40:19 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/27 18:33:48 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,19 @@ typedef struct    s_game
 	struct s_player	*player;
 }                 t_game;
 
+/* HOOKS */
 
 int process_key_hook(int keycode, t_game *game);
+
+/* PLAYER */
+
 void move_player(int kc, t_game *game);
+
+/* SPRITES */
+
+t_img *init_img(t_game *game, char *path, int width, int height);
+
+/* MAP */
 
 
 #endif
