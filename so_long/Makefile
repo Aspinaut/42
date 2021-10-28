@@ -5,6 +5,7 @@ SRCS =	srcs/main.c		\
 		srcs/map.c		\
 		srcs/hooks.c		\
 		srcs/sprites.c		\
+		srcs/game.c		\
 
 LIBFT = libft/libft.a
 

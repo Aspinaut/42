@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/27 18:33:48 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/28 11:36:11 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct    s_img
 	int 			*bits_per_pixel;
 	int 			*size_line;
 	int 			*endian;
+	struct s_img 	*prev;
 	struct s_img 	*next;
 }                 t_img;
 
@@ -69,5 +70,9 @@ t_img *init_img(t_game *game, char *path, int width, int height);
 
 /* MAP */
 
+
+/* GAME */
+
+t_game *init_game();
 
 #endif
