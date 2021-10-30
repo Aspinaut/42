@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/28 11:36:11 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/30 13:41:34 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@
 # define WIN_WIDTH 	1600
 # define WIN_HEIGHT 1200
 
+# define TILE 		40
+
 # define UP 		65362
 # define DOWN 		65364
 # define LEFT 		65361
 # define RIGHT 		65363
 # define ESCAPE 	65307
 
-typedef struct    s_img
+typedef struct    s_sprite
 {
 	void 			*img_ptr;
 	char 			*addr;
@@ -39,21 +41,29 @@ typedef struct    s_img
 	int 			*bits_per_pixel;
 	int 			*size_line;
 	int 			*endian;
-	struct s_img 	*prev;
-	struct s_img 	*next;
-}                 t_img;
+	struct s_sprite 	*prev;
+	struct s_sprite 	*next;
+}                 t_sprite;
+
+typedef struct    s_map
+{
+	int width;
+	int height;
+	struct s_sprite	*sprite;
+}                 t_map;
 
 typedef struct    s_player
 {
-	struct s_img	*img;
+	struct s_sprite	*sprite;
 }                 t_player;
 
 typedef struct    s_game
 {
     void			*mlx_ptr;
     void			*win_ptr;
-	struct s_img	*img;
+	struct s_sprite	*sprite;
 	struct s_player	*player;
+	struct s_map	*map;
 }                 t_game;
 
 /* HOOKS */
@@ -66,9 +76,12 @@ void move_player(int kc, t_game *game);
 
 /* SPRITES */
 
-t_img *init_img(t_game *game, char *path, int width, int height);
+t_sprite *init_sprite(t_game *game, char *path, int width, int height);
 
 /* MAP */
+
+int check_map();
+t_map *init_map(t_game **game);
 
 
 /* GAME */
