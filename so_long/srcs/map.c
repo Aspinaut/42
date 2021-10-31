@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/30 13:44:15 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/10/31 08:12:39 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,38 @@ int check_map()
 
 t_map *init_map(t_game **game)
 {
-	int map[5][5] = {
+	int raw_map[5][5] = {
 		{1,1,1,1,1},
 		{1,0,0,0,1},
 		{1,0,0,0,1},
 		{1,0,0,0,1},
 		{1,1,1,1,1}
-	}
+	};
 	t_map *map;
 	int x;
 	int y;
-	int width = WIN_WIDTH / 5;
-	int height = WIN_HEIGHT / 5;
+	// remplacer 5 par map_width et map_height
+	int width =  5;
+	int height = 5;
 
 	map = (t_map *)malloc(sizeof(t_map));
 	x = 0;
 	while (x < width)
 	{
-
 		y = 0;
 		while (y < height)
 		{
-			if (map[x][y] == 1)
+			if (raw_map[x][y] == 1)
 			{
-				mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr, (*game)->sprite->img_ptr, map->x, game->sprite->y++);
-
+				map->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/blood.xpm", 32, 32);
+				mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
+				map->sprite = map->sprite->next;
 			}
-			else if (map[x][y] == 0)
+			else if (raw_map[x][y] == 0)
 			{
-
+				map->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/alert.xpm", 32, 32);
+				mlx_put_image_to_window((*game)->mlx_ptr, (*game)->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
+				map->sprite = map->sprite->next;
 			}
 			y++;
 		}
