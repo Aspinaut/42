@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/31 08:13:01 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/02 11:55:56 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(void)
 	game = init_game();
 	if (!game)
 		return (EXIT_FAILURE);
-	map = init_map(&game);
+	map = init_map(game);
 	// player = init_player(&game);
 	// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, player->sprite->img_ptr, player->sprite->x, player->sprite->y);
 	(void)map;

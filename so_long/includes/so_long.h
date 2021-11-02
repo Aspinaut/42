@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/31 08:11:28 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/02 11:53:12 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct    s_sprite
 	int					y;
 	int 				width;
 	int					height;
-	int 				*bits_per_pixel;
-	int 				*size_line;
-	int 				*endian;
+	// int 				*bits_per_pixel;
+	// int 				*size_line;
+	// int 				*endian;
 	struct s_sprite 	*prev;
 	struct s_sprite 	*next;
 }                 t_sprite;
@@ -74,19 +74,19 @@ int process_key_hook(int keycode, t_game *game);
 
 /* PLAYER */
 
-t_player *init_player(t_game **game);
+t_player *init_player(t_game *game);
 void move_player(int kc, t_game *game);
 
 /* SPRITES */
 
-t_sprite *init_sprite(t_game **game, char *path, int width, int height);
-void last_sprite(t_game **game);
-void rewind_sprites(t_game **game);
+t_sprite *init_sprite(t_game *game, char *path, int width, int height);
+void last_sprite(t_game *game);
+void rewind_sprites(t_game *game);
 
 /* MAP */
 
 int check_map();
-t_map *init_map(t_game **game);
+t_map *init_map(t_game *game);
 
 
 /* GAME */

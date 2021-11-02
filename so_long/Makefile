@@ -24,7 +24,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAG = -lmlx -lXext -lX11
 
-$(NAME): $(LIBFT) $(MLX)
+$(NAME): $(LIBFT) $(MLX) $(SRCS) 
 	$(CC) $(CFLAGS) $(SRCS) $(MLXFLAG) -L./mlx -L./libft -lft -o $(NAME)
 
 all: $(NAME)

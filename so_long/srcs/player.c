@@ -6,20 +6,20 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/10/31 08:03:35 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/02 11:56:50 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_player *init_player(t_game **game)
+t_player *init_player(t_game *game)
 {
 	t_player *player;
 
 	player = (t_player *)malloc(sizeof(t_player));
-	player->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/ralph.xpm", 32, 32);
+	player->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/ralph.xpm", game->map->width, game->map->height);
 	player->collectibles = 0;
-	(*game)->player = player;
+	game->player = player;
 	return (player);
 }
 
