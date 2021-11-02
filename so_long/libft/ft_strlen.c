@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/02 17:45:55 by vmasse           ###   ########.fr       */
+/*   Created: 2020/09/17 18:15:19 by vmasse            #+#    #+#             */
+/*   Updated: 2021/06/29 14:41:44 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+int	ft_strlen(const char *str)
+{
+	int	count;
 
-# define MAX_LONG	9223372036854775807
-
-int		ft_putstr_fd(char const *s, int fd);
-long	ft_atol(const char *str);
-int		ft_atoi(const char *str);
-int		ft_isdigit(int c);
-char	**ft_split(char const *s, char c);
-int		ft_strlen(const char *str);
-
-#endif
+	count = 0;
+	while (str[count] != '\0')
+	{
+		count++;
+	}
+	return (count);
+}

@@ -6,6 +6,8 @@ SRCS =	srcs/main.c		\
 		srcs/hooks.c		\
 		srcs/sprites.c		\
 		srcs/game.c		\
+		get_next_line/get_next_line.c		\
+		get_next_line/get_next_line_utils.c		\
 
 LIBFT = libft/libft.a
 
@@ -24,8 +26,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAG = -lmlx -lXext -lX11
 
-$(NAME): $(LIBFT) $(MLX) $(SRCS) 
-	$(CC) $(CFLAGS) $(SRCS) $(MLXFLAG) -L./mlx -L./libft -lft -o $(NAME)
+$(NAME): $(LIBFT) $(MLX) $(SRCS)
+	$(CC) $(CFLAGS) -D BUFFER_SIZE=1 $(SRCS) $(MLXFLAG) -L./mlx -L./libft -lft -o $(NAME)
 
 all: $(NAME)
 

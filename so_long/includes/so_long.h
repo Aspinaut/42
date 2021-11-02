@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/02 11:53:12 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/02 17:26:14 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
+# include "get_next_line.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
@@ -50,6 +51,8 @@ typedef struct    s_map
 {
 	int				width;
 	int				height;
+	// attentio à free à la fin !!!!!
+	char			**raw_map;
 	struct s_sprite	*sprite;
 }                 t_map;
 
@@ -86,8 +89,8 @@ void rewind_sprites(t_game *game);
 /* MAP */
 
 int check_map();
-t_map *init_map(t_game *game);
-
+t_map *init_map(t_game *game, char *filename);
+void add_raw_map(t_map *map, char *filename);
 
 /* GAME */
 

@@ -6,24 +6,24 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/02 11:55:56 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/02 17:13:38 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
     t_game        	*game;
 	t_map			*map;
 	// t_player		*player;
 
-	if (!check_map())
+	if (argc != 2 || !check_map(argv[1]))
 		return (EXIT_FAILURE);
 	game = init_game();
 	if (!game)
 		return (EXIT_FAILURE);
-	map = init_map(game);
+	map = init_map(game, argv[1]);
 	// player = init_player(&game);
 	// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, player->sprite->img_ptr, player->sprite->x, player->sprite->y);
 	(void)map;
