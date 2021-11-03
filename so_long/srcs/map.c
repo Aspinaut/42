@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/02 17:56:12 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/03 10:39:05 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,57 @@ t_map *init_map(t_game *game, char *filename)
 
 	map = (t_map *)malloc(sizeof(t_map));
 	add_raw_map(map, filename);
+	// int height = 0;
+	// int width;
+	// while (height < 5)
+	// {
+	// 	width = 0;
+	// 	while (width < 14)
+	// 	{
+	// 		printf("%c\n", map->raw_map[height][width]);
+	// 		width++;
+	// 	}
+	// 	height++;
+	// }
 	y = 0;
 	while (y < map->height)
 	{
 		x = 0;
-		while (x < map->width)
+		while (x < map->width - 1)
 		{
 			if (map->raw_map[y][x] == '1')
 			{
-				map->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/blood.xpm", 1111, 1111);
+				map->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/mountain.xpm", 32, 32);
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
 				map->sprite = map->sprite->next;
 			}
 			else if (map->raw_map[y][x] == '0')
 			{
-				map->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/alert.xpm", 1111, 1111);
+				map->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/grass.xpm", 32, 32);
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
+				map->sprite = map->sprite->next;
+			}
+			else if (map->raw_map[y][x] == 'E')
+			{
+				map->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/exit.xpm", 32, 32);
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
+				map->sprite = map->sprite->next;
+			}
+			else if (map->raw_map[y][x] == 'C')
+			{
+				map->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/grass.xpm", 32, 32);
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
+				// segfault !!
+				// game->collectible->pos[0] = y;
+				// game->collectible->pos[1] = x;
+				map->sprite = map->sprite->next;
+			}
+			else if (map->raw_map[y][x] == 'P')
+			{
+				map->sprite = init_sprite(game, "/home/vmasse/Code/42/so_long/images/grass.xpm", 32, 32);
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
+				// game->player->pos[0] = y;
+				// game->player->pos[1] = x;
 				map->sprite = map->sprite->next;
 			}
 			x++;

@@ -6,11 +6,11 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 18:15:19 by vmasse            #+#    #+#             */
-/*   Updated: 2021/06/29 14:41:44 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/03 10:07:46 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_strlen(const char *str)
 {
