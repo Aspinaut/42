@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:46 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/02 16:57:58 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/04 14:35:03 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 char	*get_next_line(int fd);
 int		ft_strlen(const char *str);

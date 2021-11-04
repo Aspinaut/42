@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/04 08:57:49 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/04 13:55:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,6 @@ t_map *init_map(t_game *game, char *filename)
 
 	map = (t_map *)malloc(sizeof(t_map));
 	add_raw_map(map, filename);
-	// int height = 0;
-	// int width;
-	// while (height < 5)
-	// {
-	// 	width = 0;
-	// 	while (width < 14)
-	// 	{
-	// 		printf("%c\n", map->raw_map[height][width]);
-	// 		width++;
-	// 	}
-	// 	height++;
-	// }
 	y = 0;
 	while (y < map->height)
 	{
@@ -81,19 +69,19 @@ t_map *init_map(t_game *game, char *filename)
 			{
 				map->sprite = init_sprite(game, "./images/mountain.xpm", 32, 32);
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
-				map->sprite = map->sprite->next;
+				// map->sprite = map->sprite->next;
 			}
 			else if (map->raw_map[y][x] == '0')
 			{
 				map->sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
-				map->sprite = map->sprite->next;
+				// map->sprite = map->sprite->next;
 			}
 			else if (map->raw_map[y][x] == 'E')
 			{
 				map->sprite = init_sprite(game, "./images/exit.xpm", 32, 32);
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
-				map->sprite = map->sprite->next;
+				// map->sprite = map->sprite->next;
 			}
 			else if (map->raw_map[y][x] == 'C')
 			{
@@ -102,7 +90,7 @@ t_map *init_map(t_game *game, char *filename)
 				// segfault !!
 				// game->collectible->pos[0] = y;
 				// game->collectible->pos[1] = x;
-				map->sprite = map->sprite->next;
+				// map->sprite = map->sprite->next;
 			}
 			else if (map->raw_map[y][x] == 'P')
 			{
@@ -110,7 +98,7 @@ t_map *init_map(t_game *game, char *filename)
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
 				game->player->sprite->y = y;
 				game->player->sprite->x = x;
-				map->sprite = map->sprite->next;
+				// map->sprite = map->sprite->next;
 			}
 			x++;
 		}
