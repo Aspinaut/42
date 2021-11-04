@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/04 08:57:59 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/04 09:43:22 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int process_key_hook(int keycode, t_game *game);
 
 t_player *init_player(t_game *game);
 void move_player(int kc, t_game *game);
+int check_tile(t_game *game, int move);
 
 /* SPRITES */
 
