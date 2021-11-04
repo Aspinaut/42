@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/03 10:22:16 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/04 09:05:21 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ int main(int argc, char **argv)
 	game = init_game();
 	if (!game)
 		return (EXIT_FAILURE);
-	// player = init_player(game);
+	player = init_player(game);
+	if (!player)
+		return (EXIT_FAILURE);
 	map = init_map(game, argv[1]);
-	// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, player->sprite->img_ptr, player->sprite->x, player->sprite->y);
+	if (!map)
+		return (EXIT_FAILURE);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, player->sprite->img_ptr, game->player->sprite->x * TILE_WIDTH, game->player->sprite->y * TILE_HEIGHT);
 	(void)map;
 	(void)player;
 	mlx_hook(game->win_ptr, 2, 1L<<0, process_key_hook, game);

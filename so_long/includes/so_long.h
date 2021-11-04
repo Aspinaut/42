@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/03 10:16:36 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/04 08:57:59 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ typedef struct    s_map
 
 typedef struct    s_coll
 {
-	int				pos[2];
 	struct s_sprite	*sprite;
 }                 t_coll;
 
 typedef struct    s_player
 {
+	int				width;
+	int				height;
 	int				collectibles;
-	int				pos[2];
 	struct s_sprite	*sprite;
 }                 t_player;
 
