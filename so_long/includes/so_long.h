@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/04 14:34:54 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/04 18:22:04 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
-# include "get_next_line.h"
+# include "./get_next_line.h"
+# include "./libft.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
@@ -94,9 +95,11 @@ void rewind_sprites(t_game *game);
 
 /* MAP */
 
-int check_map();
+int check_map(char *filename);
 t_map *init_map(t_game *game, char *filename);
 void add_raw_map(t_map *map, char *filename);
+int check_walls(char *s);
+int check_used(char *is_used, char c);
 
 /* GAME */
 

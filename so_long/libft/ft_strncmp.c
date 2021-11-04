@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/04 18:23:47 by vmasse           ###   ########.fr       */
+/*   Created: 2020/09/16 14:27:08 by vmasse            #+#    #+#             */
+/*   Updated: 2021/11/04 16:51:02 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../includes/libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
+{
+	unsigned int	i;
 
-# define MAX_LONG	9223372036854775807
-
-int		ft_putstr_fd(char const *s, int fd);
-int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
-char	*ft_strdup(char *src);
-int		ft_strchr(const char *s, int c);
-int		ft_strlen(const char *str);
-
-#endif
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}

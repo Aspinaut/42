@@ -1,11 +1,10 @@
 #!/bin/bash
 
-SRCS =	ft_atoi.c	\
-		ft_atol.c	\
-		ft_isdigit.c	\
-		ft_putstr_fd.c	\
-		ft_split.c	\
-		ft_strlen.c	\
+SRCS =	ft_putstr_fd.c	\
+		ft_strdup.c		\
+		ft_strncmp.c	\
+		ft_strchr.c		\
+		ft_strlen.c		\
 
 OBJS = $(SRCS:.c=.o)
 

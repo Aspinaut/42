@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/04 16:01:24 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/04 16:25:57 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main(int argc, char **argv)
     t_game        	*game;
 	t_map			*map;
 	t_player		*player;
+	int width;
+	int height;
 
 	if (argc != 2 || !check_map(argv[1]))
 		return (EXIT_FAILURE);
@@ -29,8 +31,8 @@ int main(int argc, char **argv)
 	map = init_map(game, argv[1]);
 	if (!map)
 		return (EXIT_FAILURE);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, 500, 500);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, player->sprite->img_ptr, 500, 500);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, mlx_xpm_file_to_image(game->mlx_ptr, "./images/grass.xpm", &width, &height), 500, 500);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, mlx_xpm_file_to_image(game->mlx_ptr, "./images/player.xpm", &width, &height), 520, 520);
 	// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, player->sprite->img_ptr, game->player->sprite->x * TILE_WIDTH, game->player->sprite->y * TILE_HEIGHT);
 	(void)map;
 	(void)player;
