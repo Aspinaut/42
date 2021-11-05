@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/05 09:57:00 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/05 14:37:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct    s_game
 {
     void			*mlx_ptr;
     void			*win_ptr;
+	int				win_width;
+	int				win_height;
 	struct s_sprite	*sprites;
 	struct s_player	*player;
 	struct s_map	*map;
@@ -104,6 +106,7 @@ int check_used(char *is_used, char c);
 
 /* GAME */
 
-t_game *init_game();
+void	set_window_size(t_game *game, char *filename);
+t_game *init_game(char *filename);
 
 #endif

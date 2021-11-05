@@ -19,7 +19,8 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra 
+# CFLAGS += -Werror
 
 #linux : -lmlx -lXext -lX11
 # Mac : -framework OpenGL -framework AppKit
