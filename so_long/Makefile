@@ -24,10 +24,10 @@ CFLAGS = -Wall -Wextra -Werror
 #linux : -lmlx -lXext -lX11
 # Mac : -framework OpenGL -framework AppKit
 
-MLXFLAG = -lmlx -lXext -lX11
+MLXFLAG = -framework OpenGL -framework AppKit
 
 $(NAME): $(LIBFT) $(MLX) $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) $(MLXFLAG) -L./mlx -L./libft -lft -o $(NAME)
+	$(CC) -fsanitize=address $(CFLAGS) $(SRCS) $(MLXFLAG) $(MLX) -L./mlx -L./libft -lft -o $(NAME)
 
 all: $(NAME)
 

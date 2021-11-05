@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/04 18:22:04 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/05 09:57:00 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
+# include "../mlx/mlx_opengl.h"
 # include "./get_next_line.h"
 # include "./libft.h"
 # include <stdlib.h>
@@ -26,11 +27,11 @@
 # define TILE_WIDTH 		32
 # define TILE_HEIGHT 		32
 
-# define UP 		65362
-# define DOWN 		65364
-# define LEFT 		65361
-# define RIGHT 		65363
-# define ESCAPE 	65307
+# define UP 		126
+# define DOWN 		125
+# define LEFT 		123
+# define RIGHT 		124
+# define ESCAPE 	53
 
 typedef struct    s_sprite
 {
