@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 08:25:16 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/04 18:23:29 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/05 15:02:35 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strchr(const char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])

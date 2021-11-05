@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/04 18:32:00 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/05 16:47:03 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,9 +147,8 @@ t_map *init_map(t_game *game, char *filename)
 			{
 				map->sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
-				// segfault !!
-				// game->collectible->pos[0] = y;
-				// game->collectible->pos[1] = x;
+				map->sprite = init_sprite(game, "./images/alert.xpm", 32, 32);
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
 				// map->sprite = map->sprite->next;
 			}
 			else if (map->raw_map[y][x] == 'P')
