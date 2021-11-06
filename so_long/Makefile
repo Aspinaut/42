@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# linux : -lmlx -lXext -lX11
+# Mac : -framework OpenGL -framework AppKit
+
 SRCS =	srcs/main.c		\
 		srcs/player.c	\
 		srcs/map.c		\
@@ -11,7 +14,31 @@ SRCS =	srcs/main.c		\
 
 LIBFT = libft/libft.a
 
-MLX = mlx/libmlx.a
+# ------------  MAC --------------------------------------------------------------------------------------------
+# MLX = mlx/libmlx.a
+#
+# NAME = so_long
+#
+# RM = rm -f
+#
+# CC = gcc
+#
+# CFLAGS = -Wall -Wextra
+# # CFLAGS += -Werror
+#
+# MLXFLAG = -framework OpenGL -framework AppKit
+#
+# $(NAME): $(LIBFT) $(MLX) $(SRCS)
+# 	$(CC) $(CFLAGS) $(SRCS) $(MLXFLAG) $(MLX) -L./mlx -L./libft -lft -o $(NAME)
+#
+# all: $(NAME)
+#
+# $(MLX):
+# 	$(MAKE) -C ./mlx
+# --------------------------------------------------------------------------------------------------------------
+
+# ------------  LINUX ------------------------------------------------------------------------------------------
+MLX = mlx_linux/libmlx_Linux.a
 
 NAME = so_long
 
@@ -19,21 +46,19 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra 
-# CFLAGS += -Werror
+CFLAGS = -Wall -Wextra
+CFLAGS += -Werror
 
-#linux : -lmlx -lXext -lX11
-# Mac : -framework OpenGL -framework AppKit
-
-MLXFLAG = -framework OpenGL -framework AppKit
+MLXFLAG = -lmlx -lXext -lX11
 
 $(NAME): $(LIBFT) $(MLX) $(SRCS)
-	$(CC) -fsanitize=address $(CFLAGS) $(SRCS) $(MLXFLAG) $(MLX) -L./mlx -L./libft -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) $(MLXFLAG) $(MLX) -L./mlx_linux -L./libft -lft -o $(NAME)
 
 all: $(NAME)
 
 $(MLX):
-	$(MAKE) -C ./mlx
+	$(MAKE) -C ./mlx_linux
+# --------------------------------------------------------------------------------------------------------------
 
 $(LIBFT):
 	$(MAKE) -C ./libft

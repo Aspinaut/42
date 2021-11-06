@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/05 16:34:21 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/06 14:06:17 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_player	*init_player(t_game *game)
 	player = (t_player *)malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
-	player->sprite = init_sprite(game, "./images/player.xpm", \
+	player->sprite = init_sprite(game, "./images/player.xpm",
 		player->width, player->height);
 	player->collectibles = 0;
 	game->player = player;
@@ -52,21 +52,24 @@ void move_player(int kc, t_game *game)
 	if (kc == UP && check_tile(game, UP))
 	{
 		game->player->sprite->y--;
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player->sprite->img_ptr, game->player->sprite->x * TILE_WIDTH, game->player->sprite->y * TILE_HEIGHT);
+
 	}
 	else if (kc == DOWN && check_tile(game, DOWN))
 	{
 		game->player->sprite->y++;
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player->sprite->img_ptr, game->player->sprite->x * TILE_WIDTH, game->player->sprite->y * TILE_HEIGHT);
+
 	}
 	else if (kc == LEFT && check_tile(game, LEFT))
 	{
 		game->player->sprite->x--;
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player->sprite->img_ptr, game->player->sprite->x * TILE_WIDTH, game->player->sprite->y * TILE_HEIGHT);
+
 	}
 	else if (kc == RIGHT && check_tile(game, RIGHT))
 	{
 		game->player->sprite->x++;
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player->sprite->img_ptr, game->player->sprite->x * TILE_WIDTH, game->player->sprite->y * TILE_HEIGHT);
+
 	}
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		game->player->sprite->img_ptr, game->player->sprite->x * TILE_WIDTH,
+		game->player->sprite->y * TILE_HEIGHT);
 }
