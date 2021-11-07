@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/06 14:06:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/07 09:51:53 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_player	*init_player(t_game *game)
 	return (player);
 }
 
-int	check_tile(t_game *game, int move)
+int	check_next_tile(t_game *game, int move)
 {
 	if (move == UP && \
 		game->map->raw_map[game->player->sprite->y - 1][\
@@ -47,24 +47,29 @@ int	check_tile(t_game *game, int move)
 	return (1);
 }
 
+void	save_current_tile(t_game *game)
+{
+	(void)game;
+}
+
 void move_player(int kc, t_game *game)
 {
-	if (kc == UP && check_tile(game, UP))
+	if (kc == UP && check_next_tile(game, UP))
 	{
 		game->player->sprite->y--;
 
 	}
-	else if (kc == DOWN && check_tile(game, DOWN))
+	else if (kc == DOWN && check_next_tile(game, DOWN))
 	{
 		game->player->sprite->y++;
 
 	}
-	else if (kc == LEFT && check_tile(game, LEFT))
+	else if (kc == LEFT && check_next_tile(game, LEFT))
 	{
 		game->player->sprite->x--;
 
 	}
-	else if (kc == RIGHT && check_tile(game, RIGHT))
+	else if (kc == RIGHT && check_next_tile(game, RIGHT))
 	{
 		game->player->sprite->x++;
 

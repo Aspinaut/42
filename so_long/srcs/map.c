@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/05 16:47:03 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/07 09:54:59 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,27 @@ void add_raw_map(t_map *map, char *filename)
 	map->width = ft_strlen(map->raw_map[0]);
 }
 
+char *tile_char_to_path(char tile)
+{
+	char *path;
+
+	if (tile == '1')
+	{
+		path = "./images/mountain.xpm";
+	}
+	else if (tile == '0' ||
+		tile == 'C' ||
+		tile == 'P')
+	{
+		path = "./images/grass.xpm";
+	}
+	else if (tile == 'E')
+	{
+		path = "./images/exit.xpm";
+	}
+	return (path);
+}
+
 t_map *init_map(t_game *game, char *filename)
 {
 	t_map *map;
@@ -118,6 +139,8 @@ t_map *init_map(t_game *game, char *filename)
 	int y;
 
 	map = (t_map *)malloc(sizeof(t_map));
+	if (!map)
+		return (NULL);
 	add_raw_map(map, filename);
 	y = 0;
 	while (y < map->height)
@@ -125,39 +148,17 @@ t_map *init_map(t_game *game, char *filename)
 		x = 0;
 		while (x < map->width - 1)
 		{
-			if (map->raw_map[y][x] == '1')
+			map->sprite = init_sprite(game, tile_char_to_path(map->raw_map[y][x]), 32, 32);
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
+			if (map->raw_map[y][x] == 'C')
 			{
-				map->sprite = init_sprite(game, "./images/mountain.xpm", 32, 32);
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
-				// map->sprite = map->sprite->next;
-			}
-			else if (map->raw_map[y][x] == '0')
-			{
-				map->sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
-				// map->sprite = map->sprite->next;
-			}
-			else if (map->raw_map[y][x] == 'E')
-			{
-				map->sprite = init_sprite(game, "./images/exit.xpm", 32, 32);
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
-				// map->sprite = map->sprite->next;
-			}
-			else if (map->raw_map[y][x] == 'C')
-			{
-				map->sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
 				map->sprite = init_sprite(game, "./images/alert.xpm", 32, 32);
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
-				// map->sprite = map->sprite->next;
 			}
 			else if (map->raw_map[y][x] == 'P')
 			{
-				map->sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, map->sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
 				game->player->sprite->y = y;
 				game->player->sprite->x = x;
-				// map->sprite = map->sprite->next;
 			}
 			x++;
 		}

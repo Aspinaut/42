@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/06 13:45:58 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/07 09:51:38 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int			process_key_hook(int keycode, t_game *game);
 
 t_player	*init_player(t_game *game);
 void		move_player(int kc, t_game *game);
-int			check_tile(t_game *game, int move);
+int			check_next_tile(t_game *game, int move);
 
 /* SPRITES */
 
@@ -110,6 +110,7 @@ t_map		*init_map(t_game *game, char *filename);
 void		add_raw_map(t_map *map, char *filename);
 int			check_walls(char *s);
 int			check_used(char *is_used, char c);
+char *tile_char_to_path(char tile);
 
 /* GAME */
 
