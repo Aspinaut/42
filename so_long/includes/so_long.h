@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/07 09:51:38 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/07 10:27:40 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_player
 	int				width;
 	int				height;
 	int				collectibles;
-	struct s_sprite	*sprite;
+	t_sprite		*sprite;
 }					t_player;
 
 typedef struct s_game
@@ -81,10 +81,10 @@ typedef struct s_game
 	void			*win_ptr;
 	int				win_width;
 	int				win_height;
-	struct s_sprite	*sprites;
-	struct s_player	*player;
-	struct s_map	*map;
-	struct s_coll	*collectible;
+	t_sprite	*sprites;
+	t_player	player;
+	t_map		*map;
+	t_coll		*collectible;
 }					t_game;
 
 /* HOOKS */
@@ -93,7 +93,7 @@ int			process_key_hook(int keycode, t_game *game);
 
 /* PLAYER */
 
-t_player	*init_player(t_game *game);
+void 		init_player(t_game *game);
 void		move_player(int kc, t_game *game);
 int			check_next_tile(t_game *game, int move);
 
@@ -115,6 +115,6 @@ char *tile_char_to_path(char tile);
 /* GAME */
 
 void		set_window_size(t_game *game, char *filename);
-t_game		*init_game(char *filename);
+void		init_game(t_game *game, char *filename);
 
 #endif

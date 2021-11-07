@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:34:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/05 15:05:36 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/07 10:36:53 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,8 @@ void	set_window_size(t_game *game, char *filename)
 	close(fd);
 }
 
-t_game	*init_game(char *filename)
+void init_game(t_game *game, char *filename)
 {
-	t_game	*game;
-
-	game = (t_game *)malloc(sizeof(t_game));
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		exit(EXIT_FAILURE);
@@ -43,5 +40,6 @@ t_game	*init_game(char *filename)
 		game->win_height * TILE_HEIGHT, "So long");
 	if (!game->win_ptr)
 		exit(EXIT_FAILURE);
-	return (game);
+	init_player(game);
+	init_map(game, filename);
 }

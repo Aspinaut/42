@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/07 09:54:59 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/07 10:28:11 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int check_map(char *filename)
 	{
 		if (ft_strchr(s, 'E') && !check_used(is_used, 'E'))
 			is_used[i++] = 'E';
-		if (ft_strchr(s, 'P') && !check_used(is_used, 'P'))
+		else if (ft_strchr(s, 'P') && !check_used(is_used, 'P'))
 			is_used[i++] = 'P';
-		if (ft_strchr(s, 'C') && !check_used(is_used, 'C'))
+		else if (ft_strchr(s, 'C') && !check_used(is_used, 'C'))
 			is_used[i++] = 'C';
 		if (s[0] && s[ft_strlen(s) - 2] != '1')
 			return (0);
@@ -157,8 +157,8 @@ t_map *init_map(t_game *game, char *filename)
 			}
 			else if (map->raw_map[y][x] == 'P')
 			{
-				game->player->sprite->y = y;
-				game->player->sprite->x = x;
+				game->player.sprite->y = y;
+				game->player.sprite->x = x;
 			}
 			x++;
 		}
