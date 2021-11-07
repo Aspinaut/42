@@ -9,6 +9,7 @@ SRCS =	srcs/main.c		\
 		srcs/hooks.c		\
 		srcs/sprites.c		\
 		srcs/game.c		\
+		srcs/check.c		\
 		get_next_line/get_next_line.c		\
 		get_next_line/get_next_line_utils.c		\
 

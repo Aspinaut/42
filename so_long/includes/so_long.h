@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/07 10:27:40 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/07 12:44:22 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define DOWN 		65364
 # define LEFT 		65361
 # define RIGHT 		65363
-# define ESCAPE 	53
+# define ESCAPE 	65307
 
 /* ------------- MAC ----------------------------------
 # define UP 		126
@@ -59,12 +59,12 @@ typedef struct s_map
 	int				height;
 	/* attentio à free à la fin !!!!! */
 	char			**raw_map;
-	struct s_sprite	*sprite;
+	t_sprite		*sprite;
 }					t_map;
 
 typedef struct s_coll
 {
-	struct s_sprite	*sprite;
+	t_sprite		*sprite;
 }					t_coll;
 
 typedef struct s_player
@@ -72,6 +72,7 @@ typedef struct s_player
 	int				width;
 	int				height;
 	int				collectibles;
+	int				dir;
 	t_sprite		*sprite;
 }					t_player;
 
@@ -81,10 +82,10 @@ typedef struct s_game
 	void			*win_ptr;
 	int				win_width;
 	int				win_height;
-	t_sprite	*sprites;
-	t_player	player;
-	t_map		*map;
-	t_coll		*collectible;
+	t_player		player;
+	t_map			map;
+	t_sprite		*sprites;
+	t_coll			*collectible;
 }					t_game;
 
 /* HOOKS */
@@ -94,7 +95,7 @@ int			process_key_hook(int keycode, t_game *game);
 /* PLAYER */
 
 void 		init_player(t_game *game);
-void		move_player(int kc, t_game *game);
+void		move_player(t_game *game);
 int			check_next_tile(t_game *game, int move);
 
 /* SPRITES */
@@ -105,16 +106,18 @@ void		rewind_sprites(t_game *game);
 
 /* MAP */
 
-int			check_map(char *filename);
-t_map		*init_map(t_game *game, char *filename);
+void		init_map(t_game *game, char *filename);
 void		add_raw_map(t_map *map, char *filename);
-int			check_walls(char *s);
-int			check_used(char *is_used, char c);
-char *tile_char_to_path(char tile);
+char		*tile_char_to_path(char tile);
 
-/* GAME */
+/* INIT */
 
 void		set_window_size(t_game *game, char *filename);
 void		init_game(t_game *game, char *filename);
+
+/* CHECK */
+int			check_map(char *filename);
+int			check_walls(char *s);
+int			check_used(char *is_used, char c);
 
 #endif
