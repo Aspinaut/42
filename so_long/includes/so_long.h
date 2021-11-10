@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/07 12:44:22 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/10 13:14:33 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@
 # define TILE_HEIGHT 		32
 
 /* ------------- Linux --------------------------------
-*/
 # define UP 		65362
 # define DOWN 		65364
 # define LEFT 		65361
 # define RIGHT 		65363
 # define ESCAPE 	65307
+*/
 
 /* ------------- MAC ----------------------------------
+*/
 # define UP 		126
 # define DOWN 		125
 # define LEFT 		123
 # define RIGHT 		124
 # define ESCAPE 	53
-*/
 
 typedef struct s_sprite
 {
@@ -95,7 +95,7 @@ int			process_key_hook(int keycode, t_game *game);
 /* PLAYER */
 
 void 		init_player(t_game *game);
-void		move_player(t_game *game);
+void		move_player(int kc, t_game *game);
 int			check_next_tile(t_game *game, int move);
 
 /* SPRITES */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/07 13:08:57 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/10 14:09:06 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ int start_game(t_game	*game)
 {
 	if (game->win_ptr)
 	{
+		// printf("%d %d\n", game->player.sprite->y, game->player.sprite->x);
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player.sprite->img_ptr, game->player.sprite->x * TILE_WIDTH, game->player.sprite->y * TILE_HEIGHT);
-		move_player(game);
 	}
 	return (1);
 }
-
-
 
 int main(int argc, char **argv)
 {
