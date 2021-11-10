@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/10 13:14:33 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/10 14:39:13 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_game
 	void			*win_ptr;
 	int				win_width;
 	int				win_height;
+	int				collectibles;
 	t_player		player;
 	t_map			map;
 	t_sprite		*sprites;
@@ -95,8 +96,9 @@ int			process_key_hook(int keycode, t_game *game);
 /* PLAYER */
 
 void 		init_player(t_game *game);
-void		move_player(int kc, t_game *game);
+void		check_collectibles(t_game *game, int move);
 int			check_next_tile(t_game *game, int move);
+void		move_player(int kc, t_game *game);
 
 /* SPRITES */
 

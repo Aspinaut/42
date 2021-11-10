@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/10 12:12:51 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/10 14:22:40 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	init_map(t_game *game, char *filename)
 			if (game->map.raw_map[y][x] == 'C')
 			{
 				game->map.sprite = init_sprite(game, "./images/alert.xpm", 32, 32);
+				game->collectibles++;
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->map.sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
 			}
 			else if (game->map.raw_map[y][x] == 'P')

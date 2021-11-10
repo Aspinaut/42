@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/10 14:09:06 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/10 14:11:22 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int start_game(t_game	*game)
 {
 	if (game->win_ptr)
 	{
-		// printf("%d %d\n", game->player.sprite->y, game->player.sprite->x);
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player.sprite->img_ptr, game->player.sprite->x * TILE_WIDTH, game->player.sprite->y * TILE_HEIGHT);
 	}
 	return (1);

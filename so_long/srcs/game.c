@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:34:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/07 10:55:07 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/10 14:23:19 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void init_game(t_game *game, char *filename)
 		game->win_height * TILE_HEIGHT, "So long");
 	if (!game->win_ptr)
 		exit(EXIT_FAILURE);
+	game->collectibles = 0;
 	init_player(game);
 	init_map(game, filename);
 }
