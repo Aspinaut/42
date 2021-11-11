@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:50:48 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/07 12:13:19 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/10 15:51:26 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int check_used(char *is_used, char c)
 	int i;
 
 	i = 0;
-	while (is_used[i])
+	while (is_used && is_used[i])
 	{
 		if (is_used[i] == c)
 			return (1);

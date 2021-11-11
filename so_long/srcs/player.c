@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/10 14:39:36 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/11 15:31:49 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,29 @@ void init_player(t_game *game)
 	game->player.sprite = init_sprite(game, "./images/player.xpm",
 		game->player.width, game->player.height);
 	game->player.collectibles = 0;
-	game->player.dir = 0;
+	game->player.moves = -1;
 }
 
 void	check_collectibles(t_game *game, int move)
 {
 	if (game->player.collectibles == game->collectibles)
 	{
-		if (move == UP &&
-			game->map.raw_map[game->player.sprite->y - 1]
-			[game->player.sprite->x] == 'E')
-				exit(EXIT_FAILURE);
-		else if (move == DOWN &&
-			game->map.raw_map[game->player.sprite->y + 1]
-			[game->player.sprite->x] == 'E')
-				exit(EXIT_FAILURE);
-		else if (move == LEFT &&
-			game->map.raw_map[game->player.sprite->y]
-			[game->player.sprite->x - 1] == 'E')
-				exit(EXIT_FAILURE);
-		else if (move == RIGHT &&
-			game->map.raw_map[game->player.sprite->y]
-			[game->player.sprite->x + 1] == 'E')
-				exit(EXIT_FAILURE);
+		if ((move == UP &&
+				game->map.raw_map[game->player.sprite->y - 1]
+				[game->player.sprite->x] == 'E') || 
+			(move == DOWN &&
+				game->map.raw_map[game->player.sprite->y + 1]
+				[game->player.sprite->x] == 'E') ||
+			(move == LEFT &&
+				game->map.raw_map[game->player.sprite->y]
+				[game->player.sprite->x - 1] == 'E') ||
+			(move == RIGHT &&
+				game->map.raw_map[game->player.sprite->y]
+				[game->player.sprite->x + 1] == 'E'))
+		{
+			print_moves(game);
+			exit(EXIT_FAILURE);
+		}
 	}
 }
 
@@ -90,4 +90,7 @@ void move_player(int kc, t_game *game)
 		game->player.sprite->x--;
 	else if (kc == RIGHT && check_next_tile(game, RIGHT))
 		game->player.sprite->x++;
+	else 
+		return ;
+	print_moves(game);
 }

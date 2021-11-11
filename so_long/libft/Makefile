@@ -5,6 +5,7 @@ SRCS =	ft_putstr_fd.c	\
 		ft_strncmp.c	\
 		ft_strchr.c		\
 		ft_strlen.c		\
+		ft_itoa.c		\
 
 OBJS = $(SRCS:.c=.o)
 

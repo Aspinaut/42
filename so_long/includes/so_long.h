@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/10 14:39:13 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/11 15:23:03 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_player
 	int				width;
 	int				height;
 	int				collectibles;
-	int				dir;
+	int				moves;
 	t_sprite		*sprite;
 }					t_player;
 
@@ -121,5 +121,8 @@ void		init_game(t_game *game, char *filename);
 int			check_map(char *filename);
 int			check_walls(char *s);
 int			check_used(char *is_used, char c);
+
+/* PRINT */
+void		print_moves(t_game *game);
 
 #endif
