@@ -28,7 +28,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra
 CFLAGS += -Werror
 # CFLAGS += -g
-# CFLAGS += -fsanitize=address
+CFLAGS += -fsanitize=address
 
 MLXFLAG = -framework OpenGL -framework AppKit
 
