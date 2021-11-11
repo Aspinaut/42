@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:34:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/11 15:24:07 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/11 16:11:02 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_window_size(t_game *game, char *filename)
 	close(fd);
 }
 
-void init_game(t_game *game, char *filename)
+void	init_game(t_game *game, char *filename)
 {
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)

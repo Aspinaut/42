@@ -6,15 +6,15 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:50:48 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/10 15:51:26 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/11 16:11:43 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int check_used(char *is_used, char c)
+int	check_used(char *is_used, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (is_used && is_used[i])
@@ -26,9 +26,9 @@ int check_used(char *is_used, char c)
 	return (0);
 }
 
-int check_walls(char *s)
+int	check_walls(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i] != '\n' && s[i] != '\0')
@@ -40,14 +40,14 @@ int check_walls(char *s)
 	return (1);
 }
 
-int check_map(char *filename)
+int	check_map(char *filename)
 {
-	int fd;
-	char *s;
-	char *s_buff;
-	char is_used[3];
-	int i;
-	int len;
+	char	*s;
+	char	*s_buff;
+	char	is_used[3];
+	int		i;
+	int		fd;
+	int		len;
 
 	// pas oublier de free et return "Error..." !!!
 	if (ft_strncmp((filename + ft_strlen(filename) - 4), ".ber", 4))

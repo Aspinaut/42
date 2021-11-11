@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/11 15:23:03 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/11 16:20:28 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void		rewind_sprites(t_game *game);
 void		init_map(t_game *game, char *filename);
 void		add_raw_map(t_map *map, char *filename);
 char		*tile_char_to_path(char tile);
+void		draw_map(t_game *game, int x, int y);
 
 /* INIT */
 
