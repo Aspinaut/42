@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/11 16:20:28 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/11 16:44:46 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void		init_game(t_game *game, char *filename);
 int			check_map(char *filename);
 int			check_walls(char *s);
 int			check_used(char *is_used, char c);
+int			check_other_chars(char *s);
 
 /* PRINT */
 void		print_moves(t_game *game);

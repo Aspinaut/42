@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:50:48 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/11 16:11:43 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/11 16:53:47 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	check_used(char *is_used, char c)
 	while (is_used && is_used[i])
 	{
 		if (is_used[i] == c)
+		{
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -34,6 +36,21 @@ int	check_walls(char *s)
 	while (s[i] != '\n' && s[i] != '\0')
 	{
 		if (s[i] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	check_other_chars(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i] != '\n' && s[i] != '\0')
+	{
+		if (s[i] != '0' && s[i] != '1'
+		&& s[i] != 'E' && s[i] != 'P' && s[i] != 'C')
 			return (0);
 		i++;
 	}
@@ -68,7 +85,7 @@ int	check_map(char *filename)
 			is_used[i++] = 'P';
 		if (ft_strchr(s, 'C') && !check_used(is_used, 'C'))
 			is_used[i++] = 'C';
-		if (s[0] && s[ft_strlen(s) - 2] != '1')
+		if ((s[0] && s[ft_strlen(s) - 2] != '1') || !check_other_chars(s))
 			return (0);
 		s = get_next_line(fd);
 		if (s)
@@ -77,7 +94,6 @@ int	check_map(char *filename)
 			if (!s_buff || ft_strlen(s_buff) != len)
 				return (0);
 		}
-		// pb = comment protéger gnl ??? a la fin il sera toujours null
 	}
 	if (!check_walls(s_buff))
 		return (0);
