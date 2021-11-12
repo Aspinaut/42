@@ -6,6 +6,8 @@ SRCS =	ft_putstr_fd.c	\
 		ft_strchr.c		\
 		ft_strlen.c		\
 		ft_itoa.c		\
+		ft_bzero.c		\
+		ft_calloc.c		\
 
 OBJS = $(SRCS:.c=.o)
 

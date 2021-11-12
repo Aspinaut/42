@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:50:48 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/11 18:06:57 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/12 11:19:37 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,33 +123,42 @@ int	check_lines_map(int fd, char *s, int len)
 
 	s_buff = NULL;
 	i = 0;
-	is_used = malloc((sizeof(char) * 3) + 1);
-	is_used[3] = 0;
+	is_used = ft_calloc(3, sizeof(char));
+	if (!is_used)
+		return (0);
 	while (s && s[0])
 	{
-		is_used = check_letters(s, is_used, &i);	
+		is_used = check_letters(s, is_used, &i);
 		if ((s[0] && s[ft_strlen(s) - 2] != '1') || !check_other_chars(s))
+		{
+			free(is_used);
 			return (0);
+		}
 		s = get_next_line(fd);
 		if (s)
 		{
 			s_buff = ft_strdup(s);
 			if (!s_buff)
+			{
+				free(is_used);
 				return (0);
+			}
 			if (ft_strlen(s_buff) != len)
 			{
+				free(is_used);
 				free(s_buff);
 				return (0);
-			}	
+			}
 		}
 	}
 	if (!check_walls(s_buff) || !check_used(is_used, 'E')
 	|| !check_used(is_used, 'P') || !check_used(is_used, 'C'))
 	{
+		free(is_used);
 		free(s_buff);
 		return (0);
 	}
-	
+	free(is_used);
 	free(s_buff);
 	return (1);
 }

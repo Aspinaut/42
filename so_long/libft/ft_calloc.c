@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 15:20:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/12 10:44:27 by vmasse           ###   ########.fr       */
+/*   Created: 2020/11/14 17:44:41 by vmasse            #+#    #+#             */
+/*   Updated: 2021/11/12 11:14:54 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/libft.h"
 
-void	print_moves(t_game *game)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	game->player.moves++;
-	write(1, ft_itoa(game->player.moves),
-		ft_strlen(ft_itoa(game->player.moves)));
-	write(1, "\n", 1);
+	void	*dest;
+
+	dest = malloc(nmemb * size);
+	if (!dest)
+		return (NULL);
+	ft_bzero(dest, nmemb * size);
+	return (dest);
 }

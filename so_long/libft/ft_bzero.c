@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 15:20:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/12 10:44:27 by vmasse           ###   ########.fr       */
+/*   Created: 2020/10/15 16:23:42 by vmasse            #+#    #+#             */
+/*   Updated: 2021/11/12 11:12:58 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/libft.h"
 
-void	print_moves(t_game *game)
+void	ft_bzero(void *s, size_t n)
 {
-	game->player.moves++;
-	write(1, ft_itoa(game->player.moves),
-		ft_strlen(ft_itoa(game->player.moves)));
-	write(1, "\n", 1);
+	size_t	i;
+	char	*buffer;
+
+	buffer = (char *)s;
+	i = 0;
+	while (i < n)
+	{
+		buffer[i] = '\0';
+		i++;
+	}
+	s = (void *)buffer;
 }
