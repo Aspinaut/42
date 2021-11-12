@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:34:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/11 16:11:02 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/12 12:16:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,13 @@ void	init_game(t_game *game, char *filename)
 	init_player(game);
 	print_moves(game);
 	init_map(game, filename);
+}
+
+int start_game(t_game	*game)
+{
+	if (game->win_ptr)
+	{
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player.sprite->img_ptr, game->player.sprite->x * TILE_WIDTH, game->player.sprite->y * TILE_HEIGHT);
+	}
+	return (1);
 }

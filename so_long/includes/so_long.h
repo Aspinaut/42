@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/12 10:56:20 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/12 12:19:22 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,18 +113,28 @@ void		add_raw_map(t_map *map, char *filename);
 char		*tile_char_to_path(char tile);
 void		draw_map(t_game *game, int x, int y);
 
-/* INIT */
+/* GAME */
 
 void		set_window_size(t_game *game, char *filename);
 void		init_game(t_game *game, char *filename);
+int			start_game(t_game	*game);
 
-/* CHECK */
-int			check_map(char *filename);
+/* CHECK_UTILS */
+
 int			check_walls(char *s);
 int			check_used(char *is_used, char c);
 int			check_other_chars(char *s);
+char		*check_letters(char *s, char *tab, int *i);
+int			str_free(int ret, char *s1, char *s2, char *s3);
+
+/* CHECK */
+
+int			check_map(char *filename);
+int			check_lines_map(int fd, char *s, int len);
+int			init_check_map_vars(char **is_used, char **s_buff, int *i);
 
 /* PRINT */
+
 void		print_moves(t_game *game);
 
 #endif

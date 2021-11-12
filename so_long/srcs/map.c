@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/12 11:05:26 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/12 12:18:05 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	add_raw_map(t_map *map, char *filename)
 
 	height = 0;
 	fd = open(filename, O_RDONLY);
-	// remplacer 1000 par ???
 	map->raw_map = (char **)malloc(sizeof(char *) * 1000);
 	map->raw_map[height] = get_next_line(fd);
 	while (map->raw_map[height] && map->raw_map[height][0])
