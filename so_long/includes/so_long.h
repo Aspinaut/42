@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/12 12:19:22 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/12 12:38:17 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_game
 /* HOOKS */
 
 int			process_key_hook(int keycode, t_game *game);
+int			close_window(t_game *game);
 
 /* PLAYER */
 
