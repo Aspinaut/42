@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:34:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/13 17:44:12 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/15 11:47:29 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,11 @@ void	init_game(t_game *game, char *filename)
 
 int start_game(t_game	*game)
 {
-	char	*moves;
-
-	moves = malloc((sizeof(char) * 5) + 1);
-	if (!moves)
-		return (0);
 	if (game->win_ptr)
 	{
-		moves = "Moves : ";
-		// chopper la taille de lecran pour la pos de string put
-		// pb = comment supprimer lancien string put ?
-		mlx_string_put(game->mlx_ptr, game->win_ptr, 10, 10, 0x00FF0000,
-		       ft_strcat(moves, ft_itoa(game->player.moves)));
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->player.sprite->img_ptr, game->player.sprite->x * TILE_WIDTH,
 			game->player.sprite->y * TILE_HEIGHT);
 	}
-	free(moves);
 	return (1);
 }
