@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:34:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/15 11:47:29 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/18 12:31:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	set_window_size(t_game *game, char *filename)
 	while (s && s[0])
 	{
 		game->win_height++;
+		free(s);
 		s = get_next_line(fd);
 	}
 	free(s);
@@ -36,7 +37,7 @@ void	init_game(t_game *game, char *filename)
 	if (!game->mlx_ptr)
 		exit(EXIT_FAILURE);
 	set_window_size(game, filename);
-	game->win_ptr = mlx_new_window(game->mlx_ptr, game->win_width * TILE_WIDTH, \
+	game->win_ptr = mlx_new_window(game->mlx_ptr, game->win_width * TILE_WIDTH,
 		game->win_height * TILE_HEIGHT, "So long");
 	if (!game->win_ptr)
 		exit(EXIT_FAILURE);

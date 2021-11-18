@@ -6,11 +6,45 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/12 12:35:32 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/18 12:13:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int	exit_game(t_game *game)
+{
+	// mlx_destroy_image(game->mlx_ptr, );
+	/* code */
+	ft_free(game);
+	return (0);
+}
+
+void	ft_free(t_game *game)
+{
+	t_sprite	*sprite;
+	t_sprite	*player;
+	// int			i;
+
+	while (game->map.sprite)
+	{
+		sprite = game->map.sprite;
+		game->map.sprite = game->map.sprite->next;
+		free(sprite);
+	}
+	while (game->player.sprite)
+	{
+		player = game->player.sprite;
+		game->player.sprite = game->player.sprite->next;
+		free(player);
+	}
+	// i = 0;
+	// while (game->map.raw_map[i])
+	// {
+	// 	free(game->map.raw_map[i++]);
+	// }
+	// free(game->map.raw_map);
+}
 
 int	main(int argc, char **argv)
 {

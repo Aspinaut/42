@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/12 11:06:36 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/18 11:17:29 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	check_collectibles(t_game *game, int move)
 				[game->player.sprite->x + 1] == 'E'))
 		{
 			print_moves(game);
-			exit(EXIT_FAILURE);
+			exit(EXIT_SUCCESS);
 		}
 	}
 }
@@ -67,6 +67,7 @@ int	check_next_tile(t_game *game, int move)
 
 void	update_background(t_game *game)
 {
+	game->map.sprite->prev = game->map.sprite;
 	game->map.sprite = game->map.sprite->next;
 	if (game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == '0'

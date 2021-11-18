@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/15 11:44:35 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/18 12:14:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,6 @@ typedef struct s_map
 	t_sprite		*sprite;
 }					t_map;
 
-typedef struct s_coll
-{
-	t_sprite		*sprite;
-}					t_coll;
-
 typedef struct s_player
 {
 	int				width;
@@ -86,7 +81,6 @@ typedef struct s_game
 	t_player		player;
 	t_map			map;
 	t_sprite		*sprites;
-	t_coll			*collectible;
 }					t_game;
 
 /* HOOKS */
@@ -137,5 +131,8 @@ int			init_check_map_vars(char **is_used, char **s_buff, int *i);
 /* PRINT */
 
 void		print_moves(t_game *game);
+
+int	exit_game(t_game *game);
+void	ft_free(t_game *game);
 
 #endif
