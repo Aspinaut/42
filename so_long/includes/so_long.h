@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/18 14:45:49 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 12:23:52 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,11 @@ typedef struct s_map
 	int				height;
 	/* attentio à free à la fin !!!!! */
 	char			**raw_map;
-	t_sprite		*sprite;
+	t_sprite		*grass;
+	t_sprite		*exit;
+	t_sprite		*mountain;
+	t_sprite		*collectible;
+	// t_sprite		*sprite;
 }					t_map;
 
 typedef struct s_player
@@ -106,7 +110,7 @@ void		rewind_sprites(t_game *game);
 void		init_map(t_game *game, char *filename);
 void		add_raw_map(t_map *map, char *filename);
 char		*tile_char_to_path(char tile);
-void		draw_map(t_game *game, int x, int y);
+void		draw_map(t_game *game, int x, int y, t_sprite *sprite);
 
 /* GAME */
 
@@ -132,7 +136,7 @@ int			init_check_map_vars(char **is_used, char **s_buff, int *i);
 
 void		print_moves(t_game *game);
 
-int	exit_game(t_game *game);
+void	exit_game(t_game *game);
 void	ft_free(t_game *game);
 
 #endif

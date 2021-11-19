@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/18 11:17:29 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 12:09:17 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,30 @@ int	check_next_tile(t_game *game, int move)
 
 void	update_background(t_game *game)
 {
-	game->map.sprite->prev = game->map.sprite;
-	game->map.sprite = game->map.sprite->next;
+	t_sprite	*sprite;
+
+	// game->map.sprite->prev = game->map.sprite;
+	// game->map.sprite = game->map.sprite->next;
 	if (game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == '0'
 		|| game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == 'P')
-		game->map.sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
+		sprite = game->map.grass;
+		// game->map.sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
 	else if (game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == 'E')
-		game->map.sprite = init_sprite(game, "./images/exit.xpm", 32, 32);
+		sprite = game->map.exit;
+		// game->map.sprite = init_sprite(game, "./images/exit.xpm", 32, 32);
 	else if (game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == 'C')
 	{
-		game->map.sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
+		sprite = game->map.grass;
+		// game->map.sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
 		game->map.raw_map[game->player.sprite->y][game->player.sprite->x] = '0';
 		game->player.collectibles++;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		game->map.sprite->img_ptr, game->player.sprite->x * TILE_WIDTH,
+		sprite->img_ptr, game->player.sprite->x * TILE_WIDTH,
 		game->player.sprite->y * TILE_HEIGHT);
 }
 

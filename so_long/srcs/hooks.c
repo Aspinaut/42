@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:04:56 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/18 12:14:49 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 12:24:25 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	process_key_hook(int kc, t_game *game)
 {
 	if (kc == ESCAPE)
-	// return (exit_game(game));
-		exit(EXIT_FAILURE);
+		exit_game(game);
+		// exit(EXIT_FAILURE);
 	else if (kc == UP || kc == DOWN || kc == LEFT || kc == RIGHT)
 		move_player(kc, game);
 	return (1);

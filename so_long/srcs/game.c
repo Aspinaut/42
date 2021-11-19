@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:34:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/18 12:31:23 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 12:13:06 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	init_game(t_game *game, char *filename)
 		exit(EXIT_FAILURE);
 	game->collectibles = 0;
 	init_player(game);
-	print_moves(game);
 	init_map(game, filename);
+	print_moves(game);
 }
 
 int start_game(t_game	*game)
