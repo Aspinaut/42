@@ -6,23 +6,23 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:06:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 15:17:49 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 16:30:19 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	last_sprite(t_game *game)
-{
-	while (game->sprites && game->sprites->next)
-		game->sprites = game->sprites->next;
-}
-
-void	rewind_sprites(t_game *game)
-{
-	while (game->sprites && game->sprites->prev)
-		game->sprites = game->sprites->prev;
-}
+//
+// void	last_sprite(t_game *game)
+// {
+// 	while (game->sprites && game->sprites->next)
+// 		game->sprites = game->sprites->next;
+// }
+//
+// void	rewind_sprites(t_game *game)
+// {
+// 	while (game->sprites && game->sprites->prev)
+// 		game->sprites = game->sprites->prev;
+// }
 
 t_sprite	*init_sprite(t_game *game, char *path, int width, int height)
 {
@@ -40,7 +40,7 @@ t_sprite	*init_sprite(t_game *game, char *path, int width, int height)
 	if (!sprite->img_ptr)
 		exit_game(game, "Sprite creation failed...\n");
 
-	sprite->next = NULL;
+	// sprite->next = NULL;
 	// if (!game->sprites)
 	// {
 	// 	sprite->prev = NULL;

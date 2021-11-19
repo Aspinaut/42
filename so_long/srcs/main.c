@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 15:49:37 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 16:28:22 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ void	ft_free(t_game *game)
 		free(game->map.raw_map[i++]);
 	}
 	free(game->map.raw_map);
-	free(game->map.mountain);
-	free(game->map.grass);
-	free(game->map.exit);
-	free(game->map.collectible);
-	free(game->player.sprite);
+	mlx_destroy_image(game->mlx_ptr, game->map.mountain->img_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->map.grass->img_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->map.exit->img_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->map.collectible->img_ptr);
+	mlx_destroy_image(game->mlx_ptr, game->player.sprite->img_ptr);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	// free(game->mlx_ptr);
+	// free(game->win_ptr);
 }
 
 int	main(int argc, char **argv)

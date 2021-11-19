@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 15:11:20 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 16:33:49 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ typedef struct s_sprite
 	int					y;
 	int					width;
 	int					height;
-	struct s_sprite		*prev;
-	struct s_sprite		*next;
+	// struct s_sprite		*prev;
+	// struct s_sprite		*next;
 }						t_sprite;
 
 typedef struct s_map
@@ -84,7 +84,7 @@ typedef struct s_game
 	int				collectibles;
 	t_player		player;
 	t_map			map;
-	t_sprite		*sprites;
+	// t_sprite		*sprites;
 }					t_game;
 
 /* HOOKS */
@@ -109,7 +109,7 @@ void		rewind_sprites(t_game *game);
 
 void		init_map(t_game *game, char *filename);
 void		add_raw_map(t_map *map, char *filename);
-char		*tile_char_to_path(char tile);
+// char		*tile_char_to_path(char tile);
 void		draw_map(t_game *game, int x, int y, t_sprite *sprite);
 
 /* GAME */

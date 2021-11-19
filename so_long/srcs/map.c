@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 15:42:38 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 16:33:32 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@ void	add_raw_map(t_map *map, char *filename)
 	map->width = ft_strlen(map->raw_map[0]);
 }
 
-char	*tile_char_to_path(char tile)
-{
-	char	*path;
-
-	path = NULL;
-	if (tile == '1')
-	{
-		path = "./images/mountain.xpm";
-	}
-	else if (tile == '0' || tile == 'C' || tile == 'P')
-	{
-		path = "./images/grass.xpm";
-	}
-	else if (tile == 'E')
-	{
-		path = "./images/exit.xpm";
-	}
-	return (path);
-}
+// char	*tile_char_to_path(char tile)
+// {
+// 	char	*path;
+//
+// 	path = NULL;
+// 	if (tile == '1')
+// 	{
+// 		path = "./images/mountain.xpm";
+// 	}
+// 	else if (tile == '0' || tile == 'C' || tile == 'P')
+// 	{
+// 		path = "./images/grass.xpm";
+// 	}
+// 	else if (tile == 'E')
+// 	{
+// 		path = "./images/exit.xpm";
+// 	}
+// 	return (path);
+// }
 
 void	draw_map(t_game *game, int x, int y, t_sprite *sprite)
 {
@@ -82,9 +82,17 @@ void	init_map(t_game *game, char *filename)
 
 	add_raw_map(&game->map, filename);
 	game->map.grass = init_sprite(game, "./images/grass.xpm", 32, 32);
+	if (!game->map.grass)
+		exit_game(game, "Grass sprite init failed\n");
 	game->map.mountain = init_sprite(game, "./images/mountain.xpm", 32, 32);
+	if (!game->map.mountain)
+		exit_game(game, "Mountain sprite init failed\n");
 	game->map.exit = init_sprite(game, "./images/exit.xpm", 32, 32);
+	if (!game->map.exit)
+		exit_game(game, "Exit sprite init failed\n");
 	game->map.collectible = init_sprite(game, "./images/alert.xpm", 32, 32);
+	if (!game->map.collectible)
+		exit_game(game, "Coll. sprite init failed\n");
 	y = 0;
 	while (y < game->map.height)
 	{

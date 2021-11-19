@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 15:46:21 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 16:25:03 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	check_collectibles(t_game *game, int move)
 				[game->player.sprite->x + 1] == 'E'))
 		{
 			print_moves(game);
-			exit_game(game, "WELL PLAY !\n");
+			exit_game(game, "WELL PLAYED !\n");
 		}
 	}
 }
