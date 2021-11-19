@@ -6,11 +6,19 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:50:48 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/12 12:14:52 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 11:02:52 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int	final_check(char *s_buff, char *is_used)
+{
+	if (!check_walls(s_buff) || !check_used(is_used, 'E')
+		|| !check_used(is_used, 'P') || !check_used(is_used, 'C'))
+		return (0);
+	return (1);
+}
 
 int	init_check_map_vars(char **is_used, char **s_buff, int *i)
 {
@@ -34,21 +42,21 @@ int	check_lines_map(int fd, char *s, int len)
 	{
 		is_used = check_letters(s, is_used, &i);
 		if ((s[0] && s[ft_strlen(s) - 2] != '1') || !check_other_chars(s))
-			return (str_free(0, is_used, s_buff, NULL));
+			return (str_free(fd, is_used, s_buff, s));
+		free(s);
 		s = get_next_line(fd);
 		if (s)
 		{
+			if (s_buff)
+				free(s_buff);
 			s_buff = ft_strdup(s);
-			if (!s_buff)
-				return (str_free(0, is_used, NULL, NULL));
-			if (ft_strlen(s_buff) != len)
-				return (str_free(0, is_used, s_buff, NULL));
+			if (!s_buff || ft_strlen(s_buff) != len)
+				return (str_free(fd, is_used, s_buff, s));
 		}
 	}
-	if (!check_walls(s_buff) || !check_used(is_used, 'E')
-		|| !check_used(is_used, 'P') || !check_used(is_used, 'C'))
-		return (str_free(0, is_used, s_buff, NULL));
-	return (str_free(1, is_used, s_buff, NULL));
+	if (!final_check(s_buff, is_used))
+		return (str_free(0, is_used, s_buff, s));
+	return (str_free(1, is_used, s_buff, s));
 }
 
 int	check_map(char *filename)
@@ -66,9 +74,10 @@ int	check_map(char *filename)
 	if (!s)
 		return (0);
 	len = ft_strlen(s);
-	if (!check_walls(s) || !check_lines_map(fd, s, len))
-		return (str_free(0, s, NULL, NULL));
-	free(s);
+	if (!check_walls(s))
+		return (str_free(fd, NULL, NULL, s));
+	if (!check_lines_map(fd, s, len))
+		return (0);
 	close(fd);
 	return (1);
 }

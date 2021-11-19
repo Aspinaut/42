@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 11:46:43 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/12 12:15:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 10:50:14 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,15 @@ int	str_free(int ret, char *s1, char *s2, char *s3)
 		free(s1);
 	if (s2)
 		free(s2);
+	if (s3 && ret != 1 && ret != 0)
+	{
+		while (s3)
+		{
+			free(s3);
+			s3 = get_next_line(ret);
+		}
+		return (0);
+	}
 	if (s3)
 		free(s3);
 	return (ret);
