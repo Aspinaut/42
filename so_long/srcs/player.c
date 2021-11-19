@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 12:09:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 15:46:21 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	init_player(t_game *game)
 {
 	game->player.sprite = init_sprite(game, "./images/player.xpm",
 			game->player.width, game->player.height);
+	if (!game->player.sprite)
+		exit_game(game, "Player sprite failed to init...\n");
 	game->player.collectibles = 0;
 	game->player.moves = -1;
 }
@@ -38,7 +40,7 @@ void	check_collectibles(t_game *game, int move)
 				[game->player.sprite->x + 1] == 'E'))
 		{
 			print_moves(game);
-			exit(EXIT_SUCCESS);
+			exit_game(game, "WELL PLAY !\n");
 		}
 	}
 }

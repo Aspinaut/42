@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 12:23:52 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 15:11:20 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int			init_check_map_vars(char **is_used, char **s_buff, int *i);
 
 void		print_moves(t_game *game);
 
-void	exit_game(t_game *game);
+void	exit_game(t_game *game, char *msg);
 void	ft_free(t_game *game);
 
 #endif

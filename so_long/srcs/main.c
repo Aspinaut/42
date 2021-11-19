@@ -6,38 +6,25 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 12:23:45 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 15:49:37 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	exit_game(t_game *game)
+void	exit_game(t_game *game, char *msg)
 {
-	// mlx_destroy_image(game->mlx_ptr, );
-	/* code */
+	ft_putstr_fd(msg, 2);
+	if (!game)
+		exit(EXIT_FAILURE);
 	ft_free(game);
 	exit(EXIT_SUCCESS);
 }
 
 void	ft_free(t_game *game)
 {
-	// t_sprite	*sprite;
-	// t_sprite	*player;
 	int			i;
 
-	// while (game->map.sprite)
-	// {
-	// 	sprite = game->map.sprite;
-	// 	game->map.sprite = game->map.sprite->next;
-	// 	free(sprite);
-	// }
-	// while (game->player.sprite)
-	// {
-	// 	player = game->player.sprite;
-	// 	game->player.sprite = game->player.sprite->next;
-	// 	free(player);
-	// }
 	i = 0;
 	while (game->map.raw_map[i])
 	{
@@ -48,6 +35,8 @@ void	ft_free(t_game *game)
 	free(game->map.grass);
 	free(game->map.exit);
 	free(game->map.collectible);
+	free(game->player.sprite);
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 }
 
 int	main(int argc, char **argv)
@@ -61,5 +50,6 @@ int	main(int argc, char **argv)
 	mlx_hook(game.win_ptr, 17, 1L << 17, close_window, &game);
 	mlx_loop_hook(game.mlx_ptr, start_game, &game);
 	mlx_loop(game.mlx_ptr);
-	return (EXIT_SUCCESS);
+	exit_game(&game, "Turning off...\n");
+	return (0);
 }

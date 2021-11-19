@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 12:18:33 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/19 15:42:38 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	add_raw_map(t_map *map, char *filename)
 	height = 0;
 	fd = open(filename, O_RDONLY);
 	map->raw_map = (char **)malloc(sizeof(char *) * 1000);
+	if (!map->raw_map)
+		exit_game(NULL, "Raw map malloc failed...\n");
 	map->raw_map[height] = get_next_line(fd);
 	while (map->raw_map[height] && map->raw_map[height][0])
 	{
