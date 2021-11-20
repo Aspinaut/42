@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 16:33:32 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/20 12:21:03 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,12 @@ void	add_raw_map(t_map *map, char *filename)
 	map->width = ft_strlen(map->raw_map[0]);
 }
 
-// char	*tile_char_to_path(char tile)
-// {
-// 	char	*path;
-//
-// 	path = NULL;
-// 	if (tile == '1')
-// 	{
-// 		path = "./images/mountain.xpm";
-// 	}
-// 	else if (tile == '0' || tile == 'C' || tile == 'P')
-// 	{
-// 		path = "./images/grass.xpm";
-// 	}
-// 	else if (tile == 'E')
-// 	{
-// 		path = "./images/exit.xpm";
-// 	}
-// 	return (path);
-// }
-
 void	draw_map(t_game *game, int x, int y, t_sprite *sprite)
 {
-	// game->map.sprite = init_sprite(game,
-	// 		tile_char_to_path(game->map.raw_map[y][x]), 32, 32);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
 	if (game->map.raw_map[y][x] == 'C')
 	{
-		// game->map.sprite = init_sprite(game,
-		// 		"./images/alert.xpm", 32, 32);
 		game->collectibles++;
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->map.collectible->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
@@ -78,7 +54,6 @@ void	init_map(t_game *game, char *filename)
 {
 	int	x;
 	int	y;
-	t_sprite	*sprite;
 
 	add_raw_map(&game->map, filename);
 	game->map.grass = init_sprite(game, "./images/grass.xpm", 32, 32);
@@ -99,13 +74,12 @@ void	init_map(t_game *game, char *filename)
 		x = 0;
 		while (x < game->map.width - 1)
 		{
-			if (game->map.raw_map[y][x] == '0')
-				sprite = game->map.grass;
+			if (game->map.raw_map[y][x] == '0' || game->map.raw_map[y][x] == 'C' || game->map.raw_map[y][x] == 'P')
+				draw_map(game, x, y, game->map.grass);
 			else if (game->map.raw_map[y][x] == '1')
-				sprite = game->map.mountain;
+				draw_map(game, x, y, game->map.mountain);
 			else if (game->map.raw_map[y][x] == 'E')
-				sprite = game->map.exit;
-			draw_map(game, x, y, sprite);
+				draw_map(game, x, y, game->map.exit);
 			x++;
 		}
 		y++;

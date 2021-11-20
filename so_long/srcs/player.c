@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 16:25:03 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/20 12:21:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,23 +71,18 @@ void	update_background(t_game *game)
 {
 	t_sprite	*sprite;
 
-	// game->map.sprite->prev = game->map.sprite;
-	// game->map.sprite = game->map.sprite->next;
 	if (game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == '0'
 		|| game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == 'P')
 		sprite = game->map.grass;
-		// game->map.sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
 	else if (game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == 'E')
 		sprite = game->map.exit;
-		// game->map.sprite = init_sprite(game, "./images/exit.xpm", 32, 32);
 	else if (game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == 'C')
 	{
 		sprite = game->map.grass;
-		// game->map.sprite = init_sprite(game, "./images/grass.xpm", 32, 32);
 		game->map.raw_map[game->player.sprite->y][game->player.sprite->x] = '0';
 		game->player.collectibles++;
 	}
