@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/20 12:21:18 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/20 14:49:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,29 @@ void	check_collectibles(t_game *game, int move)
 	}
 }
 
+void	check_enemy(t_game *game, int move)
+{
+	if (move == UP
+		&& game->map.raw_map[game->player.sprite->y - 1]
+		[game->player.sprite->x] == 'M')
+		exit_game(game, "You died...\n");
+	else if (move == DOWN
+		&& game->map.raw_map[game->player.sprite->y + 1]
+		[game->player.sprite->x] == 'M')
+		exit_game(game, "You died...\n");
+	else if (move == LEFT
+		&& game->map.raw_map[game->player.sprite->y]
+		[game->player.sprite->x - 1] == 'M')
+		exit_game(game, "You died...\n");
+	else if (move == RIGHT
+		&& game->map.raw_map[game->player.sprite->y]
+		[game->player.sprite->x + 1] == 'M')
+		exit_game(game, "You died...\n");
+}
+
 int	check_next_tile(t_game *game, int move)
 {
+	check_enemy(game, move);
 	if (move == UP
 		&& game->map.raw_map[game->player.sprite->y - 1]
 		[game->player.sprite->x] == '1')

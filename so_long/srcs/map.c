@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/20 12:21:03 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/20 14:45:17 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	add_raw_map(t_map *map, char *filename)
 
 	height = 0;
 	fd = open(filename, O_RDONLY);
+	if (!fd)
+		exit_game(NULL, "Failed to open file...\n");
 	map->raw_map = (char **)malloc(sizeof(char *) * 1000);
 	if (!map->raw_map)
 		exit_game(NULL, "Raw map malloc failed...\n");
@@ -33,7 +35,7 @@ void	add_raw_map(t_map *map, char *filename)
 	map->width = ft_strlen(map->raw_map[0]);
 }
 
-void	draw_map(t_game *game, int x, int y, t_sprite *sprite)
+void	draw_tile(t_game *game, int x, int y, t_sprite *sprite)
 {
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		sprite->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
@@ -48,6 +50,11 @@ void	draw_map(t_game *game, int x, int y, t_sprite *sprite)
 		game->player.sprite->y = y;
 		game->player.sprite->x = x;
 	}
+	else if (game->map.raw_map[y][x] == 'M')
+	{
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->map.enemy1->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
+	}
 }
 
 void	init_map(t_game *game, char *filename)
@@ -56,30 +63,19 @@ void	init_map(t_game *game, char *filename)
 	int	y;
 
 	add_raw_map(&game->map, filename);
-	game->map.grass = init_sprite(game, "./images/grass.xpm", 32, 32);
-	if (!game->map.grass)
-		exit_game(game, "Grass sprite init failed\n");
-	game->map.mountain = init_sprite(game, "./images/mountain.xpm", 32, 32);
-	if (!game->map.mountain)
-		exit_game(game, "Mountain sprite init failed\n");
-	game->map.exit = init_sprite(game, "./images/exit.xpm", 32, 32);
-	if (!game->map.exit)
-		exit_game(game, "Exit sprite init failed\n");
-	game->map.collectible = init_sprite(game, "./images/alert.xpm", 32, 32);
-	if (!game->map.collectible)
-		exit_game(game, "Coll. sprite init failed\n");
+	init_all_sprites(game);
 	y = 0;
 	while (y < game->map.height)
 	{
 		x = 0;
 		while (x < game->map.width - 1)
 		{
-			if (game->map.raw_map[y][x] == '0' || game->map.raw_map[y][x] == 'C' || game->map.raw_map[y][x] == 'P')
-				draw_map(game, x, y, game->map.grass);
+			if (game->map.raw_map[y][x] == '0' || game->map.raw_map[y][x] == 'C' || game->map.raw_map[y][x] == 'P' || game->map.raw_map[y][x] == 'M')
+				draw_tile(game, x, y, game->map.grass);
 			else if (game->map.raw_map[y][x] == '1')
-				draw_map(game, x, y, game->map.mountain);
+				draw_tile(game, x, y, game->map.mountain);
 			else if (game->map.raw_map[y][x] == 'E')
-				draw_map(game, x, y, game->map.exit);
+				draw_tile(game, x, y, game->map.exit);
 			x++;
 		}
 		y++;
