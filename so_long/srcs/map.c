@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/21 12:14:01 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:24:04 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ void	init_map(t_game *game, char *filename)
 		x = 0;
 		while (x < game->map.width - 1)
 		{
-			if (game->map.raw_map[y][x] == '0' || game->map.raw_map[y][x] == 'C' || game->map.raw_map[y][x] == 'P' || game->map.raw_map[y][x] == 'M')
+			if (game->map.raw_map[y][x] == '0' ||
+				game->map.raw_map[y][x] == 'C' ||
+				game->map.raw_map[y][x] == 'P' ||
+				game->map.raw_map[y][x] == 'M')
 				draw_tile(game, x, y, game->map.grass);
 			else if (game->map.raw_map[y][x] == '1')
 				draw_tile(game, x, y, game->map.mountain);
@@ -84,4 +87,28 @@ void	init_map(t_game *game, char *filename)
 		}
 		y++;
 	}
+}
+
+void	update_background(t_game *game)
+{
+	t_sprite	*sprite;
+
+	if (game->map.raw_map[game->player.sprite->y]
+		[game->player.sprite->x] == '0'
+		|| game->map.raw_map[game->player.sprite->y]
+		[game->player.sprite->x] == 'P')
+		sprite = game->map.grass;
+	else if (game->map.raw_map[game->player.sprite->y]
+		[game->player.sprite->x] == 'E')
+		sprite = game->map.exit;
+	else if (game->map.raw_map[game->player.sprite->y]
+		[game->player.sprite->x] == 'C')
+	{
+		sprite = game->map.grass;
+		game->map.raw_map[game->player.sprite->y][game->player.sprite->x] = '0';
+		game->player.collectibles++;
+	}
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		sprite->img_ptr, game->player.sprite->x * TILE_WIDTH,
+		game->player.sprite->y * TILE_HEIGHT);
 }

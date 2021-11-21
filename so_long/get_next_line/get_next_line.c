@@ -6,23 +6,26 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:44 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 09:58:20 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:42:34 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
 
-static	void	ft_free(char *s, char **sta, int fd)
+static	int	process_eol(char *line, char **temp, char **s, int fd)
 {
-	if (sta && fd)
-	{
-		free(sta[fd]);
-		sta[fd] = NULL;
-		return ;
-	}
-	if (s)
-		free(s);
-	s = NULL;
+	if (!line)
+		return (0);
+	*temp = ft_substr(s[fd], ft_strchr_pos(s[fd], '\n') + 1, \
+	ft_strlen(s[fd]) + 1);
+	if (!*temp)
+		return (0);
+	ft_free(*s, s, fd);
+	s[fd] = ft_strndup(*temp, ft_strlen(*temp));
+	if (!s[fd])
+		return (0);
+	ft_free(*temp, s, 0);
+	return (1);
 }
 
 static	char	*return_eof_or_eol(char **s, int fd, char *buffer, int eol)
@@ -37,17 +40,8 @@ static	char	*return_eof_or_eol(char **s, int fd, char *buffer, int eol)
 		if (s[fd] && ft_strchr_pos(s[fd], '\n') >= 0)
 		{
 			line = ft_substr(s[fd], 0, ft_strchr_pos(s[fd], '\n') + 1);
-			if (!line)
+			if (!process_eol(line, &temp, s, fd))
 				return (NULL);
-			temp = ft_substr(s[fd], ft_strchr_pos(s[fd], '\n') + 1, \
-			ft_strlen(s[fd]) + 1);
-			if (!temp)
-				return (NULL);
-			ft_free(*s, s, fd);
-			s[fd] = ft_strndup(temp, ft_strlen(temp));
-			if (!s[fd])
-				return (NULL);
-			ft_free(temp, s, 0);
 		}
 	}
 	else

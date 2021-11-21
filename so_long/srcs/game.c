@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:34:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/21 12:17:30 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:44:17 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_game(t_game *game, char *filename)
 	print_moves(game);
 }
 
-void	update_enemy(t_game *game)
+void	update_enemy_sprite(t_game *game)
 {
 	int					y;
 	int					x;
@@ -84,8 +84,17 @@ int	start_game(t_game	*game)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->player.sprite->img_ptr, game->player.sprite->x * TILE_WIDTH,
 			game->player.sprite->y * TILE_HEIGHT);
-		update_enemy(game);
+		update_enemy_sprite(game);
 		game->timer++;
 	}
 	return (1);
+}
+
+void	exit_game(t_game *game, char *err_msg)
+{
+	ft_putstr_fd(err_msg, 2);
+	if (!game)
+		exit(EXIT_FAILURE);
+	exit_free(game);
+	exit(EXIT_SUCCESS);
 }

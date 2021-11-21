@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 09:05:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/11 15:00:02 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:45:41 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_itoa(int n)
 {
 	char	*result;
 	long	temp_n;
-	 int	total_digit;
+	int		total_digit;
 
 	temp_n = n;
 	total_digit = find_total_digit(temp_n);

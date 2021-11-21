@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/21 12:00:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:46:09 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ int			close_window(t_game *game);
 
 /* PLAYER */
 
-void 		init_player(t_game *game);
+void		init_player(t_game *game);
 void		check_collectibles(t_game *game, int move);
+void		check_enemy(t_game *game, int move);
 int			check_next_tile(t_game *game, int move);
 void		move_player(int kc, t_game *game);
-void		check_enemy(t_game *game, int move);
 
 /* SPRITES */
 
@@ -104,36 +104,40 @@ void		init_all_sprites(t_game *game);
 
 /* MAP */
 
-void		init_map(t_game *game, char *filename);
 void		add_raw_map(t_map *map, char *filename);
-// char		*tile_char_to_path(char tile);
 void		draw_tile(t_game *game, int x, int y, t_sprite *sprite);
+void		init_map(t_game *game, char *filename);
+void		update_background(t_game *game);
 
 /* GAME */
 
 void		set_window_size(t_game *game, char *filename);
 void		init_game(t_game *game, char *filename);
-int			start_game(t_game	*game);
+void		update_enemy_sprite(t_game *game);
+int			start_game(t_game *game);
+void		exit_game(t_game *game, char *err_msg);
 
 /* CHECK_UTILS */
 
-int			check_walls(char *s);
 int			check_used(char *is_used, char c);
+int			check_walls(char *s);
 int			check_other_chars(char *s);
 char		*check_letters(char *s, char *tab, int *i);
 int			str_free(int ret, char *s1, char *s2, char *s3);
 
 /* CHECK */
 
-int			check_map(char *filename);
-int			check_lines_map(int fd, char *s, int len);
+int			final_check(char *s_buff, char *is_used);
 int			init_check_map_vars(char **is_used, char **s_buff, int *i);
+int			check_lines_map(int fd, char *s, int len);
+int			check_map(char *filename);
 
 /* PRINT */
 
 void		print_moves(t_game *game);
 
-void	exit_game(t_game *game, char *msg);
-void	ft_free(t_game *game);
+/* MAIN */
+
+void		exit_free(t_game *game);
 
 #endif

@@ -6,22 +6,23 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:18:43 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 10:20:36 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:42:41 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
 
-int	ft_strlen(const char *str)
+void	ft_free(char *s, char **sta, int fd)
 {
-	int	count;
-
-	count = 0;
-	if (!str)
-		return (0);
-	while (str && str[count])
-		count++;
-	return (count);
+	if (sta && fd)
+	{
+		free(sta[fd]);
+		sta[fd] = NULL;
+		return ;
+	}
+	if (s)
+		free(s);
+	s = NULL;
 }
 
 char	*ft_strndup(char *src, size_t n)

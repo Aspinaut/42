@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:06 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/20 14:49:07 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:23:59 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,30 +86,6 @@ int	check_next_tile(t_game *game, int move)
 		return (0);
 	check_collectibles(game, move);
 	return (1);
-}
-
-void	update_background(t_game *game)
-{
-	t_sprite	*sprite;
-
-	if (game->map.raw_map[game->player.sprite->y]
-		[game->player.sprite->x] == '0'
-		|| game->map.raw_map[game->player.sprite->y]
-		[game->player.sprite->x] == 'P')
-		sprite = game->map.grass;
-	else if (game->map.raw_map[game->player.sprite->y]
-		[game->player.sprite->x] == 'E')
-		sprite = game->map.exit;
-	else if (game->map.raw_map[game->player.sprite->y]
-		[game->player.sprite->x] == 'C')
-	{
-		sprite = game->map.grass;
-		game->map.raw_map[game->player.sprite->y][game->player.sprite->x] = '0';
-		game->player.collectibles++;
-	}
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		sprite->img_ptr, game->player.sprite->x * TILE_WIDTH,
-		game->player.sprite->y * TILE_HEIGHT);
 }
 
 void	move_player(int kc, t_game *game)
