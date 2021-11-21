@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 15:20:26 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/20 12:22:31 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:17:45 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	print_moves(t_game *game)
 {
-	char *moves;
-	char *count;
+	char	*moves;
+	char	*count;
 
 	game->player.moves++;
 	count = ft_itoa(game->player.moves);

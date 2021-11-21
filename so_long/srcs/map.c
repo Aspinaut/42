@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/20 14:45:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:14:01 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	draw_tile(t_game *game, int x, int y, t_sprite *sprite)
 	{
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->map.enemy1->img_ptr, TILE_WIDTH * x, TILE_HEIGHT * y);
+		game->map.enemy1->x = x;
+		game->map.enemy1->y = y;
+		game->map.enemy2->x = x;
+		game->map.enemy2->y = y;
 	}
 }
 

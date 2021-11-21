@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/20 14:49:23 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:00:09 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_game
 	int				win_width;
 	int				win_height;
 	int				collectibles;
+	unsigned long	timer;
 	t_player		player;
 	t_map			map;
 }					t_game;

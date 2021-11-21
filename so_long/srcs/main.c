@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/20 12:17:30 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/21 11:26:43 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_free(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->map.exit->img_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->map.collectible->img_ptr);
 	mlx_destroy_image(game->mlx_ptr, game->player.sprite->img_ptr);
+	// mlx_destroy_image(game->mlx_ptr, game->map.enemy1->img_ptr);
+	// mlx_destroy_image(game->mlx_ptr, game->map.enemy2->img_ptr);
 	free(game->player.sprite);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	free(game->mlx_ptr);
@@ -45,7 +47,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		exit_game(NULL, "Wrong number of arguments...\n");
+		exit_game(NULL, "Wrong number of arguments... Try ./so_long your_map.ber\n");
 	if (!check_map(argv[1]))
 		exit_game(NULL, "something wrong in the map\n");
 	init_game(&game, argv[1]);
