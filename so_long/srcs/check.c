@@ -14,9 +14,14 @@
 
 int	final_check(char *s_buff, char *is_used)
 {
-	if (!check_walls(s_buff) || !check_used(is_used, 'E')
-		|| !check_used(is_used, 'P') || !check_used(is_used, 'C'))
-		return (0);
+	if (!check_walls(s_buff))
+		exit_game(NULL, "Error\nYour map is not closed\n");
+	if (!check_used(is_used, 'E'))
+		exit_game(NULL, "Error\nYour map does not contain any exit\n");
+	if (!check_used(is_used, 'P'))
+		exit_game(NULL, "Error\nYour map does not contain any player\n");
+	if (!check_used(is_used, 'C'))
+		exit_game(NULL, "Error\nYour map does not contain any collectible\n");
 	return (1);
 }
 
@@ -37,11 +42,16 @@ int	check_lines_map(int fd, char *s, int len)
 	int		i;
 
 	if (!init_check_map_vars(&is_used, &s_buff, &i))
-		return (0);
+		exit_game(NULL, "Error\nfailed to init check map vars\n");
 	while (s && s[0])
 	{
 		is_used = check_letters(s, is_used, &i);
-		if ((s[0] && s[ft_strlen(s) - 2] != '1') || !check_other_chars(s))
+		if ((s[0] && s[ft_strlen(s) - 2] != '1'))
+		{
+			str_free(fd, is_used, s_buff, s);
+			exit_game(NULL, "Error\nYour map is not closed\n");
+		}
+		if (!check_other_chars(s))
 			return (str_free(fd, is_used, s_buff, s));
 		free(s);
 		s = get_next_line(fd);
@@ -51,7 +61,10 @@ int	check_lines_map(int fd, char *s, int len)
 				free(s_buff);
 			s_buff = ft_strdup(s);
 			if (!s_buff || ft_strlen(s_buff) != len)
-				return (str_free(fd, is_used, s_buff, s));
+			{
+				str_free(fd, is_used, s_buff, s);
+				exit_game(NULL, "Error\nYour map is not rectangular\n");
+			}
 		}
 	}
 	if (!final_check(s_buff, is_used))
@@ -66,16 +79,19 @@ int	check_map(char *filename)
 	int		len;
 
 	if (ft_strncmp((filename + ft_strlen(filename) - 4), ".ber", 4))
-		return (0);
+		exit_game(NULL, "Error\nwrong map file extension\n");
 	fd = open(filename, O_RDONLY);
 	if (!fd)
-		return (0);
+		exit_game(NULL, "Error\nfailed to open map file\n");
 	s = get_next_line(fd);
 	if (!s)
-		return (0);
+		exit_game(NULL, "Error\ngnl failed while checking map\n");
 	len = ft_strlen(s);
 	if (!check_walls(s))
-		return (str_free(fd, NULL, NULL, s));
+	{
+		str_free(fd, NULL, NULL, s));
+		exit_game(NULL, "Error\nYour map is not closed\n");
+	}
 	if (!check_lines_map(fd, s, len))
 		return (0);
 	close(fd);

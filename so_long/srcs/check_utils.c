@@ -33,7 +33,7 @@ int	check_walls(char *s)
 	int	i;
 
 	i = 0;
-	while (s[i] != '\n' && s[i] != '\0')
+	while (s && s[i] != '\n' && s[i] != '\0')
 	{
 		if (s[i] != '1')
 			return (0);
@@ -47,11 +47,11 @@ int	check_other_chars(char *s)
 	int	i;
 
 	i = 0;
-	while (s[i] != '\n' && s[i] != '\0')
+	while (s && s[i] != '\n' && s[i] != '\0')
 	{
 		if (s[i] != '0' && s[i] != '1'
 			&& s[i] != 'E' && s[i] != 'P' && s[i] != 'C' && s[i] != 'M')
-			return (0);
+			exit_game(NULL, "Error\nYour map contains unauthorized chars\n");
 		i++;
 	}
 	return (1);
