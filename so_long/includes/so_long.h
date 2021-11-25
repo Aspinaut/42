@@ -6,20 +6,16 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/25 12:10:07 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/25 12:24:37 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include "./get_next_line.h"
 # include "../mlx/mlx.h"
 # include "../mlx/mlx_opengl.h"
-# include "./get_next_line.h"
-# include "./libft.h"
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
 
 # define TILE_WIDTH 		32
 # define TILE_HEIGHT 		32

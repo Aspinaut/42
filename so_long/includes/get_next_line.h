@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 15:15:46 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/21 12:43:13 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/25 12:24:47 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include <fcntl.h>
-# include <limits.h>
 # include "./libft.h"
 
 # ifndef BUFFER_SIZE
