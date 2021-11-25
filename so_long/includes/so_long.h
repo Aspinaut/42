@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/25 12:24:37 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/25 12:38:47 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,9 @@ int			str_free(int ret, char *s1, char *s2, char *s3);
 /* CHECK */
 
 void		final_check(char *s_buff, char *is_used, char *s);
-int			init_check_map_vars(char **is_used, char **s_buff, int *i);
+void		init_check_map_vars(char **is_used, char **s_buff, int fd, char *s);
 int			check_lines_map(int fd, char *s, int len);
-int			check_map(char *filename);
+void		check_map(char *filename);
 void		first_loop_check(char *s, char *s_buff, int fd, char *is_used);
 
 /* PRINT */

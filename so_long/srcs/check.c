@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:50:48 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/25 12:16:40 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/25 12:38:33 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,15 @@ void	first_loop_check(char *s, char *s_buff, int fd, char *is_used)
 	free(s);
 }
 
-int	init_check_map_vars(char **is_used, char **s_buff, int *i)
+void	init_check_map_vars(char **is_used, char **s_buff, int fd, char *s)
 {
-	*i = 0;
 	*s_buff = NULL;
 	*is_used = ft_calloc(3, sizeof(char));
 	if (!is_used)
-		return (0);
-	return (1);
+	{
+		str_free(fd, NULL, NULL, s);
+		exit_game(NULL, "Error\nfailed to init check map vars\n");
+	}
 }
 
 int	check_lines_map(int fd, char *s, int len)
@@ -63,8 +64,8 @@ int	check_lines_map(int fd, char *s, int len)
 	char	*s_buff;
 	int		i;
 
-	if (!init_check_map_vars(&is_used, &s_buff, &i))
-		exit_game(NULL, "Error\nfailed to init check map vars\n");
+	i = 0;
+	init_check_map_vars(&is_used, &s_buff, fd, s);
 	while (s && s[0])
 	{
 		is_used = check_letters(s, is_used, &i);
@@ -86,7 +87,7 @@ int	check_lines_map(int fd, char *s, int len)
 	return (str_free(1, is_used, s_buff, s));
 }
 
-int	check_map(char *filename)
+void	check_map(char *filename)
 {
 	char	*s;
 	int		fd;
@@ -108,5 +109,4 @@ int	check_map(char *filename)
 	}
 	check_lines_map(fd, s, len);
 	close(fd);
-	return (1);
 }

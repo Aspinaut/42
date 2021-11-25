@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 17:14:31 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/21 12:43:47 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/25 12:39:00 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		exit_game(NULL, "Wrong nb of args, try ./so_long your_map.ber\n");
-	if (!check_map(argv[1]))
-		exit_game(NULL, "something wrong in the map\n");
+		exit_game(NULL, "Error\nWrong nb of args, try ./so_long map.ber\n");
+	check_map(argv[1]);
 	init_game(&game, argv[1]);
 	mlx_hook(game.win_ptr, 2, 1L << 0, process_key_hook, &game);
 	mlx_hook(game.win_ptr, 17, 1L << 17, close_window, &game);
