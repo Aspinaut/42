@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/21 12:46:09 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/25 12:10:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,16 +121,17 @@ void		exit_game(t_game *game, char *err_msg);
 
 int			check_used(char *is_used, char c);
 int			check_walls(char *s);
-int			check_other_chars(char *s);
+void		check_other_chars(char *s, char *s_buff, int fd, char *is_used);
 char		*check_letters(char *s, char *tab, int *i);
 int			str_free(int ret, char *s1, char *s2, char *s3);
 
 /* CHECK */
 
-int			final_check(char *s_buff, char *is_used);
+void		final_check(char *s_buff, char *is_used, char *s);
 int			init_check_map_vars(char **is_used, char **s_buff, int *i);
 int			check_lines_map(int fd, char *s, int len);
 int			check_map(char *filename);
+void		first_loop_check(char *s, char *s_buff, int fd, char *is_used);
 
 /* PRINT */
 

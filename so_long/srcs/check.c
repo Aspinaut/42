@@ -6,23 +6,45 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 10:50:48 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/19 11:14:54 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/25 12:16:40 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	final_check(char *s_buff, char *is_used)
+void	final_check(char *s_buff, char *is_used, char *s)
 {
 	if (!check_walls(s_buff))
+	{
+		str_free(0, is_used, s_buff, s);
 		exit_game(NULL, "Error\nYour map is not closed\n");
+	}
 	if (!check_used(is_used, 'E'))
+	{
+		str_free(0, is_used, s_buff, s);
 		exit_game(NULL, "Error\nYour map does not contain any exit\n");
+	}
 	if (!check_used(is_used, 'P'))
+	{
+		str_free(0, is_used, s_buff, s);
 		exit_game(NULL, "Error\nYour map does not contain any player\n");
+	}
 	if (!check_used(is_used, 'C'))
+	{
+		str_free(0, is_used, s_buff, s);
 		exit_game(NULL, "Error\nYour map does not contain any collectible\n");
-	return (1);
+	}
+}
+
+void	first_loop_check(char *s, char *s_buff, int fd, char *is_used)
+{
+	if ((s[0] && s[ft_strlen(s) - 2] != '1'))
+	{
+		str_free(fd, is_used, s_buff, s);
+		exit_game(NULL, "Error\nYour map is not closed\n");
+	}
+	check_other_chars(s, s_buff, fd, is_used);
+	free(s);
 }
 
 int	init_check_map_vars(char **is_used, char **s_buff, int *i)
@@ -46,14 +68,7 @@ int	check_lines_map(int fd, char *s, int len)
 	while (s && s[0])
 	{
 		is_used = check_letters(s, is_used, &i);
-		if ((s[0] && s[ft_strlen(s) - 2] != '1'))
-		{
-			str_free(fd, is_used, s_buff, s);
-			exit_game(NULL, "Error\nYour map is not closed\n");
-		}
-		if (!check_other_chars(s))
-			return (str_free(fd, is_used, s_buff, s));
-		free(s);
+		first_loop_check(s, s_buff, fd, is_used);
 		s = get_next_line(fd);
 		if (s)
 		{
@@ -67,8 +82,7 @@ int	check_lines_map(int fd, char *s, int len)
 			}
 		}
 	}
-	if (!final_check(s_buff, is_used))
-		return (str_free(0, is_used, s_buff, s));
+	final_check(s_buff, is_used, s);
 	return (str_free(1, is_used, s_buff, s));
 }
 
@@ -89,11 +103,10 @@ int	check_map(char *filename)
 	len = ft_strlen(s);
 	if (!check_walls(s))
 	{
-		str_free(fd, NULL, NULL, s));
+		str_free(fd, NULL, NULL, s);
 		exit_game(NULL, "Error\nYour map is not closed\n");
 	}
-	if (!check_lines_map(fd, s, len))
-		return (0);
+	check_lines_map(fd, s, len);
 	close(fd);
 	return (1);
 }

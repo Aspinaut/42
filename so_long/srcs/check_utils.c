@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 11:46:43 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/20 14:25:19 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/11/25 12:17:05 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_walls(char *s)
 	return (1);
 }
 
-int	check_other_chars(char *s)
+void	check_other_chars(char *s, char *s_buff, int fd, char *is_used)
 {
 	int	i;
 
@@ -51,10 +51,12 @@ int	check_other_chars(char *s)
 	{
 		if (s[i] != '0' && s[i] != '1'
 			&& s[i] != 'E' && s[i] != 'P' && s[i] != 'C' && s[i] != 'M')
+		{
+			str_free(fd, is_used, s_buff, s);
 			exit_game(NULL, "Error\nYour map contains unauthorized chars\n");
+		}
 		i++;
 	}
-	return (1);
 }
 
 char	*check_letters(char *s, char *tab, int *i)
