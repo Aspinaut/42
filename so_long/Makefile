@@ -17,6 +17,8 @@ SRCS =	srcs/main.c		\
 
 LIBFT = libft/libft.a
 
+OBJS = $(SRCS:.c=.o)
+
 # ------------  MAC --------------------------------------------------------------------------------------------
 # MLX = mlx/libmlx.a
 #
@@ -28,13 +30,13 @@ LIBFT = libft/libft.a
 #
 # CFLAGS = -Wall -Wextra
 # CFLAGS += -Werror
-# CFLAGS += -g
+# # CFLAGS += -g
 # # CFLAGS += -fsanitize=address
 #
 # MLXFLAG = -framework OpenGL -framework AppKit
 #
-# $(NAME): $(LIBFT) $(MLX) $(SRCS)
-# 	$(CC) $(CFLAGS) $(SRCS) $(MLXFLAG) $(MLX) -L./mlx -L./libft -lft -o $(NAME)
+# $(NAME): $(LIBFT) $(MLX) $(OBJS)
+# 	$(CC) $(CFLAGS) $(OBJS) $(MLXFLAG) $(MLX) -L./mlx -L./libft -lft -o $(NAME)
 #
 # all: $(NAME)
 #
@@ -53,12 +55,12 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra
 CFLAGS += -Werror
-CFLAGS += -g
+# CFLAGS += -g
 
 MLXFLAG = -lmlx -lXext -lX11
 
-$(NAME): $(LIBFT) $(MLX) $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) $(MLXFLAG) $(MLX) -L./mlx_linux -L./libft -lft -o $(NAME)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(MLXFLAG) $(MLX) -L./mlx_linux -L./libft -lft -o $(NAME)
 
 all: $(NAME)
 
@@ -70,10 +72,10 @@ $(LIBFT):
 	$(MAKE) -C ./libft
 
 clean:
-	cd ./libft/ && make clean && cd ../mlx/ && make clean && cd ..
+	$(RM) $(OBJS) && cd ./libft/ && make clean && cd ../mlx/ && make clean && cd ..
 
 fclean:
-	cd ./libft/ && make fclean && cd ../mlx/ && make clean && cd ..
+	$(RM) $(OBJS) && cd ./libft/ && make fclean && cd ../mlx/ && make clean && cd ..
 	$(RM) $(NAME)
 
 re: fclean all
