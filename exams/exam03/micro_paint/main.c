@@ -2,11 +2,12 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-typedef struct s_params
+typedef struct s_rect
 {
-    int width;
-    int height;
-}               t_params;
+    int     width;
+    int     height;
+    char    bg_char;
+}               t_rect;
 
 int ft_strlen(char *s)
 {
@@ -23,19 +24,21 @@ int str_err(char *err, int ret)
     return (ret);
 }
 
-int read_file(char *filename)
+void    draw(t_rect *rect, FILE *file)
 {
-
-    return (1);
+    
 }
 
 int main(int argc, char **argv)
 {
-    t_params rect;
+    t_rect rect;
+    FILE *file;
 
     if (argc != 2)
         return (str_err("Error: argument\n", 1));
-    if (!read_file(argv[1]))
+    if (!(file = fopen(argv[1], "r")))
         return (str_err("Error: Operation file corrupted\n", 1));
+    draw(&rect, file);
+    fclose(file);
     return (0);
 }
