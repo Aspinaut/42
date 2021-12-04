@@ -1,6 +1,10 @@
 #!/bin/bash
 
 SRCS =	srcs/main.c		\
+		srcs/utils.c		\
+		srcs/parsing.c		\
+
+OBJS = $(SRCS:.c=.o)
 
 NAME = philo
 
@@ -9,16 +13,16 @@ RM = rm -f
 CC = gcc
 
 CFLAGS = -Wall -Wextra
-CFLAGS += -Werror
+# CFLAGS += -Werror
 CFLAGS += -g
 
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 all: $(NAME)
 
 clean:
-	$(RM) srcs/*.o
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
