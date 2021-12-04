@@ -35,7 +35,7 @@ void ft_free(t_canvas canvas)
 {
     int i = 0;
 
-    while (i < canvas.width)
+    while (i < canvas.height)
     {
       free(canvas.matrix[i]);
       i++;
@@ -52,7 +52,7 @@ int add_info(t_canvas *canvas, FILE *file)
     {
         if (canvas->width < 1 || canvas->width > 300 || canvas->height < 1 || canvas->height > 300)
           return (0);
-        canvas->matrix = malloc(sizeof(char *) * canvas->height + 1);
+        canvas->matrix = malloc(sizeof(char *) * canvas->height);
         if (!canvas->matrix)
           return (0);
         while (i < canvas->height)
@@ -66,6 +66,7 @@ int add_info(t_canvas *canvas, FILE *file)
             canvas->matrix[i][j] = canvas->bg_char;
             j++;
           }
+          canvas->matrix[i][j] = '\n';
           i++;
         }
         return (1);
