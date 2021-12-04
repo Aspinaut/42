@@ -13,7 +13,12 @@ typedef struct s_canvas
 
 typedef struct s_rect
 {
-
+  float   x; 
+  float   y;
+  int     width;
+  int     height;
+  char    c;
+  char    mode;
 }               t_rect;
 
 int ft_strlen(char *s)
@@ -74,6 +79,35 @@ int add_info(t_canvas *canvas, FILE *file)
     return (0);
 }
 
+void  write_matrix(t_canvas *canvas, t_rect rect)
+{
+  int x;
+
+  while (rect.y < (rect.height + rect.y))
+  {
+    x = rect.x;
+    while (x < (rect.width + rect.x))
+    {
+      canvas->matrix[(int)rect.y][x] = rect.c;
+      x++;
+    }
+    rect.y++;
+  }
+}
+
+void  add_rect(t_canvas *canvas, FILE *file)
+{
+  t_rect rect;
+  int scanf;
+
+  scanf = fscanf(file, "%c %f %f %d %d %c", &rect.mode, &rect.x, &rect.y, &rect.width, &rect.height, &rect.c);
+  while (scanf == 6)
+  {
+    write_matrix(canvas, rect);
+    scanf = fscanf(file, "%c %f %f %d %d %c", &rect.mode, &rect.x, &rect.y, &rect.width, &rect.height, &rect.c);
+  }
+}
+
 void    draw(t_canvas canvas)
 {
     int i =0;
@@ -104,6 +138,7 @@ int main(int argc, char **argv)
     if (!(add_info(&canvas, file)))
         return (str_err("Error: Operation file corrupted\n", 1));
     add_info(&canvas, file);
+    add_rect(&canvas, file);
     draw(canvas);
     ft_free(canvas);
     fclose(file);
