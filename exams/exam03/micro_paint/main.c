@@ -13,12 +13,12 @@ typedef struct s_canvas
 
 typedef struct s_rect
 {
-  float   x; 
-  float   y;
-  int     width;
-  int     height;
-  char    c;
-  char    mode;
+  float     x; 
+  float     y;
+  float     width;
+  float     height;
+  char      c;
+  char      mode;
 }               t_rect;
 
 int ft_strlen(char *s)
@@ -48,12 +48,12 @@ void ft_free(t_canvas canvas)
     free(canvas.matrix);
 }
 
-int add_info(t_canvas *canvas, FILE *file)
+int add_canvas_vars(t_canvas *canvas, FILE *file)
 {
     int i = 0;
     int j;
 
-    if (fscanf(file, "%d %d %c", &canvas->width, &canvas->height, &canvas->bg_char) == 3)
+    if (fscanf(file, "%d %d %c\n", &canvas->width, &canvas->height, &canvas->bg_char) == 3)
     {
         if (canvas->width < 1 || canvas->width > 300 || canvas->height < 1 || canvas->height > 300)
           return (0);
@@ -82,16 +82,42 @@ int add_info(t_canvas *canvas, FILE *file)
 void  write_matrix(t_canvas *canvas, t_rect rect)
 {
   int x;
+  int y;
+  int height;
+  int width;
 
-  while (rect.y < (rect.height + rect.y))
+  y = (int)rect.y;
+  height = (int)rect.height;
+  width = (int)rect.width;
+  if (rect.mode == 'R')
   {
-    x = rect.x;
-    while (x < (rect.width + rect.x))
+    while (y < (height + (int)rect.y) + 1)
     {
-      canvas->matrix[(int)rect.y][x] = rect.c;
-      x++;
+      x = (int)rect.x;
+      while (x < (width + (int)rect.x))
+      {
+        // fprintf(stderr, "%d %d\n", y, x);
+        canvas->matrix[y][x] = rect.c;
+        x++;
+      }
+      y++;
     }
-    rect.y++;
+  }
+  else if (rect.mode == 'r')
+  {
+    while (y < (height + (int)rect.y) + 1)
+    {
+      x = (int)rect.x;
+      while (x < (width + (int)rect.x))
+      {
+        if (y == (height + (int)rect.y) || y == (int)rect.y || x == (int)rect.x)
+          canvas->matrix[y][x] = rect.c;
+        x++;
+      }
+      if (x == (width + (int)rect.x) || y == (height + (int)rect.y))
+          canvas->matrix[y][x] = rect.c;
+      y++;
+    }
   }
 }
 
@@ -100,11 +126,19 @@ void  add_rect(t_canvas *canvas, FILE *file)
   t_rect rect;
   int scanf;
 
-  scanf = fscanf(file, "%c %f %f %d %d %c", &rect.mode, &rect.x, &rect.y, &rect.width, &rect.height, &rect.c);
+  scanf = fscanf(file, "%c %f %f %f %f %c\n", &rect.mode, &rect.x, &rect.y, &rect.width, &rect.height, &rect.c);
   while (scanf == 6)
-  {
+  {  
+    if ((int)rect.x - rect.x > 0.0000000)
+      rect.x++;
+    if ((int)rect.y - rect.y > 0.0000000)
+      rect.y++;
+    if ((int)rect.width - rect.width > 0.0000000)
+      rect.width++;
+    if ((int)rect.height - rect.height > 0.0000000)
+      rect.height++;
     write_matrix(canvas, rect);
-    scanf = fscanf(file, "%c %f %f %d %d %c", &rect.mode, &rect.x, &rect.y, &rect.width, &rect.height, &rect.c);
+    scanf = fscanf(file, "%c %f %f %f %f %c\n", &rect.mode, &rect.x, &rect.y, &rect.width, &rect.height, &rect.c);
   }
 }
 
@@ -135,9 +169,8 @@ int main(int argc, char **argv)
         return (str_err("Error: argument\n", 1));
     if (!(file = fopen(argv[1], "r")))
         return (str_err("Error: Operation file corrupted\n", 1));
-    if (!(add_info(&canvas, file)))
-        return (str_err("Error: Operation file corrupted\n", 1));
-    add_info(&canvas, file);
+    if (!(add_canvas_vars(&canvas, file)))
+        return (str_err("Error: Wrong data in file\n", 1));
     add_rect(&canvas, file);
     draw(canvas);
     ft_free(canvas);
