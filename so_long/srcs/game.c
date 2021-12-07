@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:34:03 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/21 12:44:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/12/07 10:58:00 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	update_enemy_sprite(t_game *game)
 
 	if (enemy == NULL)
 		enemy = game->map.enemy1;
-	if (game->timer % 10000 == 0)
+	if (game->timer % 30 == 0)
 	{
 		y = -1;
 		while (game->map.raw_map[++y])

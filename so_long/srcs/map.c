@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 18:02:17 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/21 12:24:04 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/12/07 10:52:27 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	update_background(t_game *game)
 {
 	t_sprite	*sprite;
 
+	sprite = NULL;
 	if (game->map.raw_map[game->player.sprite->y]
 		[game->player.sprite->x] == '0'
 		|| game->map.raw_map[game->player.sprite->y]

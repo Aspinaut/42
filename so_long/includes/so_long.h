@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 11:24:37 by vmasse            #+#    #+#             */
-/*   Updated: 2021/11/25 12:38:47 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/12/07 10:55:37 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # define TILE_HEIGHT 		32
 
 /* ------------- Linux --------------------------------
-*/
 # define UP 		65362
 # define DOWN 		65364
 # define LEFT 		65361
 # define RIGHT 		65363
 # define ESCAPE 	65307
+*/
 
 /* ------------- MAC ----------------------------------
 # define UP 		126
@@ -35,6 +35,12 @@
 # define RIGHT 		124
 # define ESCAPE 	53
 */
+
+# define UP 		13
+# define DOWN 		1
+# define LEFT 		0
+# define RIGHT 		2
+# define ESCAPE 	53
 
 typedef struct s_sprite
 {
