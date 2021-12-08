@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+#define ZERO 0.00000000
+
 typedef struct s_canvas
 {
     int     width;
@@ -96,7 +98,7 @@ void  write_matrix(t_canvas *canvas, t_rect rect)
       x = (int)rect.x;
       while (x < (width + (int)rect.x))
       {
-        // fprintf(stderr, "%d %d\n", y, x);
+        fprintf(stderr, "%d %d\n", y, x);
         canvas->matrix[y][x] = rect.c;
         x++;
       }
@@ -128,15 +130,16 @@ void  add_rect(t_canvas *canvas, FILE *file)
 
   scanf = fscanf(file, "%c %f %f %f %f %c\n", &rect.mode, &rect.x, &rect.y, &rect.width, &rect.height, &rect.c);
   while (scanf == 6)
-  {  
-    if ((int)rect.x - rect.x > 0.0000000)
-      rect.x++;
-    if ((int)rect.y - rect.y > 0.0000000)
-      rect.y++;
-    if ((int)rect.width - rect.width > 0.0000000)
-      rect.width++;
-    if ((int)rect.height - rect.height > 0.0000000)
-      rect.height++;
+  { 
+    // fprintf(stderr, "%d %f %f\n", (int)rect.x, (int)rect.x - rect.x);
+    // if ((int)rect.x - rect.x > 0.0000000)
+    //   rect.x++;
+    // if ((int)rect.y - rect.y > 0.0000000)
+    //   rect.y++;
+    // if ((int)rect.width - rect.width > 0.0000000)
+    //   rect.width++;
+    // if ((int)rect.height - rect.height > 0.0000000)
+    //   rect.height++;
     write_matrix(canvas, rect);
     scanf = fscanf(file, "%c %f %f %f %f %c\n", &rect.mode, &rect.x, &rect.y, &rect.width, &rect.height, &rect.c);
   }
