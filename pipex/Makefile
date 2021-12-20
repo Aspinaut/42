@@ -5,6 +5,8 @@ SRCS =	srcs/child.c	\
 		srcs/pipex.c	\
 		srcs/utils.c	\
 
+OBJS = $(SRCS:.c=.o)
+
 LIBFT = libft/libft.a
 
 NAME = pipex
@@ -15,19 +17,19 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -o $(NAME)
+
+all: $(NAME)
+
 $(LIBFT): 
-	cd ./libft/ && make && cd ..
-
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
-
-all: $(LIBFT) $(NAME)
+	$(MAKE) -C ./libft
 
 clean:
-	$(RM) $(NAME)
+	$(RM) $(OBJS) && cd ./libft/ && make clean && cd ..
 
 fclean: clean
-	cd ./libft/ && make fclean && cd ..
+	$(RM) $(NAME) && $(RM) ./libft/libft.a
 
 re: fclean all
 
