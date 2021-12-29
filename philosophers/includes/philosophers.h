@@ -8,16 +8,24 @@
 
 # define	MAX_LONG	9223372036854775807
 
-typedef struct s_phi
+typedef struct s_params
 {
     int             to_die;
     int             to_eat;
     int             to_sleep;
+    int             philos;
     int             eat_max;
+    int             start;
+    int             died;
+}               t_params;
+
+typedef struct s_phi
+{
     int             id;
-    pthread_mutex_t mutex;
-    struct s_phi    *next;
-    struct s_phi    *prev;
+    pthread_mutex_t l_fork;
+    pthread_mutex_t r_fork;
+    pthread_t		thread;
+    t_params        *params;
 }                   t_phi;
 
 /* PARSING */
@@ -29,5 +37,7 @@ int     check_args(char **argv);
 int     ft_strlen(const char *str);
 void    ft_exit(char *msg);
 int	ft_atoi(const char *str);
+
+void  init_params(t_params *params, char **argv);
 
 #endif
