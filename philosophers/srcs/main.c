@@ -6,65 +6,63 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:51:42 by vmasse            #+#    #+#             */
-/*   Updated: 2021/12/29 10:48:02 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/12/29 16:16:40 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-void *p1()
-{
-  int i = 0;
-  char s[1500] = "Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !Bonjour !";
+// void  init_fork(t_phi *philos)
+// {
+//   pthread_mutex_init
+// }
 
-  while (s[i])
+void *routine(void *job)
+{
+  t_phi *philos;
+
+  philos = job;
+  while (!philos->params->start);
+  while (!philos->params->died)
   {
-    // usleep(100);
-    // fprintf(stderr, "%c\n", s[i]);
-    i++;
+    pthread_mutex_lock(&philos->params->print);
+    usleep(500);
+    printf("Philo is alive\n");
+    pthread_mutex_unlock(&philos->params->print);
+
   }
   return (NULL);
 }
 
-// void *p2()
-// {
-//   int i = 0;
-//   char s[1500] = "Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !Salut !";
-
-//   while (s[i])
-//   {
-//     // usleep(100);
-//     fprintf(stderr, "%c\n", s[i]);
-//     i++;
-//   }
-//   return 
-
-void free_philos(t_phi *philos)
+void free_philos(t_phi *philos, t_params *params)
 {
-  // int i;
+  int i;
 
-  // i = -1;
-  // while (++i < philos->params->philos)
-  // {
-  //   free(philos[i]);
-  // }
+  i = -1;
+  while (++i < philos->params->philos)
+  {
+    pthread_join(philos[i].thread, NULL);
+  }
+  pthread_mutex_destroy(&params->print);
   free(philos);
 }
 
-t_phi *init_philos(t_phi *philos, t_params params)
+t_phi *init_philos(t_phi *philos, t_params *params)
 {
   int     i;
 
   i = -1;
-  philos = malloc(sizeof(t_phi) * params.philos);
+  philos = malloc(sizeof(t_phi) * params->philos);
   if (!philos)
     return (NULL);
-  while (++i < params.philos)
+  while (++i < params->philos)
   {
-    philos[i].id = i;
-    pthread_create(&philos[i].thread, NULL, p1, &philos[i]);
-    philos[i].params = &params;
+    philos[i].params = params;
+    philos[i].id = i + 1;
+    pthread_create(&philos[i].thread, NULL, routine, &philos[i]);
+    pthread_mutex_init(&philos[i].l_fork, NULL);
   }
+  params->start = 1;
   return (philos);
 }
 
@@ -76,8 +74,27 @@ void  init_params(t_params *params, char **argv)
   params->to_sleep = ft_atoi(argv[4]);
   params->start = 0;
   params->died = 0;
+  pthread_mutex_init(&params->print, NULL);
   if (argv[5])
     params->eat_max = ft_atoi(argv[5]); 
+}
+
+long int	time_now(void)
+{
+	struct timeval	now;
+
+	gettimeofday(&now, NULL);
+	return ((now.tv_sec * 1000) + (now.tv_usec / 1000));
+}
+
+int	ft_usleep(long int time)
+{
+	long int	start_time;
+
+	start_time = time_now();
+	while ((time_now() - start_time) < time)
+		usleep(150);
+	return (1);
 }
 
 int main(int argc, char **argv)
@@ -91,23 +108,17 @@ int main(int argc, char **argv)
   if (!check_args(argv))
     ft_exit("Error\nSomething wrong with arguments\n");
   init_params(&params, argv);
-  philos = init_philos(philos, params);
+  philos = init_philos(philos, &params);
   if (!philos)
     ft_exit("Error\nFailed to init philos\n");
-
-  int i = 0;
-  // printf("%d\n", phi1los[i].id);
-
-  while (i < params.philos)
-  {
-    printf("%d\n", philos[i].id);
-    i++;
-  }
-  // pthread_create(&t1, NULL, p1, NULL);
-  // pthread_create(&t2, NULL, p2, NULL);
-  // pthread_join(t2, NULL);
-  // pthread_join(t1, NULL);
   
-  free_philos(philos);
+  // int i = 0;
+  // while (i < params.philos)
+  // {
+  //   printf("%d\n", philos[i].id);
+  //   i++;
+  // }
+
+  free_philos(philos, &params);
   return (0);
 }

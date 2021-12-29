@@ -5,6 +5,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 # define	MAX_LONG	9223372036854775807
 
@@ -17,6 +18,7 @@ typedef struct s_params
     int             eat_max;
     int             start;
     int             died;
+    pthread_mutex_t print;
 }               t_params;
 
 typedef struct s_phi
@@ -36,8 +38,8 @@ int     check_args(char **argv);
 
 int     ft_strlen(const char *str);
 void    ft_exit(char *msg);
-int	ft_atoi(const char *str);
+int	    ft_atoi(const char *str);
 
-void  init_params(t_params *params, char **argv);
+void    init_params(t_params *params, char **argv);
 
 #endif
