@@ -6,6 +6,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/time.h>
+# include <limits.h>
 
 # define	MAX_LONG	9223372036854775807
 
@@ -30,16 +31,12 @@ typedef struct s_phi
     t_params        *params;
 }                   t_phi;
 
-/* PARSING */
-
-int     check_args(char **argv);
-
 /* UTILS */
 
 int     ft_strlen(const char *str);
 void    ft_exit(char *msg);
 int	    ft_atoi(const char *str);
 
-void    init_params(t_params *params, char **argv);
+void     init_params(t_params *params, char **argv);
 
 #endif

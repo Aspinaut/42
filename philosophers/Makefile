@@ -2,7 +2,6 @@
 
 SRCS =	srcs/main.c		\
 		srcs/utils.c		\
-		srcs/parsing.c		\
 		srcs/ft_atoi.c		\
 
 OBJS = $(SRCS:.c=.o)
@@ -16,7 +15,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra
 # CFLAGS += -Werror
 CFLAGS += -g
-CFLAGS += -fsanitize=address
+# CFLAGS += -fsanitize=address
+# CFLAGS += -fsanitize=thread
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
