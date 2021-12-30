@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:51:42 by vmasse            #+#    #+#             */
-/*   Updated: 2021/12/30 15:14:40 by vmasse           ###   ########.fr       */
+/*   Updated: 2021/12/30 15:37:49 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void  ft_eat(t_phi *philos)
   pthread_mutex_lock(&philos->params->print);
   printf("Philo %d is eating\n", philos->id);
   pthread_mutex_unlock(&philos->params->print);
+  philos->start_eating = time_now();
+  ft_usleep(philos->params->to_eat);
   pthread_mutex_unlock(philos->r_fork);
   pthread_mutex_unlock(philos->l_fork);
 
@@ -71,7 +73,6 @@ void free_philos(t_phi *philos, t_params *params)
   int i;
 
   i = -1;
-  printf("here");
   while (++i < philos->params->philos)
   {
     pthread_join(philos[i].thread, NULL);
@@ -138,10 +139,14 @@ void  check_death(t_phi *philos, t_params *params)
   int i;
 
   i = -1;
-  while (philos->params->start);
-  while (++i < philos->params->philos)
+  while (!philos->params->start);
+  while (!params->died)
   {
-
+    while (++i < philos->params->philos)
+    {
+      if ((time_now() - philos[i].start_eating) > params->to_die)
+        params->died = 1;
+    }
   }
 }
 

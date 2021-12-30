@@ -25,6 +25,7 @@ typedef struct s_params
 typedef struct s_phi
 {
     int             id;
+    int             start_eating;
     pthread_mutex_t *l_fork;
     pthread_mutex_t *r_fork;
     pthread_t		thread;
