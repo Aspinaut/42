@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:51:42 by vmasse            #+#    #+#             */
-/*   Updated: 2021/12/30 15:37:49 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/02 15:23:55 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_usleep(long int time)
 
 	start_time = time_now();
 	while ((time_now() - start_time) < time)
-		usleep(150);
+		usleep(50);
 	return (1);
 }
 
@@ -45,8 +45,8 @@ void  ft_eat(t_phi *philos)
   pthread_mutex_unlock(&philos->params->print);
   philos->start_eating = time_now();
   ft_usleep(philos->params->to_eat);
-  pthread_mutex_unlock(philos->r_fork);
   pthread_mutex_unlock(philos->l_fork);
+  pthread_mutex_unlock(philos->r_fork);
 
 }
 
@@ -56,13 +56,10 @@ void *routine(void *job)
 
   philos = job;
   while (!philos->params->start);
-  if (philos->id % 2 == 1)
-    usleep(3);
+  if (philos->id % 2 == 0)
+    usleep(philos->params->to_eat * 0.5);
   while (!philos->params->died)
   {
-    // pthread_mutex_lock(&philos->params->print);
-    // printf("Philo is alive\n");
-    // pthread_mutex_unlock(&philos->params->print);
     ft_eat(philos);
   }
   return (NULL);
@@ -84,7 +81,8 @@ void free_philos(t_phi *philos, t_params *params)
 
 t_phi *init_philos(t_phi *philos, t_params *params)
 {
-  int     i;
+  long int  starting_time;
+  int       i;
 
   i = -1;
   philos = malloc(sizeof(t_phi) * params->philos);
@@ -96,12 +94,16 @@ t_phi *init_philos(t_phi *philos, t_params *params)
     philos[i].id = i + 1;
     pthread_create(&philos[i].thread, NULL, routine, &philos[i]);
     philos[i].l_fork = malloc(sizeof(pthread_mutex_t));
-    // philos[i].r_fork = malloc(sizeof(pthread_mutex_t));
     pthread_mutex_init(philos[i].l_fork, NULL);
   }
+  starting_time = time_now();
   i = -1;
   while (++i < params->philos)
+  {
     philos[i].r_fork = philos[(i + 1) % params->philos].l_fork;
+    philos[i].start_eating = starting_time;
+
+  }
   params->start = 1;
   return (philos);
 }
@@ -138,14 +140,19 @@ void  check_death(t_phi *philos, t_params *params)
 {
   int i;
 
-  i = -1;
   while (!philos->params->start);
   while (!params->died)
   {
+    i = -1;
     while (++i < philos->params->philos)
     {
+      printf("%ld %ld\n", time_now(), philos[i].start_eating);
       if ((time_now() - philos[i].start_eating) > params->to_die)
+      {
         params->died = 1;
+        printf("%d died\n", philos[i].id);
+        break ;
+      }
     }
   }
 }
