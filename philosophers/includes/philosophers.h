@@ -9,6 +9,11 @@
 # include <limits.h>
 
 # define	MAX_LONG	9223372036854775807
+# define    FORK        "has taken a fork"
+# define    DIE         "died"
+# define    SLEEP       "is sleeping"
+# define    THINK       "is thinking"
+# define    EAT         "is eating"
 
 typedef struct s_params
 {
