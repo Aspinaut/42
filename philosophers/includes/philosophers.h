@@ -17,7 +17,8 @@ typedef struct s_params
     int             to_sleep;
     int             philos;
     int             eat_max;
-    long int        start;
+    int             start;
+    long int        start_time;
     int             died;
     pthread_mutex_t print;
 }               t_params;
