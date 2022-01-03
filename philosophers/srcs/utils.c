@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 17:02:00 by vmasse            #+#    #+#             */
-/*   Updated: 2021/12/04 17:06:52 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/03 14:48:10 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	ft_strlen(const char *str)
 	return (count);
 }
 
-void  ft_exit(char *err)
+int  ft_exit(int ret, char *err)
 {
     write(2, err, ft_strlen(err));
-    exit(EXIT_FAILURE);
+	return (ret);
 }

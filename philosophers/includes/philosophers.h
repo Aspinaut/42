@@ -42,9 +42,9 @@ typedef struct s_phi
 /* UTILS */
 
 int     ft_strlen(const char *str);
-void    ft_exit(char *msg);
+int    ft_exit(int ret, char *err);
 int	    ft_atoi(const char *str);
 
-void     init_params(t_params *params, char **argv);
+int     init_params(t_params *params, char **argv);
 
 #endif
