@@ -12,42 +12,43 @@
 
 #include "../includes/philosophers.h"
 
-void  check_death(t_phi *philos, t_params *params)
+void	check_death(t_phi *philos, t_params *params)
 {
-  int i;
+	int	i;
 
-  while (!philos->params->start);
-  while (!params->died)
-  {
-    i = -1;
-    while (++i < philos->params->philos)
-    {
-      if ((time_now() - philos[i].start_eating) > params->to_die)
-      {
-        print_status(philos, DIE);
-        params->died = 1;
-        pthread_mutex_unlock(philos[i].l_fork);
-        pthread_mutex_unlock(philos[i].r_fork);
-        break ;
-      }
-    }
-  }
+	while (!philos->params->start)
+		continue ;
+	while (!params->died)
+	{
+		i = -1;
+		while (++i < philos->params->philos)
+		{
+			if ((time_now() - philos[i].start_eating) > params->to_die)
+			{
+				print_status(philos, DIE);
+				params->died = 1;
+				pthread_mutex_unlock(philos[i].l_fork);
+				pthread_mutex_unlock(philos[i].r_fork);
+				break ;
+			}
+		}
+	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-  t_params      params;
-  t_phi         *philos;
+	t_params	params;
+	t_phi		*philos;
 
-  philos = NULL;
-  if (argc != 5 && argc != 6)
-    return (ft_exit(1, "Error\nWrong nb of arguments\n"));
-  if (!init_params(&params, argv))
-    return (ft_exit(1, "Failed to init params\n"));
-  philos = init_philos(philos, &params);
-  if (!philos)
-    return (ft_exit(1, "Error\nFailed to init philos\n"));
-  check_death(philos, &params);
-  free_philos(philos, &params);
-  return (0);
+	philos = NULL;
+	if (argc != 5 && argc != 6)
+		return (ft_exit(1, "Error\nWrong nb of arguments\n"));
+	if (!init_params(&params, argv))
+		return (ft_exit(1, "Failed to init params\n"));
+	philos = init_philos(philos, &params);
+	if (!philos)
+		return (ft_exit(1, "Error\nFailed to init philos\n"));
+	check_death(philos, &params);
+	free_philos(philos, &params);
+	return (0);
 }

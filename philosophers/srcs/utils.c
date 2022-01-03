@@ -24,9 +24,9 @@ int	ft_strlen(const char *str)
 	return (count);
 }
 
-int  ft_exit(int ret, char *err)
+int	ft_exit(int ret, char *err)
 {
-    write(2, err, ft_strlen(err));
+	write(2, err, ft_strlen(err));
 	return (ret);
 }
 
@@ -48,12 +48,13 @@ int	ft_usleep(long int time)
 	return (1);
 }
 
-void  print_status(t_phi *philos, char *status)
+void	print_status(t_phi *philos, char *status)
 {
-  if (!philos->params->died)
-  {
-    pthread_mutex_lock(&philos->params->print);
-    printf("%ldms %d %s\n", time_now() - philos->params->start_time, philos->id, status);
-    pthread_mutex_unlock(&philos->params->print);
-  }
+	if (!philos->params->died)
+	{
+		pthread_mutex_lock(&philos->params->print);
+		printf("%ldms %d %s\n", time_now() - philos->params->start_time,
+			philos->id, status);
+		pthread_mutex_unlock(&philos->params->print);
+	}
 }
