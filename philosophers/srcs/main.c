@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:51:42 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/03 15:08:33 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/03 19:36:04 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 void	check_death(t_phi *philos, t_params *params)
 {
 	int	i;
+	int	last;
 
+	last = params->philos - 1;
+	if (params->philos % 2 == 0)
+		last -= 1;
 	while (!philos->params->start)
 		continue ;
 	while (!params->died)
@@ -29,6 +33,11 @@ void	check_death(t_phi *philos, t_params *params)
 				params->died = 1;
 				pthread_mutex_unlock(philos[i].l_fork);
 				pthread_mutex_unlock(philos[i].r_fork);
+				break ;
+			}
+			if (params->eat_max && philos[last].meals >= params->eat_max)
+			{
+				params->died = 1;
 				break ;
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:06:54 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/03 15:14:38 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/03 19:34:05 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_phi	*init_philos(t_phi *philos, t_params *params)
 	while (++i < params->philos)
 	{
 		philos[i].params = params;
-		philos[i].id = i + 1;
+		philos[i].id = i;
 		philos[i].meals = 0;
 		pthread_create(&philos[i].thread, NULL, routine, &philos[i]);
 		philos[i].l_fork = malloc(sizeof(pthread_mutex_t));
