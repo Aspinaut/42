@@ -1,8 +1,11 @@
 #!/bin/bash
 
-SRCS =	srcs/main.c		\
+SRCS =	srcs/main.c			\
 		srcs/utils.c		\
 		srcs/ft_atoi.c		\
+		srcs/actions.c		\
+		srcs/params.c		\
+		srcs/philos.c		\
 
 OBJS = $(SRCS:.c=.o)
 
@@ -13,8 +16,8 @@ RM = rm -f
 CC = gcc
 
 CFLAGS = -Wall -Wextra
-# CFLAGS += -Werror
-CFLAGS += -g
+CFLAGS += -Werror
+# CFLAGS += -g
 # CFLAGS += -fsanitize=address
 # CFLAGS += -fsanitize=thread
 

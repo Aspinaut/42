@@ -39,12 +39,34 @@ typedef struct s_phi
     t_params        *params;
 }                   t_phi;
 
+int     ft_atoi(const char *str);
+
 /* UTILS */
 
-int     ft_strlen(const char *str);
-int    ft_exit(int ret, char *err);
-int	    ft_atoi(const char *str);
+int         ft_strlen(const char *str);
+int         ft_exit(int ret, char *err);
+long int    time_now(void);
+int	        ft_usleep(long int time);
+void        print_status(t_phi *philos, char *status);
 
+
+/* ACTIONS */
+
+void    ft_sleep_think(t_phi *philo);
+void    ft_eat(t_phi *philo);
+void    *routine(void *job);
+
+
+/* PARAMS */
+
+int     check_args(t_params *params);
 int     init_params(t_params *params, char **argv);
+
+
+/* PHILOS */
+
+void    free_philos(t_phi *philos, t_params *params);
+t_phi   *init_philos(t_phi *philos, t_params *params);
+
 
 #endif
