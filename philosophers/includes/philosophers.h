@@ -31,6 +31,7 @@ typedef struct s_params
 typedef struct s_phi
 {
     int             id;
+    int             meals;
     long int        start_eating;
     pthread_mutex_t *l_fork;
     pthread_mutex_t *r_fork;

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:51:42 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/02 17:38:10 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/03 11:33:04 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,39 +40,41 @@ void  print_status(t_phi *philos, char *status)
   }
 }
 
-void  ft_sleep_think(t_phi *philos)
+void  ft_sleep_think(t_phi *philo)
 {
-  print_status(philos, SLEEP);
-  ft_usleep(philos->params->to_sleep);
-  print_status(philos, THINK);
+  print_status(philo, SLEEP);
+  ft_usleep(philo->params->to_sleep);
+  print_status(philo, THINK);
 }
 
-void  ft_eat(t_phi *philos)
+void  ft_eat(t_phi *philo)
 {
-  pthread_mutex_lock(philos->l_fork);
-  print_status(philos, FORK);
-  pthread_mutex_lock(philos->r_fork);
-  print_status(philos, FORK);
-  print_status(philos, EAT);
-  philos->start_eating = time_now();
-  ft_usleep(philos->params->to_eat);
-  pthread_mutex_unlock(philos->l_fork);
-  pthread_mutex_unlock(philos->r_fork);
-
+  pthread_mutex_lock(philo->l_fork);
+  print_status(philo, FORK);
+  pthread_mutex_lock(philo->r_fork);
+  print_status(philo, FORK);
+  print_status(philo, EAT);
+  philo->start_eating = time_now();
+  ft_usleep(philo->params->to_eat);
+  philo->meals++;
+  pthread_mutex_unlock(philo->l_fork);
+  pthread_mutex_unlock(philo->r_fork);
 }
 
 void *routine(void *job)
 {
-  t_phi *philos;
+  t_phi *philo;
 
-  philos = job;
-  while (!philos->params->start);
-  if (philos->id % 2 == 0)
-    usleep(philos->params->to_eat * 0.5);
-  while (!philos->params->died)
+  philo = job;
+  while (!philo->params->start);
+  if (philo->id % 2 == 0)
+    usleep(philo->params->to_eat * 0.5);
+  while (!philo->params->died)
   {
-    ft_eat(philos);
-    ft_sleep_think(philos);
+    if (philo->params->eat_max && philo->meals >= philo->params->eat_max)
+      break ;
+    ft_eat(philo);
+    ft_sleep_think(philo);
   }
   return (NULL);
 }
@@ -104,8 +106,11 @@ t_phi *init_philos(t_phi *philos, t_params *params)
   {
     philos[i].params = params;
     philos[i].id = i + 1;
+    philos[i].meals = 0;
     pthread_create(&philos[i].thread, NULL, routine, &philos[i]);
     philos[i].l_fork = malloc(sizeof(pthread_mutex_t));
+    if (!philos[i].l_fork)
+      return (NULL);
     pthread_mutex_init(philos[i].l_fork, NULL);
   }
   starting_time = time_now();
@@ -146,6 +151,8 @@ void  init_params(t_params *params, char **argv)
   if (argv[5])
     params->eat_max = ft_atoi(argv[5]);
   check_args(params);
+  if (!argv[5])
+    params->eat_max = 0;
 }
 
 void  check_death(t_phi *philos, t_params *params)
