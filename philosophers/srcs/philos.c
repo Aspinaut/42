@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:06:54 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/03 19:34:05 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/03 15:14:38 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,15 @@ void	free_philos(t_phi *philos, t_params *params)
 	free(philos);
 }
 
-t_phi	*init_philos(t_phi *philos, t_params *params)
+static t_phi	*process_init_philos(t_phi *philos, t_params *params)
 {
-	long int	starting_time;
-	int			i;
+	int	i;
 
 	i = -1;
-	philos = malloc(sizeof(t_phi) * params->philos);
-	if (!philos)
-		return (NULL);
 	while (++i < params->philos)
 	{
 		philos[i].params = params;
-		philos[i].id = i;
+		philos[i].id = i + 1;
 		philos[i].meals = 0;
 		pthread_create(&philos[i].thread, NULL, routine, &philos[i]);
 		philos[i].l_fork = malloc(sizeof(pthread_mutex_t));
@@ -46,6 +42,18 @@ t_phi	*init_philos(t_phi *philos, t_params *params)
 			return (NULL);
 		pthread_mutex_init(philos[i].l_fork, NULL);
 	}
+	return (philos);
+}
+
+t_phi	*init_philos(t_phi *philos, t_params *params)
+{
+	long int	starting_time;
+	int			i;
+
+	philos = malloc(sizeof(t_phi) * params->philos);
+	if (!philos)
+		return (NULL);
+	philos = process_init_philos(philos, params);
 	starting_time = time_now();
 	i = -1;
 	while (++i < params->philos)

@@ -12,14 +12,10 @@
 
 #include "../includes/philosophers.h"
 
-void	check_death(t_phi *philos, t_params *params)
+void	check_death(t_phi *philos, t_params *params, int last_to_eat)
 {
 	int	i;
-	int	last;
 
-	last = params->philos - 1;
-	if (params->philos % 2 == 0)
-		last -= 1;
 	while (!philos->params->start)
 		continue ;
 	while (!params->died)
@@ -35,7 +31,7 @@ void	check_death(t_phi *philos, t_params *params)
 				pthread_mutex_unlock(philos[i].r_fork);
 				break ;
 			}
-			if (params->eat_max && philos[last].meals >= params->eat_max)
+			if (params->eat_max && philos[last_to_eat].meals >= params->eat_max)
 			{
 				params->died = 1;
 				break ;
@@ -48,6 +44,7 @@ int	main(int argc, char **argv)
 {
 	t_params	params;
 	t_phi		*philos;
+	int			last_to_eat;
 
 	philos = NULL;
 	if (argc != 5 && argc != 6)
@@ -57,7 +54,10 @@ int	main(int argc, char **argv)
 	philos = init_philos(philos, &params);
 	if (!philos)
 		return (ft_exit(1, "Error\nFailed to init philos\n"));
-	check_death(philos, &params);
+	last_to_eat = params.philos - 1;
+	if (params.philos % 2 == 0)
+		last_to_eat -= 1;
+	check_death(philos, &params, last_to_eat);
 	free_philos(philos, &params);
 	return (0);
 }

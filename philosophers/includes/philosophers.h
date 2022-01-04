@@ -79,4 +79,8 @@ int			init_params(t_params *params, char **argv);
 void		free_philos(t_phi *philos, t_params *params);
 t_phi		*init_philos(t_phi *philos, t_params *params);
 
+/* MAIN */
+
+void		check_death(t_phi *philos, t_params *params, int last);
+
 #endif
