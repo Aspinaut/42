@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:58:50 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/03 19:00:15 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/04 14:45:20 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ft_eat(t_phi *philo)
 	philo->start_eating = time_now();
 	ft_usleep(philo->params->to_eat);
 	philo->meals++;
-	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
+	pthread_mutex_unlock(philo->l_fork);
 }
 
 void	*routine(void *job)
@@ -41,7 +41,7 @@ void	*routine(void *job)
 	while (!philo->params->start)
 		continue ;
 	if (philo->id % 2 == 0)
-		usleep(philo->params->to_eat * 0.5);
+		ft_usleep(philo->params->to_eat * 0.5);
 	while (!philo->params->died)
 	{
 		ft_eat(philo);

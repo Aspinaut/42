@@ -15,8 +15,7 @@ RM = rm -f
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra
-CFLAGS += -Werror
+CFLAGS = -Wall -Wextra -Werror
 # CFLAGS += -g
 # CFLAGS += -fsanitize=address
 # CFLAGS += -fsanitize=thread

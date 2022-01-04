@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 17:02:00 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/03 19:36:37 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/04 14:48:47 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,9 @@ int	ft_usleep(long int time)
 
 void	print_status(t_phi *philos, char *status)
 {
+	pthread_mutex_lock(&philos->params->print);
 	if (!philos->params->died)
-	{
-		pthread_mutex_lock(&philos->params->print);
 		printf("%ldms %d %s\n", time_now() - philos->params->start_time,
-			philos->id + 1, status);
-		pthread_mutex_unlock(&philos->params->print);
-	}
+			philos->id, status);
+	pthread_mutex_unlock(&philos->params->print);
 }

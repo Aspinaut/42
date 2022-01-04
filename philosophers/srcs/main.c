@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:51:42 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/03 19:36:04 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/04 14:56:29 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	check_death(t_phi *philos, t_params *params, int last_to_eat)
 			{
 				print_status(philos, DIE);
 				params->died = 1;
-				pthread_mutex_unlock(philos[i].l_fork);
-				pthread_mutex_unlock(philos[i].r_fork);
+				if (params->philos == 1)
+					pthread_mutex_unlock(philos[i].l_fork);
 				break ;
 			}
 			if (params->eat_max && philos[last_to_eat].meals >= params->eat_max)
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 	if (!philos)
 		return (ft_exit(1, "Error\nFailed to init philos\n"));
 	last_to_eat = params.philos - 1;
-	if (params.philos % 2 == 0)
+	if (params.philos % 2 != 0)
 		last_to_eat -= 1;
 	check_death(philos, &params, last_to_eat);
 	free_philos(philos, &params);

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:06:54 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/03 15:14:38 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/04 14:45:33 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	free_philos(t_phi *philos, t_params *params)
 	int	i;
 
 	i = -1;
-	while (++i < philos->params->philos)
+	while (++i < params->philos)
 	{
 		pthread_join(philos[i].thread, NULL);
 		pthread_mutex_destroy(philos[i].l_fork);
+		free(philos[i].l_fork);
 	}
 	pthread_mutex_destroy(&params->print);
 	free(philos);
