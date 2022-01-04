@@ -16,9 +16,6 @@ RM = rm -f
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
-# CFLAGS += -g
-# CFLAGS += -fsanitize=address
-# CFLAGS += -fsanitize=thread
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
