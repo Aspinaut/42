@@ -49,17 +49,17 @@ void print_canvas(t_canvas *canvas)
     {
         write(1, canvas->matrix + i * canvas->w, canvas->w);
         write(1, "\n", 1);
-    } 
+    }
 }
 
 int check_point(float x, float y, t_rect *r)
 {
-	if ((((x < r->x) || (r->x + r->w < x)) || y < r->y) || (r->y + r->h < y))
+	if ((((x < r->x) || (r->x + r->w < x)) || (y < r->y)) || (r->y + r->h < y))
 		return (0);
 	if (((x - r->x < ONE) || ((r->x + r->w) - x < ONE)) ||
 		((y - r->y < ONE || ((r->y + r->h) - y < ONE))))
 		return (2); // Border
-	return (1);	
+	return (1);
 }
 
 void write_matrix(t_canvas *canvas, t_rect *rect)
@@ -75,7 +75,7 @@ void write_matrix(t_canvas *canvas, t_rect *rect)
         while (++j < canvas->h)
         {
             point = check_point((float)i, (float)j, rect);
-            if (point == 2 || (point == 1 && rect->m == 'R'))        
+            if (point == 2 || (point == 1 && rect->m == 'R'))
                 canvas->matrix[i + j * canvas->w] = rect->c;
         }
     }
@@ -87,7 +87,7 @@ int draw_canvas(FILE *file, t_canvas *canvas)
 
     if (fscanf(file, "%d %d %c\n", &canvas->w, &canvas->h, &canvas->c) != 3)
         return (str_err("Error: Operation file corrupted\n", file, 1));
-    if (canvas->w <= 0 || canvas->w > 300 || canvas->h <= 0 || canvas->h > 300)
+    if (canvas->w < 1 || canvas->w > 300 || canvas->h < 1 || canvas->h > 300)
         return (str_err("Error: Operation file corrupted\n", file, 1));
     canvas->matrix = malloc(sizeof(char) * (canvas->h * canvas->w + 1));
     if (!canvas->matrix)
@@ -124,6 +124,8 @@ int draw(FILE *file, t_canvas *canvas, t_rect *rect)
     if (draw_rect(file, canvas, rect))
         return (1);
     print_canvas(canvas);
+	free(canvas->matrix);
+	fclose(file);
     return (0);
 }
 
@@ -133,7 +135,7 @@ int main(int argc, char **argv)
     t_canvas    canvas;
     t_rect      rect;
 
-    canvas.w = 7;
+    // canvas.w = 7;
     if (argc != 2)
         return (str_err("Error: argument\n", file, 1));
     file = fopen(argv[1], "r");
