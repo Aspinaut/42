@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:18:51 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/04 23:25:00 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/08 12:40:25 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/time.h>
-// # include <limits.h>
+# include <limits.h>
 
 # define MAX_LONG	9223372036854775807
 # define FORK        "has taken a fork"
@@ -34,6 +34,7 @@ typedef struct s_params
 	int				to_sleep;
 	int				philos;
 	int				eat_max;
+	int				has_eat_max;
 	int				start;
 	int				died;
 	long int		start_time;
