@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:02:59 by vmasse            #+#    #+#             */
-/*   Updated: 2022/01/04 23:18:55 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/01/08 12:53:29 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	check_args(t_params *params)
 		return (ft_exit(0, "Error\nWrong time to eat\n"));
 	if (params->to_sleep < 1 || params->to_sleep > INT_MAX)
 		return (ft_exit(0, "Error\nWrong time to sleep\n"));
-	if (params->eat_max < 1 || params->eat_max > INT_MAX)
+	if ((params->has_eat_max && params->eat_max < 1)
+		|| params->eat_max > INT_MAX)
 		return (ft_exit(0, "Error\nWrong eat max\n"));
 	return (1);
 }
@@ -37,8 +38,14 @@ int	init_params(t_params *params, char **argv)
 	params->died = 0;
 	pthread_mutex_init(&params->print, NULL);
 	if (argv[5])
+	{
+		params->has_eat_max = 1;
 		params->eat_max = ft_atoi(argv[5]);
+	}
 	else
+	{
+		params->has_eat_max = 0;
 		params->eat_max = 0;
+	}
 	return (check_args(params));
 }
