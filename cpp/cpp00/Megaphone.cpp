@@ -1,10 +1,10 @@
-#include "Phonebook.hpp"
+#include "Megaphone.hpp"
+#include <iostream>
 
-Phonebook::Phonebook(void) {
+Megaphone::Megaphone(void){
 	std::cout << "Constructor called" << std::endl;
 }
 
-Phonebook::~Phonebook(void) {
+Megaphone::~Megaphone(void){
 	std::cout << "Destructor called" << std::endl;
 }
-

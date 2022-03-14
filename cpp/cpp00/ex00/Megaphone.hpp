@@ -1,7 +1,8 @@
 #include <iostream>
 #include <ctype.h>
 
-class Megaphone {
+class Megaphone
+{
 	public:
 		Megaphone (void) ;
 		~Megaphone (void) ;
