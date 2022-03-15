@@ -1,5 +1,6 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
+# include <string>
 
 class Contact {
 
@@ -11,7 +12,6 @@ class Contact {
 		std::string _secret;
 
 	public:
-
 		Contact (void);
 		~Contact (void);
 

@@ -1,23 +1,24 @@
 #include "Contact.hpp"
+# include <string>
 
 Contact::Contact(void) {}
 
 Contact::~Contact(void) {}
 
 void Contact::setFirstName(std::string s) {
-	this->firstName = s;
+	this->_firstName = s;
 }
 
 void Contact::setLastName(std::string s) {
-	this->lastName = s;
+	this->_lastName = s;
 }
 
 void Contact::setNickName(std::string s) {
-	this->nickName = s;
+	this->_nickName = s;
 }
 
 void Contact::setPhoneNb(std::string s) {
-	this->phoneNb = s;
+	this->_phoneNb = s;
 }
 
 void Contact::setSecret(std::string s) {
