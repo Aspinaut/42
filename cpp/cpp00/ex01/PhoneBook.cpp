@@ -19,6 +19,23 @@ void 	PhoneBook::addContact(void) {
 	std::string	tmp;
 
 	// et attention à ne pas ajouter de NULL (/ spaces ?) !
+	// std::cout << "First Name : ";
+	// std::getline(std::cin, tmp);
+	// this->contacts[i].setFirstName(tmp);
+	// std::cout << "Last Name : ";
+	// std::getline(std::cin, tmp);
+	// this->contacts[i].setLastName(tmp);
+	// std::cout << "NickName : ";
+	// std::getline(std::cin, tmp);
+	// this->contacts[i].setNickName(tmp);
+	// std::cout << "Phone number : ";
+	// std::getline(std::cin, tmp);
+	// this->contacts[i].setPhoneNb(tmp);
+	// std::cout << "His darkest secret : ";
+	// std::getline(std::cin, tmp);
+	// this->contacts[i].setSecret(tmp);
+
+	
 	std::cout << "First Name : ";
 	std::getline(std::cin, tmp);
 	this->contacts[i].setFirstName(tmp);
