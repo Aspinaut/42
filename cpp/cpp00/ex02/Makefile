@@ -1,10 +1,11 @@
 #!/bin/bash
 
-SRCS =	main.cpp		\
+SRCS =	tests.cpp		\
+		Account.cpp		
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = megaphone
+NAME = accounts
 
 RM = rm -f
 
