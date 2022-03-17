@@ -4,6 +4,7 @@
 class Megaphone
 {
 	public:
+	
 		Megaphone (void) ;
 		~Megaphone (void) ;
 

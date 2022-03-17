@@ -1,10 +1,13 @@
 #include "PhoneBook.hpp"
+#include <stdlib.h>
+#include <unistd.h>
 
 PhoneBook::PhoneBook(void) {}
 
 PhoneBook::~PhoneBook(void) {}
 
-std::string	truncateString(std::string s) {
+std::string	truncateString(std::string s)
+{
 	if (s.length() > 10)
 	{
 		s = s.substr(0, 9);
@@ -13,57 +16,55 @@ std::string	truncateString(std::string s) {
 	return s;
 }
 
-void 	PhoneBook::addContact(void) {
-
-	static int 	i = 0;
+void 	PhoneBook::addContact(void)
+{
 	std::string	tmp;
 
-	// et attention à ne pas ajouter de NULL (/ spaces ?) !
-	// std::cout << "First Name : ";
-	// std::getline(std::cin, tmp);
-	// this->contacts[i].setFirstName(tmp);
-	// std::cout << "Last Name : ";
-	// std::getline(std::cin, tmp);
-	// this->contacts[i].setLastName(tmp);
-	// std::cout << "NickName : ";
-	// std::getline(std::cin, tmp);
-	// this->contacts[i].setNickName(tmp);
-	// std::cout << "Phone number : ";
-	// std::getline(std::cin, tmp);
-	// this->contacts[i].setPhoneNb(tmp);
-	// std::cout << "His darkest secret : ";
-	// std::getline(std::cin, tmp);
-	// this->contacts[i].setSecret(tmp);
-
-	
+	if (this->size >= 8)
+		this->size = 0;
 	std::cout << "First Name : ";
-	std::getline(std::cin, tmp);
-	this->contacts[i].setFirstName(tmp);
+	while (tmp.empty())
+		std::getline(std::cin, tmp);
+	this->contacts[this->size].setFirstName(tmp);
+
 	std::cout << "Last Name : ";
 	std::getline(std::cin, tmp);
-	this->contacts[i].setLastName(tmp);
+	while (tmp.empty())
+		std::getline(std::cin, tmp);
+	this->contacts[this->size].setLastName(tmp);
+
 	std::cout << "NickName : ";
 	std::getline(std::cin, tmp);
-	this->contacts[i].setNickName(tmp);
+	while (tmp.empty())
+		std::getline(std::cin, tmp);
+	this->contacts[this->size].setNickName(tmp);
+
 	std::cout << "Phone number : ";
 	std::getline(std::cin, tmp);
-	this->contacts[i].setPhoneNb(tmp);
+	while (tmp.empty())
+		std::getline(std::cin, tmp);
+	this->contacts[this->size].setPhoneNb(tmp);
+	
 	std::cout << "His darkest secret : ";
 	std::getline(std::cin, tmp);
-	this->contacts[i].setSecret(tmp);
+	while (tmp.empty())
+		std::getline(std::cin, tmp);
+	this->contacts[this->size].setSecret(tmp);
 
 	std::cout << "Your new contact has been saved !" << std::endl;
-	i++;
-	if (i >= 8)
-		i = 0;
+	this->size++;
 }
 
-void	PhoneBook::searchContact(void) {
-
-	int	index = 0;
+void	PhoneBook::searchContact(void)
+{
+	std::string	rawIndex;
+	int			index;
 
 	if ((this->contacts[0].getFirstName()).empty())
+	{
 		std::cout << "You don't have any contact, try 'ADD'" << std::endl;
+		return ;
+	}
 	std::cout << "Here is your contact list :" << std::endl << std::endl;
 	std::cout << "____________________________________________" << std::endl;
 	std::cout << "|" << std::setw(10) << "     index|" 
@@ -71,26 +72,43 @@ void	PhoneBook::searchContact(void) {
 					<< std::setw(10) << "last name| "
 					<< std::setw(10) << "nick name|" << std::endl;
 	std::cout << "____________________________________________" << std::endl;
-	// ne doit parcourir que jusque le dernier contact set
-	for (int i=0; i < 8; i++) {
+
+	for (int i=0; i < this->size; i++) {
 		std::cout << "|" << std::setw(10) << i + 1 << "|"
 					<< std::setw(10) << truncateString(this->contacts[i].getFirstName()) << "|"
 					<< std::setw(10) << truncateString(this->contacts[i].getLastName()) << "|"
 					<< std::setw(10) << truncateString(this->contacts[i].getNickName()) << "|" << std::endl;
 		std::cout << "____________________________________________" << std::endl;
 	}
-	// modifier la condition pour que l'index corresponde à un contact valide
-	while (index < 1 || index > 8)
+	std::cout << std::endl;
+
+	std::cout << "Type the index of the contact you wish to print : " << std::endl;
+	std::getline(std::cin, rawIndex);
+	index = atoi(rawIndex.c_str());
+	while (index < 1 || index > this->size)
 	{
-		// pourquoi il boucle si on lui donne un char ? cin = pas protégé ??
-		std::cout << "Type the index of the contact you wish to print : " << std::endl;
-		std::cin >> index;
-		if (index < 1 || index > 8)
-			std::cout << "Please enter an index between 1 and 8" << std::endl;
+		std::cout << "Please enter an index between 1 and " << this->size << std::endl;
+		std::getline(std::cin, rawIndex);
+		if (std::cin.eof())
+			return ;
+		index = atoi(rawIndex.c_str());
 	}
 	std::cout << "First Name : " << this->contacts[index - 1].getFirstName() << std::endl;
 	std::cout << "Last Name : " << this->contacts[index - 1].getLastName() << std::endl;
 	std::cout << "NickName : " << this->contacts[index - 1].getNickName() << std::endl;
 	std::cout << "Phone number : " << this->contacts[index - 1].getPhoneNb() << std::endl;
 	std::cout << "His darkest secret : " << this->contacts[index - 1].getSecret() << std::endl;
+}
+
+void 	PhoneBook::fill(void)
+{
+	for (int i=this->size; i < 8; i++)
+	{
+		this->contacts[i].setFirstName("Justin");
+		this->contacts[i].setLastName("Pote");
+		this->contacts[i].setNickName("");
+		this->contacts[i].setPhoneNb("");
+		this->contacts[i].setSecret("");
+		this->size++;
+	}
 }

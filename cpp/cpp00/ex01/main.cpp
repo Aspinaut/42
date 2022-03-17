@@ -1,7 +1,7 @@
 #include "PhoneBook.hpp"
 
-int	main(int argc, char *argv[]) {
-
+int	main()
+{
 	PhoneBook 	phonebook;
 	std::string	cmd;
 
@@ -11,10 +11,12 @@ int	main(int argc, char *argv[]) {
 	{
 		if (cmd == "ADD")
 			phonebook.addContact();
-		else if (cmd == "SEARCH" || cmd == "S")
+		else if (cmd == "SEARCH")
 			phonebook.searchContact();
 		else if (cmd == "EXIT")
 			return (0);
+		else if (cmd == "FILL")
+			phonebook.fill();
 		else
 			std::cout << "Type one of these options : ADD, SEARCH, EXIT" << std::endl;
 	}

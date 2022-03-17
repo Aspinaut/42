@@ -2,16 +2,10 @@
 # define CONTACT_HPP
 # include <string>
 
-class Contact {
-
-	private:
-		std::string	_firstName;
-		std::string	_lastName;
-		std::string	_nickName;
-		std::string	_phoneNb;
-		std::string _secret;
-
+class Contact 
+{
 	public:
+
 		Contact (void);
 		~Contact (void);
 
@@ -26,6 +20,14 @@ class Contact {
 		std::string getNickName(void) const;
 		std::string getPhoneNb(void) const;
 		std::string getSecret(void) const;
+
+	private:
+	
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickName;
+		std::string	_phoneNb;
+		std::string _secret;
 };
 
 #endif

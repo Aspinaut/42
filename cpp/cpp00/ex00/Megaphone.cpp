@@ -4,12 +4,15 @@ Megaphone::Megaphone(void) {}
 
 Megaphone::~Megaphone(void) {}
 
-void Megaphone::turnOn(std::string s) {
-	for (int i = 0; i < s.length(); i++) {
+void Megaphone::turnOn(std::string s)
+{
+	int len = s.length();
+
+	for (int i = 0; i < len; i++) {
 		if (s[i] >= 'a' && s[i] <= 'z')
-			putchar(toupper(s[i]));
+			putwchar(toupper(s[i]));
 		else
-			putchar(s[i]);
+			putwchar(s[i]);
 	}
-	std::cout << std::endl;
+	putwchar('\n');
 }
