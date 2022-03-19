@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:35:04 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/19 16:49:34 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/19 17:06:18 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ class Zombie
 		Zombie( std::string name);
 		~Zombie();
 
-		void announce( void );
-	
+		void announce( void ) const;
+		void setName(const std::string name);
+
 	private:
 
-		const std::string _name;
+		std::string _name;
 
 };
 		
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+Zombie* zombieHorde( int N, std::string name );
 
 #endif

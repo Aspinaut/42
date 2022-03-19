@@ -2,8 +2,7 @@
 
 SRCS =	main.cpp		\
 		Zombie.cpp		\
-		randomChump.cpp		\
-		newZombie.cpp		\
+		zombieHorde.cpp		\
 
 OBJS = $(SRCS:.cpp=.o)
 

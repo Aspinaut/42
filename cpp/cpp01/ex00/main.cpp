@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:34:59 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/18 15:52:08 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/19 16:54:41 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	main()
 {
-	Zombie *z = 0;
+	Zombie *stackZ = newZombie("Stack Zombie");
 
-	z = z->newZombie("Bob");
-	z->announce();
-	z->randomChump("Bobby");
-	delete z;
+	randomChump("Heap Zombie");
+	delete stackZ;
 	return 0;
 }
