@@ -4,7 +4,7 @@ SRCS =	main.cpp		\
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = string
+NAME = stringz
 
 RM = rm -f
 
