@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:58:20 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/21 16:39:02 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/21 17:09:59 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ int main(int argc, char **argv)
 	if (argc != 4)
 		return 1;
 	std::ifstream infile(argv[1]);
-	char *rawOutfile = strdup(argv[1]);
-	strcat(rawOutfile, ".replace");
-	std::ofstream outfile(rawOutfile);
+	std::string s1 = argv[1];
 	std::string s2 = argv[2];
 	std::string s3 = argv[3];
+	std::ofstream outfile((s1 + ".replace").c_str());
 	std::string input;
 	
 	getline(infile, input, '\0');
