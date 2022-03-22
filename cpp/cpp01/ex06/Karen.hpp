@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Karen.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 10:58:20 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/22 09:54:15 by vmasse           ###   ########.fr       */
+/*   Created: 2022/03/21 16:51:52 by vmasse            #+#    #+#             */
+/*   Updated: 2022/03/21 17:18:53 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Karen.hpp"
+#ifndef KAREN_HPP
+# define KAREN_HPP
+# include <iostream>
 
-int main()
+class Karen
 {
-	Karen karen;
+	public:
 
-	karen.complain("DEBUG");
-	karen.complain("INFO");
-	karen.complain("WARNING");
-	karen.complain("ERROR");
-	karen.complain("NUCLEAR THREAT");
+		Karen();
+		~Karen();
+		void complain( std::string level );
+		
+	private:
 
-	return 0;
-}
+		void _debug( void );
+		void _info( void );
+		void _warning( void );
+		void _error( void );
+};
+
+#endif
