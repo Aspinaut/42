@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:58:20 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/22 10:19:19 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/22 12:10:05 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int main(int argc, char **argv)
 {
-	Karen karen;
+	Karen 		karen;
 
 	if (argc != 2)
+	{
+		std::cout << "Please insert one level of complain..." << std::endl;
 		return 1;
+	}
 
-	karen.complain("DEBUG");
-	karen.complain("INFO");
-	karen.complain("WARNING");
-	karen.complain("ERROR");
-	karen.complain("NUCLEAR THREAT");
+	std::string level = argv[1];
+	karen.complain(level);
 
 	return 0;
 }

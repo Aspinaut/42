@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:09:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/22 09:48:15 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/22 12:05:24 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,29 @@ void Karen::complain( std::string level )
 			choice = i;
 	}
 
-	if (choice == -1)
+	switch(choice)
 	{
-		std::cout << "I don't know what you're talking about." << std::endl;
-		return ;
+		case 0:
+			(this->*(fct[0]))();
+			goto _info_;
+
+		_info_:
+		case 1:
+			(this->*(fct[1]))();
+			goto _warning_;
+
+		_warning_:
+		case 2:
+			(this->*(fct[2]))();
+			goto _error_;
+
+		_error_:
+		case 3:
+			(this->*(fct[3]))();
+			break;
+
+		default:
+			std::cout << "I don't know what you're talking about." << std::endl;
+			break;
 	}
-	(this->*(fct[choice]))();
 }
