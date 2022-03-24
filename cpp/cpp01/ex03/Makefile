@@ -5,6 +5,10 @@ SRCS =	main.cpp		\
 		HumanA.cpp		\
 		HumanB.cpp		\
 
+INCS = 	HumanA.hpp \
+		HumanB.hpp \
+		Weapon.hpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 NAME = weapons

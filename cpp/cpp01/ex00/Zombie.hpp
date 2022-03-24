@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:35:04 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/19 16:49:34 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/24 11:43:02 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ class Zombie
 		~Zombie();
 
 		void announce( void );
-	
+
 	private:
 
 		const std::string _name;
 
 };
-		
+
 Zombie* newZombie( std::string name );
 void randomChump( std::string name );
 

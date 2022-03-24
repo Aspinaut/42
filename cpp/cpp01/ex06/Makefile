@@ -3,6 +3,8 @@
 SRCS =	main.cpp		\
 		Karen.cpp		\
 
+INCS = 	Karen.hpp \
+
 OBJS = $(SRCS:.cpp=.o)
 
 NAME = karenFilter
@@ -13,7 +15,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 all: $(NAME)

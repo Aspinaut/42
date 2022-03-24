@@ -4,6 +4,8 @@ SRCS =	main.cpp		\
 		Zombie.cpp		\
 		zombieHorde.cpp		\
 
+INCS = Zombie.hpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 NAME = zombie
@@ -14,7 +16,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(INCS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 all: $(NAME)
