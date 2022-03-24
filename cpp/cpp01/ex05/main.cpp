@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:58:20 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/22 09:54:15 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/24 13:01:11 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 int main()
 {
-	Karen karen;
+	Harl Harl;
 
-	karen.complain("DEBUG");
-	karen.complain("INFO");
-	karen.complain("WARNING");
-	karen.complain("ERROR");
-	karen.complain("NUCLEAR THREAT");
+	Harl.complain("DEBUG");
+	Harl.complain("INFO");
+	Harl.complain("WARNING");
+	Harl.complain("ERROR");
+	Harl.complain("NUCLEAR THREAT");
 
 	return 0;
 }

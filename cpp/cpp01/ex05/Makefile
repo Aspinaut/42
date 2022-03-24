@@ -1,13 +1,13 @@
 #!/bin/bash
 
 SRCS =	main.cpp		\
-		Karen.cpp		\
+		Harl.cpp		\
 
-INCS = 	Karen.hpp \
+INCS = 	Harl.hpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = karen
+NAME = Harl
 
 RM = rm -f
 

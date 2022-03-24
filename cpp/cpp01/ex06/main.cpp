@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:58:20 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/22 12:10:05 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/24 13:02:20 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 int main(int argc, char **argv)
 {
-	Karen 		karen;
+	Harl 		Harl;
 
 	if (argc != 2)
 	{
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	}
 
 	std::string level = argv[1];
-	karen.complain(level);
+	Harl.complain(level);
 
 	return 0;
 }

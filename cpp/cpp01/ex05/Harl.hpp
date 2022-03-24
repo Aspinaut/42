@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Karen.hpp                                          :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vmasse <vmasse@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:51:52 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/21 17:18:53 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/24 13:00:50 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KAREN_HPP
-# define KAREN_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 # include <iostream>
 
-class Karen
+class Harl
 {
 	public:
 
-		Karen();
-		~Karen();
+		Harl();
+		~Harl();
 		void complain( std::string level );
-		
+
 	private:
 
 		void _debug( void );
