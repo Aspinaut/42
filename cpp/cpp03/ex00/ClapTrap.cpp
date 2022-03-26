@@ -1,82 +1,82 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClavTrap.cpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 13:47:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/26 14:13:05 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClavTrap.hpp"
+#include "ClapTrap.hpp"
 
-ClavTrap::ClavTrap() : _hitPts(10), _energyPts(10), _attackDmg(0)
+ClapTrap::ClapTrap() : _hitPts(10), _energyPts(10), _attackDmg(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-ClavTrap::ClavTrap(const std::string name) : _name(name), _hitPts(10), _energyPts(10), _attackDmg(0)
+ClapTrap::ClapTrap(const std::string name) : _name(name), _hitPts(10), _energyPts(10), _attackDmg(0)
 {
 	std::cout << "Naming constructor called" << std::endl;
 }
 
-ClavTrap::~ClavTrap()
+ClapTrap::~ClapTrap()
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
-void ClavTrap::attack(const std::string& target)
+void ClapTrap::attack(const std::string& target)
 {
 	if (this->_energyPts < 1 || this->_hitPts < 1)
 	{
-		std::cout << "ClavTrap " << this->_name << " cannot attack anymore..." << std::endl;
+		std::cout << "ClapTrap " << this->_name << " cannot attack anymore..." << std::endl;
 		return ;
 	}
-	std::cout << "ClavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDmg << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDmg << " points of damage!" << std::endl;
 	this->_energyPts--;
 }
 
-void ClavTrap::takeDamage(unsigned int amount)
+void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hitPts < 1)
 	{
-		std::cout << "ClavTrap " << this->_name << "is already dead..." << std::endl;
+		std::cout << "ClapTrap " << this->_name << "is already dead..." << std::endl;
 		return ;
 	}
-	std::cout << "ClavTrap " << this->_name << " just lost " << amount << " hit points!" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " just lost " << amount << " hit points!" << std::endl;
 	this->_hitPts -= amount;
 }
 
-void ClavTrap::beRepaired(unsigned int amount)
+void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_energyPts < 1 || this->_hitPts < 1)
 	{
-		std::cout << "ClavTrap " << this->_name << " cannot be repaired..." << std::endl;
+		std::cout << "ClapTrap " << this->_name << " cannot be repaired..." << std::endl;
 		return ;
 	}
-	std::cout << "ClavTrap " << this->_name << " just won " << amount << " hit points!" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " just won " << amount << " hit points!" << std::endl;
 	this->_energyPts--;
 	this->_hitPts += amount;
 }
 
-const std::string	ClavTrap::getName()
+const std::string	ClapTrap::getName()
 {
 	return this->_name;
 }
 
-int	ClavTrap::getHitPts()
+int	ClapTrap::getHitPts()
 {
 	return this->_hitPts;
 }
 
-int	ClavTrap::getEnergyPts()
+int	ClapTrap::getEnergyPts()
 {
 	return this->_energyPts;
 }
 
-int	ClavTrap::getAttackDmg()
+int	ClapTrap::getAttackDmg()
 {
 	return this->_attackDmg;
 }

@@ -2,12 +2,14 @@
 
 SRCS =	main.cpp		\
 		ClapTrap.cpp		\
+		ScavTrap.cpp		\
 
-INCS = ClapTrap.hpp
+INCS = 	ClapTrap.hpp	\
+		ScavTrap.hpp		\
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = ClapTrap
+NAME = ScavTrap
 
 RM = rm -f
 

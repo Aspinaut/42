@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClavTrap.hpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 13:47:35 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/26 14:33:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAVTRAP_HPP
-# define CLAVTRAP_HPP
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 # include <iostream>
 
-class ClavTrap
+class ClapTrap
 {
 	public:
 
-		ClavTrap();
-		ClavTrap(const std::string name);
-		~ClavTrap();
+		ClapTrap();
+		ClapTrap(const std::string name);
+		~ClapTrap();
 
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
