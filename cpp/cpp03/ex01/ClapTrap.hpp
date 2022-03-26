@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 14:47:31 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/26 15:31:48 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class ClapTrap
 		int	getEnergyPts();
 		int	getAttackDmg();
 
-	private:
+	protected:
 
 		const std::string _name;
 		int	_hitPts;
