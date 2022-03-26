@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 14:13:05 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/26 18:10:29 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void ClapTrap::takeDamage(unsigned int amount)
 		std::cout << "ClapTrap " << this->_name << "is already dead..." << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->_name << " just lost " << amount << " hit points!" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " lost " << amount << " hit points!" << std::endl;
 	this->_hitPts -= amount;
+	if (this->_hitPts < 1)
+		std::cout << "ClapTrap " << this->_name << " just died..." << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -56,7 +58,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << this->_name << " cannot be repaired..." << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << this->_name << " just won " << amount << " hit points!" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " won " << amount << " hit points!" << std::endl;
 	this->_energyPts--;
 	this->_hitPts += amount;
 }
