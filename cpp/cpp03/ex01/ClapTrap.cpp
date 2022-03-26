@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 14:26:37 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/26 15:58:31 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap() : _hitPts(10), _energyPts(10), _attackDmg(0)
 	std::cout << "Default ClapTrap constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string name) : _name(name), _hitPts(10), _energyPts(10), _attackDmg(0)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPts(10), _energyPts(10), _attackDmg(0)
 {
 	std::cout << "Naming ClapTrap constructor called" << std::endl;
 }
@@ -61,7 +61,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	this->_hitPts += amount;
 }
 
-const std::string	ClapTrap::getName()
+std::string	ClapTrap::getName()
 {
 	return this->_name;
 }
@@ -79,4 +79,24 @@ int	ClapTrap::getEnergyPts()
 int	ClapTrap::getAttackDmg()
 {
 	return this->_attackDmg;
+}
+
+void ClapTrap::setName(std::string name)
+{
+	this->_name = name;
+}
+
+void ClapTrap::setHitPts(int hit)
+{
+	this->_hitPts = hit;
+}
+
+void ClapTrap::setEnergyPts(int nrj)
+{
+	this->_hitPts = nrj;
+}
+
+void ClapTrap::setAttackDmg(int dmg)
+{
+	this->_hitPts = dmg;
 }

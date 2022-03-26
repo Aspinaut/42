@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 15:31:48 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/26 15:57:27 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,25 @@ class ClapTrap
 	public:
 
 		ClapTrap();
-		ClapTrap(const std::string name);
+		ClapTrap(std::string name);
 		~ClapTrap();
 
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		const std::string	getName();
+		std::string	getName();
 		int	getHitPts();
 		int	getEnergyPts();
 		int	getAttackDmg();
-
+		void	setName(std::string name);
+		void	setHitPts(int hits);
+		void	setEnergyPts(int nrj);
+		void	setAttackDmg(int dmg);
+		
 	protected:
 
-		const std::string _name;
+		std::string _name;
 		int	_hitPts;
 		int	_energyPts;
 		int	_attackDmg;
