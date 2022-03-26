@@ -6,21 +6,21 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:09:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/24 18:41:11 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/26 08:46:16 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed()
+Fixed::Fixed() : _fixed(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	_fixed = 0;
 }
 
-Fixed::Fixed(int fixed) : _fixed(fixed)
+Fixed::Fixed(Fixed &f)
 {
 	std::cout << "Copy constructor called" << std::endl;
+	*this = f;
 }
 
 Fixed::~Fixed()
@@ -28,15 +28,10 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed &Fixed::operator=( Fixed &ref )
+Fixed &Fixed::operator=( Fixed &f )
 {
-	_fixed = ref._fixed;
+	_fixed = f.getRawBits();
 	return *this;
-}
-
-Fixed( Fixed &fixed )
-{
-	
 }
 
 int Fixed::getRawBits( void ) const

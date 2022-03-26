@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:51:52 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/24 18:41:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/26 08:26:29 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,16 @@ class Fixed
 	public:
 
 		Fixed();
-		Fixed( int fixed );
+		Fixed( Fixed &f );
 		~Fixed();
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
-		Fixed &operator=( Fixed &ref );
-		Fixed( Fixed &fixed );
+		Fixed &operator=( Fixed &f );
 		
 	private:
 
 		int	_fixed;
-		static const int _rawBits;
+		static const int _rawBits = 8;
 };
 
 #endif
