@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:51:52 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/28 10:22:23 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/28 10:57:54 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ class Fixed
 		bool operator<=( const Fixed &f ) const;
 		bool operator==( const Fixed &f ) const;
 		bool operator!=( const Fixed &f ) const;
-		int operator+( const Fixed &f ) const;
-		int operator-( const Fixed &f ) const;
-		int operator*( const Fixed &f ) const;
-		int operator/( const Fixed &f ) const;
+
+		Fixed operator+( const Fixed &f ) const;
+		Fixed operator-( const Fixed &f ) const;
+		Fixed operator*( const Fixed &f ) const;
+		Fixed operator/( const Fixed &f ) const;
 		
 		Fixed &operator++();
 		Fixed operator++(int);
@@ -44,9 +45,9 @@ class Fixed
 
 		static const Fixed &min( const Fixed &f1, const Fixed &f2 );
 		static const Fixed &max( const Fixed &f1, const Fixed &f2 );
-		static const Fixed &min( Fixed &f1, Fixed &f2 );
-		static const Fixed &max( Fixed &f1, Fixed &f2 );
-
+		static Fixed &min( Fixed &f1, Fixed &f2 );
+		static Fixed &max( Fixed &f1, Fixed &f2 );
+ 
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
 		int toInt( void ) const;

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:09:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/28 10:22:52 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/28 11:16:05 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,37 +60,53 @@ bool Fixed::operator==( const Fixed &f ) const { return f._fixed == this->_fixed
 
 bool Fixed::operator!=( const Fixed &f ) const { return f._fixed != this->_fixed; }
 
-int	Fixed::operator+( const Fixed &f ) const { return this->toInt() + f.toInt(); }
+Fixed Fixed::operator+( const Fixed &f ) const
+{
+	Fixed ret(this->toFloat() + f.toFloat());
+	return ret;
+}
 
-int	Fixed::operator-( const Fixed &f ) const { return this->toInt() - f.toInt(); }
+Fixed Fixed::operator-( const Fixed &f ) const
+{ 
+	Fixed ret(this->toFloat() - f.toFloat());
+	return ret;
+}
 
-int	Fixed::operator*( const Fixed &f ) const { return this->toInt() * f.toInt(); }
+Fixed Fixed::operator*( const Fixed &f ) const
+{ 
+	Fixed ret(this->toFloat() * f.toFloat());
+	return ret;
+}
 
-int	Fixed::operator/( const Fixed &f ) const { return this->toInt() / f.toInt(); }
+Fixed Fixed::operator/( const Fixed &f ) const
+{ 
+	Fixed ret(this->toFloat() / f.toFloat());
+	return ret;
+}
 
 Fixed &Fixed::operator++()
 {
-	this->_fixed++;
+	this->_fixed += 1;
 	return *this;
 }
 
 Fixed Fixed::operator++(int)
 {
 	Fixed f = *this;
-	this->_fixed++;
+	this->_fixed += 1;
 	return f;
 }
 
 Fixed &Fixed::operator--()
 {
-	this->_fixed--;
+	this->_fixed -= 1;
 	return *this;
 }
 
 Fixed Fixed::operator--(int)
 {
 	Fixed f = *this;
-	this->_fixed--;
+	this->_fixed -= 1;
 	return f;
 }
 
@@ -98,6 +114,6 @@ const Fixed &Fixed::min( const Fixed &f1, const Fixed &f2 ) { return (f1 < f2) ?
 
 const Fixed &Fixed::max( const Fixed &f1, const Fixed &f2 ) { return (f1 > f2) ? f1 : f2; };
 
-const Fixed &Fixed::min( Fixed &f1, Fixed &f2 ) { return (f1 < f2) ? f1 : f2; };
+Fixed &Fixed::min( Fixed &f1, Fixed &f2 ) { return (f1 < f2) ? f1 : f2; };
 
-const Fixed &Fixed::max( Fixed &f1, Fixed &f2 ) { return (f1 > f2) ? f1 : f2; };
+Fixed &Fixed::max( Fixed &f1, Fixed &f2 ) { return (f1 > f2) ? f1 : f2; };
