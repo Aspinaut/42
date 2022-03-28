@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:51:52 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 09:25:08 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/28 08:43:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Fixed
 	private:
 
 		int	_fixed;
-		static const int _mantissa = 8;
+		static const int _width = 8;
 };
 
 #endif

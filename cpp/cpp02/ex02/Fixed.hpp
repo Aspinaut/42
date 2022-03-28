@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:51:52 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 11:28:02 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/28 10:22:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,26 @@ class Fixed
 		~Fixed();
 		
 		Fixed &operator=( const Fixed &f );
-		bool operator<( const Fixed &f );
-		bool operator>( const Fixed &f );
-		bool operator>=( const Fixed &f );
-		bool operator<=( const Fixed &f );
-		bool operator==( const Fixed &f );
-		bool operator!=( const Fixed &f );
-		int operator+( const Fixed &f );
-		int operator-( const Fixed &f );
-		int operator*( const Fixed &f );
-		int operator/( const Fixed &f );
+		bool operator<( const Fixed &f ) const;
+		bool operator>( const Fixed &f ) const;
+		bool operator>=( const Fixed &f ) const;
+		bool operator<=( const Fixed &f ) const;
+		bool operator==( const Fixed &f ) const;
+		bool operator!=( const Fixed &f ) const;
+		int operator+( const Fixed &f ) const;
+		int operator-( const Fixed &f ) const;
+		int operator*( const Fixed &f ) const;
+		int operator/( const Fixed &f ) const;
+		
 		Fixed &operator++();
-		Fixed &operator++(int);
+		Fixed operator++(int);
 		Fixed &operator--();
-		Fixed &operator--(int);
+		Fixed operator--(int);
+
+		static const Fixed &min( const Fixed &f1, const Fixed &f2 );
+		static const Fixed &max( const Fixed &f1, const Fixed &f2 );
+		static const Fixed &min( Fixed &f1, Fixed &f2 );
+		static const Fixed &max( Fixed &f1, Fixed &f2 );
 
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
@@ -49,9 +55,9 @@ class Fixed
 	private:
 
 		int	_fixed;
-		static const int _mantissa = 8;
+		static const int _width = 8;
 };
 
-std::ostream	&operator<<(std::ostream &o, const Fixed &f);
+std::ostream	&operator<<(std::ostream &out, const Fixed &f);
 
 #endif

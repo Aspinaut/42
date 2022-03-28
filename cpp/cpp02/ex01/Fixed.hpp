@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:51:52 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 09:41:59 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/28 08:48:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ class Fixed
 	private:
 
 		int	_fixed;
-		static const int _mantissa = 8;
+		static const int _width = 8;
 };
 
-std::ostream	&operator<<(std::ostream &o, const Fixed &f);
+std::ostream	&operator<<(std::ostream &out, const Fixed &f);
 
 #endif

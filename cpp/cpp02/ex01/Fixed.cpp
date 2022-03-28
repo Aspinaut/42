@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 17:09:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 09:51:36 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/28 08:57:00 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ Fixed::Fixed() : _fixed(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed( const int rawInt ) : _fixed(rawInt << _mantissa)
+Fixed::Fixed( const int rawInt ) : _fixed(rawInt << _width)
 {
 	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed( const float rawFloat ) : _fixed((int)roundf(rawFloat * (1 << _mantissa)))
+Fixed::Fixed( const float rawFloat ) : _fixed((int)roundf(rawFloat * (1 << _width)))
 {
 	std::cout << "Float constructor called" << std::endl;
 }
@@ -41,7 +41,6 @@ Fixed::~Fixed()
 Fixed &Fixed::operator=( const Fixed &f )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	// nécessaire de check si f est la meme instance ?
 	this->_fixed = f.getRawBits();
 	return *this;
 }
@@ -59,16 +58,16 @@ void Fixed::setRawBits( int const raw )
 
 int Fixed::toInt( void ) const
 {
-	return (int)roundf((float)this->_fixed / (1 << this->_mantissa));
+	return this->getRawBits() >> this->_width;
 }
 
 float Fixed::toFloat( void ) const
 {
-	return ((float)this->_fixed  / (1 << this->_mantissa));
+	return ((float)this->getRawBits()  / (float)(1 << this->_width));
 }
 
-std::ostream	&operator<<(std::ostream &o, const Fixed &f)
+std::ostream	&operator<<(std::ostream &out, const Fixed &f)
 {
-	o << f.toFloat();
-	return o;
+	out << f.toFloat();
+	return out;
 }
