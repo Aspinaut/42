@@ -18,7 +18,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 $(NAME): $(OBJS) $(INCS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) $(INCS) -o $(NAME)
 
 all: $(NAME)
 
