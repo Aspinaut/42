@@ -4,14 +4,16 @@ SRCS =	main.cpp		\
 		ClapTrap.cpp		\
 		ScavTrap.cpp		\
 		FragTrap.cpp		\
+		DiamondTrap.cpp		\
 
 INCS = 	ClapTrap.hpp	\
 		ScavTrap.hpp		\
 		FragTrap.hpp		\
+		DiamondTrap.hpp		\
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = FragTrap
+NAME = DiamondTrap
 
 RM = rm -f
 
