@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 12:13:30 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/30 13:52:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class ClapTrap
 		void beRepaired(unsigned int amount);
 
 
-	private:
+	protected:
 
 		std::string _name;
 		int	_hitPts;

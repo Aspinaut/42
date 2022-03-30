@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:24:14 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/28 17:15:20 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/30 14:16:19 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->setHitPts(100);
 	this->setEnergyPts(100);
 	this->setAttackDmg(30);
-	this->_name = name;
 	std::cout << "Naming FragTrap constructor called" << std::endl;
 }
 

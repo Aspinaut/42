@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 18:10:12 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/30 14:15:35 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap destructor called" << std::endl;
 }
+
+void ClapTrap::setName(std::string name) { this->_name = name; }
+
+void ClapTrap::setHitPts(int hits) { this->_hitPts = hits; }
+
+void ClapTrap::setEnergyPts(int energy) { this->_energyPts = energy; }
+
+void ClapTrap::setAttackDmg(int attack) { this->_attackDmg = attack; }
+
+std::string	ClapTrap::getName() const { return this->_name; }
+
+int	ClapTrap::getHitPts() const { return this->_hitPts; }
+
+int	ClapTrap::getEnergyPts() const { return this->_energyPts; }
+
+int	ClapTrap::getAttackDmg() const { return this->_attackDmg; }
 
 void ClapTrap::attack(const std::string& target)
 {
@@ -61,44 +77,4 @@ void ClapTrap::beRepaired(unsigned int amount)
 	std::cout << "ClapTrap " << this->_name << " won " << amount << " hit points!" << std::endl;
 	this->_energyPts--;
 	this->_hitPts += amount;
-}
-
-std::string	ClapTrap::getName()
-{
-	return this->_name;
-}
-
-int	ClapTrap::getHitPts()
-{
-	return this->_hitPts;
-}
-
-int	ClapTrap::getEnergyPts()
-{
-	return this->_energyPts;
-}
-
-int	ClapTrap::getAttackDmg()
-{
-	return this->_attackDmg;
-}
-
-void ClapTrap::setName(std::string name)
-{
-	this->_name = name;
-}
-
-void ClapTrap::setHitPts(int hit)
-{
-	this->_hitPts = hit;
-}
-
-void ClapTrap::setEnergyPts(int nrj)
-{
-	this->_energyPts = nrj;
-}
-
-void ClapTrap::setAttackDmg(int dmg)
-{
-	this->_attackDmg = dmg;
 }
