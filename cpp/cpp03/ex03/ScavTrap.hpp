@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:02:29 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/28 18:42:23 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/30 21:33:19 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class ScavTrap : virtual public ClapTrap
 		ScavTrap();
 		ScavTrap(std::string name);
 		~ScavTrap();
+		
 		void attack(const std::string &target);
 		void guardGate();
 };

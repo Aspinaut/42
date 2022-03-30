@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:02:29 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/28 18:44:18 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/30 21:17:05 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		DiamondTrap();
 		DiamondTrap(std::string name);
 		~DiamondTrap();
+		
 		void whoAmI();
 		void attack(std::string const &target);
 
