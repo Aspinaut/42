@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/31 09:25:23 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:56:44 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void ClapTrap::setAttackDmg(int attack) { this->_attackDmg = attack; }
 
 std::string	ClapTrap::getName() const { return this->_name; }
 
-unsigned int	ClapTrap::getHitPts() const { return this->_hitPts; }
+int	ClapTrap::getHitPts() const { return this->_hitPts; }
 
-unsigned int	ClapTrap::getEnergyPts() const { return this->_energyPts; }
+int	ClapTrap::getEnergyPts() const { return this->_energyPts; }
 
-unsigned int	ClapTrap::getAttackDmg() const { return this->_attackDmg; }
+int	ClapTrap::getAttackDmg() const { return this->_attackDmg; }
 
 void ClapTrap::attack(const std::string& target)
 {
@@ -77,9 +77,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		return ;
 	}
 	std::cout << "ClapTrap " << this->_name << " lost " << amount << " hit points!" << std::endl;
-	std::cout << this->_hitPts << std::endl;
 	this->_hitPts -= amount;
-	std::cout << this->_hitPts << std::endl;
 	if (this->_hitPts < 1)
 		std::cout << "ClapTrap " << this->_name << " just died..." << std::endl;
 }

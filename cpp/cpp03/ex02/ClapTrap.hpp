@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/31 09:08:04 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:56:54 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ class ClapTrap
 		void setEnergyPts(int energy);
 		void setAttackDmg(int attack);
 		std::string	getName() const;
-		unsigned int	getHitPts() const;
-		unsigned int	getEnergyPts() const;
-		unsigned int	getAttackDmg() const;
+		int	getHitPts() const;
+		int	getEnergyPts() const;
+		int	getAttackDmg() const;
 
 
 		void attack(const std::string& target);
@@ -43,9 +43,9 @@ class ClapTrap
 	protected:
 
 		std::string _name;
-		unsigned int	_hitPts;
-		unsigned int	_energyPts;
-		unsigned int	_attackDmg;
+		int	_hitPts;
+		int	_energyPts;
+		int	_attackDmg;
 };
 
 #endif

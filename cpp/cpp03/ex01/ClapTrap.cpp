@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/31 08:58:31 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 10:47:00 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ ClapTrap::~ClapTrap()
 
 ClapTrap &ClapTrap::operator=( const ClapTrap &ref )
 {
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "ClapTrap assignment operator called" << std::endl;
 	this->_name = ref._name;
 	this->_hitPts = ref._hitPts;
 	this->_energyPts = ref._energyPts;
@@ -52,11 +52,11 @@ void ClapTrap::setAttackDmg(int attack) { this->_attackDmg = attack; }
 
 std::string	ClapTrap::getName() const { return this->_name; }
 
-unsigned int	ClapTrap::getHitPts() const { return this->_hitPts; }
+int	ClapTrap::getHitPts() const { return this->_hitPts; }
 
-unsigned int	ClapTrap::getEnergyPts() const { return this->_energyPts; }
+int	ClapTrap::getEnergyPts() const { return this->_energyPts; }
 
-unsigned int	ClapTrap::getAttackDmg() const { return this->_attackDmg; }
+int	ClapTrap::getAttackDmg() const { return this->_attackDmg; }
 
 void ClapTrap::attack(const std::string& target)
 {

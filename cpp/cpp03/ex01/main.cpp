@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:16:09 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 13:51:24 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 10:12:27 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@ int main()
 	ScavTrap scavy("Scavy");
 	
 	std::cout << scavy.getName() <<  " has : " << scavy.getEnergyPts() << " energy points, " << scavy.getHitPts() << " hits points and " << scavy.getAttackDmg() << " attack damage." << std::endl;
-	scavy.attack("Clappy");
+	scavy.attack(clappy.getName());
 	clappy.takeDamage(scavy.getAttackDmg());
+	clappy.attack(scavy.getName());
+	scavy.takeDamage(clappy.getAttackDmg());
 	scavy.guardGate();
+	std::cout << scavy.getName() << " now has " << scavy.getEnergyPts() << " energy points and " << scavy.getHitPts() << " hits points." << std::endl;
+	std::cout << clappy.getName() << " now has " << clappy.getEnergyPts() << " energy points and " << clappy.getHitPts() << " hits points." << std::endl;
+	scavy.beRepaired(1);
+	std::cout << scavy.getName() << " now has " << scavy.getEnergyPts() << " energy points and " << scavy.getHitPts() << " hits points." << std::endl;
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:16:09 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 11:53:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 10:59:26 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,15 @@ int main()
 	std::cout << "B has now " << b.getEnergyPts() << " energy points." << std::endl;
 	std::cout << "B has now " << b.getHitPts() << " hit points." << std::endl;
 	
-	ClapTrap c = b;
+	
+	ClapTrap c;
+	c = b;
 	c.setName("C");
-	std::cout << "And here is " <<  c.getName() << ", the copy of B." << std::endl;
+	std::cout << "Here is " <<  c.getName() << ", the copy of B by assignment. He has " << c.getEnergyPts() << " energy points, " << c.getHitPts() << " hit points and " << c.getAttackDmg() << " attack damage." << std::endl;
+	
+	ClapTrap d(c);
+	d.setName("D");
+	std::cout << "And finally " <<  d.getName() << ", the copy of C by copy constructor. He has " << d.getEnergyPts() << " energy points, " << d.getHitPts() << " hit points and " << d.getAttackDmg() << " attack damage." << std::endl;
+
 	return 0;
 }

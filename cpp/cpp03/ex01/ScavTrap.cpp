@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:02:36 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/31 09:06:38 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 10:07:24 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ void ScavTrap::attack(const std::string& target)
 
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << this->getName() << " is now entering in gate keeper mode !" << std::endl; 
+	std::cout << "ScavTrap " << this->getName() << " is now entering in gate keeper mode !" << std::endl;
 }

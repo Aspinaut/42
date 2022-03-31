@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:02:36 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/31 09:41:17 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 10:57:53 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), Fra
 DiamondTrap::DiamondTrap(DiamondTrap const &ref) : ClapTrap(ref.getName()), ScavTrap(ref.getName()), FragTrap(ref.getName()), _name(ref.getName())
 {
 	this->ClapTrap::setName(ref.getName() + "_clap_name");
-	this->_hitPts = this->FragTrap::getHitPts();
-	this->_energyPts = this->ScavTrap::getEnergyPts();
-	this->_attackDmg = this->FragTrap::getAttackDmg();
+	this->setHitPts(ref.getHitPts());
+	this->setEnergyPts(ref.getEnergyPts());
+	this->setAttackDmg(ref.getAttackDmg());
 	std::cout << "DiamondTrap copy constructor called" << std::endl;
 }
 
@@ -44,9 +44,9 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &ref)
 {
 	std::cout << "DiamondTrap assignment operator called" << std::endl;
 	this->_name = ref.getName();
-	this->_hitPts = ref.getHitPts();
-	this->_energyPts = ref.getEnergyPts();
-	this->_attackDmg = ref.getAttackDmg();
+	this->setHitPts(ref.getHitPts());
+	this->setEnergyPts(ref.getEnergyPts());
+	this->setAttackDmg(ref.getAttackDmg());
 	return *this;
 }
 

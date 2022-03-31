@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/31 09:28:29 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 10:47:46 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ ClapTrap::ClapTrap( ClapTrap const &ref ) : _name(ref.getName()), _hitPts(ref.ge
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &ref)
 {
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "ClapTrap assignment operator called" << std::endl;
 	this->_name = ref._name;
 	this->_hitPts = ref._hitPts;
 	this->_energyPts = ref._energyPts;
