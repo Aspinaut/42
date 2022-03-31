@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                         :+:      :+:    :+:   */
+/*   WrongCat.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,30 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-Dog::Dog() : Animal()
+WrongCat::WrongCat() : WrongAnimal()
 {
-	std::cout << "Dog default constructor called." << std::endl;
-	this->setType("Dog");
+	std::cout << "WrongCat default constructor called." << std::endl;
+	this->setType("WrongCat");
 }
 
-Dog::Dog(Dog const &ref) : Animal()
+WrongCat::WrongCat(WrongCat const &ref) : WrongAnimal()
 {
-	std::cout << "Dog copy constructor called." << std::endl;
+	std::cout << "WrongCat copy constructor called." << std::endl;
 	this->setType(ref.getType());
 }
 
-Dog::~Dog() { std::cout << "Dog destructor called." << std::endl; }
+WrongCat::~WrongCat() { std::cout << "WrongCat destructor called." << std::endl; }
 
-Dog	&Dog::operator=(Dog const &ref)
+WrongCat	&WrongCat::operator=(WrongCat const &ref)
 {
-	std::cout << "Dog copy assignment called." << std::endl;
+	std::cout << "WrongCat copy assignment called." << std::endl;
 	this->setType(ref.getType());
 	return *this;
 }
 
-void	Dog::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "Wouf !" << std::endl;
+	std::cout << "Meeeeeoooooow ?" << std::endl;
 }

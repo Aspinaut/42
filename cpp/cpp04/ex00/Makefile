@@ -2,12 +2,16 @@
 
 SRCS =	main.cpp		\
 		Animal.cpp		\
-		Dog.hpp		\
-		Cat.hpp		\
+		Dog.cpp		\
+		Cat.cpp		\
+		WrongAnimal.cpp		\
+		WrongCat.cpp		\
 
 INCS = 	Animal.hpp	\
 		Dog.hpp		\
 		Cat.hpp		\
+		WrongAnimal.hpp		\
+		WrongCat.hpp		\
 
 OBJS = $(SRCS:.cpp=.o)
 

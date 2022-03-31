@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-Animal::Animal() : type("Undefined")
+WrongAnimal::WrongAnimal() : type("Undefined")
 {
-	std::cout << "Animal default constructor called." << std::endl;
+	std::cout << "WrongAnimal default constructor called." << std::endl;
 }
 
-Animal::Animal(Animal const &ref) : type(ref.getType())
+WrongAnimal::WrongAnimal(WrongAnimal const &ref) : type(ref.getType())
 {
-	std::cout << "Animal copy constructor called." << std::endl;
+	std::cout << "WrongAnimal copy constructor called." << std::endl;
 }
 
-Animal::~Animal() { std::cout << "Animal destructor called." << std::endl; }
+WrongAnimal::~WrongAnimal() { std::cout << "WrongAnimal destructor called." << std::endl; }
 
-Animal	&Animal::operator=(Animal const &ref)
+WrongAnimal	&WrongAnimal::operator=(WrongAnimal const &ref)
 {
-	std::cout << "Animal copy assignment called." << std::endl;
+	std::cout << "WrongAnimal copy assignment called." << std::endl;
 	this->setType(ref.getType());
 	return *this;
 }
 
-void	Animal::setType(std::string type) { this->type = type; }
+void	WrongAnimal::setType(std::string type) { this->type = type; }
 
-std::string	Animal::getType() const { return this->type; }
+std::string	WrongAnimal::getType() const { return this->type; }
 
-void	Animal::makeSound() const
+void	WrongAnimal::makeSound() const
 {
 	std::cout << "* undefined noise *" << std::endl;
 }

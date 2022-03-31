@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:00:15 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/31 13:56:38 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 13:55:59 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
-# include "Animal.hpp"
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
+# include <iostream>
 
-class Dog : public Animal
+class WrongAnimal
 {
+	protected:
+		std::string type;
+
+
 	public:
-		Dog();
-		Dog(Dog const &ref);
-		~Dog();
+		WrongAnimal();
+		WrongAnimal(WrongAnimal const &ref);
+		~WrongAnimal();
 
-		Dog &operator=(Dog const &ref);
+		WrongAnimal &operator=(WrongAnimal const &ref);
 
+		void setType(std::string type);
+		std::string getType() const;
+		
 		void	makeSound() const;
+
 };
 
 #endif

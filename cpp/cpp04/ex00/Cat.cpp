@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Cat.hpp"
 
-Animal::Animal() : type("Undefined")
+Cat::Cat() : Animal()
 {
-	std::cout << "Animal default constructor called." << std::endl;
+	std::cout << "Cat default constructor called." << std::endl;
+	this->setType("Cat");
 }
 
-Animal::Animal(Animal const &ref) : type(ref.getType())
+Cat::Cat(Cat const &ref) : Animal()
 {
-	std::cout << "Animal copy constructor called." << std::endl;
+	std::cout << "Cat copy constructor called." << std::endl;
+	this->setType(ref.getType());
 }
 
-Animal::~Animal() { std::cout << "Animal destructor called." << std::endl; }
+Cat::~Cat() { std::cout << "Cat destructor called." << std::endl; }
 
-Animal	&Animal::operator=(Animal const &ref)
+Cat	&Cat::operator=(Cat const &ref)
 {
-	std::cout << "Animal copy assignment called." << std::endl;
+	std::cout << "Cat copy assignment called." << std::endl;
 	this->setType(ref.getType());
 	return *this;
 }
 
-void	Animal::setType(std::string type) { this->type = type; }
-
-std::string	Animal::getType() { return this->type; }
+void	Cat::makeSound() const
+{
+	std::cout << "Meeeeeoooooow ?" << std::endl;
+}
