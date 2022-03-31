@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 12:02:59 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:02:37 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,17 @@ ClapTrap::ClapTrap(const std::string name) : _name(name), _hitPts(10), _energyPt
 	std::cout << "Naming constructor called" << std::endl;
 }
 
+ClapTrap::ClapTrap( ClapTrap const &ref ) : _name(ref.getName()), _hitPts(ref.getHitPts()), _energyPts(ref.getEnergyPts()), _attackDmg(ref.getAttackDmg())
+{
+	std::cout << "ClapTrap " << ref.getName() << " copy constructor was called." << std::endl;
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
-ClapTrap &ClapTrap::operator=( const ClapTrap &ref )
+ClapTrap &ClapTrap::operator=(const ClapTrap &ref)
 {
 	std::cout << "Assignment operator called" << std::endl;
 	this->_name = ref._name;
@@ -47,11 +52,11 @@ void ClapTrap::setAttackDmg(int attack) { this->_attackDmg = attack; }
 
 std::string	ClapTrap::getName() const { return this->_name; }
 
-int	ClapTrap::getHitPts() const { return this->_hitPts; }
+unsigned int	ClapTrap::getHitPts() const { return this->_hitPts; }
 
-int	ClapTrap::getEnergyPts() const { return this->_energyPts; }
+unsigned int	ClapTrap::getEnergyPts() const { return this->_energyPts; }
 
-int	ClapTrap::getAttackDmg() const { return this->_attackDmg; }
+unsigned int	ClapTrap::getAttackDmg() const { return this->_attackDmg; }
 
 void ClapTrap::attack(const std::string& target)
 {

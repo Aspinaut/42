@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 14:16:01 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:27:59 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class ClapTrap
 
 		ClapTrap();
 		ClapTrap(std::string name);
+		ClapTrap(ClapTrap const &ref);
 		~ClapTrap();
 
 		ClapTrap &operator=(const ClapTrap &ref);

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 12:02:52 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 08:57:31 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class ClapTrap
 
 		ClapTrap();
 		ClapTrap(std::string name);
+		ClapTrap(ClapTrap const &ref);
 		~ClapTrap();
 
 		ClapTrap &operator=(const ClapTrap &ref);
@@ -29,9 +30,9 @@ class ClapTrap
 		void setEnergyPts(int energy);
 		void setAttackDmg(int attack);
 		std::string	getName() const;
-		int	getHitPts() const;
-		int	getEnergyPts() const;
-		int	getAttackDmg() const;
+		unsigned int	getHitPts() const;
+		unsigned int	getEnergyPts() const;
+		unsigned int	getAttackDmg() const;
 
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
@@ -41,9 +42,9 @@ class ClapTrap
 	private:
 
 		std::string _name;
-		int	_hitPts;
-		int	_energyPts;
-		int	_attackDmg;
+		unsigned int	_hitPts;
+		unsigned int	_energyPts;
+		unsigned int	_attackDmg;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 11:24:33 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 22:03:50 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:30:53 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ class FragTrap : virtual public ClapTrap
 
 		FragTrap();
 		FragTrap(std::string name);
+		FragTrap(FragTrap const &ref);
 		~FragTrap();
+
+		FragTrap &operator=(const FragTrap &ref);
 
 		void attack(const std::string &target);
 		void highFivesGuys(void);

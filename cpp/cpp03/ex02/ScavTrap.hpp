@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:02:29 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/26 17:07:42 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:12:55 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ class ScavTrap : public ClapTrap
 
 		ScavTrap();
 		ScavTrap(std::string name);
+		ScavTrap(ScavTrap const &ref);
 		~ScavTrap();
+		
+		ScavTrap &operator=(const ScavTrap &ref);
+
 		void attack(const std::string& target);
 		void guardGate();
 };

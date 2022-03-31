@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 14:15:35 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:28:29 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,24 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPts(10), _energyPts(10),
 	std::cout << "Naming ClapTrap constructor called" << std::endl;
 }
 
+ClapTrap::ClapTrap( ClapTrap const &ref ) : _name(ref.getName()), _hitPts(ref.getHitPts()), _energyPts(ref.getEnergyPts()), _attackDmg(ref.getAttackDmg())
+{
+	std::cout << "ClapTrap " << ref.getName() << " copy constructor was called." << std::endl;
+}
+
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &ref)
+{
+	std::cout << "Assignment operator called" << std::endl;
+	this->_name = ref._name;
+	this->_hitPts = ref._hitPts;
+	this->_energyPts = ref._energyPts;
+	this->_attackDmg = ref._attackDmg;
+	return *this;
 }
 
 void ClapTrap::setName(std::string name) { this->_name = name; }

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:02:36 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 14:11:11 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:13:07 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,35 @@ ScavTrap::ScavTrap()
 	std::cout << "ScavTrap default constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	this->setHitPts(100);
 	this->setEnergyPts(50);
 	this->setAttackDmg(20);
-	this->_name = name;
 	std::cout << "Naming ScavTrap constructor called" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap destructor called" << std::endl;
+}
+
+ScavTrap::ScavTrap( ScavTrap const &ref ) : ClapTrap(ref.getName())
+{
+	this->setHitPts(100);
+	this->setEnergyPts(50);
+	this->setAttackDmg(20);
+	std::cout << "ScavTrap " << ref.getName() << " copy constructor was called." << std::endl;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &ref)
+{
+	std::cout << "ScavTrap assignment operator called" << std::endl;
+	this->_name = ref.getName();
+	this->_hitPts = ref.getHitPts();
+	this->_energyPts = ref.getEnergyPts();
+	this->_attackDmg = ref.getAttackDmg();
+	return *this;
 }
 
 void ScavTrap::attack(const std::string& target)
@@ -44,5 +61,5 @@ void ScavTrap::attack(const std::string& target)
 
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap  " << this->getName() << " is now entering in gate keeper mode !" << std::endl; 
+	std::cout << "ScavTrap " << this->getName() << " is now entering in gate keeper mode !" << std::endl; 
 }

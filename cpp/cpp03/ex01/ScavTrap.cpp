@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 14:02:36 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 12:14:02 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:06:38 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,24 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap destructor called" << std::endl;
+}
+
+ScavTrap::ScavTrap( ScavTrap const &ref ) : ClapTrap(ref.getName())
+{
+	this->setHitPts(100);
+	this->setEnergyPts(50);
+	this->setAttackDmg(20);
+	std::cout << "ScavTrap " << ref.getName() << " copy constructor was called." << std::endl;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &ref)
+{
+	std::cout << "ScavTrap assignment operator called" << std::endl;
+	this->_name = ref.getName();
+	this->_hitPts = ref.getHitPts();
+	this->_energyPts = ref.getEnergyPts();
+	this->_attackDmg = ref.getAttackDmg();
+	return *this;
 }
 
 void ScavTrap::attack(const std::string& target)

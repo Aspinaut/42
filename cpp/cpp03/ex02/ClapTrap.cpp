@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:17:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/30 14:14:40 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 09:25:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,24 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPts(10), _energyPts(10),
 	std::cout << "Naming ClapTrap constructor called" << std::endl;
 }
 
+ClapTrap::ClapTrap( ClapTrap const &ref ) : _name(ref.getName()), _hitPts(ref.getHitPts()), _energyPts(ref.getEnergyPts()), _attackDmg(ref.getAttackDmg())
+{
+	std::cout << "ClapTrap " << ref.getName() << " copy constructor was called." << std::endl;
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap destructor called" << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &ref)
+{
+	std::cout << "ClapTrap assignment operator called" << std::endl;
+	this->_name = ref._name;
+	this->_hitPts = ref._hitPts;
+	this->_energyPts = ref._energyPts;
+	this->_attackDmg = ref._attackDmg;
+	return *this;
 }
 
 void ClapTrap::setName(std::string name) { this->_name = name; }
@@ -37,11 +52,11 @@ void ClapTrap::setAttackDmg(int attack) { this->_attackDmg = attack; }
 
 std::string	ClapTrap::getName() const { return this->_name; }
 
-int	ClapTrap::getHitPts() const { return this->_hitPts; }
+unsigned int	ClapTrap::getHitPts() const { return this->_hitPts; }
 
-int	ClapTrap::getEnergyPts() const { return this->_energyPts; }
+unsigned int	ClapTrap::getEnergyPts() const { return this->_energyPts; }
 
-int	ClapTrap::getAttackDmg() const { return this->_attackDmg; }
+unsigned int	ClapTrap::getAttackDmg() const { return this->_attackDmg; }
 
 void ClapTrap::attack(const std::string& target)
 {
@@ -62,7 +77,9 @@ void ClapTrap::takeDamage(unsigned int amount)
 		return ;
 	}
 	std::cout << "ClapTrap " << this->_name << " lost " << amount << " hit points!" << std::endl;
+	std::cout << this->_hitPts << std::endl;
 	this->_hitPts -= amount;
+	std::cout << this->_hitPts << std::endl;
 	if (this->_hitPts < 1)
 		std::cout << "ClapTrap " << this->_name << " just died..." << std::endl;
 }
