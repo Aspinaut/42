@@ -6,13 +6,14 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:00:15 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/01 09:57:51 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/01 10:40:10 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 # include <iostream>
+# include "Brain.hpp"
 
 class Animal
 {

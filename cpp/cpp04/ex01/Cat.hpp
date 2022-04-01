@@ -1,37 +1,37 @@
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:00:15 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/01 09:57:51 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 13:56:34 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
-# include <iostream>
+#ifndef CAT_HPP
+# define CAT_HPP
+# include "Animal.hpp"
 
-class Animal
+class Cat : public Animal
 {
-	protected:
-		std::string _type;
-
+	private:
+		Brain	*_brain;
 
 	public:
-		Animal();
-		Animal(Animal const &ref);
-		virtual ~Animal();
+		Cat();
+		Cat(Cat const &ref);
+		~Cat();
+	
+		Cat &operator=(Cat const &ref);
 
-		Animal &operator=(Animal const &ref);
+		void	setBrain(Brain *Brain);
+		Brain *getBrain() const;
 
-		void setType(std::string type);
-		std::string getType() const;
-		
-		virtual void	makeSound() const;
-
+		void	makeSound() const;
 };
 
 #endif
