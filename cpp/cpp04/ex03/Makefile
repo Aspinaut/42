@@ -2,8 +2,10 @@
 
 SRCS =	main.cpp		\
 		AMateria.cpp	\
+		ICharacter.cpp	\
 
 INCS = 	AMateria.hpp	\
+		ICharacter.hpp	\
 
 OBJS = $(SRCS:.cpp=.o)
 

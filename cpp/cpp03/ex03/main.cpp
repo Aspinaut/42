@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 12:16:09 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/31 10:51:54 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/03/31 11:08:20 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int main()
 	DiamondTrap a(diamy);
 	a.setName("Bob");
 	std::cout << "Here is " << a.getName() << ", the copy of Diamy by copy constructor. He has " << a.getHitPts() << " hit points, " << a.getEnergyPts() << " energy points and " << a.getAttackDmg() << " attack damage." << std::endl;
-	
-	std::cout << "B has now " << diamy.getEnergyPts() << " energy points." << std::endl;
 	
 	DiamondTrap b;
 	b = diamy;

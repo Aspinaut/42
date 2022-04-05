@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 11:13:58 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/05 14:48:16 by vmasse           ###   ########.fr       */
+/*   Created: 2022/04/05 13:37:33 by vmasse            #+#    #+#             */
+/*   Updated: 2022/04/05 14:49:10 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ICharacter.hpp"
+# pragma once
+# include "AMateria.hpp"
 
-int main()
+class ICharacter
 {
-	ICharacter 	*bob;
-	AMateria	*mat;
+	private:
+		std::string	_name;
+		AMateria *materias[MAX];
+		
+	public:
+		ICharacter();
+		virtual ~ICharacter() {};
 
-	bob->setName("Bob");
-	mat->setType("Ice");
-	std::cout << bob->getName() << " tries to get materia... " << std::endl;
-	bob->equip(mat);
-
-	return 0;
-}
+		virtual std::string const & getName() const = 0;
+		virtual void setName(std::string name);
+		
+		virtual void equip(AMateria* m) = 0;
+		virtual void unequip(int idx) = 0;
+		virtual void use(int idx, ICharacter& target) = 0;
+};
