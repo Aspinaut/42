@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:00:15 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/04 16:04:26 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/01 10:20:26 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
-# include "Animal.hpp"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
+# include <iostream>
+# define MAX 100
 
-class Dog : public Animal
+class Brain
 {
-	private:
-		Brain	*_brain;
+	protected:
+		std::string _ideas[MAX];
+		unsigned int	_index;
 
 	public:
-		Dog();
-		Dog(Dog const &ref);
-		~Dog();
+		Brain();
+		Brain(Brain const &ref);
+		virtual ~Brain();
 
-		Dog &operator=(Dog const &ref);
+		Brain &operator=(Brain const &ref);
 
-		void	setBrain(Brain *Brain);
-		Brain *getBrain() const;
-
-		virtual void	makeSound() const;
+		void	setIdea(std::string idea);
+		std::string getIdea(unsigned int index) const;
+		void	fillIdeas();
 };
 
 #endif

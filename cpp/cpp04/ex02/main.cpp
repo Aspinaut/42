@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:59:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/05 11:08:38 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/05 11:08:42 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ int main()
 	const Cat* cat = new Cat();
 
 	std::cout << "Idea : " << dog->getBrain()->getIdea(100) << std::endl;
-	std::cout << "Idea : " << dog->getBrain()->getIdea(0) << std::endl;
-	dog->getBrain()->setIdea("I suggest you to buy a brain");
-	std::cout << "Idea : " << dog->getBrain()->getIdea(0) << std::endl;
-
+	std::cout << "Idea : " << dog->getBrain()->getIdea(99) << std::endl;
+	
 	delete dog;
 	delete cat;
 	
@@ -46,7 +44,10 @@ int main()
 	}
 	// delete [] *animalist; // core dmped
 
-	// !! DEEP / SHALLOW COPY? 
 
+	// std::cout << "------------------ NOT SUPPOSED TO COMPILE ------------------" << std::endl;
+	// const Animal *dogo = new Animal();
+	// (void)dogo;
+	
 	return 0;
 }
