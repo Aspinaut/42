@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:59:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/05 11:08:42 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/05 13:24:40 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int main()
 	{
 		delete animalist[i];
 	}
-	// delete [] *animalist; // core dmped
-
 
 	// std::cout << "------------------ NOT SUPPOSED TO COMPILE ------------------" << std::endl;
 	// const Animal *dogo = new Animal();
