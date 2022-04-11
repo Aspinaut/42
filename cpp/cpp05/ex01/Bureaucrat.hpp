@@ -6,13 +6,16 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:51:49 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/11 13:07:00 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/11 14:07:25 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -45,13 +48,13 @@ class Bureaucrat
 		Bureaucrat &operator=(Bureaucrat const &ref);
 
 		std::string	const getName() const;
-		// void	 	setName(std::string const name);
 		void		setGrade(int grade);
 		int			getGrade() const;
 
 		void	upGrade();
 		void	downGrade();
-		void 	ErrorThrower(int grade);
+		void 	ErrorThrower(int grade) const;
+		void	signForm(Form &f) const;
 
 };
 

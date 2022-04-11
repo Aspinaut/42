@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:52:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/11 13:06:56 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/11 14:26:10 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,11 @@ Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &ref)
 {
-	// this->setName(ref.getName());
 	this->setGrade(ref.getGrade());
 	return *this;
 }
 
 std::string const Bureaucrat::getName() const { return this->_name; }
-
-// void	 	Bureaucrat::setName(std::string const name) { this->_name = name; }
 
 void	Bureaucrat::setGrade(int grade) { ErrorThrower(grade); this->_grade = grade; }
 
@@ -45,12 +42,27 @@ void	Bureaucrat::downGrade()
 	this->_grade++;
 }
 
-void	Bureaucrat::ErrorThrower(int grade)
+void	Bureaucrat::ErrorThrower(int grade) const
 {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
+}
+
+void	Bureaucrat::signForm(Form &f) const
+{
+	std::string reason;
+
+	if (f.getSigned())
+		reason = "it was already signed...";
+	else if (this->getGrade() > f.getSignGrade())
+		reason = "he doesn't have a sufficient grade.";
+	f.beSigned(*this);
+	if (f.getSigned() && reason.empty())
+		std::cout << this->getName() << " signed " << f.getName() << std::endl;
+	else
+		std::cout << this->getName() << " couldn't sign " << f.getName() << " because " << reason << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &ref)
