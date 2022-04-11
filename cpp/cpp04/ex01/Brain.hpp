@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:00:15 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/01 10:20:26 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/05 19:41:10 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class Brain
 
 		void	setIdea(std::string idea);
 		std::string getIdea(unsigned int index) const;
+		
 		void	fillIdeas();
 };
 

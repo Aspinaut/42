@@ -23,7 +23,7 @@ Cat::Cat(Cat const &ref) : Animal()
 {
 	std::cout << "Cat copy constructor called." << std::endl;
 	this->setType(ref.getType());
-	this->_brain = ref._brain;
+	this->_brain.setBrain(ref._brain);
 }
 
 Cat::~Cat()
@@ -34,7 +34,7 @@ Cat::~Cat()
 
 void	Cat::setBrain(Brain *Brain)
 {
-	this->_brain = Brain;
+	this->_brain->setIdeas(Brain);
 }
 
 Brain *Cat::getBrain() const

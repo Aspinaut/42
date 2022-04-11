@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:00:15 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/01 09:57:51 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/11 08:29:23 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ class Animal
 {
 	protected:
 		std::string _type;
-
 
 	public:
 		Animal();
