@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:59:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/03/31 14:48:50 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/15 07:49:58 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,23 @@ int main()
 	delete j;
 	delete i;
 	
-	std::cout << "------------------ REPLACE ANIMAL AND CAT -------------------" << std::endl;
+	std::cout << std::endl;
+	std::cout << "--------- TESTING COPY CONSTRUCTOR AND OPERATOR = -------" << std::endl;
+	std::cout << std::endl;
+
+	Dog dog;
+	Dog dog2(dog);
+
+	dog2.makeSound();
+	dog2.setType("Cat");
+	std::cout << dog2.getType() << std::endl;
+	dog2 = dog;
+	std::cout << dog2.getType() << std::endl;
 	
+	std::cout << std::endl;
+	std::cout << "------------------ REPLACE ANIMAL AND CAT -------------------" << std::endl;
+	std::cout << std::endl;
+
 	const WrongAnimal* metaB = new WrongAnimal();
 	const WrongAnimal* iB = new WrongCat();
 	std::cout << iB->getType() << " " << std::endl;
