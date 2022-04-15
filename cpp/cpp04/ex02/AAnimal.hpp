@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 # include <iostream>
 # include "Brain.hpp"
 
-class Animal
+class AAnimal
 {
 	protected:
 		std::string _type;
 
 	public:
-		Animal();
-		Animal(Animal const &ref);
-		virtual ~Animal();
+		AAnimal();
+		AAnimal(AAnimal const &ref);
+		virtual ~AAnimal();
 
-		Animal &operator=(Animal const &ref);
+		AAnimal &operator=(AAnimal const &ref);
 
 		void setType(std::string type);
 		std::string getType() const;

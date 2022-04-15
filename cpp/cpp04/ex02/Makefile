@@ -1,14 +1,14 @@
 #!/bin/bash
 
 SRCS =	main.cpp		\
-		Animal.cpp		\
+		AAnimal.cpp		\
 		Dog.cpp		\
 		Cat.cpp		\
 		WrongAnimal.cpp		\
 		WrongCat.cpp		\
 		Brain.cpp		\
 
-INCS = 	Animal.hpp	\
+INCS = 	AAnimal.hpp	\
 		Dog.hpp		\
 		Cat.hpp		\
 		WrongAnimal.hpp		\

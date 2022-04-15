@@ -12,18 +12,18 @@
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : AAnimal()
 {
 	std::cout << "Cat default constructor called." << std::endl;
 	this->setType("Cat");
 	this->_brain = new Brain();
 }
 
-Cat::Cat(Cat const &ref) : Animal()
+Cat::Cat(Cat const &ref) : AAnimal()
 {
 	std::cout << "Cat copy constructor called." << std::endl;
 	this->setType(ref.getType());
-	this->_brain = ref._brain;
+	this->setBrain(ref._brain);
 }
 
 Cat::~Cat()
@@ -32,9 +32,10 @@ Cat::~Cat()
 	delete this->_brain;
 }
 
-void	Cat::setBrain(Brain *Brain)
+void	Cat::setBrain(Brain *brain)
 {
-	this->_brain = Brain;
+	delete this->_brain;
+	this->_brain = new Brain(*brain);
 }
 
 Brain *Cat::getBrain() const
@@ -46,7 +47,7 @@ Cat	&Cat::operator=(Cat const &ref)
 {
 	std::cout << "Cat copy assignment called." << std::endl;
 	this->setType(ref.getType());
-	this->_brain = ref._brain;
+	this->setBrain(ref._brain);
 	return *this;
 }
 

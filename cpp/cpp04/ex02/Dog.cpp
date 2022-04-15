@@ -12,18 +12,18 @@
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog() : AAnimal()
 {
 	std::cout << "Dog default constructor called." << std::endl;
 	this->setType("Dog");
 	this->_brain = new Brain();
 }
 
-Dog::Dog(Dog const &ref) : Animal()
+Dog::Dog(Dog const &ref) : AAnimal()
 {
 	std::cout << "Dog copy constructor called." << std::endl;
 	this->setType(ref.getType());
-	this->_brain = ref._brain;
+	this->setBrain(ref._brain);
 }
 
 Dog::~Dog()
@@ -32,9 +32,10 @@ Dog::~Dog()
 	delete this->_brain;
 }
 
-void	Dog::setBrain(Brain *Brain)
+void	Dog::setBrain(Brain *brain)
 {
-	this->_brain = Brain;
+	delete this->_brain;
+	this->_brain = new Brain(*brain);
 }
 
 Brain *Dog::getBrain() const
@@ -46,7 +47,7 @@ Dog	&Dog::operator=(Dog const &ref)
 {
 	std::cout << "Dog copy assignment called." << std::endl;
 	this->setType(ref.getType());
-	this->_brain = ref._brain;
+	this->setBrain(ref._brain);
 	return *this;
 }
 

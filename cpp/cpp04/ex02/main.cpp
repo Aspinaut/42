@@ -6,13 +6,12 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 11:59:08 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/05 13:24:40 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/15 15:10:13 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 
 int main()
 {
@@ -21,7 +20,8 @@ int main()
 	const Dog* dog = new Dog();
 	const Cat* cat = new Cat();
 
-	std::cout << "Idea : " << dog->getBrain()->getIdea(100) << std::endl;
+	dog->getBrain()->fillIdeas();
+	std::cout << "Idea : " << dog->getBrain()->getIdea(-1) << std::endl;
 	std::cout << "Idea : " << dog->getBrain()->getIdea(99) << std::endl;
 	
 	delete dog;
@@ -29,7 +29,7 @@ int main()
 	
 	std::cout << "------------------ ANIMAL LIST ------------------" << std::endl;
 
-	const Animal *animalist[20];
+	const AAnimal *animalist[20];
 	for (int i=0; i < 20; i++)
 	{
 		if (i % 2 == 0)
@@ -44,7 +44,7 @@ int main()
 	}
 
 	// std::cout << "------------------ NOT SUPPOSED TO COMPILE ------------------" << std::endl;
-	// const Animal *dogo = new Animal();
+	// const AAnimal *dogo = new AAnimal();
 	// (void)dogo;
 	
 	return 0;
