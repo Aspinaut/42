@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:52:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/20 09:28:19 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/20 09:36:56 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	Bureaucrat::ErrorThrower(int grade) const
 		throw Bureaucrat::GradeTooHighException();
 }
 
-void	Bureaucrat::signForm(Form &f) const
+void	Bureaucrat::signForm(AForm &f) const
 {
 	std::string reason;
 

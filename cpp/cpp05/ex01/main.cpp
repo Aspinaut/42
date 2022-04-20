@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:51:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/11 14:15:29 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/20 09:43:24 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main()
 {
-	Bureaucrat bur("Bureaucratix", 150);
+	Bureaucrat pou("Poutoutatix", 150);
 	Bureaucrat mac("Macronix", 1);
 	Form a38("Le laisser passer A38", 1, 1);
 	Form form("Conditions d'utilisation", 150, 150);
@@ -39,7 +39,7 @@ int	main()
 	
 	try
 	{
-		bur.signForm(a38);
+		pou.signForm(a38);
 	}
 	catch(const std::exception& e)
 	{
@@ -48,6 +48,10 @@ int	main()
 	
 	mac.signForm(a38);
 	mac.signForm(a38);
+	
+	std::cout << form << std::endl;
+	pou.signForm(form);
+	std::cout << form << std::endl;
 
 	return 0;
 }

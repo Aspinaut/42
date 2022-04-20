@@ -6,72 +6,37 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:51:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/20 09:42:21 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/20 10:14:47 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int	main()
 {
-	Bureaucrat lowBob("Bob the lowest", 150);
-	Bureaucrat highBob("Bob the highest", 1);
+	Bureaucrat pou("Poutoutatix", 150);
+	Bureaucrat mac("Macronix", 1);
+	ShrubberyCreationForm form("le laisser passer a38");
+	
+	// SHRUBBERY CREATION 
+	
+	std::cout << form << std::endl;
+	form.execute(mac);
+	mac.signForm(form);
 
 	try
 	{
-		Bureaucrat bobTooHigh("Bob", 0);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		Bureaucrat bobTooLow("Bob", 151);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-	std::cout << lowBob << std::endl;
-	lowBob.upGrade();
-	std::cout << lowBob << std::endl;
-	lowBob.downGrade();
-	try
-	{
-		lowBob.downGrade();
+		form.execute(pou);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 	
+	form.execute(mac);
 
-	std::cout << highBob << std::endl;
-	highBob.downGrade();
-	std::cout << highBob << std::endl;
-	highBob.upGrade();
-	try
-	{
-		highBob.upGrade();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-	try
-	{
-		highBob.setGrade(-1);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-	highBob.setGrade(5);
-	std::cout << highBob << std::endl;
+	// ROBOTOMY
 
 	return 0;
 }

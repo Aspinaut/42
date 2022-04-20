@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 10:44:35 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/20 09:32:01 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/11 14:47:48 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		std::string const _name;
@@ -24,11 +24,11 @@ class Form
 		int const _signExec;
 	
 	public:
-		Form(std::string const name, int const sg, int const se);
-		Form(Form const &ref);
-		~Form();
+		AForm(std::string const name, int const sg, int const se);
+		AForm(AForm const &ref);
+		virtual ~AForm();
 
-		Form &operator=(Form const &ref);
+		AForm &operator=(AForm const &ref);
 
 		std::string const	getName() const;
 		bool	getSigned() const;
@@ -36,7 +36,8 @@ class Form
 		int 	getSignGrade() const;
 		int 	getSignExec() const;
 		void	ErrorThrower(int sg, int se) const;
-		
+		virtual void execute(Bureaucrat const &executor) const = 0;
+
 		class GradeTooLowException : public std::exception
 		{
 			public:
@@ -55,4 +56,4 @@ class Form
 		};
 };
 
-std::ostream &operator<<(std::ostream &out, Form const &ref);
+std::ostream &operator<<(std::ostream &out, AForm const &ref);

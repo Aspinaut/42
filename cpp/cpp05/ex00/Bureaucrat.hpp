@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:51:49 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/11 13:07:00 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/20 09:31:22 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,6 @@ class Bureaucrat
 		int			_grade;
 	
 	public:
-		class GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw()
-				{
-					return ("Grade too high...");
-				}		
-		};
-		class GradeTooLowException : public std::exception
-		{
-			public:
-				virtual const char *what() const throw()
-				{
-					return ("Grade too low...");
-				}	
-		};
-		
 		Bureaucrat(std::string const name, int grade);
 		Bureaucrat(Bureaucrat const &ref);
 		~Bureaucrat();
@@ -45,7 +28,6 @@ class Bureaucrat
 		Bureaucrat &operator=(Bureaucrat const &ref);
 
 		std::string	const getName() const;
-		// void	 	setName(std::string const name);
 		void		setGrade(int grade);
 		int			getGrade() const;
 
@@ -53,6 +35,22 @@ class Bureaucrat
 		void	downGrade();
 		void 	ErrorThrower(int grade);
 
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Bureaucrat : grade too high...");
+				}		
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Bureaucrat : grade too low...");
+				}	
+		};
 };
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &ref);

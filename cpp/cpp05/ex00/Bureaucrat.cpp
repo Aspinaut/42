@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:52:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/11 13:06:56 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/20 09:28:25 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,11 @@ Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &ref)
 {
-	// this->setName(ref.getName());
 	this->setGrade(ref.getGrade());
 	return *this;
 }
 
 std::string const Bureaucrat::getName() const { return this->_name; }
-
-// void	 	Bureaucrat::setName(std::string const name) { this->_name = name; }
 
 void	Bureaucrat::setGrade(int grade) { ErrorThrower(grade); this->_grade = grade; }
 
@@ -55,6 +52,6 @@ void	Bureaucrat::ErrorThrower(int grade)
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &ref)
 {
-	out << ref.getName() << ", bureaucrat grade " << ref.getGrade() << "." << std::endl;
+	out << ref.getName() << ", bureaucrat grade " << ref.getGrade() << ".";
 	return out;
 }
