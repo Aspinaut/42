@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 10:44:35 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/20 09:32:01 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/23 13:44:48 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,24 @@ class Form
 				{
 					return ("Form : grade too high...");
 				}	
+		};
+
+		class NotSigned : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Form is not signed...");
+				}		
+		};
+		
+		class AlreadySigned : public std::exception
+		{
+			public:
+				virtual const char *what() const throw()
+				{
+					return ("Form is already signed...");
+				}		
 		};
 };
 

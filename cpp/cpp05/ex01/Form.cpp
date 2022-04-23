@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:52:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/20 09:49:37 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/23 13:47:16 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ bool	Form::getSigned() const { return this->_signed; }
 
 void	Form::beSigned(Bureaucrat const &ref)
 {
-	if (this->getSigned() == false && ref.getGrade() <= this->getSignGrade())
-	{
-		this->_signed = true;
-	}
+	if (this->getSigned())
+		throw Form::AlreadySigned();
+	if (ref.getGrade() > this->getSignGrade())
+		throw Bureaucrat::GradeTooLowException();
+	this->_signed = true;
 }
 
 int Form::getSignGrade() const { return this->_signGrade; }

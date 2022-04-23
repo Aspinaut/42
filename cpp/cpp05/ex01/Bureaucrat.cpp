@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:52:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/20 09:28:19 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/23 13:37:46 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,16 @@ void	Bureaucrat::ErrorThrower(int grade) const
 
 void	Bureaucrat::signForm(Form &f) const
 {
-	std::string reason;
-
-	if (f.getSigned())
-		reason = "it was already signed...";
-	else if (this->getGrade() > f.getSignGrade())
-		reason = "he doesn't have a sufficient grade.";
-	f.beSigned(*this);
-	if (f.getSigned() && reason.empty())
+	try
+	{
+		f.beSigned(*this);
 		std::cout << this->getName() << " signed " << f.getName() << std::endl;
-	else
-		std::cout << this->getName() << " couldn't sign " << f.getName() << " because " << reason << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << this->getName() << " couldn't sign " << f.getName() << " because ";
+		std::cerr << e.what() << '\n';
+	}
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &ref)
