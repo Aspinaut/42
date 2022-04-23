@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:46:33 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/20 10:18:56 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/20 21:27:16 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "AForm.hpp"
 #include <fstream>
 
-class PresidentialPardonForm : virtual public AForm
+class PresidentialPardonForm : public AForm
 {
 	private:
 		std::string _target;
@@ -28,5 +28,5 @@ class PresidentialPardonForm : virtual public AForm
 
 		std::string getTarget() const;
 
-		void		execute(Bureaucrat const &executor) const;
+		void		action() const;
 };

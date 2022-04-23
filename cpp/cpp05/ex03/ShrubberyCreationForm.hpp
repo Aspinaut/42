@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:46:33 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/20 21:27:25 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/20 14:54:03 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
-#include <cstdlib>
+#include <fstream>
 
-class RobotomyRequestForm : public AForm
+class ShrubberyCreationForm : virtual public AForm
 {
 	private:
 		std::string _target;
 
 	public:
-		RobotomyRequestForm(std::string target);
-		RobotomyRequestForm(RobotomyRequestForm const &ref);
-		~RobotomyRequestForm();
+		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(ShrubberyCreationForm const &ref);
+		~ShrubberyCreationForm();
 
-		RobotomyRequestForm &operator=(RobotomyRequestForm const &ref);
+		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &ref);
 
 		std::string getTarget() const;
 

@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:52:05 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/23 13:02:39 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/23 11:44:01 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	Bureaucrat::executeForm(AForm const & form) const
 		form.action();
 		std::cout << this->_name << " executed " << form.getName() << std::endl;
 	}
-	catch (const std::exception &e)
+	catch (Bureaucrat::GradeTooLowException &e)
 	{
 		std::cerr << e.what() << '\n';
 	}

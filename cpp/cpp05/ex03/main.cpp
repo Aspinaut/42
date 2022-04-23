@@ -6,14 +6,12 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:51:18 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/23 12:57:14 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/23 12:54:28 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main()
 {
@@ -25,7 +23,7 @@ int	main()
 		// SHRUBBERY CREATION 
 		
 		std::cout << form << std::endl;
-		
+
 		try
 		{
 			mac.executeForm(form);
@@ -34,7 +32,7 @@ int	main()
 		{
 			std::cerr << e.what() << '\n';
 		}
-
+		
 		mac.signForm(form);
 
 		try
@@ -70,15 +68,49 @@ int	main()
 		try
 		{
 			mac.executeForm(form);
+			mac.signForm(form);
+			pou.executeForm(form);
+			mac.executeForm(form);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	
+	}
+
+	// INTERN
+
+	{
+		Intern someRandomIntern;
+		AForm *rrf;
+
+		try
+		{
+			rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+
+		try
+		{
+			rrf = someRandomIntern.makeForm("shrubbery creation form", "Sylvebarbe");
+			std::cout << *rrf << std::endl;
+			delete rrf;
+			rrf = someRandomIntern.makeForm("robotomy request form", "Bender");
+			std::cout << *rrf << std::endl;
+			delete rrf;
+			rrf = someRandomIntern.makeForm("presidential pardon form", "Macronix");
+			std::cout << *rrf << std::endl;
+			delete rrf;
 		}
 		catch(const std::exception& e)
 		{
 			std::cerr << e.what() << '\n';
 		}
 		
-		mac.signForm(form);
-		pou.executeForm(form);
-		mac.executeForm(form);
 	}
 
 	return 0;

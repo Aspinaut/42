@@ -6,7 +6,7 @@
 /*   By: vmasse <vmasse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:51:49 by vmasse            #+#    #+#             */
-/*   Updated: 2022/04/20 14:24:20 by vmasse           ###   ########.fr       */
+/*   Updated: 2022/04/20 21:10:41 by vmasse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class Bureaucrat
 					return ("Bureaucrat : grade too high...");
 				}		
 		};
+	
 		class GradeTooLowException : public std::exception
 		{
 			public:

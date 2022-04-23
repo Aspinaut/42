@@ -51,11 +51,10 @@ void	AForm::ErrorThrower(int sg, int se) const
 void AForm::execute(Bureaucrat const &executor) const
 {
 	if (this->getSigned() == false)
-	{
 		throw AForm::NotSigned();
-	}
 	if (executor.getGrade() > this->getSignExec())
 		throw Bureaucrat::GradeTooLowException();
+	
 }
 
 std::ostream &operator<<(std::ostream &out, AForm const &ref)
@@ -67,5 +66,4 @@ std::ostream &operator<<(std::ostream &out, AForm const &ref)
 		out << "It is not signed.";
 	return out;
 }
-
 
