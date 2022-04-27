@@ -13,7 +13,7 @@ RM = rm -f
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 $(NAME): $(OBJS) $(INCS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)

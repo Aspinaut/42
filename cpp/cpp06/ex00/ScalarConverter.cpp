@@ -65,7 +65,7 @@ ScalarConverter::operator int()
 
 ScalarConverter::operator float()
 {
-	float	ret = 0;
+	float	ret = 0.0;
 
 	std::cout << "float: ";
 	try
@@ -84,7 +84,7 @@ ScalarConverter::operator float()
 
 ScalarConverter::operator double()
 {
-	double	ret = 0;
+	double	ret = 0.0;
 
 	std::cout << "double: ";
 	try

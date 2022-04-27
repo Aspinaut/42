@@ -10,29 +10,15 @@ int main(int argc, char **argv)
 
 	ScalarConverter	converter(static_cast<std::string>(argv[1]));
 
-	{
-		int i = static_cast<int>(converter);
-		int j = static_cast<int>(converter);
-		std::cout << "i + j = " << (i + j) << std::endl;
-	}
+	char a = static_cast<char>(converter);
+	int b = static_cast<int>(converter);
+	float c = static_cast<float>(converter);
+	double d = static_cast<double>(converter);
 
-	{
-		double i = static_cast<double>(converter);
-		double j = static_cast<double>(converter);
-		std::cout << "i + j = " << (i + j) << std::endl;
-	}
-
-	{
-		char i = static_cast<char>(converter);
-		char j = static_cast<char>(converter);
-		std::cout << "i + j = " << (i + j) << std::endl;
-	}
-
-	{
-		float i = static_cast<float>(converter);
-		float j = static_cast<float>(converter);
-		std::cout << "i + j = " << (i + j) << std::endl;
-	}
+	(void)a;
+	(void)b;
+	(void)c;
+	(void)d;
 
 	return 0;
 }
