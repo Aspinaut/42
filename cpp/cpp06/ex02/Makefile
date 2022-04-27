@@ -7,7 +7,7 @@ INCS = 	Base.hpp	\
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = convert
+NAME = base
 
 RM = rm -f
 

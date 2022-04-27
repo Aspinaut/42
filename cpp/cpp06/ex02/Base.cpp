@@ -1,37 +1,38 @@
 #include "Base.hpp"
 
-Base::~Base() {	std::cout << "Base deconstructor" << std::endl;	}
+Base::~Base() {}
 
 Base*	generate()
 {
 	Base *newBase;
 	srand(time(NULL));
-	int	val = rand() % 10;
+	int randNb = rand() % 3 + 1;
 		
-	if (val < 4)
+	if (randNb == 1)
 	{
 		newBase = new A();
-		std::cout << "A has been generated" << std::endl;
+		std::cout << "A has been created" << std::endl;
 	}
-	else if (val < 7)
+	else if (randNb == 2)
 	{
 		newBase = new B();
-		std::cout << "B has been generated" << std::endl;
+		std::cout << "B has been created" << std::endl;
 	}
 	else
 	{
 		newBase = new C();
-		std::cout << "C has been generated" << std::endl;
+		std::cout << "C has been created" << std::endl;
 	
 	}
+
 	return newBase;
 }
 
 void	identify(Base* p)
 {
-	A*	a = dynamic_cast<A*>(p);
-	B*	b = dynamic_cast<B*>(p);
-	C*	c = dynamic_cast<C*>(p);
+	A	*a = dynamic_cast<A*>(p);
+	B	*b = dynamic_cast<B*>(p);
+	C	*c = dynamic_cast<C*>(p);
 
 	if (a)
 	{
@@ -48,7 +49,7 @@ void	identify(Base* p)
 		std::cout << "C" << std::endl;
 		return ;
 	}
-	std::cout << "--- Impossible to identify this base ---" << std::endl;
+	std::cout << "Cannot identify this Base" << std::endl;
 }
 
 void	identify(Base& p)
@@ -58,29 +59,26 @@ void	identify(Base& p)
 	try
 	{
 		cast = dynamic_cast<A&>(p);
-		std::cout << "A\n";	return ;
+		std::cout << "A" << std::endl;
+		return ;
 	}
-	catch(std::exception &bc)
-	{
+	catch(const std::exception &e) {}
 
-	}
 	try
 	{
 		cast = dynamic_cast<B&>(p);
-		std::cout << "B\n";	return ;
+		std::cout << "B" << std::endl;
+		return ;
 	}
-	catch(std::exception &bc)
-	{
+	catch(const std::exception &e) {}
 
-	}
 	try
 	{
 		cast = dynamic_cast<C&>(p);
-		std::cout << "C\n";	return ;
+		std::cout << "C" << std::endl;
+		return ;
 	}
-	catch(std::exception &bc)
-	{
-		
-	}
-	std::cout << "--- Impossible to identify this base ---" << std::endl;
+	catch(const std::exception &e) {}
+
+	std::cout << "Cannot identify this Base" << std::endl;
 }
