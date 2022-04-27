@@ -3,7 +3,7 @@
 
 struct Data
 {
-	std::string secret;
+	std::string tip;
 };
 
 uintptr_t	serialize(Data	*ptr);

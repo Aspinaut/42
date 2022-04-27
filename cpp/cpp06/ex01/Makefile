@@ -7,7 +7,7 @@ INCS = 	Data.hpp	\
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = convert
+NAME = data
 
 RM = rm -f
 
