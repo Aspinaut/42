@@ -2,7 +2,7 @@
 #include <iostream>
 
 template< typename T >
-void	iter( T arr[], int size, void fct( T &elem))
+void	iter( T arr[], int size, void fct( T const &elem))
 {
 	std::cout << "iter 1\n";
 	for (int i=0; i < size; i++)
