@@ -1,19 +1,18 @@
 #!/bin/bash
 
 SRCS =	main.cpp		\
-		ScalarConverter.cpp	\
 
-INCS = 	ScalarConverter.hpp	\
+INCS = 	Iter.hpp	\
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = convert
+NAME = iter
 
 RM = rm -f
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 $(NAME): $(OBJS) $(INCS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)

@@ -8,7 +8,7 @@
 class ScalarConverter
 {
 	private:
-		std::string	_str;
+		const std::string	_str;
 
 	public:
 		ScalarConverter();

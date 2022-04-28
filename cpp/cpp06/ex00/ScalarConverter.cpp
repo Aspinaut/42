@@ -24,16 +24,21 @@ ScalarConverter::operator char()
 	std::cout << "char: ";
 	try
 	{
-		ret = stoi(this->getStr());
+		value = stoi(this->getStr());
 	}
-	catch(const std::exception& e)
+	catch(const std::invalid_argument& e)
 	{
-		std::cout << " impossible" << std::endl;
+		std::cout << "impossible" << std::endl;
+		return 0;
+	}
+	catch(const std::out_of_range& e)
+	{
+		std::cout << "impossible" << std::endl;
 		return 0;
 	}
 	if (value > CHAR_MAX || value < CHAR_MIN)
 	{
-		std::cout << " impossible" << std::endl;
+		std::cout << "impossible" << std::endl;
 		return 0;
 	}
 	ret = static_cast<char>(value);
@@ -57,7 +62,7 @@ ScalarConverter::operator int()
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << " impossible" << std::endl;
+		std::cout << "impossible" << std::endl;
 	}
 	
 	return ret;
@@ -75,8 +80,7 @@ ScalarConverter::operator float()
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << " impossible" << std::endl;
-		// return nan ?
+		std::cout << "impossible" << std::endl;
 	}
 	
 	return ret;
@@ -94,7 +98,7 @@ ScalarConverter::operator double()
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << " impossible" << std::endl;
+		std::cout << "impossible" << std::endl;
 	}
 	
 	return ret;
