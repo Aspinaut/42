@@ -11,7 +11,7 @@ class Array
 	public:
 		Array() : _len(0), _arr(new T[0]) {};
 		Array(unsigned int n) : _len(n), _arr(new T[n]) {};
-		Array(Array < T > &ref) : _len(ref.size()), _arr(new T[ref.size()])
+		Array(Array < T > const &ref) : _len(ref.size()), _arr(new T[ref.size()])
 		{
 			for (unsigned int i=0; i < ref.size(); i++)
 			{
@@ -20,7 +20,7 @@ class Array
 		};
 		~Array() { delete [] this->_arr; };
 
-		Array < T > &operator= (Array < T > &ref)
+		Array < T > &operator= (Array < T > const &ref)
 		{
 			if (this != ref)
             {

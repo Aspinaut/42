@@ -55,10 +55,37 @@ int main()
 
 	// CUSTOM 
 	{
-		Array<std::string> strArr(0);
-		Array<bool> boolArr(0);
+		Array<std::string> strArr(2);
+		Array<char> charArr(2);
+		Array<bool> boolArr(2);
+		Array<float> floatArr(1);
+		Array<double> doubleArr(1);
+		Array<double> emptyArr;
+		Array<Array< int > > intArrOfArr;
 
-		std::cout << strArr[0];
+		strArr[0] = "ceci est une string";
+		strArr[1] = "ceci est une autre string";
+		boolArr[0] = true;
+		boolArr[1] = false;
+		floatArr[0] = 4.2;
+		doubleArr[0] = 4.2;
+
+		std::cout << strArr[0] << std::endl;
+		std::cout << strArr[1] << std::endl;
+		try
+		{
+			std::cout << strArr[2] << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		std::cout << boolArr[0] << std::endl;
+		std::cout << boolArr[1] << std::endl;
+		std::cout << floatArr[0] << std::endl;
+		std::cout << doubleArr[0] << std::endl;
+		std::cout << "Address of emptyArr : " << &emptyArr << std::endl;
+		std::cout << "Address of intArrOfArr : " << &intArrOfArr << std::endl;
 	}
     return 0;
 }
