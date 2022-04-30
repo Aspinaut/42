@@ -18,7 +18,7 @@ class MutantStack : public std::stack< T >
 		{
 			if (this != &ref )
 			{
-				this->std::stack< T >::operator=(ref);
+				std::stack< T >::operator=(ref);
 			}
 			return *this;
 		}

@@ -2,7 +2,9 @@
 
 int	main()
 {
+	std::cout << "   ------   \n";
 	std::cout << "   GIVEN MAIN   \n";
+	std::cout << "   ------   \n";
 	{
 		Span sp = Span(5);
 		sp.addNumber(6);
@@ -16,6 +18,7 @@ int	main()
 
 	std::cout << "   ------   \n";
 	std::cout << "   BASIC TESTS   \n";
+	std::cout << "   ------   \n";
 	
 	{
 		Span span(3);
@@ -68,6 +71,7 @@ int	main()
 	
 	std::cout << "   ------   \n";
 	std::cout << "   TESTS WITH 10 000 NB   \n";
+	std::cout << "   ------   \n";
 
 	{
 		Span span(TOTAL);

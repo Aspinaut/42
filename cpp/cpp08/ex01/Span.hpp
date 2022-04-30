@@ -1,22 +1,23 @@
 #pragma once
 #include <iostream>
-#include <limits.h>
+#include <algorithm>
 #include <cstdlib>
+#include <vector>
 #define TOTAL 10000
 
 class Span
 {
 	private:
-		int	_len;
-		int	_pos;
-		int *_nbs;
+		unsigned int		_len;
+		unsigned int		_pos;
+		std::vector<int> 	_nbs;
 
 	public:
-		Span(int n);
+		Span(unsigned int n);
 		Span(Span const &ref);
 		~Span();
 
-		// Span &operator=(Span const &ref);
+		Span &operator=(Span const &ref);
 
 		void	addNumber(int nb);
 		int		shortestSpan();

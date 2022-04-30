@@ -1,29 +1,31 @@
 #include "Span.hpp"
 
-Span::Span(int n) : _len(n), _nbs( new int[n] ) {}
+Span::Span(unsigned int n) : _len(n) {}
 
-Span::Span(Span const &ref) : _len(ref._len), _nbs( new int[ref._len] ) {}
+Span::Span(Span const &ref) : _len(ref._len), _nbs(ref._nbs) {}
 
-Span::~Span() { delete [] this->_nbs; }
+Span::~Span() {}
 
-Span &Span::operator=(Span const &ref)
+Span	&Span::operator=(Span const &ref)
 {
 	if (this != &ref)
 	{
-		delete [] this->_nbs;
-		this->_len = ref._len;
-		this->_nbs = new int[ref._len];
+		_nbs = ref._nbs;
+		_len = ref._len;
 	}
+	return *this;
 }
 
-void Span::fillArray()
+void	Span::fillArray()
 {
+	int r;
 	srand(time(NULL));
-	for (int i=0; i < this->_len; i++)
+	for (unsigned int i=0; i < _len; i++)
 	{
 		try
 		{
-			this->addNumber(rand());
+			r = rand();
+			addNumber(r);
 		}
 		catch(const std::exception& e)
 		{
@@ -32,76 +34,48 @@ void Span::fillArray()
 	}
 }
 
-void Span::addNumber(int nb)
+void	Span::addNumber(int nb)
 {
-	if (this->_pos >= this->_len)
+	if (_pos >= _len)
 	{
 		throw ArrayIsFull();
 		return ;
 	}
-	for (int i=0; i < this->_pos; i++)
+	if (std::find(_nbs.begin(), _nbs.end(), nb) != _nbs.end())
 	{
-		if (this->_nbs[i] == nb)
-		{
-			throw NumberAlreadyUsed();
-			return ;
-		}
+		throw NumberAlreadyUsed();
+		return ;
 	}
-	this->_nbs[this->_pos++] = nb;
+	else
+	{
+		_nbs.push_back(nb);
+		_pos++;
+	}
 }
 
-int	Span::shortestSpan()
+int     Span::shortestSpan()
 {
-	int minSpan = INT_MAX;
-	int last;
-	int currentSpan;
-
-	if (this->_pos < 2)
-	{
-		throw TooFewNumbers();
-		return 0;
-	}
-	for (int i=0; i < this->_pos; i++)
-	{
-		last = this->_nbs[i];
-		for (int j=0; j < this->_pos; j++)
+    if (_pos > 1)
+    {
+ 	   int minSpan = *std::max_element(_nbs.begin(), _nbs.end());
+		for (unsigned int i = 1; i < _len; ++i)
 		{
-			currentSpan = last - this->_nbs[j];
-			if (currentSpan < 0)
-				currentSpan *= -1;
-			if (i != j && currentSpan < minSpan)
-			{
-				minSpan = currentSpan;
-			}
+			int tmp = std::abs(_nbs[i - 1] - _nbs[i]);
+			if (tmp < minSpan)
+				minSpan = tmp;
 		}
-	}
-	return minSpan;
+		return minSpan;
+    }
+    throw TooFewNumbers();
 }
 
-int	Span::longestSpan()
+int     Span::longestSpan()
 {
-	int maxSpan = INT_MIN;
-	int last;
-	int currentSpan;
-
-	if (this->_pos < 2)
-	{
-		throw TooFewNumbers();
-		return 0;
-	}
-	for (int i=0; i < this->_pos; i++)
-	{
-		last = this->_nbs[i];
-		for (int j=0; j < this->_pos; j++)
-		{
-			currentSpan = last - this->_nbs[j];
-			if (currentSpan < 0)
-				currentSpan *= -1;
-			if (i != j && currentSpan > maxSpan)
-			{
-				maxSpan = currentSpan;
-			}
-		}
-	}
-	return maxSpan;
+    if (_pos > 1)
+    {
+        int min = *std::min_element(_nbs.begin(), _nbs.end());
+        int max = *std::max_element(_nbs.begin(), _nbs.end());
+        return max - min;
+    }
+    throw TooFewNumbers();
 }

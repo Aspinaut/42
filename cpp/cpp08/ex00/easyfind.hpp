@@ -2,8 +2,8 @@
 #include <iostream>
 #include <algorithm>
 #include <list>
-#include <map>
 #include <vector>
+#include <array>
 
 class ElementNotFound : public std::exception {
 	public:
@@ -12,32 +12,12 @@ class ElementNotFound : public std::exception {
 		}
 };
 
-// template < typename T >
-// bool	easyfind(const T &a, const int &b)
-// {
-// 	typename T::const_iterator	it;
-// 	typename T::const_iterator	ite = a.end();
-
-// 	for (it = a.begin(); it != ite; ++it)
-// 	{
-// 		if (*it == b)
-// 		{
-// 			std::cout << "found " << *it << std::endl;
-// 			return true;
-// 		}
-// 	}
-// 	std::cout << b;
-// 	throw ElementNotFound();
-// 	return false;
-// }
-
-
 template < typename T >
 bool	easyfind(const T &a, const int &b)
 {
 	if (std::find(a.begin(), a.end(), b) != a.end())
 	{
-		std::cout << "found\n";
+		std::cout << "Found " << b << std::endl;
 		return true;
 	}
 	else
