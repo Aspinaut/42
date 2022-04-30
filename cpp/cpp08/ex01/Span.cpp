@@ -1,8 +1,8 @@
 #include "Span.hpp"
 
-Span::Span(unsigned int n) : _len(n) {}
+Span::Span(unsigned int n) : _len(n), _pos(0) {}
 
-Span::Span(Span const &ref) : _len(ref._len), _nbs(ref._nbs) {}
+Span::Span(Span const &ref) : _len(ref._len), _pos(ref._pos), _nbs(ref._nbs) {}
 
 Span::~Span() {}
 
@@ -12,6 +12,7 @@ Span	&Span::operator=(Span const &ref)
 	{
 		_nbs = ref._nbs;
 		_len = ref._len;
+		_pos = ref._pos;
 	}
 	return *this;
 }
@@ -41,7 +42,7 @@ void	Span::addNumber(int nb)
 		throw ArrayIsFull();
 		return ;
 	}
-	if (std::find(_nbs.begin(), _nbs.end(), nb) != _nbs.end())
+	if (_pos > 0 && std::find(_nbs.begin(), _nbs.end(), nb) != _nbs.end())
 	{
 		throw NumberAlreadyUsed();
 		return ;
@@ -57,7 +58,7 @@ int     Span::shortestSpan()
 {
     if (_pos > 1)
     {
- 	   int minSpan = *std::max_element(_nbs.begin(), _nbs.end());
+ 		int minSpan = *std::max_element(_nbs.begin(), _nbs.end());
 		for (unsigned int i = 1; i < _len; ++i)
 		{
 			int tmp = std::abs(_nbs[i - 1] - _nbs[i]);
