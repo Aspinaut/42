@@ -26,7 +26,7 @@ class ElementNotFound : public std::exception {
 // 			return true;
 // 		}
 // 	}
-// 	std::cout << 43;
+// 	std::cout << b;
 // 	throw ElementNotFound();
 // 	return false;
 // }
@@ -36,7 +36,10 @@ template < typename T >
 bool	easyfind(const T &a, const int &b)
 {
 	if (std::find(a.begin(), a.end(), b) != a.end())
+	{
 		std::cout << "found\n";
+		return true;
+	}
 	else
 	{
 		std::cout << b;

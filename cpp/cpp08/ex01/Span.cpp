@@ -6,13 +6,15 @@ Span::Span(Span const &ref) : _len(ref._len), _nbs( new int[ref._len] ) {}
 
 Span::~Span() { delete [] this->_nbs; }
 
-// Span &Span::operator=(Span const &ref)
-// {
-// 	// if (this != ref)
-// 	// {
-
-// 	// }
-// }
+Span &Span::operator=(Span const &ref)
+{
+	if (this != &ref)
+	{
+		delete [] this->_nbs;
+		this->_len = ref._len;
+		this->_nbs = new int[ref._len];
+	}
+}
 
 void Span::fillArray()
 {
