@@ -11,13 +11,12 @@ class Warlock
 	
 		void introduce() const;
 
-		void setName(const string &name);
 		const string getName() const;
 		void setTitle(const string &title);
 		const string getTitle() const;
 
 	private:
-		string _name;
+		const string _name;
 		string _title;
 
 		Warlock();

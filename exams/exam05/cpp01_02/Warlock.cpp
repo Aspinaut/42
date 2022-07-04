@@ -16,8 +16,6 @@ void Warlock::introduce() const
 }
 
 void Warlock::setTitle(const string &t) { _title = t; }
-void Warlock::setName(const string &n) { _name = n; }
-
 
 string const Warlock::getTitle() const { return _title; }
 string const Warlock::getName() const { return _name; }
