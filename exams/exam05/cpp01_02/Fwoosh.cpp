@@ -1,24 +1,13 @@
-#pragma once
-#include <iostream>
-#include <string>
-using namespace std;
-#include "ASpell.hpp"
+#include "Fwoosh.hpp"
 
-class Fwoosh : public ASpell
+Fwoosh::Fwoosh(const string &n, const string &e) : ASpell() {}
+
+Fwoosh::~Fwoosh() {}
+
+void Fwoosh::launch(ATarget const &ref) const
 {
-	public:
-		Fwoosh(const string &name, const string &effects);
-		~Fwoosh();
-	
-        virtual const Fwoosh &operator=(Fwoosh const &other) = 0;
+	ref.getHitBySpell(*this);
+}
 
-		const string getName() const;
-		const string getEffects() const;
-
-		void launch(ATarget const &ref) const;
-
-	protected:
-		const string name;
-		const string effects;
-
-};
+string const Fwoosh::getEffects() const { return effects; }
+string const Fwoosh::getName() const { return name; }

@@ -9,9 +9,9 @@ class ATarget
 {
 	public:
 		ATarget(const string &type);
-		~ATarget();
+		virtual ~ATarget();
 	
-        virtual const ATarget &operator=(ATarget const &other) = 0;
+        virtual const ATarget *clone(ATarget const &ref) = 0;
 
 		const string getType() const;
 

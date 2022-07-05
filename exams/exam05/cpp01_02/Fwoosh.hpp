@@ -1,20 +1,18 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 using namespace std;
 
-class ATarget;
-
-class ASpell
+class Fwoosh : public ASpell
 {
 	public:
-		ASpell(const string &name, const string &effects);
-		virtual ~ASpell();
+		Fwoosh(const string &name, const string &effects);
+		~Fwoosh();
 	
 		const string getName() const;
 		const string getEffects() const;
-
-		virtual const ASpell *clone(ASpell const &ref) = 0;
 
 		void launch(ATarget const &ref) const;
 
