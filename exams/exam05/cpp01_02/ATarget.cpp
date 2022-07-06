@@ -5,9 +5,9 @@ ATarget::ATarget(const string &t) : type(t){}
 
 ATarget::~ATarget() {}
 
-const ATarget *ATarget::clone(ATarget const &ref)
+ATarget *ATarget::clone()
 {
-	return *ref;
+	return new ATarget(this->_type);
 }
 
 void ATarget::getHitBySpell(ASpell const &ref) const

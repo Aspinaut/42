@@ -1,7 +1,11 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <map>
 using namespace std;
+
+class ASpell;
+class ATarget;
 
 class Warlock
 {
@@ -15,9 +19,14 @@ class Warlock
 		void setTitle(const string &title);
 		const string getTitle() const;
 
+		void learnSpell(ASpell *spell);
+		void forgetSpell(string spellName);
+		void launchSpell(string spellName, ATarget &ref);
+
 	private:
-		const string _name;
-		string _title;
+		const string 			_name;
+		string 					_title;
+		map<string, ASpell *> 	_spells;
 
 		Warlock();
         Warlock(Warlock const &other);

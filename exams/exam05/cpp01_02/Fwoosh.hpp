@@ -8,16 +8,9 @@ using namespace std;
 class Fwoosh : public ASpell
 {
 	public:
+		Fwoosh();
 		Fwoosh(const string &name, const string &effects);
 		~Fwoosh();
 	
-		const string getName() const;
-		const string getEffects() const;
-
-		void launch(ATarget const &ref) const;
-
-	protected:
-		const string name;
-		const string effects;
-
+		virtual ASpell *clone();
 };

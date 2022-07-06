@@ -11,7 +11,7 @@ class ATarget
 		ATarget(const string &type);
 		virtual ~ATarget();
 	
-        virtual const ATarget *clone(ATarget const &ref) = 0;
+        virtual ATarget *clone() = 0;
 
 		const string getType() const;
 

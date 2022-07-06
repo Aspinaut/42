@@ -14,7 +14,7 @@ class ASpell
 		const string getName() const;
 		const string getEffects() const;
 
-		virtual const ASpell *clone(ASpell const &ref) = 0;
+		virtual ASpell *clone() = 0;
 
 		void launch(ATarget const &ref) const;
 

@@ -5,9 +5,9 @@ ASpell::ASpell(const string &n, const string &e) : name(n), effects(e) {}
 
 ASpell::~ASpell() {}
 
-const ASpell *ASpell::clone(ASpell const &ref)
+ASpell *ASpell::clone()
 {
-	return ref; // create new object ?
+	return new ASpell();
 }
 
 void ASpell::launch(ATarget const &ref) const

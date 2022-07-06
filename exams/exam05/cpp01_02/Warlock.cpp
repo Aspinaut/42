@@ -10,6 +10,30 @@ Warlock::~Warlock()
 	cout << _name << ": My job here is done !" << endl;
 }
 
+void Warlock::learnSpell(ASpell *spell)
+{
+	if (find(this->_spells.begin(), this->_spells.end(), spell._name) != this->_spells.end())
+	{
+		this->_spells.insert(spell._name, spell);
+	}
+}
+
+void Warlock::forgetSpell(string spellName)
+{
+	if (find(this->_spells.begin(), this->_spells.end(), spellName) != this->_spells.end())
+	{
+		delete this->_spells;
+	}
+}
+
+void Warlock::launchSpell(string spellName, ATarget &ref)
+{
+	if (find(this->_spells.begin(), this->_spells.end(), spellName) != this->_spells.end())
+	{
+		this->_spells.launch(ref);
+	}
+}
+
 void Warlock::introduce() const
 {
 	cout << _name << ": I am " << _name << ", " << _title << "!" << endl;
