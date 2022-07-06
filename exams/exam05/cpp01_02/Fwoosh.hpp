@@ -5,6 +5,9 @@
 #include "ATarget.hpp"
 using namespace std;
 
+class ASpell;
+class ATarget;
+
 class Fwoosh : public ASpell
 {
 	public:
@@ -12,5 +15,5 @@ class Fwoosh : public ASpell
 		Fwoosh(const string &name, const string &effects);
 		~Fwoosh();
 	
-		virtual ASpell *clone();
+		virtual ASpell *clone() const;
 };

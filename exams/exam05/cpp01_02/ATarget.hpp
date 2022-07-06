@@ -8,10 +8,11 @@ class ASpell;
 class ATarget
 {
 	public:
+		ATarget();
 		ATarget(const string &type);
 		virtual ~ATarget();
 	
-        virtual ATarget *clone() = 0;
+        virtual ATarget *clone() const = 0;
 
 		const string getType() const;
 

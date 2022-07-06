@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 using namespace std;
+#include "ASpell.hpp"
 
 class ASpell;
 class ATarget;
@@ -21,7 +22,7 @@ class Warlock
 
 		void learnSpell(ASpell *spell);
 		void forgetSpell(string spellName);
-		void launchSpell(string spellName, ATarget &ref);
+		void launchSpell(string spellName, ATarget const &ref);
 
 	private:
 		const string 			_name;

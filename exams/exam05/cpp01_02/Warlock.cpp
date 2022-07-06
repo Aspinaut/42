@@ -12,26 +12,23 @@ Warlock::~Warlock()
 
 void Warlock::learnSpell(ASpell *spell)
 {
-	if (find(this->_spells.begin(), this->_spells.end(), spell._name) != this->_spells.end())
-	{
-		this->_spells.insert(spell._name, spell);
-	}
+	if (spell)
+		_spells.insert(pair<string, ASpell *>(spell->getName(), spell->clone()));
 }
 
 void Warlock::forgetSpell(string spellName)
 {
-	if (find(this->_spells.begin(), this->_spells.end(), spellName) != this->_spells.end())
-	{
-		delete this->_spells;
-	}
+	map<string, ASpell *>::iterator it = _spells.find(spellName);
+	if (it != _spells.end())
+		delete it->second;
+	_spells.erase(spellName);
 }
 
-void Warlock::launchSpell(string spellName, ATarget &ref)
+void Warlock::launchSpell(string spellName, ATarget const &ref)
 {
-	if (find(this->_spells.begin(), this->_spells.end(), spellName) != this->_spells.end())
-	{
-		this->_spells.launch(ref);
-	}
+	ASpell* spell = _spells[spellName];
+	if (spell)
+		spell->launch(ref);
 }
 
 void Warlock::introduce() const
