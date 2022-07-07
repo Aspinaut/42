@@ -10,21 +10,19 @@ Warlock::~Warlock()
 	cout << _name << ": My job here is done !" << endl;
 }
 
-void Warlock::learnSpell(ASpell *spell)
+void Warlock::learnSpell(ASpell const *spell)
 {
 	if (spell)
 		_spells.insert(pair<string, ASpell *>(spell->getName(), spell->clone()));
 }
 
-void Warlock::forgetSpell(string spellName)
+void Warlock::forgetSpell(string const spellName)
 {
 	map<string, ASpell *>::iterator it = _spells.find(spellName);
-	if (it != _spells.end())
-		delete it->second;
-	_spells.erase(spellName);
+	_spells.erase(it);
 }
 
-void Warlock::launchSpell(string spellName, ATarget const &ref)
+void Warlock::launchSpell(string const spellName, ATarget const &ref)
 {
 	ASpell* spell = _spells[spellName];
 	if (spell)
@@ -38,5 +36,5 @@ void Warlock::introduce() const
 
 void Warlock::setTitle(const string &t) { _title = t; }
 
-string const Warlock::getTitle() const { return _title; }
-string const Warlock::getName() const { return _name; }
+string const &Warlock::getTitle() const { return _title; }
+string const &Warlock::getName() const { return _name; }

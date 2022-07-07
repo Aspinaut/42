@@ -2,11 +2,9 @@
 #include <iostream>
 #include <string>
 #include "ASpell.hpp"
-#include "ATarget.hpp"
 using namespace std;
 
 class ASpell;
-class ATarget;
 
 class Fwoosh : public ASpell
 {

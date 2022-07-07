@@ -11,9 +11,9 @@ class Warlock
 	
 		void introduce() const;
 
-		const string getName() const;
+		const string &getName() const;
 		void setTitle(const string &title);
-		const string getTitle() const;
+		const string &getTitle() const;
 
 	private:
 		const string _name;

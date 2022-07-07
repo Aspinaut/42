@@ -8,8 +8,8 @@ int main()
 	// bob = jim;                              //Does not compile
 	// Warlock jack(jim);                      //Does not compile
 
-	Warlock const richard("Richard", "Mistress of Magma");
-	richard.introduce();
+	Warlock  richard("Richard", "Mistress of Magma");
+	// richard.introduce();
 	std::cout << richard.getName() << " - " << richard.getTitle() << std::endl;
 
 	Warlock* jack = new Warlock("Jack", "the Long");
