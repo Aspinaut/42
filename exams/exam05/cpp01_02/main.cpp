@@ -8,11 +8,12 @@ int main()
 
   Dummy bob;
   Fwoosh* fwoosh = new Fwoosh();
+  richard.forgetSpell("Fwoosh");
   richard.learnSpell(fwoosh);
 
   richard.introduce();
   richard.launchSpell("Fwoosh", bob);
 
-  richard.forgetSpell("Fwoosh");
+  // richard.forgetSpell("Fwoosh");
   richard.launchSpell("Fwoosh", bob);
 }

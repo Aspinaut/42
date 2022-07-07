@@ -2,6 +2,7 @@
 
 Warlock::Warlock(const string &n, const string &t) : _name(n), _title(t)
 {
+	book = new SpellBook();
 	cout << _name << ": This looks like another boring day." << endl;
 }
 
@@ -12,16 +13,12 @@ Warlock::~Warlock()
 
 void Warlock::learnSpell(ASpell const *spell)
 {
-	if (spell)
-		_spells.insert(pair<string, ASpell *>(spell->getName(), spell->clone()));
+	book.learnSpell();
 }
 
 void Warlock::forgetSpell(string const spellName)
 {
-	map<string, ASpell *>::iterator it = _spells.find(spellName);
-	if (it != _spells.end())
-		delete it->second;
-	_spells.erase(spellName);
+	book.forgetSpell();
 }
 
 void Warlock::launchSpell(string const spellName, ATarget const &ref)
